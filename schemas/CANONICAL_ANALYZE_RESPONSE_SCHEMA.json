@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpportunityOSAnalyzeResponse",
+  "type": "object",
+  "required": ["profile", "recommendations", "needs_verification"],
+  "properties": {
+    "profile": {"type": "object"},
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["opportunity_id", "name", "eligibility_status", "recommendable"],
+        "properties": {
+          "opportunity_id": {"type": "string"},
+          "name": {"type": "string"},
+          "eligibility_status": {"enum": ["ELIGIBLE", "POTENTIALLY_ELIGIBLE"]},
+          "recommendable": {"const": true},
+          "rank": {"type": ["integer", "null"]},
+          "why_match": {"type": "array", "items": {"type": "string"}},
+          "missing_requirements": {"type": "array", "items": {"type": "object"}},
+          "support_types": {"type": "array", "items": {"type": "string"}},
+          "official_source_url": {"type": ["string", "null"]},
+          "opportunity_pathway": {"type": ["object", "null"]},
+          "application_guide": {"type": ["object", "null"]}
+        },
+        "additionalProperties": true
+      }
+    },
+    "needs_verification": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["opportunity_id", "eligibility_status", "recommendable"],
+        "properties": {
+          "opportunity_id": {"type": "string"},
+          "eligibility_status": {"const": "NEEDS_VERIFICATION"},
+          "recommendable": {"const": false}
+        },
+        "additionalProperties": true
+      }
+    },
+    "not_eligible": {"type": "array", "items": {"type": "object"}},
+    "pathway": {"type": ["object", "null"]},
+    "graph": {"type": ["object", "null"]}
+  },
+  "additionalProperties": true
+}

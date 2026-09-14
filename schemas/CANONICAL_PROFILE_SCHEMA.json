@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpportunityOSCanonicalProfile",
+  "type": "object",
+  "properties": {
+    "age": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1,
+      "maximum": 120
+    },
+    "gender": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "Male",
+        "Female",
+        "Transgender",
+        null
+      ]
+    },
+    "category": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "state": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "district": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "annual_income": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "available_capital": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "project_cost": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "education": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "education_course": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "education_field": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sector": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "business_stage": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "Idea",
+        "Startup",
+        "Existing",
+        null
+      ]
+    },
+    "business_goal": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "preferred_support_types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "support_needs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "artisan_trade": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "new_business": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "registrations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "certifications": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "training_completed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "documents_available": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "extra": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

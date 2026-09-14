@@ -1,0 +1,2002 @@
+[
+  {
+    "Opportunity_ID": "OPP001",
+    "Opportunity_Name": "Agriculture Infrastructure Fund (AIF)",
+    "Target_Group_Rule": "Farmers, FPOs, PACS, agri-entrepreneurs, startups and other eligible entities",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Eligible entity and eligible infrastructure project under AIF guidelines",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "REGISTRATION;DOCUMENT;DPR;LAND;ELIGIBLE_LENDER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://agriinfra.dac.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP002",
+    "Opportunity_Name": "Agri-Clinics and Agri-Business Centres (ACABC)",
+    "Target_Group_Rule": "Agriculture and allied graduates/diploma holders and other eligible agriculture-qualified candidates",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Qualification and training criteria under current ACABC guidelines",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "TRAINING;CERTIFICATION;REGISTRATION;DOCUMENT;DPR;ELIGIBLE_LENDER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://www.agriclinics.net/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP003",
+    "Opportunity_Name": "Formation and Promotion of 10,000 Farmer Producer Organizations (FPOs)",
+    "Target_Group_Rule": "Farmer Producer Organizations and member farmers",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "FPO formed/registered and supported through scheme implementing structure",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "REGISTRATION;DOCUMENT;CAPACITY_BUILDING",
+    "Rule_Completeness": "SUMMARY_ONLY",
+    "Source_URL": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2296208",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP004",
+    "Opportunity_Name": "Kisan Credit Card (KCC)",
+    "Target_Group_Rule": "Eligible farmers and specified allied activity beneficiaries",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Eligible farmer/allied beneficiary and lender criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "IDENTITY_PROOF;LAND_OR_ACTIVITY_PROOF;ELIGIBLE_LENDER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://www.myscheme.gov.in/schemes/kcc",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP005",
+    "Opportunity_Name": "PM-KUSUM",
+    "Target_Group_Rule": "Farmers, groups/cooperatives and other eligible agricultural users/components",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Component-specific farmer/entity and technical criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "REGISTRATION;LAND;DOCUMENT;TECHNICAL_APPROVAL",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://pmkusum.mnre.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP006",
+    "Opportunity_Name": "Pradhan Mantri Matsya Sampada Yojana (PMMSY)",
+    "Target_Group_Rule": "Fishers, fish farmers, fisheries entrepreneurs, SHGs, cooperatives and eligible entities",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central/CSS",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Activity- and beneficiary-category-specific PMMSY criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "REGISTRATION;DOCUMENT;DPR;LAND_OR_WATER_ASSET",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://pmmsy.dof.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP007",
+    "Opportunity_Name": "National Livestock Mission – Entrepreneurship Development Programme (NLM-EDP)",
+    "Target_Group_Rule": "Individuals, FPOs, SHGs, JLGs, cooperatives and Section 8 companies",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Eligible beneficiary and livestock/fodder component; bank/own contribution conditions apply",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "REGISTRATION;DOCUMENT;DPR;ELIGIBLE_LENDER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nlm.udyamimitra.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP008",
+    "Opportunity_Name": "Sub-Mission on Agricultural Mechanization (SMAM)",
+    "Target_Group_Rule": "Farmers, women farmers, disadvantaged groups, FPOs/CHCs and eligible entities",
+    "Gender_Rule": "Female; scheme-specific definitions apply",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central/CSS",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "State/component-specific machinery and beneficiary criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "REGISTRATION;DOCUMENT;LAND_OR_FARM_PROOF",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://agrimachinery.nic.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP009",
+    "Opportunity_Name": "Mission for Integrated Development of Horticulture (MIDH)",
+    "Target_Group_Rule": "Horticulture farmers, entrepreneurs, groups and eligible implementing beneficiaries",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central/CSS",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Component/state-specific horticulture guidelines",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "REGISTRATION;DOCUMENT;LAND;TECHNICAL_APPROVAL",
+    "Rule_Completeness": "SUMMARY_ONLY",
+    "Source_URL": "https://midh.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP010",
+    "Opportunity_Name": "National Beekeeping and Honey Mission (NBHM)",
+    "Target_Group_Rule": "Eligible implementing agencies, beekeepers and beekeeping value-chain participants through approved projects",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Project and implementing-agency eligibility under NBHM",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "REGISTRATION;TRAINING;DOCUMENT;PROJECT_PROPOSAL",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nbb.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP011",
+    "Opportunity_Name": "PMFME – Individual Micro Enterprise Upgradation",
+    "Target_Group_Rule": "Existing/new eligible micro food-processing entrepreneurs under current PMFME norms",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central/CSS",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Micro food-processing unit and component eligibility; state/ODOP rules may apply",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "REGISTRATION;FSSAI;DOCUMENT;DPR;ELIGIBLE_LENDER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://pmfme.mofpi.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP012",
+    "Opportunity_Name": "PMFME – SHG Seed Capital Support",
+    "Target_Group_Rule": "Eligible SHG members engaged in food processing",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central/CSS",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Eligible SHG/SHG member and food-processing activity",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "SHG_MEMBERSHIP;REGISTRATION;DOCUMENT;TRAINING",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://pmfme.mofpi.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP013",
+    "Opportunity_Name": "PMFME – Support to FPOs/SHGs/Producer Cooperatives",
+    "Target_Group_Rule": "FPOs, SHGs and producer cooperatives in food processing",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central/CSS",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Eligible collective entity with qualifying food-processing proposal",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "ENTITY_REGISTRATION;DOCUMENT;DPR;ELIGIBLE_LENDER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://pmfme.mofpi.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP014",
+    "Opportunity_Name": "PMFME – Common Infrastructure",
+    "Target_Group_Rule": "FPOs, SHGs, cooperatives, government agencies and eligible entities",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central/CSS",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Eligible entity and common-infrastructure proposal",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "ENTITY_REGISTRATION;DOCUMENT;DPR;LAND;TECHNICAL_APPROVAL",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://pmfme.mofpi.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP015",
+    "Opportunity_Name": "PMFME – Branding & Marketing Support",
+    "Target_Group_Rule": "Groups/FPOs/SHGs/cooperatives and eligible food-processing collectives",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central/CSS",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Collective/brand proposal under PMFME branding/marketing norms",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "ENTITY_REGISTRATION;DOCUMENT;BRAND_OR_PRODUCT_PROOF",
+    "Rule_Completeness": "SUMMARY_ONLY",
+    "Source_URL": "https://pmfme.mofpi.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP016",
+    "Opportunity_Name": "PMKSY – Integrated Cold Chain and Value Addition Infrastructure",
+    "Target_Group_Rule": "Eligible food-processing enterprises/organizations and implementing entities",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Entity/project and technical eligibility under current EOI/guidelines",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "ENTITY_REGISTRATION;DOCUMENT;DPR;LAND;TECHNICAL_APPROVAL",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://mofpi.gov.in/Schemes/cold-chain",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP017",
+    "Opportunity_Name": "PMKSY – Creation/Expansion of Food Processing & Preservation Capacities",
+    "Target_Group_Rule": "Eligible food-processing units/entities",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Project/entity eligibility per component guidelines/calls",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "ENTITY_REGISTRATION;DOCUMENT;DPR;LAND;TECHNICAL_APPROVAL",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://mofpi.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP018",
+    "Opportunity_Name": "PMKSY – Agro Processing Cluster",
+    "Target_Group_Rule": "Eligible implementing agencies/entities for agro-processing clusters",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Cluster/project eligibility under PMKSY component",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "ENTITY_REGISTRATION;DOCUMENT;DPR;LAND;TECHNICAL_APPROVAL",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://mofpi.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP019",
+    "Opportunity_Name": "PMKSY – Food Safety & Quality Assurance Infrastructure",
+    "Target_Group_Rule": "Eligible food testing/lab and quality-infrastructure entities",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Technical/entity eligibility under component guidelines",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "ENTITY_REGISTRATION;CERTIFICATION;DOCUMENT;DPR;TECHNICAL_APPROVAL",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://mofpi.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP020",
+    "Opportunity_Name": "Operation Greens",
+    "Target_Group_Rule": "Eligible producers, FPOs, processors and value-chain entities",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Commodity/component and applicant eligibility per current guidelines",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "ENTITY_REGISTRATION;DOCUMENT;DPR;SUPPLY_CHAIN_PROOF",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://mofpi.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP021",
+    "Opportunity_Name": "Prime Minister's Employment Generation Programme (PMEGP)",
+    "Target_Group_Rule": "Eligible individuals and institutions establishing new micro-enterprises",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Above 18 years",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "New micro enterprise only (is_new_unit==True); No prior government subsidy (prior_gov_subsidy==False); One beneficiary per family (family_pmegp_availed==False)",
+    "Qualification_Rule": "8th Pass required if Manufacturing project > ₹10 Lakh or Service project > ₹5 Lakh",
+    "Other_Deterministic_Conditions": "IDENTITY_PROOF;DOCUMENT;DPR;ELIGIBLE_LENDER;TRAINING",
+    "Rule_Completeness": "FULL_STRUCTURED",
+    "Source_URL": "https://www.pmegp.msme.gov.in/",
+    "Last_Verified": "2026-09-14",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP022",
+    "Opportunity_Name": "MSME Sustainable (ZED) Certification",
+    "Target_Group_Rule": "Udyam-registered MSMEs",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Udyam-registered MSME; certification stage requirements",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "UDYAM_REGISTRATION;CERTIFICATION;DOCUMENT",
+    "Rule_Completeness": "SUMMARY_ONLY",
+    "Source_URL": "https://zed.msme.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP023",
+    "Opportunity_Name": "MSME Competitive (Lean) Scheme",
+    "Target_Group_Rule": "Udyam-registered MSMEs",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Udyam-registered MSME and programme participation requirements",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "UDYAM_REGISTRATION;DOCUMENT;TRAINING",
+    "Rule_Completeness": "SUMMARY_ONLY",
+    "Source_URL": "https://lean.msme.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP024",
+    "Opportunity_Name": "MSME Innovative – Incubation",
+    "Target_Group_Rule": "Innovators, MSMEs, host institutions/incubators under component rules",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Proposal through eligible host institution/incubator under component norms",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "DOCUMENT;PROPOSAL;INCUBATOR_LINKAGE",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://innovative.msme.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP025",
+    "Opportunity_Name": "MSME Innovative – Design",
+    "Target_Group_Rule": "Eligible MSMEs seeking design interventions",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Eligible MSME and design project",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "UDYAM_REGISTRATION;DOCUMENT;PROJECT_PROPOSAL",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://innovative.msme.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP026",
+    "Opportunity_Name": "MSME Innovative – Intellectual Property Rights (IPR)",
+    "Target_Group_Rule": "Eligible MSMEs/innovators under IPR component",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Eligible applicant and IPR expense/activity",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "UDYAM_REGISTRATION;DOCUMENT;IPR_APPLICATION",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://innovative.msme.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP027",
+    "Opportunity_Name": "Micro & Small Enterprises Cluster Development Programme (MSE-CDP)",
+    "Target_Group_Rule": "MSE clusters, associations, SPVs and eligible implementing agencies",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Cluster/SPV/project eligibility under MSE-CDP guidelines",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "ENTITY_REGISTRATION;DOCUMENT;DPR;LAND;SPV",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://cluster.dcmsme.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP028",
+    "Opportunity_Name": "International Cooperation Scheme (IC)",
+    "Target_Group_Rule": "Eligible industry associations/organizations and MSME delegations under sub-components",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Applicant-organization and event/sub-component eligibility",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "ENTITY_REGISTRATION;DOCUMENT;EVENT_PROPOSAL",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://ic.msme.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP029",
+    "Opportunity_Name": "Procurement and Marketing Support (PMS) Scheme",
+    "Target_Group_Rule": "Micro and Small Enterprises and eligible implementing organizations",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Component 5(I)A: Valid Udyam Registration as Micro or Small Enterprise (udyam_registered==True AND udyam_category IN ['MICRO', 'SMALL'])",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "UDYAM_REGISTRATION;DOCUMENT;EVENT_OR_MARKET_PROOF;ASSISTANCE_LIMIT_2_EVENTS_PER_FY",
+    "Rule_Completeness": "FULL_STRUCTURED",
+    "Source_URL": "https://dcmsme.gov.in/schemes/PMS_Guidelines_Amendment_Sep2026.pdf",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP030",
+    "Opportunity_Name": "Raising and Accelerating MSME Performance (RAMP)",
+    "Target_Group_Rule": "MSMEs through central/state reform and programme interventions",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Intervention-specific; often delivered through state/partner programmes rather than a single direct individual application",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "UDYAM_REGISTRATION;PROGRAMME_SPECIFIC",
+    "Rule_Completeness": "SUMMARY_ONLY",
+    "Source_URL": "https://ramp.msme.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP031",
+    "Opportunity_Name": "Pradhan Mantri MUDRA Yojana (PMMY)",
+    "Target_Group_Rule": "Non-corporate, non-farm micro enterprises including eligible allied-agriculture activities",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Eligible micro-enterprise and lender appraisal; Tarun Plus has repeat-borrower condition",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "IDENTITY_PROOF;DOCUMENT;BUSINESS_PROOF;ELIGIBLE_LENDER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://financialservices.gov.in/pradhan-mantri-mudra-yojana-pmmy",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP032",
+    "Opportunity_Name": "PM Street Vendor's AtmaNirbhar Nidhi (PM SVANidhi)",
+    "Target_Group_Rule": "Eligible urban/peri-urban street vendors under current coverage",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Street-vendor identification/eligibility under restructured PM SVANidhi",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "VENDING_CERTIFICATE_OR_RECOMMENDATION;IDENTITY_PROOF;BANK_ACCOUNT",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://pmsvanidhi.mohua.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP033",
+    "Opportunity_Name": "Credit Guarantee Fund Trust for Micro and Small Enterprises (CGTMSE)",
+    "Target_Group_Rule": "Eligible micro and small enterprises borrowing from member lending institutions",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Eligible MSE credit facility through Member Lending Institution",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "UDYAM_REGISTRATION;DOCUMENT;ELIGIBLE_LENDER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://www.cgtmse.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP034",
+    "Opportunity_Name": "Credit Guarantee Scheme for Startups (CGSS)",
+    "Target_Group_Rule": "DPIIT-recognised eligible startups borrowing through member institutions",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "DPIIT-recognised startup and eligible credit facility",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "DPIIT_RECOGNITION;DOCUMENT;ELIGIBLE_LENDER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://www.ncgtc.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP035",
+    "Opportunity_Name": "Stand-Up India",
+    "Target_Group_Rule": "Historically SC/ST and women first-time greenfield entrepreneurs",
+    "Gender_Rule": "Female; scheme-specific definitions apply",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Scheme tenure ended; do not evaluate as currently open",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "NONE",
+    "Rule_Completeness": "SUMMARY_ONLY",
+    "Source_URL": "https://financialservices.gov.in/stand-india-scheme-supi",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP036",
+    "Opportunity_Name": "Yuva Sahakar – Cooperative Enterprise Support and Innovation Scheme",
+    "Target_Group_Rule": "New/innovative cooperatives, including young cooperative enterprises under scheme criteria",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Eligible cooperative and project under Yuva Sahakar norms",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "COOPERATIVE_REGISTRATION;DOCUMENT;DPR",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://www.ncdc.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP037",
+    "Opportunity_Name": "NSFDC Micro Finance Scheme (MFS)",
+    "Target_Group_Rule": "Eligible Scheduled Caste beneficiaries within current income criteria, through channel partners",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "Scheduled Caste",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Annual family income up to ₹5 lakh for NSFDC loans (effective 7 Jan 2026)",
+    "Business_or_Entity_Rule": "SC certificate, current family-income ceiling and channel-partner criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "CASTE_CERTIFICATE;INCOME_PROOF;IDENTITY_PROOF;CHANNEL_PARTNER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nsfdc.nic.in/faqs",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP038",
+    "Opportunity_Name": "NSFDC Aajeevika Micro-Finance Yojana (AMY)",
+    "Target_Group_Rule": "Eligible Scheduled Caste beneficiaries through selected NBFC-MFIs/channel partners",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "Scheduled Caste",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Annual family income up to ₹5 lakh for NSFDC loans (effective 7 Jan 2026)",
+    "Business_or_Entity_Rule": "SC certificate, income and channel-partner criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "CASTE_CERTIFICATE;INCOME_PROOF;IDENTITY_PROOF;CHANNEL_PARTNER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nsfdc.nic.in/faqs",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP039",
+    "Opportunity_Name": "NSFDC Udyam Nidhi Yojana (UNY)",
+    "Target_Group_Rule": "Eligible Scheduled Caste entrepreneurs through specified cooperative/SFB channels",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "Scheduled Caste",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Annual family income up to ₹5 lakh for NSFDC loans (effective 7 Jan 2026)",
+    "Business_or_Entity_Rule": "SC certificate, income criteria and channel-partner/lender norms",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "CASTE_CERTIFICATE;INCOME_PROOF;IDENTITY_PROOF;CHANNEL_PARTNER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nsfdc.nic.in/faqs",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP040",
+    "Opportunity_Name": "NBCFDC Micro Finance Scheme",
+    "Target_Group_Rule": "Eligible Backward Classes beneficiaries/SHGs within current income criteria",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "Notified Backward Classes",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Backward Class status, family-income and channel-partner criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "CATEGORY_PROOF;INCOME_PROOF;IDENTITY_PROOF;CHANNEL_PARTNER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nbcfdc.gov.in/nbcfdc/web/pattern-of-finance",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP041",
+    "Opportunity_Name": "Startup India Seed Fund Scheme (SISFS)",
+    "Target_Group_Rule": "Historically eligible DPIIT-recognised early-stage startups through selected incubators",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "New startup application window is closed",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "DPIIT_RECOGNITION;INCUBATOR_APPLICATION",
+    "Rule_Completeness": "SUMMARY_ONLY",
+    "Source_URL": "https://seedfund.startupindia.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP042",
+    "Opportunity_Name": "NIDHI PRAYAS 2.0",
+    "Target_Group_Rule": "Innovators/startups routed through approved PRAYAS centres under current guidelines",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Innovation/project and centre-specific eligibility under PRAYAS 2.0",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "PROPOSAL;INCUBATOR_LINKAGE;DOCUMENT",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nidhi.dst.gov.in/document/nidhi-prayas-2-0-program-guidelines/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP043",
+    "Opportunity_Name": "NIDHI Entrepreneur-in-Residence (NIDHI-EIR)",
+    "Target_Group_Rule": "Aspiring/early-stage technology entrepreneurs through supported incubators",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Programme/incubator-specific entrepreneur and innovation eligibility",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "PROPOSAL;INCUBATOR_LINKAGE;DOCUMENT",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nidhi.dst.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP044",
+    "Opportunity_Name": "NIDHI Seed Support Program (NIDHI-SSP)",
+    "Target_Group_Rule": "Eligible startups incubated/supported through designated NIDHI TBIs",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Startup and incubator/seed committee eligibility",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "INCUBATOR_LINKAGE;DOCUMENT;PITCH_OR_PROPOSAL",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nidhi.dst.gov.in/document-category/programme-guidelines/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP045",
+    "Opportunity_Name": "NIDHI Inclusive Technology Business Incubator (NIDHI-iTBI)",
+    "Target_Group_Rule": "Startups/innovators accessing supported inclusive technology incubators",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Incubator-specific admission/innovation criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "INCUBATOR_LINKAGE;DOCUMENT;PROPOSAL",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nidhi.dst.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP046",
+    "Opportunity_Name": "Technology Incubation and Development of Entrepreneurs (TIDE 2.0)",
+    "Target_Group_Rule": "Technology startups/entrepreneurs in ICT/emerging tech via supported incubators",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Technology/innovation and incubator-specific criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "INCUBATOR_LINKAGE;DOCUMENT;PROPOSAL",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://meitystartuphub.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP047",
+    "Opportunity_Name": "SAMRIDH – Startup Accelerator of MeitY for Product Innovation, Development and Growth",
+    "Target_Group_Rule": "Eligible software/product startups through selected accelerators",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Startup, product and accelerator cohort criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "STARTUP_REGISTRATION;DOCUMENT;ACCELERATOR_APPLICATION",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://msh.meity.gov.in/schemes/samridh",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP048",
+    "Opportunity_Name": "GENESIS – Gen-Next Support for Innovative Startups",
+    "Target_Group_Rule": "Technology startups, particularly through supported ecosystems in Tier-II/Tier-III locations and thematic calls",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Call/partner-specific innovation and startup criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "STARTUP_REGISTRATION;DOCUMENT;INCUBATOR_OR_PARTNER_LINKAGE",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://msh.meity.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP049",
+    "Opportunity_Name": "Biotechnology Ignition Grant (BIG)",
+    "Target_Group_Rule": "Biotech innovators/startups and eligible applicants under BIG guidelines",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Innovation stage and applicant eligibility per BIG call",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "DOCUMENT;PROPOSAL;INCUBATOR_OR_BIG_PARTNER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://birac.nic.in/big.php",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP050",
+    "Opportunity_Name": "Atal Incubation Centres (AIC) – Startup Incubation Access",
+    "Target_Group_Rule": "Innovative startups/entrepreneurs admitted by operational AICs",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "AIC-specific startup selection/incubation criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "INCUBATOR_APPLICATION;DOCUMENT;PITCH_OR_PROPOSAL",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://aim.gov.in/aic.php",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP051",
+    "Opportunity_Name": "Pradhan Mantri Kaushal Vikas Yojana (PMKVY) 4.0",
+    "Target_Group_Rule": "Eligible learners across society under course/centre criteria",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Course/centre and candidate eligibility",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "IDENTITY_PROOF;COURSE_REGISTRATION;TRAINING;CERTIFICATION",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://www.skillindiadigital.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP052",
+    "Opportunity_Name": "Pradhan Mantri National Apprenticeship Promotion Scheme (PM-NAPS / NAPS-2)",
+    "Target_Group_Rule": "Eligible apprentices and participating establishments",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Apprentice/establishment eligibility under Apprentices Act and scheme",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "REGISTRATION;DOCUMENT;APPRENTICESHIP_CONTRACT",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://www.apprenticeshipindia.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP053",
+    "Opportunity_Name": "National Apprenticeship Training Scheme (NATS)",
+    "Target_Group_Rule": "Eligible graduates, diploma holders and other covered categories",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Qualification and apprenticeship eligibility",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "REGISTRATION;EDUCATION_PROOF;DOCUMENT",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nats.education.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP054",
+    "Opportunity_Name": "Jan Shikshan Sansthan (JSS)",
+    "Target_Group_Rule": "Non-literates, persons with rudimentary education and school dropouts up to class 12, priority groups under current norms",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Typically 15–45; relaxations/priority rules apply",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Typically age 15-45, with relaxations/priority groups under scheme norms",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "IDENTITY_PROOF;COURSE_REGISTRATION;TRAINING",
+    "Rule_Completeness": "SUMMARY_ONLY",
+    "Source_URL": "https://jss.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP055",
+    "Opportunity_Name": "Craftsmen Training Scheme (CTS)",
+    "Target_Group_Rule": "Eligible candidates seeking ITI trade training",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Trade/education/age/admission criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "EDUCATION_PROOF;COURSE_REGISTRATION;TRAINING;CERTIFICATION",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://dgt.gov.in/cts",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP056",
+    "Opportunity_Name": "Craft Instructor Training Scheme (CITS)",
+    "Target_Group_Rule": "Eligible ITI/diploma/degree candidates seeking instructor training",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Trade-specific qualification and admission criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "EDUCATION_PROOF;COURSE_REGISTRATION;TRAINING;CERTIFICATION",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://dgt.gov.in/cits",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP057",
+    "Opportunity_Name": "PM-DAKSH",
+    "Target_Group_Rule": "Specified disadvantaged target groups under PM-DAKSH norms",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Target-group and course-specific eligibility",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "CATEGORY_PROOF;INCOME_PROOF_WHERE_APPLICABLE;TRAINING;CERTIFICATION",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://pmdaksh.dosje.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP058",
+    "Opportunity_Name": "Deen Dayal Upadhyaya Grameen Kaushalya Yojana (DDU-GKY)",
+    "Target_Group_Rule": "Eligible rural youth from poor households under scheme norms",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central/CSS",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Rural/household and training-partner eligibility",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "IDENTITY_PROOF;RURAL_ELIGIBILITY;TRAINING;CERTIFICATION",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://kaushal.rural.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP059",
+    "Opportunity_Name": "Rural Self Employment Training Institutes (RSETI)",
+    "Target_Group_Rule": "Rural youth and aspiring self-employed persons under RSETI course criteria",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central/Bank network",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "RSETI/course and local eligibility",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "IDENTITY_PROOF;TRAINING;BUSINESS_PLAN",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://rural.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP060",
+    "Opportunity_Name": "Entrepreneurship and Skill Development Programme (ESDP)",
+    "Target_Group_Rule": "Aspiring and existing entrepreneurs, youth and MSME participants under programme categories",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Programme/call-specific participant eligibility",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "IDENTITY_PROOF;TRAINING;PROGRAMME_REGISTRATION",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://msme.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP061",
+    "Opportunity_Name": "Tamil Nadu Women Entrepreneurs Empowerment Scheme (TWEES)",
+    "Target_Group_Rule": "Eligible women/transgender entrepreneurs under current TWEES guidelines",
+    "Gender_Rule": "Transgender",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Tamil Nadu",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "State, gender and scheme-specific enterprise criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "IDENTITY_PROOF;GENDER_PROOF_IF_REQUIRED;DOCUMENT;DPR;ELIGIBLE_LENDER;TRAINING",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://msmeonline.tn.gov.in/twees/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP062",
+    "Opportunity_Name": "DAY-NRLM – SHG Bank Linkage & Enterprise Financing",
+    "Target_Group_Rule": "Women members of DAY-NRLM SHGs",
+    "Gender_Rule": "Female; scheme-specific definitions apply",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central/CSS",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "DAY-NRLM SHG membership and bank/product eligibility",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "SHG_MEMBERSHIP;BANK_LINKAGE;DOCUMENT;BUSINESS_PLAN",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://aajeevika.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP063",
+    "Opportunity_Name": "Start-up Village Entrepreneurship Programme (SVEP)",
+    "Target_Group_Rule": "Rural entrepreneurs, especially through DAY-NRLM community institutions",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central/CSS",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "SVEP block/community and entrepreneur selection criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "SHG_OR_COMMUNITY_LINKAGE;TRAINING;BUSINESS_PLAN;DOCUMENT",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://aajeevika.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP064",
+    "Opportunity_Name": "Lakhpati Didi Initiative",
+    "Target_Group_Rule": "Women SHG members under DAY-NRLM",
+    "Gender_Rule": "Female; scheme-specific definitions apply",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central/CSS",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "DAY-NRLM SHG/livelihood pathway criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "SHG_MEMBERSHIP;TRAINING;BUSINESS_PLAN;MARKET_LINKAGE",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://aajeevika.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP065",
+    "Opportunity_Name": "Mahila Coir Yojana",
+    "Target_Group_Rule": "Rural women artisans in coir-producing regions",
+    "Gender_Rule": "Female; scheme-specific definitions apply",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Rural woman/artisan and training eligibility",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "IDENTITY_PROOF;TRAINING;CERTIFICATION_OR_COMPLETION",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://coirboard.gov.in/?page_id=8452",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP066",
+    "Opportunity_Name": "Womaniya on Government e-Marketplace (GeM)",
+    "Target_Group_Rule": "Women-led MSEs and women SHGs",
+    "Gender_Rule": "Female; scheme-specific definitions apply",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Eligible women-led seller/SHG meeting GeM registration and category requirements",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "GEM_REGISTRATION;UDYAM_OR_ENTITY_PROOF;DOCUMENT;PRODUCT_COMPLIANCE",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://gem.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP067",
+    "Opportunity_Name": "NSFDC Mahila Adhikarita Yojana",
+    "Target_Group_Rule": "Eligible Scheduled Caste women under current NSFDC scheme/income norms",
+    "Gender_Rule": "Female; scheme-specific definitions apply",
+    "Social_Category_Rule": "Scheduled Caste",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Annual family income up to ₹5 lakh for NSFDC loans (effective 7 Jan 2026)",
+    "Business_or_Entity_Rule": "SC woman, current income criteria and channel partner requirements",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "CASTE_CERTIFICATE;INCOME_PROOF;IDENTITY_PROOF;CHANNEL_PARTNER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nsfdc.nic.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP068",
+    "Opportunity_Name": "NBCFDC New Swarnima Scheme for Women",
+    "Target_Group_Rule": "Women belonging to notified Backward Classes within current family-income ceiling",
+    "Gender_Rule": "Female; scheme-specific definitions apply",
+    "Social_Category_Rule": "Notified Backward Classes",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Annual family income up to ₹3 lakh (official NBCFDC page)",
+    "Business_or_Entity_Rule": "Backward Class woman; annual family income within notified ceiling",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "CATEGORY_PROOF;INCOME_PROOF;IDENTITY_PROOF;CHANNEL_PARTNER",
+    "Rule_Completeness": "SUMMARY_ONLY",
+    "Source_URL": "https://nbcfdc.gov.in/nbcfdc/web/loan-scheme-description",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP069",
+    "Opportunity_Name": "NBCFDC Mahila Samriddhi Yojana",
+    "Target_Group_Rule": "Eligible women SHGs/beneficiaries from notified Backward Classes under scheme norms",
+    "Gender_Rule": "Female; scheme-specific definitions apply",
+    "Social_Category_Rule": "Notified Backward Classes",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Backward Class, income and group/channel criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "CATEGORY_PROOF;INCOME_PROOF;SHG_MEMBERSHIP;CHANNEL_PARTNER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nbcfdc.gov.in/nbcfdc/web/pattern-of-finance",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP070",
+    "Opportunity_Name": "NSKFDC Mahila Samridhi Yojana (MSY)",
+    "Target_Group_Rule": "Women Safai Karamcharis/scavengers and eligible dependants in target group",
+    "Gender_Rule": "Female; scheme-specific definitions apply",
+    "Social_Category_Rule": "NSKFDC target group",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Target-group woman/dependant and channel requirements",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "TARGET_GROUP_PROOF;IDENTITY_PROOF;CHANNEL_PARTNER",
+    "Rule_Completeness": "SUMMARY_ONLY",
+    "Source_URL": "https://nskfdc.nic.in/en/content/schemes-programmes/mahila-samridhi-yojna-msy",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP071",
+    "Opportunity_Name": "Annal Ambedkar Business Champions Scheme (AABCS) – Tamil Nadu",
+    "Target_Group_Rule": "Eligible SC/ST entrepreneurs and enterprises meeting current state rules",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Tamil Nadu",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "SC/ST ownership, age and enterprise/project criteria under current guidelines",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "CASTE_CERTIFICATE;ENTITY_OWNERSHIP;DOCUMENT;DPR;ELIGIBLE_LENDER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://msmeonline.tn.gov.in/aabcs/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP072",
+    "Opportunity_Name": "SMILE – Livelihood/Skill Support for Transgender Persons",
+    "Target_Group_Rule": "Eligible transgender persons under SMILE sub-scheme",
+    "Gender_Rule": "Transgender",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Transgender identity/certificate and programme criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "TRANSGENDER_CERTIFICATE_OR_ID;IDENTITY_PROOF;TRAINING;DOCUMENT",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://transgender.dosje.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP073",
+    "Opportunity_Name": "NSFDC Term Loan Scheme",
+    "Target_Group_Rule": "Eligible Scheduled Caste beneficiaries within current income ceiling",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "Scheduled Caste",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Annual family income up to ₹5 lakh for NSFDC loans (effective 7 Jan 2026)",
+    "Business_or_Entity_Rule": "SC certificate, current income ceiling and channel/lender criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "CASTE_CERTIFICATE;INCOME_PROOF;IDENTITY_PROOF;DPR;CHANNEL_PARTNER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nsfdc.nic.in/faqs",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP074",
+    "Opportunity_Name": "NSFDC Laghu Vyavasay Yojana (LVY)",
+    "Target_Group_Rule": "Eligible Scheduled Caste beneficiaries",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "Scheduled Caste",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Annual family income up to ₹5 lakh for NSFDC loans (effective 7 Jan 2026)",
+    "Business_or_Entity_Rule": "SC certificate, income and scheme criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "CASTE_CERTIFICATE;INCOME_PROOF;IDENTITY_PROOF;CHANNEL_PARTNER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nsfdc.nic.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP075",
+    "Opportunity_Name": "NSFDC Green Business Scheme",
+    "Target_Group_Rule": "Eligible Scheduled Caste beneficiaries for qualifying green income-generating activities",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "Scheduled Caste",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Annual family income up to ₹5 lakh for NSFDC loans (effective 7 Jan 2026)",
+    "Business_or_Entity_Rule": "SC, income and eligible green business/project criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "CASTE_CERTIFICATE;INCOME_PROOF;DOCUMENT;DPR;CHANNEL_PARTNER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nsfdc.nic.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP076",
+    "Opportunity_Name": "NBCFDC General Loan Scheme",
+    "Target_Group_Rule": "Eligible persons from notified Backward Classes within current income ceiling",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "Notified Backward Classes",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Backward Class and family-income criteria; channel partner appraisal",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "CATEGORY_PROOF;INCOME_PROOF;IDENTITY_PROOF;CHANNEL_PARTNER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nbcfdc.gov.in/nbcfdc/web/node/65",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP077",
+    "Opportunity_Name": "NSTFDC Term Loan Scheme",
+    "Target_Group_Rule": "Eligible Scheduled Tribe beneficiaries",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "Scheduled Tribe",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "ST status and scheme/project/channel criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "TRIBE_CERTIFICATE;IDENTITY_PROOF;INCOME_PROOF_IF_APPLICABLE;CHANNEL_PARTNER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nstfdc.tribal.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP078",
+    "Opportunity_Name": "NSTFDC Adivasi Mahila Sashaktikaran Yojana",
+    "Target_Group_Rule": "Scheduled Tribe women",
+    "Gender_Rule": "Female; scheme-specific definitions apply",
+    "Social_Category_Rule": "Scheduled Tribe",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "ST woman and scheme/project criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "TRIBE_CERTIFICATE;IDENTITY_PROOF;CHANNEL_PARTNER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nstfdc.tribal.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP079",
+    "Opportunity_Name": "NSKFDC General Term Loan",
+    "Target_Group_Rule": "Safai Karamcharis, manual scavengers and eligible dependants in target group",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "NSKFDC target group",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Target-group eligibility and channel/lender appraisal",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "TARGET_GROUP_PROOF;IDENTITY_PROOF;DOCUMENT;DPR;CHANNEL_PARTNER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nskfdc.nic.in/en/content/schemes-programmes/general-term-loan-tl",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP080",
+    "Opportunity_Name": "NSKFDC Swachhta Udyami Yojana (SUY)",
+    "Target_Group_Rule": "Safai Karamcharis/manual scavengers, eligible groups/cooperatives and certain sanitation implementing bodies",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "NSKFDC target group",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Target-group/entity and sanitation project criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "TARGET_GROUP_PROOF;ENTITY_REGISTRATION;DOCUMENT;DPR;CHANNEL_PARTNER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nskfdc.nic.in/en/node/4083",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP081",
+    "Opportunity_Name": "PM Vishwakarma",
+    "Target_Group_Rule": "Eligible artisans/craftspeople in notified traditional trades",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Artisan in notified trade and verification/registration criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "REGISTRATION;TRADE_VERIFICATION;TRAINING;CERTIFICATION;DOCUMENT",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://pmvishwakarma.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP082",
+    "Opportunity_Name": "Kalaignar Kaivinai Thittam (KKT) – Tamil Nadu",
+    "Target_Group_Rule": "Experienced artisans in notified trades under current state scheme",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Tamil Nadu",
+    "Age_Rule": "Above 35 years",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Age above 35, minimum experience in listed trade and other state conditions",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "IDENTITY_PROOF;EXPERIENCE_PROOF;DOCUMENT;DPR;TRAINING;ELIGIBLE_LENDER",
+    "Rule_Completeness": "SUMMARY_ONLY",
+    "Source_URL": "https://msmeonline.tn.gov.in/kkt/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP083",
+    "Opportunity_Name": "NHDP – Ambedkar Hastshilp Vikas Yojana (AHVY)",
+    "Target_Group_Rule": "Handicraft artisans/clusters and eligible agencies",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Artisan/cluster/agency and proposal eligibility under AHVY guidelines",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "ARTISAN_REGISTRATION;ENTITY_REGISTRATION;DOCUMENT;PROJECT_PROPOSAL",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://handicrafts.nic.in/schemes.aspx",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP084",
+    "Opportunity_Name": "NHDP – Marketing Support & Services (MSS)",
+    "Target_Group_Rule": "Handicraft artisans/eligible agencies and participants through approved marketing events",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Event/agency/artisan eligibility under MSS guidelines/calls",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "ARTISAN_REGISTRATION;DOCUMENT;EVENT_APPLICATION",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://handicrafts.nic.in/tenders.aspx?type=27",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP085",
+    "Opportunity_Name": "NHDP – Skill Development for Handicraft Sector (SDHS)",
+    "Target_Group_Rule": "Handicraft artisans and eligible training/project agencies",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Artisan/training/project eligibility",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "ARTISAN_REGISTRATION;TRAINING;DOCUMENT",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://handicrafts.nic.in/tenders.aspx?type=27",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP086",
+    "Opportunity_Name": "NHDP – Infrastructure & Technology Support",
+    "Target_Group_Rule": "Eligible handicraft clusters/agencies/artisan producer organisations",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Project/agency eligibility under NHDP component",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "ENTITY_REGISTRATION;DOCUMENT;DPR;TECHNICAL_APPROVAL",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://handicrafts.nic.in/tenders.aspx?type=27",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP087",
+    "Opportunity_Name": "National Handloom Development Programme – Handloom Marketing Assistance",
+    "Target_Group_Rule": "Handloom weavers, producer/implementing organisations through programme channels",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Weaver/organisation and event/component eligibility",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "WEAVER_REGISTRATION;ENTITY_REGISTRATION;DOCUMENT",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://handlooms.nic.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP088",
+    "Opportunity_Name": "National Handloom Development Programme – Concessional Credit / Weaver MUDRA",
+    "Target_Group_Rule": "Eligible handloom weavers/weaver entrepreneurs",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Weaver and lender/component criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "WEAVER_REGISTRATION;IDENTITY_PROOF;DOCUMENT;ELIGIBLE_LENDER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://handlooms.nic.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP089",
+    "Opportunity_Name": "National Handloom Development Programme – Hathkargha Samvardhan Sahayata",
+    "Target_Group_Rule": "Eligible handloom weavers/clusters",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Weaver/cluster and equipment component criteria",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "WEAVER_REGISTRATION;DOCUMENT;EQUIPMENT_REQUIREMENT",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://handlooms.nic.in/tenders.php",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP090",
+    "Opportunity_Name": "Raw Material Supply Scheme (RMSS) for Handloom Sector",
+    "Target_Group_Rule": "Eligible handloom weavers and weaving organisations",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Weaver/organisation and yarn/raw-material eligibility",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "WEAVER_REGISTRATION;ENTITY_REGISTRATION;DOCUMENT",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://handlooms.nic.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP091",
+    "Opportunity_Name": "Market Access Initiative (MAI)",
+    "Target_Group_Rule": "Eligible export promotion organisations/agencies and exporters through approved activities",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Applicant/activity/country/product eligibility under MAI guidelines",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "ENTITY_REGISTRATION;EXPORT_REGISTRATION;DOCUMENT;EVENT_OR_MARKET_PROPOSAL",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://commerce.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP092",
+    "Opportunity_Name": "Trade Infrastructure for Export Scheme (TIES)",
+    "Target_Group_Rule": "Central/State agencies, EPCs, commodity boards, SEZ authorities and eligible JVs/PPP implementing agencies",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Eligible implementing agency, export linkage, DPR and statutory approvals",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "ENTITY_REGISTRATION;DOCUMENT;DPR;LAND;STATUTORY_APPROVALS",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://commerce.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP093",
+    "Opportunity_Name": "APEDA Agriculture & Processed Food Export Promotion / Financial Assistance",
+    "Target_Group_Rule": "APEDA-registered exporters and eligible entities under current assistance components",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "APEDA registration and component-specific eligibility",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "APEDA_REGISTRATION;EXPORT_DOCUMENTS;PROJECT_OR_ACTIVITY_PROPOSAL",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://apeda.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP094",
+    "Opportunity_Name": "MPEDA Export Development / Financial Assistance Schemes",
+    "Target_Group_Rule": "Eligible marine-product producers/exporters/units under MPEDA components",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "MPEDA registration/component eligibility",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "MPEDA_REGISTRATION;EXPORT_DOCUMENTS;TECHNICAL_APPROVAL",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://mpeda.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP095",
+    "Opportunity_Name": "Integrated Scheme for Export Promotion & Quality Improvement in Spices and Research & Development of Cardamom",
+    "Target_Group_Rule": "Eligible spice growers/exporters/processors and stakeholders under scheme components",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Spices Board/component-specific eligibility",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "SPICES_BOARD_REGISTRATION;EXPORT_OR_GROWER_PROOF;DOCUMENT",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://www.indianspices.com/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP096",
+    "Opportunity_Name": "Integrated Coffee Development Project",
+    "Target_Group_Rule": "Eligible coffee growers, estates and coffee value-chain participants under components",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Coffee Board/component-specific eligibility",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "GROWER_OR_ENTITY_REGISTRATION;DOCUMENT;PROJECT_PROOF",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://coffeeboard.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP097",
+    "Opportunity_Name": "Tea Development and Promotion Scheme",
+    "Target_Group_Rule": "Eligible tea growers, producers and tea-sector entities under components",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Tea Board/component-specific eligibility",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "TEA_BOARD_REGISTRATION;DOCUMENT;PROJECT_OR_ACTIVITY_PROOF",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://teaboard.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP098",
+    "Opportunity_Name": "Sustainable and Inclusive Development of Natural Rubber Sector",
+    "Target_Group_Rule": "Eligible rubber growers/processors/stakeholders under scheme components",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Rubber Board/component-specific eligibility",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "RUBBER_REGISTRATION;DOCUMENT;ACTIVITY_PROOF",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://rubberboard.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP099",
+    "Opportunity_Name": "GeM Startup Runway 2.0",
+    "Target_Group_Rule": "Eligible startups registered as sellers on GeM",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Startup/seller registration and GeM/product requirements",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "DPIIT_OR_STARTUP_PROOF;GEM_REGISTRATION;DOCUMENT;PRODUCT_COMPLIANCE",
+    "Rule_Completeness": "SUMMARY_ONLY",
+    "Source_URL": "https://gem.gov.in/",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP100",
+    "Opportunity_Name": "Remission of Duties and Taxes on Exported Products (RoDTEP)",
+    "Target_Group_Rule": "Eligible exporters/products covered by current RoDTEP schedules",
+    "Gender_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official component rules",
+    "Income_Rule": "Not parameterized; check official component rules",
+    "Business_or_Entity_Rule": "Eligible tariff line/export and customs compliance",
+    "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
+    "Other_Deterministic_Conditions": "IEC;EXPORT_DOCUMENTS;CUSTOMS_DECLARATION",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://www.dgft.gov.in/CP/?opt=rodtep",
+    "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  }
+]

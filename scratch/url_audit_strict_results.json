@@ -1,0 +1,1107 @@
+{
+  "https://coffeeboard.gov.in/": {
+    "original_url": "https://coffeeboard.gov.in/",
+    "checked_url": "https://coffeeboard.gov.in/",
+    "final_url": "https://coffeeboard.gov.in/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://aim.gov.in/aic.php": {
+    "original_url": "https://aim.gov.in/aic.php",
+    "checked_url": "https://aim.gov.in/aic.php",
+    "final_url": "https://aim.gov.in/aic.php",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://agrimachinery.nic.in/": {
+    "original_url": "https://agrimachinery.nic.in/",
+    "checked_url": "https://agrimachinery.nic.in/",
+    "final_url": "https://agrimachinery.nic.in/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://agriinfra.dac.gov.in/": {
+    "original_url": "https://agriinfra.dac.gov.in/",
+    "checked_url": "https://agriinfra.dac.gov.in/",
+    "final_url": "https://agriinfra.dac.gov.in/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://birac.nic.in/big.php": {
+    "original_url": "https://birac.nic.in/big.php",
+    "checked_url": "https://birac.nic.in/big.php",
+    "final_url": "https://birac.nic.in/big.php",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://aajeevika.gov.in/": {
+    "original_url": "https://aajeevika.gov.in/",
+    "checked_url": "https://aajeevika.gov.in/",
+    "final_url": "https://aajeevika.gov.in/",
+    "http_status": 0,
+    "status": "TIMEOUT",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Timed Out",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://apeda.gov.in/apedawebsite/Financial_Assistance/Financial_Assistance.htm": {
+    "original_url": "https://apeda.gov.in/apedawebsite/Financial_Assistance/Financial_Assistance.htm",
+    "checked_url": "https://apeda.gov.in/apedawebsite/Financial_Assistance/Financial_Assistance.htm",
+    "final_url": "https://apeda.gov.in/apedawebsite/Financial_Assistance/Financial_Assistance.htm",
+    "http_status": 0,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "TLS error: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://apeda.gov.in/": {
+    "original_url": "https://apeda.gov.in/",
+    "checked_url": "https://apeda.gov.in/",
+    "final_url": "https://apeda.gov.in/",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://commerce.gov.in/": {
+    "original_url": "https://commerce.gov.in/",
+    "checked_url": "https://commerce.gov.in/",
+    "final_url": "https://www.commerce.gov.in/",
+    "http_status": 200,
+    "status": "REDIRECTED_WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://cluster.dcmsme.gov.in/": {
+    "original_url": "https://cluster.dcmsme.gov.in/",
+    "checked_url": "https://cluster.dcmsme.gov.in/",
+    "final_url": "https://cluster.dcmsme.gov.in/Admin/Default.aspx",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://dcmsme.gov.in/": {
+    "original_url": "https://dcmsme.gov.in/",
+    "checked_url": "https://dcmsme.gov.in/",
+    "final_url": "https://dcmsme.gov.in/",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://dpiit.gov.in/sites/default/files/notification_cgss.pdf": {
+    "original_url": "https://dpiit.gov.in/sites/default/files/notification_cgss.pdf",
+    "checked_url": "https://dpiit.gov.in/sites/default/files/notification_cgss.pdf",
+    "final_url": "https://dpiit.gov.in/sites/default/files/notification_cgss.pdf",
+    "http_status": 0,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "TLS error: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://financialservices.gov.in/pradhan-mantri-mudra-yojana-pmmy": {
+    "original_url": "https://financialservices.gov.in/pradhan-mantri-mudra-yojana-pmmy",
+    "checked_url": "https://financialservices.gov.in/pradhan-mantri-mudra-yojana-pmmy",
+    "final_url": "https://financialservices.gov.in/pradhan-mantri-mudra-yojana-pmmy",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://financialservices.gov.in/stand-india-scheme-supi": {
+    "original_url": "https://financialservices.gov.in/stand-india-scheme-supi",
+    "checked_url": "https://financialservices.gov.in/stand-india-scheme-supi",
+    "final_url": "https://financialservices.gov.in/stand-india-scheme-supi",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://dcmsme.gov.in/schemes/PMS_Guidelines_Amendment_Sep2026.pdf": {
+    "original_url": "https://dcmsme.gov.in/schemes/PMS_Guidelines_Amendment_Sep2026.pdf",
+    "checked_url": "https://dcmsme.gov.in/schemes/PMS_Guidelines_Amendment_Sep2026.pdf",
+    "final_url": "https://dcmsme.gov.in/ErrorPages/FileNotFound.htm",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://dst.gov.in/nidhi-seed-support-system-sss": {
+    "original_url": "https://dst.gov.in/nidhi-seed-support-system-sss",
+    "checked_url": "https://dst.gov.in/nidhi-seed-support-system-sss",
+    "final_url": "https://dst.gov.in/nidhi-seed-support-system-sss",
+    "http_status": 0,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "TLS error: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://agriinfra.dac.gov.in/Home/OperationalGuideline": {
+    "original_url": "https://agriinfra.dac.gov.in/Home/OperationalGuideline",
+    "checked_url": "https://agriinfra.dac.gov.in/Home/OperationalGuideline",
+    "final_url": "https://agriinfra.dac.gov.in/",
+    "http_status": 200,
+    "status": "REDIRECTED_WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://coirboard.gov.in/?page_id=8452": {
+    "original_url": "https://coirboard.gov.in/?page_id=8452",
+    "checked_url": "https://coirboard.gov.in/?page_id=8452",
+    "final_url": "https://coirboard.gov.in/?page_id=8452",
+    "http_status": 0,
+    "status": "TIMEOUT",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Timed Out",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://gem.gov.in/": {
+    "original_url": "https://gem.gov.in/",
+    "checked_url": "https://gem.gov.in/",
+    "final_url": "https://gem.gov.in/",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://handlooms.nic.in/": {
+    "original_url": "https://handlooms.nic.in/",
+    "checked_url": "https://handlooms.nic.in/",
+    "final_url": "https://handlooms.nic.in/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://handlooms.nic.in/tenders.php": {
+    "original_url": "https://handlooms.nic.in/tenders.php",
+    "checked_url": "https://handlooms.nic.in/tenders.php",
+    "final_url": "https://handlooms.nic.in/tenders.php",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://dgt.gov.in/cits": {
+    "original_url": "https://dgt.gov.in/cits",
+    "checked_url": "https://dgt.gov.in/cits",
+    "final_url": "https://dgt.gov.in/hi/CITS",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://dgt.gov.in/cts": {
+    "original_url": "https://dgt.gov.in/cts",
+    "checked_url": "https://dgt.gov.in/cts",
+    "final_url": "https://dgt.gov.in/hi/CTS",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://meitystartuphub.in/": {
+    "original_url": "https://meitystartuphub.in/",
+    "checked_url": "https://meitystartuphub.in/",
+    "final_url": "https://meitystartuphub.in/",
+    "http_status": 0,
+    "status": "DNS_FAILURE",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "[Errno 11001] getaddrinfo failed",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://kaushal.rural.gov.in/": {
+    "original_url": "https://kaushal.rural.gov.in/",
+    "checked_url": "https://kaushal.rural.gov.in/",
+    "final_url": "https://kaushal.rural.gov.in/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://innovative.msme.gov.in/": {
+    "original_url": "https://innovative.msme.gov.in/",
+    "checked_url": "https://innovative.msme.gov.in/",
+    "final_url": "https://innovative.msme.gov.in/",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://ic.msme.gov.in/": {
+    "original_url": "https://ic.msme.gov.in/",
+    "checked_url": "https://ic.msme.gov.in/",
+    "final_url": "https://ic.msme.gov.in/IC_APP/IC_Welcome.aspx",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://midh.gov.in/": {
+    "original_url": "https://midh.gov.in/",
+    "checked_url": "https://midh.gov.in/",
+    "final_url": "https://midh.gov.in/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://jss.gov.in/": {
+    "original_url": "https://jss.gov.in/",
+    "checked_url": "https://jss.gov.in/",
+    "final_url": "https://www.skillindiadigital.gov.in//",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'jss.gov.in'. (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://kviconline.gov.in/pmegpeportal/pmegpmain/index.jsp": {
+    "original_url": "https://kviconline.gov.in/pmegpeportal/pmegpmain/index.jsp",
+    "checked_url": "https://kviconline.gov.in/pmegpeportal/pmegpmain/index.jsp",
+    "final_url": "https://kviconline.gov.in/pmegpeportal/pmegpmain/index.jsp",
+    "http_status": 0,
+    "status": "DNS_FAILURE",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "[Errno 11002] getaddrinfo failed",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://kviconline.gov.in/pmegpeportal/": {
+    "original_url": "https://kviconline.gov.in/pmegpeportal/",
+    "checked_url": "https://kviconline.gov.in/pmegpeportal/",
+    "final_url": "https://kviconline.gov.in/pmegpeportal/",
+    "http_status": 0,
+    "status": "DNS_FAILURE",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "[Errno 11002] getaddrinfo failed",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://lean.msme.gov.in/": {
+    "original_url": "https://lean.msme.gov.in/",
+    "checked_url": "https://lean.msme.gov.in/",
+    "final_url": "https://lean.msme.gov.in/",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://msh.meity.gov.in/": {
+    "original_url": "https://msh.meity.gov.in/",
+    "checked_url": "https://msh.meity.gov.in/",
+    "final_url": "https://msh.meity.gov.in/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://msh.meity.gov.in/schemes/samridh": {
+    "original_url": "https://msh.meity.gov.in/schemes/samridh",
+    "checked_url": "https://msh.meity.gov.in/schemes/samridh",
+    "final_url": "https://msh.meity.gov.in/schemes/samridh",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://msmeonline.tn.gov.in/kkt/": {
+    "original_url": "https://msmeonline.tn.gov.in/kkt/",
+    "checked_url": "https://msmeonline.tn.gov.in/kkt/",
+    "final_url": "https://msmeonline.tn.gov.in/kkt/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://msmeonline.tn.gov.in/twees/": {
+    "original_url": "https://msmeonline.tn.gov.in/twees/",
+    "checked_url": "https://msmeonline.tn.gov.in/twees/",
+    "final_url": "https://msmeonline.tn.gov.in/twees/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://msmeonline.tn.gov.in/aabcs/": {
+    "original_url": "https://msmeonline.tn.gov.in/aabcs/",
+    "checked_url": "https://msmeonline.tn.gov.in/aabcs/",
+    "final_url": "https://msmeonline.tn.gov.in/aabcs/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://handicrafts.nic.in/tenders.aspx?type=27": {
+    "original_url": "https://handicrafts.nic.in/tenders.aspx?type=27",
+    "checked_url": "https://handicrafts.nic.in/tenders.aspx?type=27",
+    "final_url": "https://handicrafts.nic.in/tenders.aspx?type=27",
+    "http_status": 0,
+    "status": "TIMEOUT",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Timed Out",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://handicrafts.nic.in/schemes.aspx": {
+    "original_url": "https://handicrafts.nic.in/schemes.aspx",
+    "checked_url": "https://handicrafts.nic.in/schemes.aspx",
+    "final_url": "https://handicrafts.nic.in/schemes.aspx",
+    "http_status": 0,
+    "status": "TIMEOUT",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Timed Out",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://nats.education.gov.in/": {
+    "original_url": "https://nats.education.gov.in/",
+    "checked_url": "https://nats.education.gov.in/",
+    "final_url": "https://nats.education.gov.in/",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://msme.gov.in/": {
+    "original_url": "https://msme.gov.in/",
+    "checked_url": "https://msme.gov.in/",
+    "final_url": "https://www.msme.gov.in/",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://nidhi-prayas.org/guidelines.html": {
+    "original_url": "https://nidhi-prayas.org/guidelines.html",
+    "checked_url": "https://nidhi-prayas.org/guidelines.html",
+    "final_url": "https://nidhi-prayas.org/guidelines.html",
+    "http_status": 404,
+    "status": "HTTP_4XX",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": "HTTP 404",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://mpeda.gov.in/": {
+    "original_url": "https://mpeda.gov.in/",
+    "checked_url": "https://mpeda.gov.in/",
+    "final_url": "https://mpeda.gov.in/",
+    "http_status": 0,
+    "status": "TIMEOUT",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Timed Out",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://nbcfdc.gov.in/nbcfdc/web/pattern-of-finance": {
+    "original_url": "https://nbcfdc.gov.in/nbcfdc/web/pattern-of-finance",
+    "checked_url": "https://nbcfdc.gov.in/nbcfdc/web/pattern-of-finance",
+    "final_url": "https://nbcfdc.gov.in/nbcfdc/web/pattern-of-finance",
+    "http_status": 403,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": "HTTP 403 (Govt WAF)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://nbcfdc.gov.in/nbcfdc/web/node/65": {
+    "original_url": "https://nbcfdc.gov.in/nbcfdc/web/node/65",
+    "checked_url": "https://nbcfdc.gov.in/nbcfdc/web/node/65",
+    "final_url": "https://nbcfdc.gov.in/nbcfdc/web/node/65",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://nbcfdc.gov.in/nbcfdc/web/loan-scheme-description": {
+    "original_url": "https://nbcfdc.gov.in/nbcfdc/web/loan-scheme-description",
+    "checked_url": "https://nbcfdc.gov.in/nbcfdc/web/loan-scheme-description",
+    "final_url": "https://nbcfdc.gov.in/nbcfdc/web/loan-scheme-description",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://nbb.gov.in/": {
+    "original_url": "https://nbb.gov.in/",
+    "checked_url": "https://nbb.gov.in/",
+    "final_url": "https://nbb.gov.in/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://nlm.udyamimitra.in/": {
+    "original_url": "https://nlm.udyamimitra.in/",
+    "checked_url": "https://nlm.udyamimitra.in/",
+    "final_url": "https://nlm.udyamimitra.in/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://nidhi.dst.gov.in/": {
+    "original_url": "https://nidhi.dst.gov.in/",
+    "checked_url": "https://nidhi.dst.gov.in/",
+    "final_url": "https://nidhi.dst.gov.in/",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://nsfdc.nic.in/": {
+    "original_url": "https://nsfdc.nic.in/",
+    "checked_url": "https://nsfdc.nic.in/",
+    "final_url": "https://nsfdc.nic.in/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://nsfdc.nic.in/faqs": {
+    "original_url": "https://nsfdc.nic.in/faqs",
+    "checked_url": "https://nsfdc.nic.in/faqs",
+    "final_url": "https://nsfdc.nic.in/faqs",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://nidhi.dst.gov.in/document-category/programme-guidelines/": {
+    "original_url": "https://nidhi.dst.gov.in/document-category/programme-guidelines/",
+    "checked_url": "https://nidhi.dst.gov.in/document-category/programme-guidelines/",
+    "final_url": "https://nidhi.dst.gov.in/document-category/programme-guidelines/",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://nidhi.dst.gov.in/document/nidhi-prayas-2-0-program-guidelines/": {
+    "original_url": "https://nidhi.dst.gov.in/document/nidhi-prayas-2-0-program-guidelines/",
+    "checked_url": "https://nidhi.dst.gov.in/document/nidhi-prayas-2-0-program-guidelines/",
+    "final_url": "https://nidhi.dst.gov.in/document/nidhi-prayas-2-0-program-guidelines/",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://pmfme.mofpi.gov.in/pmfme/assets/docs/PMFME_Scheme_Guidelines.pdf": {
+    "original_url": "https://pmfme.mofpi.gov.in/pmfme/assets/docs/PMFME_Scheme_Guidelines.pdf",
+    "checked_url": "https://pmfme.mofpi.gov.in/pmfme/assets/docs/PMFME_Scheme_Guidelines.pdf",
+    "final_url": "https://pmfme.mofpi.gov.in/pmfme/assets/docs/PMFME_Scheme_Guidelines.pdf",
+    "http_status": 404,
+    "status": "HTTP_4XX",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": "HTTP 404",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://pmfme.mofpi.gov.in/": {
+    "original_url": "https://pmfme.mofpi.gov.in/",
+    "checked_url": "https://pmfme.mofpi.gov.in/",
+    "final_url": "https://pmfme.mofpi.gov.in/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://pmkusum.mnre.gov.in/": {
+    "original_url": "https://pmkusum.mnre.gov.in/",
+    "checked_url": "https://pmkusum.mnre.gov.in/",
+    "final_url": "https://pmkusum.mnre.gov.in/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://pmmsy.dof.gov.in/": {
+    "original_url": "https://pmmsy.dof.gov.in/",
+    "checked_url": "https://pmmsy.dof.gov.in/",
+    "final_url": "https://pmmsy.dof.gov.in/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://nskfdc.nic.in/en/content/schemes-programmes/general-term-loan-tl": {
+    "original_url": "https://nskfdc.nic.in/en/content/schemes-programmes/general-term-loan-tl",
+    "checked_url": "https://nskfdc.nic.in/en/content/schemes-programmes/general-term-loan-tl",
+    "final_url": "https://nskfdc.nic.in/en/content/schemes-programmes/general-term-loan-tl",
+    "http_status": 0,
+    "status": "TIMEOUT",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Timed Out",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://nskfdc.nic.in/en/content/schemes-programmes/mahila-samridhi-yojna-msy": {
+    "original_url": "https://nskfdc.nic.in/en/content/schemes-programmes/mahila-samridhi-yojna-msy",
+    "checked_url": "https://nskfdc.nic.in/en/content/schemes-programmes/mahila-samridhi-yojna-msy",
+    "final_url": "https://nskfdc.nic.in/en/content/schemes-programmes/mahila-samridhi-yojna-msy",
+    "http_status": 0,
+    "status": "TIMEOUT",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Timed Out",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://nskfdc.nic.in/en/node/4083": {
+    "original_url": "https://nskfdc.nic.in/en/node/4083",
+    "checked_url": "https://nskfdc.nic.in/en/node/4083",
+    "final_url": "https://nskfdc.nic.in/en/node/4083",
+    "http_status": 0,
+    "status": "TIMEOUT",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Timed Out",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://pmvishwakarma.gov.in/": {
+    "original_url": "https://pmvishwakarma.gov.in/",
+    "checked_url": "https://pmvishwakarma.gov.in/",
+    "final_url": "https://pmvishwakarma.gov.in/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://pmsvanidhi.mohua.gov.in/": {
+    "original_url": "https://pmsvanidhi.mohua.gov.in/",
+    "checked_url": "https://pmsvanidhi.mohua.gov.in/",
+    "final_url": "https://pmsvanidhi.mohua.gov.in/",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://nstfdc.tribal.gov.in/": {
+    "original_url": "https://nstfdc.tribal.gov.in/",
+    "checked_url": "https://nstfdc.tribal.gov.in/",
+    "final_url": "https://nstfdc.tribal.gov.in/(S(srdjlgnubillpnj2y1upu2gb))/default.aspx",
+    "http_status": 200,
+    "status": "REDIRECTED_WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://pmdaksh.dosje.gov.in/": {
+    "original_url": "https://pmdaksh.dosje.gov.in/",
+    "checked_url": "https://pmdaksh.dosje.gov.in/",
+    "final_url": "https://pmdaksh.dosje.gov.in/",
+    "http_status": 0,
+    "status": "TIMEOUT",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Timed Out",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://seedfund.startupindia.gov.in/": {
+    "original_url": "https://seedfund.startupindia.gov.in/",
+    "checked_url": "https://seedfund.startupindia.gov.in/",
+    "final_url": "https://seedfund.startupindia.gov.in/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://seedfund.startupindia.gov.in/assets/location/seed_fund_scheme_guidelines.pdf": {
+    "original_url": "https://seedfund.startupindia.gov.in/assets/location/seed_fund_scheme_guidelines.pdf",
+    "checked_url": "https://seedfund.startupindia.gov.in/assets/location/seed_fund_scheme_guidelines.pdf",
+    "final_url": "https://seedfund.startupindia.gov.in/assets/location/seed_fund_scheme_guidelines.pdf",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://teaboard.gov.in/": {
+    "original_url": "https://teaboard.gov.in/",
+    "checked_url": "https://teaboard.gov.in/",
+    "final_url": "https://teaboard.gov.in/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://ramp.msme.gov.in/": {
+    "original_url": "https://ramp.msme.gov.in/",
+    "checked_url": "https://ramp.msme.gov.in/",
+    "final_url": "https://ramp.msme.gov.in/ramp/",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://mofpi.gov.in/Schemes/cold-chain": {
+    "original_url": "https://mofpi.gov.in/Schemes/cold-chain",
+    "checked_url": "https://mofpi.gov.in/Schemes/cold-chain",
+    "final_url": "https://mofpi.gov.in/Schemes/cold-chain",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://rural.gov.in/": {
+    "original_url": "https://rural.gov.in/",
+    "checked_url": "https://rural.gov.in/",
+    "final_url": "https://www.rural.gov.in/",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://www.agriclinics.net/": {
+    "original_url": "https://www.agriclinics.net/",
+    "checked_url": "https://www.agriclinics.net/",
+    "final_url": "https://www.agriclinics.net/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://www.dgft.gov.in/CP/?opt=rodtep": {
+    "original_url": "https://www.dgft.gov.in/CP/?opt=rodtep",
+    "checked_url": "https://www.dgft.gov.in/CP/?opt=rodtep",
+    "final_url": "https://www.dgft.gov.in/CP/?opt=rodtep",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://www.apprenticeshipindia.gov.in/": {
+    "original_url": "https://www.apprenticeshipindia.gov.in/",
+    "checked_url": "https://www.apprenticeshipindia.gov.in/",
+    "final_url": "https://www.apprenticeshipindia.gov.in/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://www.cgtmse.in/": {
+    "original_url": "https://www.cgtmse.in/",
+    "checked_url": "https://www.cgtmse.in/",
+    "final_url": "https://www.cgtmse.in/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://mofpi.gov.in/": {
+    "original_url": "https://mofpi.gov.in/",
+    "checked_url": "https://mofpi.gov.in/",
+    "final_url": "https://mofpi.gov.in/",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://www.indianspices.com/": {
+    "original_url": "https://www.indianspices.com/",
+    "checked_url": "https://www.indianspices.com/",
+    "final_url": "https://www.indianspices.com/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://www.ncgtc.in/": {
+    "original_url": "https://www.ncgtc.in/",
+    "checked_url": "https://www.ncgtc.in/",
+    "final_url": "https://www.ncgtc.in/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://www.skillindiadigital.gov.in/": {
+    "original_url": "https://www.skillindiadigital.gov.in/",
+    "checked_url": "https://www.skillindiadigital.gov.in/",
+    "final_url": "https://www.skillindiadigital.gov.in/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://rubberboard.gov.in/": {
+    "original_url": "https://rubberboard.gov.in/",
+    "checked_url": "https://rubberboard.gov.in/",
+    "final_url": "https://rubberboard.gov.in/public",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://www.myscheme.gov.in/schemes/kcc": {
+    "original_url": "https://www.myscheme.gov.in/schemes/kcc",
+    "checked_url": "https://www.myscheme.gov.in/schemes/kcc",
+    "final_url": "https://www.myscheme.gov.in/schemes/kcc",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://www.mudra.org.in/Offerings": {
+    "original_url": "https://www.mudra.org.in/Offerings",
+    "checked_url": "https://www.mudra.org.in/Offerings",
+    "final_url": "https://www.mudra.org.in/Offerings",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://www.ncdc.in/": {
+    "original_url": "https://www.ncdc.in/",
+    "checked_url": "https://www.ncdc.in/",
+    "final_url": "https://www.ncdc.in/",
+    "http_status": 200,
+    "status": "WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2296208": {
+    "original_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2296208",
+    "checked_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2296208",
+    "final_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2296208&reg=48&lang=2",
+    "http_status": 200,
+    "status": "REDIRECTED_WORKING",
+    "semantic_status": "NORMAL",
+    "tls_valid": true,
+    "error": null,
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://zed.msme.gov.in/": {
+    "original_url": "https://zed.msme.gov.in/",
+    "checked_url": "https://zed.msme.gov.in/",
+    "final_url": "https://zed.msme.gov.in/",
+    "http_status": 200,
+    "status": "TLS_ERROR",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Strict TLS failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  },
+  "https://transgender.dosje.gov.in/": {
+    "original_url": "https://transgender.dosje.gov.in/",
+    "checked_url": "https://transgender.dosje.gov.in/",
+    "final_url": "https://transgender.dosje.gov.in/",
+    "http_status": 0,
+    "status": "TIMEOUT",
+    "semantic_status": "NORMAL",
+    "tls_valid": false,
+    "error": "Timed Out",
+    "purposes": [
+      "OFFICIAL_SOURCE"
+    ]
+  }
+}

@@ -1,0 +1,327 @@
+[
+  {
+    "Opportunity_ID": "OPP004",
+    "Opportunity_Name": "Kisan Credit Card (KCC)",
+    "min_age": 18,
+    "max_age": 75,
+    "allowed_target_groups": [
+      "farmer",
+      "owner cultivator",
+      "tenant farmer",
+      "oral lessee",
+      "sharecropper",
+      "shg of farmers",
+      "jlg of farmers"
+    ],
+    "conditions": [
+      "Applicant must fit an eligible farmer/allied beneficiary category; lender-specific checks still apply."
+    ],
+    "source_url": "https://www.myscheme.gov.in/schemes/kcc",
+    "verified_on": "2026-09-12",
+    "completeness": "STRUCTURED_CORE"
+  },
+  {
+    "Opportunity_ID": "OPP021",
+    "Opportunity_Name": "Prime Minister's Employment Generation Programme (PMEGP)",
+    "min_age_exclusive": 18,
+    "requires_new_unit": true,
+    "income_ceiling": null,
+    "education_rule": {
+      "minimum": "8th pass",
+      "when": {
+        "manufacturing_project_cost_gt": 1000000,
+        "service_or_business_project_cost_gt": 500000
+      }
+    },
+    "conditions": [
+      "Only new projects are eligible under the new-enterprise component.",
+      "Existing units that already availed specified government subsidy schemes are not eligible for the new-unit component.",
+      "Only one person from one family is eligible for new-enterprise assistance.",
+      "Projects without capital expenditure are not eligible."
+    ],
+    "source_url": "https://www.pmegp.msme.gov.in/Home/MSME_List",
+    "verified_on": "2026-09-12",
+    "completeness": "STRUCTURED_CORE"
+  },
+  {
+    "Opportunity_ID": "OPP037",
+    "Opportunity_Name": "NSFDC Micro Finance Scheme (MFS)",
+    "allowed_categories": [
+      "Scheduled Caste"
+    ],
+    "max_annual_family_income": 500000,
+    "conditions": [
+      "Applicant must hold a valid Scheduled Caste certificate.",
+      "Loan applications are routed through authorized channelizing agencies / PM-SURAJ."
+    ],
+    "source_url": "https://nsfdc.nic.in/faqs",
+    "verified_on": "2026-09-12",
+    "completeness": "STRUCTURED_CORE"
+  },
+  {
+    "Opportunity_ID": "OPP038",
+    "Opportunity_Name": "NSFDC Aajeevika Micro-Finance Yojana (AMY)",
+    "allowed_categories": [
+      "Scheduled Caste"
+    ],
+    "max_annual_family_income": 500000,
+    "conditions": [
+      "Applicant must hold a valid Scheduled Caste certificate.",
+      "Scheme-specific activity/channel requirements still apply."
+    ],
+    "source_url": "https://nsfdc.nic.in/faqs",
+    "verified_on": "2026-09-12",
+    "completeness": "STRUCTURED_CORE"
+  },
+  {
+    "Opportunity_ID": "OPP039",
+    "Opportunity_Name": "NSFDC Udyam Nidhi Yojana (UNY)",
+    "allowed_categories": [
+      "Scheduled Caste"
+    ],
+    "max_annual_family_income": 500000,
+    "conditions": [
+      "Applicant must hold a valid Scheduled Caste certificate.",
+      "Scheme-specific channel/project requirements still apply."
+    ],
+    "source_url": "https://nsfdc.nic.in/faqs",
+    "verified_on": "2026-09-12",
+    "completeness": "STRUCTURED_CORE"
+  },
+  {
+    "Opportunity_ID": "OPP040",
+    "Opportunity_Name": "NBCFDC Micro Finance Scheme",
+    "allowed_categories": [
+      "Notified Backward Classes"
+    ],
+    "max_annual_family_income": 300000,
+    "conditions": [
+      "Backward Class must be notified by Central/State Government.",
+      "For SHGs, at least 60% members can be from Backward Classes under the official scheme description."
+    ],
+    "source_url": "https://nbcfdc.gov.in/nbcfdc/web/micro-finance-scheme",
+    "verified_on": "2026-09-12",
+    "completeness": "STRUCTURED_CORE"
+  },
+  {
+    "Opportunity_ID": "OPP057",
+    "Opportunity_Name": "PM-DAKSH",
+    "min_age": 18,
+    "max_age": 45,
+    "allowed_categories": [
+      "Scheduled Caste",
+      "Other Backward Classes",
+      "Economically Weaker Section",
+      "Denotified & Nomadic Tribes",
+      "Safai Mitra"
+    ],
+    "conditional_income_ceiling": {
+      "Other Backward Classes": 300000,
+      "Economically Weaker Section": 300000
+    },
+    "conditions": [
+      "SC, DNT and Safai Mitra target groups have no income ceiling under the cited eligibility.",
+      "Valid Aadhaar (subject to stated exemptions), Aadhaar-linked bank account and SIDH registration are required."
+    ],
+    "source_url": "https://www.myscheme.gov.in/schemes/pm-daksh",
+    "verified_on": "2026-09-12",
+    "completeness": "STRUCTURED_CORE"
+  },
+  {
+    "Opportunity_ID": "OPP061",
+    "Opportunity_Name": "Tamil Nadu Women Entrepreneurs Empowerment Scheme (TWEES)",
+    "min_age": 18,
+    "max_age": 55,
+    "allowed_genders": [
+      "Female",
+      "Transgender"
+    ],
+    "allowed_states": [
+      "Tamil Nadu"
+    ],
+    "requires_new_unit": true,
+    "conditions": [
+      "No minimum educational qualification.",
+      "No income ceiling.",
+      "EDP training is compulsory.",
+      "Existing units are generally not eligible, with the stated KKT top-up exception."
+    ],
+    "source_url": "https://msmeonline.tn.gov.in/twees/pdf/twees_faqs.pdf",
+    "verified_on": "2026-09-12",
+    "completeness": "STRUCTURED_CORE"
+  },
+  {
+    "Opportunity_ID": "OPP068",
+    "Opportunity_Name": "NBCFDC New Swarnima Scheme for Women",
+    "allowed_genders": [
+      "Female"
+    ],
+    "allowed_categories": [
+      "Notified Backward Classes"
+    ],
+    "max_annual_family_income": 300000,
+    "conditions": [
+      "Backward Class must be notified by Central/State Government."
+    ],
+    "source_url": "https://nbcfdc.gov.in/nbcfdc/web/loan-scheme-description",
+    "verified_on": "2026-09-12",
+    "completeness": "STRUCTURED_CORE"
+  },
+  {
+    "Opportunity_ID": "OPP069",
+    "Opportunity_Name": "NBCFDC Mahila Samriddhi Yojana",
+    "allowed_genders": [
+      "Female"
+    ],
+    "allowed_categories": [
+      "Notified Backward Classes"
+    ],
+    "max_annual_family_income": 300000,
+    "conditions": [
+      "Backward Class must be notified by Central/State Government."
+    ],
+    "source_url": "https://nbcfdc.gov.in/nbcfdc/web/sites/default/files/2023-09/FAQ-13.8.2020.pdf",
+    "verified_on": "2026-09-12",
+    "completeness": "STRUCTURED_CORE"
+  },
+  {
+    "Opportunity_ID": "OPP071",
+    "Opportunity_Name": "Annal Ambedkar Business Champions Scheme (AABCS) – Tamil Nadu",
+    "max_age": 55,
+    "allowed_categories": [
+      "Scheduled Caste",
+      "Scheduled Tribe"
+    ],
+    "allowed_states": [
+      "Tamil Nadu"
+    ],
+    "conditions": [
+      "Beneficiary enterprise must be 100% owned by SC/ST persons.",
+      "No minimum educational qualification.",
+      "New and expansion projects are covered; direct agricultural activities are excluded."
+    ],
+    "source_url": "https://msmeonline.tn.gov.in/aabcs/aabcs_desc.php",
+    "verified_on": "2026-09-12",
+    "completeness": "STRUCTURED_CORE"
+  },
+  {
+    "Opportunity_ID": "OPP072",
+    "Opportunity_Name": "SMILE – Livelihood/Skill Support for Transgender Persons",
+    "allowed_genders": [
+      "Transgender"
+    ],
+    "conditions": [
+      "For skill-development benefit, the candidate applies using a Transgender Person Certificate number from the National Portal for Transgender Persons.",
+      "Course/institute verification requirements apply."
+    ],
+    "source_url": "https://socialjustice.gov.in/schemes/99",
+    "verified_on": "2026-09-12",
+    "completeness": "STRUCTURED_CORE"
+  },
+  {
+    "Opportunity_ID": "OPP073",
+    "Opportunity_Name": "NSFDC Term Loan Scheme",
+    "allowed_categories": [
+      "Scheduled Caste"
+    ],
+    "max_annual_family_income": 500000,
+    "conditions": [
+      "Applicant must hold a valid Scheduled Caste certificate.",
+      "Project/channel requirements apply."
+    ],
+    "source_url": "https://nsfdc.nic.in/faqs",
+    "verified_on": "2026-09-12",
+    "completeness": "STRUCTURED_CORE"
+  },
+  {
+    "Opportunity_ID": "OPP074",
+    "Opportunity_Name": "NSFDC Laghu Vyavasay Yojana (LVY)",
+    "allowed_categories": [
+      "Scheduled Caste"
+    ],
+    "max_annual_family_income": 500000,
+    "conditions": [
+      "Applicant must hold a valid Scheduled Caste certificate.",
+      "Project/channel requirements apply."
+    ],
+    "source_url": "https://nsfdc.nic.in/faqs",
+    "verified_on": "2026-09-12",
+    "completeness": "STRUCTURED_CORE"
+  },
+  {
+    "Opportunity_ID": "OPP075",
+    "Opportunity_Name": "NSFDC Green Business Scheme",
+    "allowed_categories": [
+      "Scheduled Caste"
+    ],
+    "max_annual_family_income": 500000,
+    "conditions": [
+      "Applicant must hold a valid Scheduled Caste certificate.",
+      "Green-business/project requirements apply."
+    ],
+    "source_url": "https://nsfdc.nic.in/faqs",
+    "verified_on": "2026-09-12",
+    "completeness": "STRUCTURED_CORE"
+  },
+  {
+    "Opportunity_ID": "OPP076",
+    "Opportunity_Name": "NBCFDC General Loan Scheme",
+    "allowed_categories": [
+      "Notified Backward Classes"
+    ],
+    "max_annual_family_income": 300000,
+    "conditions": [
+      "Backward Class must be notified by Central/State Government."
+    ],
+    "source_url": "https://nbcfdc.gov.in/nbcfdc/web/node/65",
+    "verified_on": "2026-09-12",
+    "completeness": "STRUCTURED_CORE"
+  },
+  {
+    "Opportunity_ID": "OPP077",
+    "Opportunity_Name": "NSTFDC Term Loan Scheme",
+    "allowed_categories": [
+      "Scheduled Tribe"
+    ],
+    "max_annual_family_income": 600000,
+    "conditions": [
+      "Standard concessional target-group criteria are more restrictive for some financing terms; M2 must not infer the interest tier from eligibility alone."
+    ],
+    "source_url": "https://nstfdc.tribal.gov.in/CuteSoft_Client/writereaddata/upload/02_AR%20ENGLISH-2023-24.pdf",
+    "verified_on": "2026-09-12",
+    "completeness": "STRUCTURED_CORE"
+  },
+  {
+    "Opportunity_ID": "OPP078",
+    "Opportunity_Name": "NSTFDC Adivasi Mahila Sashaktikaran Yojana",
+    "allowed_genders": [
+      "Female"
+    ],
+    "allowed_categories": [
+      "Scheduled Tribe"
+    ],
+    "max_annual_family_income": 300000,
+    "conditions": [
+      "Exclusive economic-development scheme for Scheduled Tribe women."
+    ],
+    "source_url": "https://nstfdc.tribal.gov.in/CuteSoft_Client/writereaddata/upload/02_AR%20ENGLISH-2023-24.pdf",
+    "verified_on": "2026-09-12",
+    "completeness": "STRUCTURED_CORE"
+  },
+  {
+    "Opportunity_ID": "OPP082",
+    "Opportunity_Name": "Kalaignar Kaivinai Thittam (KKT) – Tamil Nadu",
+    "min_age_exclusive": 35,
+    "allowed_states": [
+      "Tamil Nadu"
+    ],
+    "min_trade_experience_years": 5,
+    "conditions": [
+      "Applicant must have at least 5 years of experience in one of the listed 25 trades.",
+      "If subsidy benefit above ₹1.5 lakh was received under Tamil Nadu self-employment/business-expansion schemes in the previous 5 years, the cited portal requires repayment."
+    ],
+    "source_url": "https://msmeonline.tn.gov.in/kkt/kkt_desc.php",
+    "verified_on": "2026-09-12",
+    "completeness": "STRUCTURED_CORE"
+  }
+]

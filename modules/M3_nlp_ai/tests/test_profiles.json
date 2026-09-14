@@ -1,0 +1,14 @@
+[
+  {
+    "text": "I am 24, female, from Tamil Nadu and want to start a food business",
+    "expected": {"age": 24, "gender": "Female", "state": "Tamil Nadu", "sector": "Food", "business_type": "Startup"}
+  },
+  {
+    "text": "Enakku 25 vayasu, tailoring business start panna poren",
+    "expected": {"age": 25, "sector": "Textile", "business_type": "Startup"}
+  },
+  {
+    "text": "मुझे फूड बिजनेस शुरू करना है",
+    "expected": {"sector": "Food", "business_type": "Startup"}
+  }
+]

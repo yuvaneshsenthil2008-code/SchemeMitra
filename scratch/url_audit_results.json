@@ -1,0 +1,1601 @@
+{
+  "urls": {
+    "https://birac.nic.in/big.php": {
+      "original_url": "https://birac.nic.in/big.php",
+      "final_url": "https://birac.nic.in/big.php",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://coffeeboard.gov.in/": {
+      "original_url": "https://coffeeboard.gov.in/",
+      "final_url": "https://coffeeboard.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://apeda.gov.in/": {
+      "original_url": "https://apeda.gov.in/",
+      "final_url": "https://apeda.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://agriinfra.dac.gov.in/": {
+      "original_url": "https://agriinfra.dac.gov.in/",
+      "final_url": "https://agriinfra.dac.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://agrimachinery.nic.in/": {
+      "original_url": "https://agrimachinery.nic.in/",
+      "final_url": "https://agrimachinery.nic.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://aim.gov.in/aic.php": {
+      "original_url": "https://aim.gov.in/aic.php",
+      "final_url": "https://aim.gov.in/aic.php",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://commerce.gov.in/": {
+      "original_url": "https://commerce.gov.in/",
+      "final_url": "https://www.commerce.gov.in/",
+      "http_status": 200,
+      "classification": "REDIRECTED_WORKING",
+      "error": null
+    },
+    "https://commerce.gov.in/trade-promotion/market-access-initiative-mai-scheme/": {
+      "original_url": "https://commerce.gov.in/trade-promotion/market-access-initiative-mai-scheme/",
+      "final_url": "https://commerce.gov.in/trade-promotion/market-access-initiative-mai-scheme/",
+      "http_status": 404,
+      "classification": "HTTP_4XX",
+      "error": "HTTP 404"
+    },
+    "https://financialservices.gov.in/pradhan-mantri-mudra-yojana-pmmy": {
+      "original_url": "https://financialservices.gov.in/pradhan-mantri-mudra-yojana-pmmy",
+      "final_url": "https://financialservices.gov.in/pradhan-mantri-mudra-yojana-pmmy",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://coirboard.gov.in/?page_id=8452": {
+      "original_url": "https://coirboard.gov.in/?page_id=8452",
+      "final_url": "https://coirboard.gov.in/?page_id=8452",
+      "http_status": 0,
+      "classification": "TIMEOUT",
+      "error": "timed out"
+    },
+    "https://financialservices.gov.in/stand-india-scheme-supi": {
+      "original_url": "https://financialservices.gov.in/stand-india-scheme-supi",
+      "final_url": "https://financialservices.gov.in/stand-india-scheme-supi",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://dcmsme.gov.in/": {
+      "original_url": "https://dcmsme.gov.in/",
+      "final_url": "https://dcmsme.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://gem.gov.in/": {
+      "original_url": "https://gem.gov.in/",
+      "final_url": "https://gem.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://cluster.dcmsme.gov.in/": {
+      "original_url": "https://cluster.dcmsme.gov.in/",
+      "final_url": "https://cluster.dcmsme.gov.in/Admin/Default.aspx",
+      "http_status": 200,
+      "classification": "REDIRECTED_WORKING",
+      "error": null
+    },
+    "https://handlooms.nic.in/": {
+      "original_url": "https://handlooms.nic.in/",
+      "final_url": "https://handlooms.nic.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://handlooms.nic.in/tenders.php": {
+      "original_url": "https://handlooms.nic.in/tenders.php",
+      "final_url": "https://handlooms.nic.in/tenders.php",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://handicrafts.nic.in/tenders.aspx?type=27": {
+      "original_url": "https://handicrafts.nic.in/tenders.aspx?type=27",
+      "final_url": "https://handicrafts.nic.in/tenders.aspx?type=27",
+      "http_status": 0,
+      "classification": "TIMEOUT",
+      "error": "timed out"
+    },
+    "https://handicrafts.nic.in/schemes.aspx": {
+      "original_url": "https://handicrafts.nic.in/schemes.aspx",
+      "final_url": "https://handicrafts.nic.in/schemes.aspx",
+      "http_status": 0,
+      "classification": "TIMEOUT",
+      "error": "timed out"
+    },
+    "https://dgt.gov.in/cits": {
+      "original_url": "https://dgt.gov.in/cits",
+      "final_url": "https://dgt.gov.in/hi/CITS",
+      "http_status": 200,
+      "classification": "REDIRECTED_WORKING",
+      "error": null
+    },
+    "https://dgt.gov.in/cts": {
+      "original_url": "https://dgt.gov.in/cts",
+      "final_url": "https://dgt.gov.in/hi/CTS",
+      "http_status": 200,
+      "classification": "REDIRECTED_WORKING",
+      "error": null
+    },
+    "https://kaushal.rural.gov.in/": {
+      "original_url": "https://kaushal.rural.gov.in/",
+      "final_url": "https://kaushal.rural.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://innovative.msme.gov.in/": {
+      "original_url": "https://innovative.msme.gov.in/",
+      "final_url": "https://innovative.msme.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://ic.msme.gov.in/": {
+      "original_url": "https://ic.msme.gov.in/",
+      "final_url": "https://ic.msme.gov.in/IC_APP/IC_Welcome.aspx",
+      "http_status": 200,
+      "classification": "REDIRECTED_WORKING",
+      "error": null
+    },
+    "https://midh.gov.in/": {
+      "original_url": "https://midh.gov.in/",
+      "final_url": "https://midh.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://jss.gov.in/": {
+      "original_url": "https://jss.gov.in/",
+      "final_url": "https://www.skillindiadigital.gov.in//",
+      "http_status": 200,
+      "classification": "REDIRECTED_WORKING",
+      "error": null
+    },
+    "https://lean.msme.gov.in/": {
+      "original_url": "https://lean.msme.gov.in/",
+      "final_url": "https://lean.msme.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://msh.meity.gov.in/": {
+      "original_url": "https://msh.meity.gov.in/",
+      "final_url": "https://msh.meity.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://msh.meity.gov.in/schemes/samridh": {
+      "original_url": "https://msh.meity.gov.in/schemes/samridh",
+      "final_url": "https://msh.meity.gov.in/schemes/samridh",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://mpeda.gov.in/": {
+      "original_url": "https://mpeda.gov.in/",
+      "final_url": "https://mpeda.gov.in/",
+      "http_status": 0,
+      "classification": "TIMEOUT",
+      "error": "timed out"
+    },
+    "https://mofpi.gov.in/Schemes/operation-greens": {
+      "original_url": "https://mofpi.gov.in/Schemes/operation-greens",
+      "final_url": "https://mofpi.gov.in/Schemes/operation-greens",
+      "http_status": 404,
+      "classification": "HTTP_4XX",
+      "error": "HTTP 404"
+    },
+    "https://mofpi.gov.in/Schemes/cold-chain": {
+      "original_url": "https://mofpi.gov.in/Schemes/cold-chain",
+      "final_url": "https://mofpi.gov.in/Schemes/cold-chain",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://nbb.gov.in/": {
+      "original_url": "https://nbb.gov.in/",
+      "final_url": "https://nbb.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://mofpi.gov.in/": {
+      "original_url": "https://mofpi.gov.in/",
+      "final_url": "https://mofpi.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://msmeonline.tn.gov.in/twees/": {
+      "original_url": "https://msmeonline.tn.gov.in/twees/",
+      "final_url": "https://msmeonline.tn.gov.in/twees/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://nats.education.gov.in/": {
+      "original_url": "https://nats.education.gov.in/",
+      "final_url": "https://nats.education.gov.in/",
+      "http_status": 0,
+      "classification": "TIMEOUT",
+      "error": "Connection Timed Out"
+    },
+    "https://msmeonline.tn.gov.in/kkt/": {
+      "original_url": "https://msmeonline.tn.gov.in/kkt/",
+      "final_url": "https://msmeonline.tn.gov.in/kkt/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://msmeonline.tn.gov.in/aabcs/": {
+      "original_url": "https://msmeonline.tn.gov.in/aabcs/",
+      "final_url": "https://msmeonline.tn.gov.in/aabcs/",
+      "http_status": 0,
+      "classification": "TIMEOUT",
+      "error": "Connection Timed Out"
+    },
+    "https://nbcfdc.gov.in/nbcfdc/web/node/65": {
+      "original_url": "https://nbcfdc.gov.in/nbcfdc/web/node/65",
+      "final_url": "https://nbcfdc.gov.in/nbcfdc/web/node/65",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://msme.gov.in/": {
+      "original_url": "https://msme.gov.in/",
+      "final_url": "https://www.msme.gov.in/",
+      "http_status": 200,
+      "classification": "REDIRECTED_WORKING",
+      "error": null
+    },
+    "https://nrlm.gov.in/": {
+      "original_url": "https://nrlm.gov.in/",
+      "final_url": "https://nrlm.gov.in/",
+      "http_status": 404,
+      "classification": "HTTP_4XX",
+      "error": "HTTP 404"
+    },
+    "https://nlm.udyamimitra.in/": {
+      "original_url": "https://nlm.udyamimitra.in/",
+      "final_url": "https://nlm.udyamimitra.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://nidhi.dst.gov.in/document/nidhi-prayas-2-0-program-guidelines/": {
+      "original_url": "https://nidhi.dst.gov.in/document/nidhi-prayas-2-0-program-guidelines/",
+      "final_url": "https://nidhi.dst.gov.in/document/nidhi-prayas-2-0-program-guidelines/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://nidhi.dst.gov.in/": {
+      "original_url": "https://nidhi.dst.gov.in/",
+      "final_url": "https://nidhi.dst.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://nsfdc.nic.in/UploadedFiles/other/2024-05-15/1-4-1.pdf": {
+      "original_url": "https://nsfdc.nic.in/UploadedFiles/other/2024-05-15/1-4-1.pdf",
+      "final_url": "https://nsfdc.nic.in/UploadedFiles/other/2024-05-15/1-4-1.pdf",
+      "http_status": 404,
+      "classification": "HTTP_4XX",
+      "error": "HTTP 404"
+    },
+    "https://nsfdc.nic.in/": {
+      "original_url": "https://nsfdc.nic.in/",
+      "final_url": "https://nsfdc.nic.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://nsfdc.nic.in/faqs": {
+      "original_url": "https://nsfdc.nic.in/faqs",
+      "final_url": "https://nsfdc.nic.in/faqs",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://nbcfdc.gov.in/nbcfdc/web/loan-scheme-description": {
+      "original_url": "https://nbcfdc.gov.in/nbcfdc/web/loan-scheme-description",
+      "final_url": "https://nbcfdc.gov.in/nbcfdc/web/loan-scheme-description",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://nidhi.dst.gov.in/document-category/programme-guidelines/": {
+      "original_url": "https://nidhi.dst.gov.in/document-category/programme-guidelines/",
+      "final_url": "https://nidhi.dst.gov.in/document-category/programme-guidelines/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://nbcfdc.gov.in/nbcfdc/web/pattern-of-finance": {
+      "original_url": "https://nbcfdc.gov.in/nbcfdc/web/pattern-of-finance",
+      "final_url": "https://nbcfdc.gov.in/nbcfdc/web/pattern-of-finance",
+      "http_status": 403,
+      "classification": "WORKING",
+      "error": "HTTP 403 (Govt WAF/Firewall)"
+    },
+    "https://pmfme.mofpi.gov.in/": {
+      "original_url": "https://pmfme.mofpi.gov.in/",
+      "final_url": "https://pmfme.mofpi.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://pmkusum.mnre.gov.in/": {
+      "original_url": "https://pmkusum.mnre.gov.in/",
+      "final_url": "https://pmkusum.mnre.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://pmsvanidhi.mohua.gov.in/": {
+      "original_url": "https://pmsvanidhi.mohua.gov.in/",
+      "final_url": "https://pmsvanidhi.mohua.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://pmvishwakarma.gov.in/": {
+      "original_url": "https://pmvishwakarma.gov.in/",
+      "final_url": "https://pmvishwakarma.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://pmmsy.dof.gov.in/": {
+      "original_url": "https://pmmsy.dof.gov.in/",
+      "final_url": "https://pmmsy.dof.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://rseti.gov.in/": {
+      "original_url": "https://rseti.gov.in/",
+      "final_url": "https://rseti.gov.in/",
+      "http_status": 0,
+      "classification": "DNS_FAILURE",
+      "error": "[Errno 11001] getaddrinfo failed"
+    },
+    "https://nstfdc.tribal.gov.in/": {
+      "original_url": "https://nstfdc.tribal.gov.in/",
+      "final_url": "https://nstfdc.tribal.gov.in/(S(d3q5jvdikriqv5sz152og24w))/default.aspx",
+      "http_status": 200,
+      "classification": "REDIRECTED_WORKING",
+      "error": null
+    },
+    "https://teaboard.gov.in/": {
+      "original_url": "https://teaboard.gov.in/",
+      "final_url": "https://teaboard.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://seedfund.startupindia.gov.in/": {
+      "original_url": "https://seedfund.startupindia.gov.in/",
+      "final_url": "https://seedfund.startupindia.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://ramp.msme.gov.in/": {
+      "original_url": "https://ramp.msme.gov.in/",
+      "final_url": "https://ramp.msme.gov.in/ramp/",
+      "http_status": 200,
+      "classification": "REDIRECTED_WORKING",
+      "error": null
+    },
+    "https://www.apprenticeshipindia.gov.in/": {
+      "original_url": "https://www.apprenticeshipindia.gov.in/",
+      "final_url": "https://www.apprenticeshipindia.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://www.agriclinics.net/": {
+      "original_url": "https://www.agriclinics.net/",
+      "final_url": "https://www.agriclinics.net/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://www.cgtmse.in/": {
+      "original_url": "https://www.cgtmse.in/",
+      "final_url": "https://www.cgtmse.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://www.meitystartuphub.in/": {
+      "original_url": "https://www.meitystartuphub.in/",
+      "final_url": "https://www.meitystartuphub.in/",
+      "http_status": 0,
+      "classification": "DNS_FAILURE",
+      "error": "[Errno 11001] getaddrinfo failed"
+    },
+    "https://rubberboard.gov.in/": {
+      "original_url": "https://rubberboard.gov.in/",
+      "final_url": "https://rubberboard.gov.in/public",
+      "http_status": 200,
+      "classification": "REDIRECTED_WORKING",
+      "error": null
+    },
+    "https://nskfdc.nic.in/en/content/schemes-programmes/general-term-loan-tl": {
+      "original_url": "https://nskfdc.nic.in/en/content/schemes-programmes/general-term-loan-tl",
+      "final_url": "https://nskfdc.nic.in/en/content/schemes-programmes/general-term-loan-tl",
+      "http_status": 0,
+      "classification": "TIMEOUT",
+      "error": "timed out"
+    },
+    "https://nskfdc.nic.in/en/node/4083": {
+      "original_url": "https://nskfdc.nic.in/en/node/4083",
+      "final_url": "https://nskfdc.nic.in/en/node/4083",
+      "http_status": 0,
+      "classification": "TIMEOUT",
+      "error": "timed out"
+    },
+    "https://nskfdc.nic.in/en/content/schemes-programmes/mahila-samridhi-yojna-msy": {
+      "original_url": "https://nskfdc.nic.in/en/content/schemes-programmes/mahila-samridhi-yojna-msy",
+      "final_url": "https://nskfdc.nic.in/en/content/schemes-programmes/mahila-samridhi-yojna-msy",
+      "http_status": 0,
+      "classification": "TIMEOUT",
+      "error": "timed out"
+    },
+    "https://pmdaksh.dosje.gov.in/": {
+      "original_url": "https://pmdaksh.dosje.gov.in/",
+      "final_url": "https://pmdaksh.dosje.gov.in/",
+      "http_status": 0,
+      "classification": "TIMEOUT",
+      "error": "timed out"
+    },
+    "https://www.kviconline.gov.in/pmegpeportal/": {
+      "original_url": "https://www.kviconline.gov.in/pmegpeportal/",
+      "final_url": "https://www.kviconline.gov.in/pmegpeportal/",
+      "http_status": 0,
+      "classification": "DNS_FAILURE",
+      "error": "[Errno 11002] getaddrinfo failed"
+    },
+    "https://www.dgft.gov.in/CP/?opt=rodtep": {
+      "original_url": "https://www.dgft.gov.in/CP/?opt=rodtep",
+      "final_url": "https://www.dgft.gov.in/CP/?opt=rodtep",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://www.indianspices.com/": {
+      "original_url": "https://www.indianspices.com/",
+      "final_url": "https://www.indianspices.com/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://www.ncgtc.in/content/credit-guarantee-scheme-startups-cgss": {
+      "original_url": "https://www.ncgtc.in/content/credit-guarantee-scheme-startups-cgss",
+      "final_url": "https://www.ncgtc.in/content/credit-guarantee-scheme-startups-cgss",
+      "http_status": 500,
+      "classification": "HTTP_5XX",
+      "error": "HTTP 500"
+    },
+    "https://www.skillindiadigital.gov.in/": {
+      "original_url": "https://www.skillindiadigital.gov.in/",
+      "final_url": "https://www.skillindiadigital.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://zed.msme.gov.in/": {
+      "original_url": "https://zed.msme.gov.in/",
+      "final_url": "https://zed.msme.gov.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://www.myscheme.gov.in/schemes/kcc": {
+      "original_url": "https://www.myscheme.gov.in/schemes/kcc",
+      "final_url": "https://www.myscheme.gov.in/schemes/kcc",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://www.ncdc.in/": {
+      "original_url": "https://www.ncdc.in/",
+      "final_url": "https://www.ncdc.in/",
+      "http_status": 200,
+      "classification": "WORKING",
+      "error": null
+    },
+    "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2296208": {
+      "original_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2296208",
+      "final_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2296208&reg=48&lang=2",
+      "http_status": 200,
+      "classification": "REDIRECTED_WORKING",
+      "error": null
+    },
+    "https://transgender.dosje.gov.in/": {
+      "original_url": "https://transgender.dosje.gov.in/",
+      "final_url": "https://transgender.dosje.gov.in/",
+      "http_status": 0,
+      "classification": "TIMEOUT",
+      "error": "timed out"
+    }
+  },
+  "sources": {
+    "https://agriinfra.dac.gov.in/": [
+      "pathway_requirements.json:idx_0.official_source_url",
+      "pathway_requirements.json:idx_1.official_source_url",
+      "pathway_requirements.json:idx_2.official_source_url",
+      "pathway_requirements.json:idx_3.official_source_url",
+      "pathway_requirements.json:idx_4.official_source_url",
+      "relationships.json:REL00001.official_source_url",
+      "relationships.json:REL00002.official_source_url",
+      "relationships.json:REL00003.official_source_url",
+      "relationships.json:REL00004.official_source_url",
+      "relationships.json:REL00005.official_source_url",
+      "relationships.json:REL00372.official_source_url",
+      "relationships.json:REL00373.official_source_url",
+      "relationships.json:REL00374.official_source_url"
+    ],
+    "https://www.agriclinics.net/": [
+      "pathway_requirements.json:idx_5.official_source_url",
+      "pathway_requirements.json:idx_6.official_source_url",
+      "pathway_requirements.json:idx_7.official_source_url",
+      "pathway_requirements.json:idx_8.official_source_url",
+      "pathway_requirements.json:idx_9.official_source_url",
+      "pathway_requirements.json:idx_10.official_source_url",
+      "relationships.json:REL00006.official_source_url",
+      "relationships.json:REL00007.official_source_url",
+      "relationships.json:REL00008.official_source_url",
+      "relationships.json:REL00009.official_source_url",
+      "relationships.json:REL00010.official_source_url",
+      "relationships.json:REL00011.official_source_url",
+      "relationships.json:REL00375.official_source_url",
+      "relationships.json:REL00376.official_source_url",
+      "relationships.json:REL00377.official_source_url",
+      "relationships.json:REL00378.official_source_url"
+    ],
+    "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2296208": [
+      "pathway_requirements.json:idx_11.official_source_url",
+      "pathway_requirements.json:idx_12.official_source_url",
+      "pathway_requirements.json:idx_13.official_source_url",
+      "relationships.json:REL00012.official_source_url",
+      "relationships.json:REL00013.official_source_url",
+      "relationships.json:REL00014.official_source_url",
+      "relationships.json:REL00379.official_source_url",
+      "relationships.json:REL00380.official_source_url",
+      "relationships.json:REL00381.official_source_url",
+      "relationships.json:REL00382.official_source_url"
+    ],
+    "https://www.myscheme.gov.in/schemes/kcc": [
+      "pathway_requirements.json:idx_14.official_source_url",
+      "pathway_requirements.json:idx_15.official_source_url",
+      "pathway_requirements.json:idx_16.official_source_url",
+      "relationships.json:REL00015.official_source_url",
+      "relationships.json:REL00016.official_source_url",
+      "relationships.json:REL00017.official_source_url",
+      "relationships.json:REL00383.official_source_url"
+    ],
+    "https://pmkusum.mnre.gov.in/": [
+      "pathway_requirements.json:idx_17.official_source_url",
+      "pathway_requirements.json:idx_18.official_source_url",
+      "pathway_requirements.json:idx_19.official_source_url",
+      "pathway_requirements.json:idx_20.official_source_url",
+      "relationships.json:REL00018.official_source_url",
+      "relationships.json:REL00019.official_source_url",
+      "relationships.json:REL00020.official_source_url",
+      "relationships.json:REL00021.official_source_url",
+      "relationships.json:REL00384.official_source_url"
+    ],
+    "https://pmmsy.dof.gov.in/": [
+      "pathway_requirements.json:idx_21.official_source_url",
+      "pathway_requirements.json:idx_22.official_source_url",
+      "pathway_requirements.json:idx_23.official_source_url",
+      "pathway_requirements.json:idx_24.official_source_url",
+      "relationships.json:REL00022.official_source_url",
+      "relationships.json:REL00023.official_source_url",
+      "relationships.json:REL00024.official_source_url",
+      "relationships.json:REL00025.official_source_url",
+      "relationships.json:REL00385.official_source_url"
+    ],
+    "https://nlm.udyamimitra.in/": [
+      "pathway_requirements.json:idx_25.official_source_url",
+      "pathway_requirements.json:idx_26.official_source_url",
+      "pathway_requirements.json:idx_27.official_source_url",
+      "pathway_requirements.json:idx_28.official_source_url",
+      "relationships.json:REL00026.official_source_url",
+      "relationships.json:REL00027.official_source_url",
+      "relationships.json:REL00028.official_source_url",
+      "relationships.json:REL00029.official_source_url",
+      "relationships.json:REL00386.official_source_url"
+    ],
+    "https://agrimachinery.nic.in/": [
+      "pathway_requirements.json:idx_29.official_source_url",
+      "pathway_requirements.json:idx_30.official_source_url",
+      "pathway_requirements.json:idx_31.official_source_url",
+      "relationships.json:REL00030.official_source_url",
+      "relationships.json:REL00031.official_source_url",
+      "relationships.json:REL00032.official_source_url",
+      "relationships.json:REL00387.official_source_url"
+    ],
+    "https://midh.gov.in/": [
+      "pathway_requirements.json:idx_32.official_source_url",
+      "pathway_requirements.json:idx_33.official_source_url",
+      "pathway_requirements.json:idx_34.official_source_url",
+      "pathway_requirements.json:idx_35.official_source_url",
+      "relationships.json:REL00033.official_source_url",
+      "relationships.json:REL00034.official_source_url",
+      "relationships.json:REL00035.official_source_url",
+      "relationships.json:REL00036.official_source_url",
+      "relationships.json:REL00388.official_source_url"
+    ],
+    "https://nbb.gov.in/": [
+      "pathway_requirements.json:idx_36.official_source_url",
+      "pathway_requirements.json:idx_37.official_source_url",
+      "pathway_requirements.json:idx_38.official_source_url",
+      "pathway_requirements.json:idx_39.official_source_url",
+      "relationships.json:REL00037.official_source_url",
+      "relationships.json:REL00038.official_source_url",
+      "relationships.json:REL00039.official_source_url",
+      "relationships.json:REL00040.official_source_url",
+      "relationships.json:REL00389.official_source_url"
+    ],
+    "https://pmfme.mofpi.gov.in/": [
+      "pathway_requirements.json:idx_40.official_source_url",
+      "pathway_requirements.json:idx_41.official_source_url",
+      "pathway_requirements.json:idx_42.official_source_url",
+      "pathway_requirements.json:idx_43.official_source_url",
+      "pathway_requirements.json:idx_44.official_source_url",
+      "pathway_requirements.json:idx_45.official_source_url",
+      "pathway_requirements.json:idx_46.official_source_url",
+      "pathway_requirements.json:idx_47.official_source_url",
+      "pathway_requirements.json:idx_48.official_source_url",
+      "pathway_requirements.json:idx_49.official_source_url",
+      "pathway_requirements.json:idx_50.official_source_url",
+      "pathway_requirements.json:idx_51.official_source_url",
+      "pathway_requirements.json:idx_52.official_source_url",
+      "pathway_requirements.json:idx_53.official_source_url",
+      "pathway_requirements.json:idx_54.official_source_url",
+      "pathway_requirements.json:idx_55.official_source_url",
+      "pathway_requirements.json:idx_56.official_source_url",
+      "pathway_requirements.json:idx_57.official_source_url",
+      "pathway_requirements.json:idx_58.official_source_url",
+      "pathway_requirements.json:idx_59.official_source_url",
+      "pathway_requirements.json:idx_60.official_source_url",
+      "relationships.json:REL00041.official_source_url",
+      "relationships.json:REL00042.official_source_url",
+      "relationships.json:REL00043.official_source_url",
+      "relationships.json:REL00044.official_source_url",
+      "relationships.json:REL00045.official_source_url",
+      "relationships.json:REL00046.official_source_url",
+      "relationships.json:REL00047.official_source_url",
+      "relationships.json:REL00048.official_source_url",
+      "relationships.json:REL00049.official_source_url",
+      "relationships.json:REL00050.official_source_url",
+      "relationships.json:REL00051.official_source_url",
+      "relationships.json:REL00052.official_source_url",
+      "relationships.json:REL00053.official_source_url",
+      "relationships.json:REL00054.official_source_url",
+      "relationships.json:REL00055.official_source_url",
+      "relationships.json:REL00056.official_source_url",
+      "relationships.json:REL00057.official_source_url",
+      "relationships.json:REL00058.official_source_url",
+      "relationships.json:REL00059.official_source_url",
+      "relationships.json:REL00060.official_source_url",
+      "relationships.json:REL00061.official_source_url",
+      "relationships.json:REL00390.official_source_url",
+      "relationships.json:REL00391.official_source_url",
+      "relationships.json:REL00392.official_source_url",
+      "relationships.json:REL00393.official_source_url",
+      "relationships.json:REL00394.official_source_url",
+      "relationships.json:REL00395.official_source_url",
+      "relationships.json:REL00396.official_source_url"
+    ],
+    "https://mofpi.gov.in/Schemes/cold-chain": [
+      "pathway_requirements.json:idx_61.official_source_url",
+      "pathway_requirements.json:idx_62.official_source_url",
+      "pathway_requirements.json:idx_63.official_source_url",
+      "pathway_requirements.json:idx_64.official_source_url",
+      "pathway_requirements.json:idx_65.official_source_url",
+      "relationships.json:REL00062.official_source_url",
+      "relationships.json:REL00063.official_source_url",
+      "relationships.json:REL00064.official_source_url",
+      "relationships.json:REL00065.official_source_url",
+      "relationships.json:REL00066.official_source_url",
+      "relationships.json:REL00397.official_source_url",
+      "relationships.json:REL00398.official_source_url"
+    ],
+    "https://mofpi.gov.in/": [
+      "pathway_requirements.json:idx_66.official_source_url",
+      "pathway_requirements.json:idx_67.official_source_url",
+      "pathway_requirements.json:idx_68.official_source_url",
+      "pathway_requirements.json:idx_69.official_source_url",
+      "pathway_requirements.json:idx_70.official_source_url",
+      "pathway_requirements.json:idx_71.official_source_url",
+      "pathway_requirements.json:idx_72.official_source_url",
+      "pathway_requirements.json:idx_73.official_source_url",
+      "pathway_requirements.json:idx_74.official_source_url",
+      "pathway_requirements.json:idx_75.official_source_url",
+      "pathway_requirements.json:idx_76.official_source_url",
+      "pathway_requirements.json:idx_77.official_source_url",
+      "pathway_requirements.json:idx_78.official_source_url",
+      "pathway_requirements.json:idx_79.official_source_url",
+      "pathway_requirements.json:idx_80.official_source_url",
+      "relationships.json:REL00067.official_source_url",
+      "relationships.json:REL00068.official_source_url",
+      "relationships.json:REL00069.official_source_url",
+      "relationships.json:REL00070.official_source_url",
+      "relationships.json:REL00071.official_source_url",
+      "relationships.json:REL00072.official_source_url",
+      "relationships.json:REL00073.official_source_url",
+      "relationships.json:REL00074.official_source_url",
+      "relationships.json:REL00075.official_source_url",
+      "relationships.json:REL00076.official_source_url",
+      "relationships.json:REL00077.official_source_url",
+      "relationships.json:REL00078.official_source_url",
+      "relationships.json:REL00079.official_source_url",
+      "relationships.json:REL00080.official_source_url",
+      "relationships.json:REL00081.official_source_url",
+      "relationships.json:REL00399.official_source_url",
+      "relationships.json:REL00400.official_source_url",
+      "relationships.json:REL00401.official_source_url"
+    ],
+    "https://mofpi.gov.in/Schemes/operation-greens": [
+      "pathway_requirements.json:idx_81.official_source_url",
+      "pathway_requirements.json:idx_82.official_source_url",
+      "pathway_requirements.json:idx_83.official_source_url",
+      "pathway_requirements.json:idx_84.official_source_url",
+      "relationships.json:REL00082.official_source_url",
+      "relationships.json:REL00083.official_source_url",
+      "relationships.json:REL00084.official_source_url",
+      "relationships.json:REL00085.official_source_url",
+      "relationships.json:REL00402.official_source_url"
+    ],
+    "https://www.kviconline.gov.in/pmegpeportal/": [
+      "pathway_requirements.json:idx_85.official_source_url",
+      "pathway_requirements.json:idx_86.official_source_url",
+      "pathway_requirements.json:idx_87.official_source_url",
+      "pathway_requirements.json:idx_88.official_source_url",
+      "pathway_requirements.json:idx_89.official_source_url",
+      "relationships.json:REL00086.official_source_url",
+      "relationships.json:REL00087.official_source_url",
+      "relationships.json:REL00088.official_source_url",
+      "relationships.json:REL00089.official_source_url",
+      "relationships.json:REL00090.official_source_url",
+      "relationships.json:REL00403.official_source_url",
+      "relationships.json:REL00404.official_source_url"
+    ],
+    "https://zed.msme.gov.in/": [
+      "pathway_requirements.json:idx_90.official_source_url",
+      "pathway_requirements.json:idx_91.official_source_url",
+      "pathway_requirements.json:idx_92.official_source_url",
+      "relationships.json:REL00091.official_source_url",
+      "relationships.json:REL00092.official_source_url",
+      "relationships.json:REL00093.official_source_url",
+      "relationships.json:REL00405.official_source_url",
+      "relationships.json:REL00406.official_source_url"
+    ],
+    "https://lean.msme.gov.in/": [
+      "pathway_requirements.json:idx_93.official_source_url",
+      "pathway_requirements.json:idx_94.official_source_url",
+      "pathway_requirements.json:idx_95.official_source_url",
+      "relationships.json:REL00094.official_source_url",
+      "relationships.json:REL00095.official_source_url",
+      "relationships.json:REL00096.official_source_url",
+      "relationships.json:REL00407.official_source_url"
+    ],
+    "https://innovative.msme.gov.in/": [
+      "pathway_requirements.json:idx_96.official_source_url",
+      "pathway_requirements.json:idx_97.official_source_url",
+      "pathway_requirements.json:idx_98.official_source_url",
+      "pathway_requirements.json:idx_99.official_source_url",
+      "pathway_requirements.json:idx_100.official_source_url",
+      "pathway_requirements.json:idx_101.official_source_url",
+      "pathway_requirements.json:idx_102.official_source_url",
+      "pathway_requirements.json:idx_103.official_source_url",
+      "pathway_requirements.json:idx_104.official_source_url",
+      "relationships.json:REL00097.official_source_url",
+      "relationships.json:REL00098.official_source_url",
+      "relationships.json:REL00099.official_source_url",
+      "relationships.json:REL00100.official_source_url",
+      "relationships.json:REL00101.official_source_url",
+      "relationships.json:REL00102.official_source_url",
+      "relationships.json:REL00103.official_source_url",
+      "relationships.json:REL00104.official_source_url",
+      "relationships.json:REL00105.official_source_url",
+      "relationships.json:REL00408.official_source_url",
+      "relationships.json:REL00409.official_source_url",
+      "relationships.json:REL00410.official_source_url"
+    ],
+    "https://cluster.dcmsme.gov.in/": [
+      "pathway_requirements.json:idx_105.official_source_url",
+      "pathway_requirements.json:idx_106.official_source_url",
+      "pathway_requirements.json:idx_107.official_source_url",
+      "pathway_requirements.json:idx_108.official_source_url",
+      "pathway_requirements.json:idx_109.official_source_url",
+      "relationships.json:REL00106.official_source_url",
+      "relationships.json:REL00107.official_source_url",
+      "relationships.json:REL00108.official_source_url",
+      "relationships.json:REL00109.official_source_url",
+      "relationships.json:REL00110.official_source_url",
+      "relationships.json:REL00411.official_source_url"
+    ],
+    "https://ic.msme.gov.in/": [
+      "pathway_requirements.json:idx_110.official_source_url",
+      "pathway_requirements.json:idx_111.official_source_url",
+      "pathway_requirements.json:idx_112.official_source_url",
+      "relationships.json:REL00111.official_source_url",
+      "relationships.json:REL00112.official_source_url",
+      "relationships.json:REL00113.official_source_url",
+      "relationships.json:REL00412.official_source_url"
+    ],
+    "https://dcmsme.gov.in/": [
+      "pathway_requirements.json:idx_113.official_source_url",
+      "pathway_requirements.json:idx_114.official_source_url",
+      "pathway_requirements.json:idx_115.official_source_url",
+      "relationships.json:REL00114.official_source_url",
+      "relationships.json:REL00115.official_source_url",
+      "relationships.json:REL00116.official_source_url",
+      "relationships.json:REL00413.official_source_url"
+    ],
+    "https://ramp.msme.gov.in/": [
+      "pathway_requirements.json:idx_116.official_source_url",
+      "pathway_requirements.json:idx_117.official_source_url",
+      "relationships.json:REL00117.official_source_url",
+      "relationships.json:REL00118.official_source_url",
+      "relationships.json:REL00414.official_source_url"
+    ],
+    "https://financialservices.gov.in/pradhan-mantri-mudra-yojana-pmmy": [
+      "pathway_requirements.json:idx_118.official_source_url",
+      "pathway_requirements.json:idx_119.official_source_url",
+      "pathway_requirements.json:idx_120.official_source_url",
+      "pathway_requirements.json:idx_121.official_source_url",
+      "relationships.json:REL00119.official_source_url",
+      "relationships.json:REL00120.official_source_url",
+      "relationships.json:REL00121.official_source_url",
+      "relationships.json:REL00122.official_source_url",
+      "relationships.json:REL00415.official_source_url"
+    ],
+    "https://pmsvanidhi.mohua.gov.in/": [
+      "pathway_requirements.json:idx_122.official_source_url",
+      "pathway_requirements.json:idx_123.official_source_url",
+      "pathway_requirements.json:idx_124.official_source_url",
+      "relationships.json:REL00123.official_source_url",
+      "relationships.json:REL00124.official_source_url",
+      "relationships.json:REL00125.official_source_url",
+      "relationships.json:REL00416.official_source_url",
+      "relationships.json:REL00417.official_source_url",
+      "relationships.json:REL00418.official_source_url"
+    ],
+    "https://www.cgtmse.in/": [
+      "pathway_requirements.json:idx_125.official_source_url",
+      "pathway_requirements.json:idx_126.official_source_url",
+      "pathway_requirements.json:idx_127.official_source_url",
+      "relationships.json:REL00126.official_source_url",
+      "relationships.json:REL00127.official_source_url",
+      "relationships.json:REL00128.official_source_url",
+      "relationships.json:REL00419.official_source_url",
+      "relationships.json:REL00420.official_source_url"
+    ],
+    "https://www.ncgtc.in/content/credit-guarantee-scheme-startups-cgss": [
+      "pathway_requirements.json:idx_128.official_source_url",
+      "pathway_requirements.json:idx_129.official_source_url",
+      "pathway_requirements.json:idx_130.official_source_url",
+      "relationships.json:REL00129.official_source_url",
+      "relationships.json:REL00130.official_source_url",
+      "relationships.json:REL00131.official_source_url",
+      "relationships.json:REL00421.official_source_url",
+      "relationships.json:REL00422.official_source_url"
+    ],
+    "https://financialservices.gov.in/stand-india-scheme-supi": [
+      "pathway_requirements.json:idx_131.official_source_url",
+      "relationships.json:REL00132.official_source_url",
+      "relationships.json:REL00423.official_source_url"
+    ],
+    "https://www.ncdc.in/": [
+      "pathway_requirements.json:idx_132.official_source_url",
+      "pathway_requirements.json:idx_133.official_source_url",
+      "pathway_requirements.json:idx_134.official_source_url",
+      "relationships.json:REL00133.official_source_url",
+      "relationships.json:REL00134.official_source_url",
+      "relationships.json:REL00135.official_source_url",
+      "relationships.json:REL00424.official_source_url"
+    ],
+    "https://nsfdc.nic.in/faqs": [
+      "pathway_requirements.json:idx_135.official_source_url",
+      "pathway_requirements.json:idx_136.official_source_url",
+      "pathway_requirements.json:idx_137.official_source_url",
+      "pathway_requirements.json:idx_138.official_source_url",
+      "pathway_requirements.json:idx_139.official_source_url",
+      "pathway_requirements.json:idx_140.official_source_url",
+      "pathway_requirements.json:idx_141.official_source_url",
+      "pathway_requirements.json:idx_142.official_source_url",
+      "pathway_requirements.json:idx_143.official_source_url",
+      "pathway_requirements.json:idx_144.official_source_url",
+      "pathway_requirements.json:idx_145.official_source_url",
+      "pathway_requirements.json:idx_146.official_source_url",
+      "pathway_requirements.json:idx_264.official_source_url",
+      "pathway_requirements.json:idx_265.official_source_url",
+      "pathway_requirements.json:idx_266.official_source_url",
+      "pathway_requirements.json:idx_267.official_source_url",
+      "pathway_requirements.json:idx_268.official_source_url",
+      "relationships.json:REL00136.official_source_url",
+      "relationships.json:REL00137.official_source_url",
+      "relationships.json:REL00138.official_source_url",
+      "relationships.json:REL00139.official_source_url",
+      "relationships.json:REL00140.official_source_url",
+      "relationships.json:REL00141.official_source_url",
+      "relationships.json:REL00142.official_source_url",
+      "relationships.json:REL00143.official_source_url",
+      "relationships.json:REL00144.official_source_url",
+      "relationships.json:REL00145.official_source_url",
+      "relationships.json:REL00146.official_source_url",
+      "relationships.json:REL00147.official_source_url",
+      "relationships.json:REL00265.official_source_url",
+      "relationships.json:REL00266.official_source_url",
+      "relationships.json:REL00267.official_source_url",
+      "relationships.json:REL00268.official_source_url",
+      "relationships.json:REL00269.official_source_url",
+      "relationships.json:REL00425.official_source_url",
+      "relationships.json:REL00426.official_source_url",
+      "relationships.json:REL00427.official_source_url",
+      "relationships.json:REL00483.official_source_url"
+    ],
+    "https://nbcfdc.gov.in/nbcfdc/web/pattern-of-finance": [
+      "pathway_requirements.json:idx_147.official_source_url",
+      "pathway_requirements.json:idx_148.official_source_url",
+      "pathway_requirements.json:idx_149.official_source_url",
+      "pathway_requirements.json:idx_150.official_source_url",
+      "pathway_requirements.json:idx_248.official_source_url",
+      "pathway_requirements.json:idx_249.official_source_url",
+      "pathway_requirements.json:idx_250.official_source_url",
+      "pathway_requirements.json:idx_251.official_source_url",
+      "relationships.json:REL00148.official_source_url",
+      "relationships.json:REL00149.official_source_url",
+      "relationships.json:REL00150.official_source_url",
+      "relationships.json:REL00151.official_source_url",
+      "relationships.json:REL00249.official_source_url",
+      "relationships.json:REL00250.official_source_url",
+      "relationships.json:REL00251.official_source_url",
+      "relationships.json:REL00252.official_source_url",
+      "relationships.json:REL00428.official_source_url",
+      "relationships.json:REL00478.official_source_url"
+    ],
+    "https://seedfund.startupindia.gov.in/": [
+      "pathway_requirements.json:idx_151.official_source_url",
+      "pathway_requirements.json:idx_152.official_source_url",
+      "relationships.json:REL00152.official_source_url",
+      "relationships.json:REL00153.official_source_url",
+      "relationships.json:REL00429.official_source_url"
+    ],
+    "https://nidhi.dst.gov.in/document/nidhi-prayas-2-0-program-guidelines/": [
+      "pathway_requirements.json:idx_153.official_source_url",
+      "pathway_requirements.json:idx_154.official_source_url",
+      "pathway_requirements.json:idx_155.official_source_url",
+      "relationships.json:REL00154.official_source_url",
+      "relationships.json:REL00155.official_source_url",
+      "relationships.json:REL00156.official_source_url",
+      "relationships.json:REL00430.official_source_url",
+      "relationships.json:REL00431.official_source_url"
+    ],
+    "https://nidhi.dst.gov.in/": [
+      "pathway_requirements.json:idx_156.official_source_url",
+      "pathway_requirements.json:idx_157.official_source_url",
+      "pathway_requirements.json:idx_158.official_source_url",
+      "pathway_requirements.json:idx_162.official_source_url",
+      "pathway_requirements.json:idx_163.official_source_url",
+      "pathway_requirements.json:idx_164.official_source_url",
+      "relationships.json:REL00157.official_source_url",
+      "relationships.json:REL00158.official_source_url",
+      "relationships.json:REL00159.official_source_url",
+      "relationships.json:REL00163.official_source_url",
+      "relationships.json:REL00164.official_source_url",
+      "relationships.json:REL00165.official_source_url",
+      "relationships.json:REL00432.official_source_url",
+      "relationships.json:REL00434.official_source_url",
+      "relationships.json:REL00435.official_source_url",
+      "relationships.json:REL00436.official_source_url"
+    ],
+    "https://nidhi.dst.gov.in/document-category/programme-guidelines/": [
+      "pathway_requirements.json:idx_159.official_source_url",
+      "pathway_requirements.json:idx_160.official_source_url",
+      "pathway_requirements.json:idx_161.official_source_url",
+      "relationships.json:REL00160.official_source_url",
+      "relationships.json:REL00161.official_source_url",
+      "relationships.json:REL00162.official_source_url",
+      "relationships.json:REL00433.official_source_url"
+    ],
+    "https://www.meitystartuphub.in/": [
+      "pathway_requirements.json:idx_165.official_source_url",
+      "pathway_requirements.json:idx_166.official_source_url",
+      "pathway_requirements.json:idx_167.official_source_url",
+      "relationships.json:REL00166.official_source_url",
+      "relationships.json:REL00167.official_source_url",
+      "relationships.json:REL00168.official_source_url",
+      "relationships.json:REL00437.official_source_url",
+      "relationships.json:REL00438.official_source_url"
+    ],
+    "https://msh.meity.gov.in/schemes/samridh": [
+      "pathway_requirements.json:idx_168.official_source_url",
+      "pathway_requirements.json:idx_169.official_source_url",
+      "pathway_requirements.json:idx_170.official_source_url",
+      "relationships.json:REL00169.official_source_url",
+      "relationships.json:REL00170.official_source_url",
+      "relationships.json:REL00171.official_source_url",
+      "relationships.json:REL00439.official_source_url"
+    ],
+    "https://msh.meity.gov.in/": [
+      "pathway_requirements.json:idx_171.official_source_url",
+      "pathway_requirements.json:idx_172.official_source_url",
+      "pathway_requirements.json:idx_173.official_source_url",
+      "relationships.json:REL00172.official_source_url",
+      "relationships.json:REL00173.official_source_url",
+      "relationships.json:REL00174.official_source_url",
+      "relationships.json:REL00440.official_source_url",
+      "relationships.json:REL00441.official_source_url"
+    ],
+    "https://birac.nic.in/big.php": [
+      "pathway_requirements.json:idx_174.official_source_url",
+      "pathway_requirements.json:idx_175.official_source_url",
+      "pathway_requirements.json:idx_176.official_source_url",
+      "relationships.json:REL00175.official_source_url",
+      "relationships.json:REL00176.official_source_url",
+      "relationships.json:REL00177.official_source_url",
+      "relationships.json:REL00442.official_source_url"
+    ],
+    "https://aim.gov.in/aic.php": [
+      "pathway_requirements.json:idx_177.official_source_url",
+      "pathway_requirements.json:idx_178.official_source_url",
+      "pathway_requirements.json:idx_179.official_source_url",
+      "relationships.json:REL00178.official_source_url",
+      "relationships.json:REL00179.official_source_url",
+      "relationships.json:REL00180.official_source_url",
+      "relationships.json:REL00443.official_source_url",
+      "relationships.json:REL00444.official_source_url"
+    ],
+    "https://www.skillindiadigital.gov.in/": [
+      "pathway_requirements.json:idx_180.official_source_url",
+      "pathway_requirements.json:idx_181.official_source_url",
+      "pathway_requirements.json:idx_182.official_source_url",
+      "pathway_requirements.json:idx_183.official_source_url",
+      "relationships.json:REL00181.official_source_url",
+      "relationships.json:REL00182.official_source_url",
+      "relationships.json:REL00183.official_source_url",
+      "relationships.json:REL00184.official_source_url",
+      "relationships.json:REL00445.official_source_url",
+      "relationships.json:REL00446.official_source_url",
+      "relationships.json:REL00447.official_source_url"
+    ],
+    "https://www.apprenticeshipindia.gov.in/": [
+      "pathway_requirements.json:idx_184.official_source_url",
+      "pathway_requirements.json:idx_185.official_source_url",
+      "pathway_requirements.json:idx_186.official_source_url",
+      "relationships.json:REL00185.official_source_url",
+      "relationships.json:REL00186.official_source_url",
+      "relationships.json:REL00187.official_source_url",
+      "relationships.json:REL00448.official_source_url"
+    ],
+    "https://nats.education.gov.in/": [
+      "pathway_requirements.json:idx_187.official_source_url",
+      "pathway_requirements.json:idx_188.official_source_url",
+      "pathway_requirements.json:idx_189.official_source_url",
+      "relationships.json:REL00188.official_source_url",
+      "relationships.json:REL00189.official_source_url",
+      "relationships.json:REL00190.official_source_url",
+      "relationships.json:REL00449.official_source_url"
+    ],
+    "https://jss.gov.in/": [
+      "pathway_requirements.json:idx_190.official_source_url",
+      "pathway_requirements.json:idx_191.official_source_url",
+      "pathway_requirements.json:idx_192.official_source_url",
+      "relationships.json:REL00191.official_source_url",
+      "relationships.json:REL00192.official_source_url",
+      "relationships.json:REL00193.official_source_url",
+      "relationships.json:REL00450.official_source_url",
+      "relationships.json:REL00451.official_source_url"
+    ],
+    "https://dgt.gov.in/cts": [
+      "pathway_requirements.json:idx_193.official_source_url",
+      "pathway_requirements.json:idx_194.official_source_url",
+      "pathway_requirements.json:idx_195.official_source_url",
+      "pathway_requirements.json:idx_196.official_source_url",
+      "relationships.json:REL00194.official_source_url",
+      "relationships.json:REL00195.official_source_url",
+      "relationships.json:REL00196.official_source_url",
+      "relationships.json:REL00197.official_source_url",
+      "relationships.json:REL00452.official_source_url"
+    ],
+    "https://dgt.gov.in/cits": [
+      "pathway_requirements.json:idx_197.official_source_url",
+      "pathway_requirements.json:idx_198.official_source_url",
+      "pathway_requirements.json:idx_199.official_source_url",
+      "pathway_requirements.json:idx_200.official_source_url",
+      "relationships.json:REL00198.official_source_url",
+      "relationships.json:REL00199.official_source_url",
+      "relationships.json:REL00200.official_source_url",
+      "relationships.json:REL00201.official_source_url",
+      "relationships.json:REL00453.official_source_url",
+      "relationships.json:REL00454.official_source_url"
+    ],
+    "https://pmdaksh.dosje.gov.in/": [
+      "pathway_requirements.json:idx_201.official_source_url",
+      "pathway_requirements.json:idx_202.official_source_url",
+      "pathway_requirements.json:idx_203.official_source_url",
+      "pathway_requirements.json:idx_204.official_source_url",
+      "relationships.json:REL00202.official_source_url",
+      "relationships.json:REL00203.official_source_url",
+      "relationships.json:REL00204.official_source_url",
+      "relationships.json:REL00205.official_source_url",
+      "relationships.json:REL00455.official_source_url",
+      "relationships.json:REL00456.official_source_url",
+      "relationships.json:REL00457.official_source_url"
+    ],
+    "https://kaushal.rural.gov.in/": [
+      "pathway_requirements.json:idx_205.official_source_url",
+      "pathway_requirements.json:idx_206.official_source_url",
+      "pathway_requirements.json:idx_207.official_source_url",
+      "pathway_requirements.json:idx_208.official_source_url",
+      "relationships.json:REL00206.official_source_url",
+      "relationships.json:REL00207.official_source_url",
+      "relationships.json:REL00208.official_source_url",
+      "relationships.json:REL00209.official_source_url",
+      "relationships.json:REL00458.official_source_url",
+      "relationships.json:REL00459.official_source_url"
+    ],
+    "https://rseti.gov.in/": [
+      "pathway_requirements.json:idx_209.official_source_url",
+      "pathway_requirements.json:idx_210.official_source_url",
+      "pathway_requirements.json:idx_211.official_source_url",
+      "relationships.json:REL00210.official_source_url",
+      "relationships.json:REL00211.official_source_url",
+      "relationships.json:REL00212.official_source_url",
+      "relationships.json:REL00460.official_source_url",
+      "relationships.json:REL00461.official_source_url",
+      "relationships.json:REL00462.official_source_url"
+    ],
+    "https://msme.gov.in/": [
+      "pathway_requirements.json:idx_212.official_source_url",
+      "pathway_requirements.json:idx_213.official_source_url",
+      "pathway_requirements.json:idx_214.official_source_url",
+      "relationships.json:REL00213.official_source_url",
+      "relationships.json:REL00214.official_source_url",
+      "relationships.json:REL00215.official_source_url",
+      "relationships.json:REL00463.official_source_url"
+    ],
+    "https://msmeonline.tn.gov.in/twees/": [
+      "pathway_requirements.json:idx_215.official_source_url",
+      "pathway_requirements.json:idx_216.official_source_url",
+      "pathway_requirements.json:idx_217.official_source_url",
+      "pathway_requirements.json:idx_218.official_source_url",
+      "pathway_requirements.json:idx_219.official_source_url",
+      "pathway_requirements.json:idx_220.official_source_url",
+      "relationships.json:REL00216.official_source_url",
+      "relationships.json:REL00217.official_source_url",
+      "relationships.json:REL00218.official_source_url",
+      "relationships.json:REL00219.official_source_url",
+      "relationships.json:REL00220.official_source_url",
+      "relationships.json:REL00221.official_source_url",
+      "relationships.json:REL00464.official_source_url",
+      "relationships.json:REL00465.official_source_url",
+      "relationships.json:REL00466.official_source_url"
+    ],
+    "https://nrlm.gov.in/": [
+      "pathway_requirements.json:idx_221.official_source_url",
+      "pathway_requirements.json:idx_222.official_source_url",
+      "pathway_requirements.json:idx_223.official_source_url",
+      "pathway_requirements.json:idx_224.official_source_url",
+      "pathway_requirements.json:idx_225.official_source_url",
+      "pathway_requirements.json:idx_226.official_source_url",
+      "pathway_requirements.json:idx_227.official_source_url",
+      "pathway_requirements.json:idx_228.official_source_url",
+      "pathway_requirements.json:idx_229.official_source_url",
+      "pathway_requirements.json:idx_230.official_source_url",
+      "pathway_requirements.json:idx_231.official_source_url",
+      "pathway_requirements.json:idx_232.official_source_url",
+      "relationships.json:REL00222.official_source_url",
+      "relationships.json:REL00223.official_source_url",
+      "relationships.json:REL00224.official_source_url",
+      "relationships.json:REL00225.official_source_url",
+      "relationships.json:REL00226.official_source_url",
+      "relationships.json:REL00227.official_source_url",
+      "relationships.json:REL00228.official_source_url",
+      "relationships.json:REL00229.official_source_url",
+      "relationships.json:REL00230.official_source_url",
+      "relationships.json:REL00231.official_source_url",
+      "relationships.json:REL00232.official_source_url",
+      "relationships.json:REL00233.official_source_url",
+      "relationships.json:REL00467.official_source_url",
+      "relationships.json:REL00468.official_source_url",
+      "relationships.json:REL00469.official_source_url",
+      "relationships.json:REL00470.official_source_url",
+      "relationships.json:REL00471.official_source_url"
+    ],
+    "https://coirboard.gov.in/?page_id=8452": [
+      "pathway_requirements.json:idx_233.official_source_url",
+      "pathway_requirements.json:idx_234.official_source_url",
+      "pathway_requirements.json:idx_235.official_source_url",
+      "relationships.json:REL00234.official_source_url",
+      "relationships.json:REL00235.official_source_url",
+      "relationships.json:REL00236.official_source_url",
+      "relationships.json:REL00472.official_source_url",
+      "relationships.json:REL00473.official_source_url",
+      "relationships.json:REL00474.official_source_url"
+    ],
+    "https://gem.gov.in/": [
+      "pathway_requirements.json:idx_236.official_source_url",
+      "pathway_requirements.json:idx_237.official_source_url",
+      "pathway_requirements.json:idx_238.official_source_url",
+      "pathway_requirements.json:idx_239.official_source_url",
+      "pathway_requirements.json:idx_364.official_source_url",
+      "pathway_requirements.json:idx_365.official_source_url",
+      "pathway_requirements.json:idx_366.official_source_url",
+      "pathway_requirements.json:idx_367.official_source_url",
+      "relationships.json:REL00237.official_source_url",
+      "relationships.json:REL00238.official_source_url",
+      "relationships.json:REL00239.official_source_url",
+      "relationships.json:REL00240.official_source_url",
+      "relationships.json:REL00365.official_source_url",
+      "relationships.json:REL00366.official_source_url",
+      "relationships.json:REL00367.official_source_url",
+      "relationships.json:REL00368.official_source_url",
+      "relationships.json:REL00475.official_source_url",
+      "relationships.json:REL00521.official_source_url"
+    ],
+    "https://nsfdc.nic.in/": [
+      "pathway_requirements.json:idx_240.official_source_url",
+      "pathway_requirements.json:idx_241.official_source_url",
+      "pathway_requirements.json:idx_242.official_source_url",
+      "pathway_requirements.json:idx_243.official_source_url",
+      "relationships.json:REL00241.official_source_url",
+      "relationships.json:REL00242.official_source_url",
+      "relationships.json:REL00243.official_source_url",
+      "relationships.json:REL00244.official_source_url",
+      "relationships.json:REL00476.official_source_url"
+    ],
+    "https://nbcfdc.gov.in/nbcfdc/web/loan-scheme-description": [
+      "pathway_requirements.json:idx_244.official_source_url",
+      "pathway_requirements.json:idx_245.official_source_url",
+      "pathway_requirements.json:idx_246.official_source_url",
+      "pathway_requirements.json:idx_247.official_source_url",
+      "relationships.json:REL00245.official_source_url",
+      "relationships.json:REL00246.official_source_url",
+      "relationships.json:REL00247.official_source_url",
+      "relationships.json:REL00248.official_source_url",
+      "relationships.json:REL00477.official_source_url"
+    ],
+    "https://nskfdc.nic.in/en/content/schemes-programmes/mahila-samridhi-yojna-msy": [
+      "pathway_requirements.json:idx_252.official_source_url",
+      "pathway_requirements.json:idx_253.official_source_url",
+      "pathway_requirements.json:idx_254.official_source_url",
+      "relationships.json:REL00253.official_source_url",
+      "relationships.json:REL00254.official_source_url",
+      "relationships.json:REL00255.official_source_url",
+      "relationships.json:REL00479.official_source_url"
+    ],
+    "https://msmeonline.tn.gov.in/aabcs/": [
+      "pathway_requirements.json:idx_255.official_source_url",
+      "pathway_requirements.json:idx_256.official_source_url",
+      "pathway_requirements.json:idx_257.official_source_url",
+      "pathway_requirements.json:idx_258.official_source_url",
+      "pathway_requirements.json:idx_259.official_source_url",
+      "relationships.json:REL00256.official_source_url",
+      "relationships.json:REL00257.official_source_url",
+      "relationships.json:REL00258.official_source_url",
+      "relationships.json:REL00259.official_source_url",
+      "relationships.json:REL00260.official_source_url",
+      "relationships.json:REL00480.official_source_url"
+    ],
+    "https://transgender.dosje.gov.in/": [
+      "pathway_requirements.json:idx_260.official_source_url",
+      "pathway_requirements.json:idx_261.official_source_url",
+      "pathway_requirements.json:idx_262.official_source_url",
+      "pathway_requirements.json:idx_263.official_source_url",
+      "relationships.json:REL00261.official_source_url",
+      "relationships.json:REL00262.official_source_url",
+      "relationships.json:REL00263.official_source_url",
+      "relationships.json:REL00264.official_source_url",
+      "relationships.json:REL00481.official_source_url",
+      "relationships.json:REL00482.official_source_url"
+    ],
+    "https://nsfdc.nic.in/UploadedFiles/other/2024-05-15/1-4-1.pdf": [
+      "pathway_requirements.json:idx_269.official_source_url",
+      "pathway_requirements.json:idx_270.official_source_url",
+      "pathway_requirements.json:idx_271.official_source_url",
+      "pathway_requirements.json:idx_272.official_source_url",
+      "pathway_requirements.json:idx_273.official_source_url",
+      "pathway_requirements.json:idx_274.official_source_url",
+      "pathway_requirements.json:idx_275.official_source_url",
+      "pathway_requirements.json:idx_276.official_source_url",
+      "pathway_requirements.json:idx_277.official_source_url",
+      "relationships.json:REL00270.official_source_url",
+      "relationships.json:REL00271.official_source_url",
+      "relationships.json:REL00272.official_source_url",
+      "relationships.json:REL00273.official_source_url",
+      "relationships.json:REL00274.official_source_url",
+      "relationships.json:REL00275.official_source_url",
+      "relationships.json:REL00276.official_source_url",
+      "relationships.json:REL00277.official_source_url",
+      "relationships.json:REL00278.official_source_url",
+      "relationships.json:REL00484.official_source_url",
+      "relationships.json:REL00485.official_source_url"
+    ],
+    "https://nbcfdc.gov.in/nbcfdc/web/node/65": [
+      "pathway_requirements.json:idx_278.official_source_url",
+      "pathway_requirements.json:idx_279.official_source_url",
+      "pathway_requirements.json:idx_280.official_source_url",
+      "pathway_requirements.json:idx_281.official_source_url",
+      "relationships.json:REL00279.official_source_url",
+      "relationships.json:REL00280.official_source_url",
+      "relationships.json:REL00281.official_source_url",
+      "relationships.json:REL00282.official_source_url",
+      "relationships.json:REL00486.official_source_url"
+    ],
+    "https://nstfdc.tribal.gov.in/": [
+      "pathway_requirements.json:idx_282.official_source_url",
+      "pathway_requirements.json:idx_283.official_source_url",
+      "pathway_requirements.json:idx_284.official_source_url",
+      "pathway_requirements.json:idx_285.official_source_url",
+      "pathway_requirements.json:idx_286.official_source_url",
+      "pathway_requirements.json:idx_287.official_source_url",
+      "pathway_requirements.json:idx_288.official_source_url",
+      "relationships.json:REL00283.official_source_url",
+      "relationships.json:REL00284.official_source_url",
+      "relationships.json:REL00285.official_source_url",
+      "relationships.json:REL00286.official_source_url",
+      "relationships.json:REL00287.official_source_url",
+      "relationships.json:REL00288.official_source_url",
+      "relationships.json:REL00289.official_source_url",
+      "relationships.json:REL00487.official_source_url",
+      "relationships.json:REL00488.official_source_url"
+    ],
+    "https://nskfdc.nic.in/en/content/schemes-programmes/general-term-loan-tl": [
+      "pathway_requirements.json:idx_289.official_source_url",
+      "pathway_requirements.json:idx_290.official_source_url",
+      "pathway_requirements.json:idx_291.official_source_url",
+      "pathway_requirements.json:idx_292.official_source_url",
+      "pathway_requirements.json:idx_293.official_source_url",
+      "relationships.json:REL00290.official_source_url",
+      "relationships.json:REL00291.official_source_url",
+      "relationships.json:REL00292.official_source_url",
+      "relationships.json:REL00293.official_source_url",
+      "relationships.json:REL00294.official_source_url",
+      "relationships.json:REL00489.official_source_url"
+    ],
+    "https://nskfdc.nic.in/en/node/4083": [
+      "pathway_requirements.json:idx_294.official_source_url",
+      "pathway_requirements.json:idx_295.official_source_url",
+      "pathway_requirements.json:idx_296.official_source_url",
+      "pathway_requirements.json:idx_297.official_source_url",
+      "pathway_requirements.json:idx_298.official_source_url",
+      "relationships.json:REL00295.official_source_url",
+      "relationships.json:REL00296.official_source_url",
+      "relationships.json:REL00297.official_source_url",
+      "relationships.json:REL00298.official_source_url",
+      "relationships.json:REL00299.official_source_url",
+      "relationships.json:REL00490.official_source_url"
+    ],
+    "https://pmvishwakarma.gov.in/": [
+      "pathway_requirements.json:idx_299.official_source_url",
+      "pathway_requirements.json:idx_300.official_source_url",
+      "pathway_requirements.json:idx_301.official_source_url",
+      "pathway_requirements.json:idx_302.official_source_url",
+      "pathway_requirements.json:idx_303.official_source_url",
+      "relationships.json:REL00300.official_source_url",
+      "relationships.json:REL00301.official_source_url",
+      "relationships.json:REL00302.official_source_url",
+      "relationships.json:REL00303.official_source_url",
+      "relationships.json:REL00304.official_source_url",
+      "relationships.json:REL00491.official_source_url",
+      "relationships.json:REL00492.official_source_url",
+      "relationships.json:REL00493.official_source_url"
+    ],
+    "https://msmeonline.tn.gov.in/kkt/": [
+      "pathway_requirements.json:idx_304.official_source_url",
+      "pathway_requirements.json:idx_305.official_source_url",
+      "pathway_requirements.json:idx_306.official_source_url",
+      "pathway_requirements.json:idx_307.official_source_url",
+      "pathway_requirements.json:idx_308.official_source_url",
+      "pathway_requirements.json:idx_309.official_source_url",
+      "relationships.json:REL00305.official_source_url",
+      "relationships.json:REL00306.official_source_url",
+      "relationships.json:REL00307.official_source_url",
+      "relationships.json:REL00308.official_source_url",
+      "relationships.json:REL00309.official_source_url",
+      "relationships.json:REL00310.official_source_url",
+      "relationships.json:REL00494.official_source_url",
+      "relationships.json:REL00495.official_source_url",
+      "relationships.json:REL00496.official_source_url"
+    ],
+    "https://handicrafts.nic.in/schemes.aspx": [
+      "pathway_requirements.json:idx_310.official_source_url",
+      "pathway_requirements.json:idx_311.official_source_url",
+      "pathway_requirements.json:idx_312.official_source_url",
+      "pathway_requirements.json:idx_313.official_source_url",
+      "relationships.json:REL00311.official_source_url",
+      "relationships.json:REL00312.official_source_url",
+      "relationships.json:REL00313.official_source_url",
+      "relationships.json:REL00314.official_source_url",
+      "relationships.json:REL00497.official_source_url"
+    ],
+    "https://handicrafts.nic.in/tenders.aspx?type=27": [
+      "pathway_requirements.json:idx_314.official_source_url",
+      "pathway_requirements.json:idx_315.official_source_url",
+      "pathway_requirements.json:idx_316.official_source_url",
+      "pathway_requirements.json:idx_317.official_source_url",
+      "pathway_requirements.json:idx_318.official_source_url",
+      "pathway_requirements.json:idx_319.official_source_url",
+      "pathway_requirements.json:idx_320.official_source_url",
+      "pathway_requirements.json:idx_321.official_source_url",
+      "pathway_requirements.json:idx_322.official_source_url",
+      "pathway_requirements.json:idx_323.official_source_url",
+      "relationships.json:REL00315.official_source_url",
+      "relationships.json:REL00316.official_source_url",
+      "relationships.json:REL00317.official_source_url",
+      "relationships.json:REL00318.official_source_url",
+      "relationships.json:REL00319.official_source_url",
+      "relationships.json:REL00320.official_source_url",
+      "relationships.json:REL00321.official_source_url",
+      "relationships.json:REL00322.official_source_url",
+      "relationships.json:REL00323.official_source_url",
+      "relationships.json:REL00324.official_source_url",
+      "relationships.json:REL00498.official_source_url",
+      "relationships.json:REL00499.official_source_url",
+      "relationships.json:REL00500.official_source_url"
+    ],
+    "https://handlooms.nic.in/": [
+      "pathway_requirements.json:idx_324.official_source_url",
+      "pathway_requirements.json:idx_325.official_source_url",
+      "pathway_requirements.json:idx_326.official_source_url",
+      "pathway_requirements.json:idx_327.official_source_url",
+      "pathway_requirements.json:idx_328.official_source_url",
+      "pathway_requirements.json:idx_329.official_source_url",
+      "pathway_requirements.json:idx_330.official_source_url",
+      "pathway_requirements.json:idx_334.official_source_url",
+      "pathway_requirements.json:idx_335.official_source_url",
+      "pathway_requirements.json:idx_336.official_source_url",
+      "relationships.json:REL00325.official_source_url",
+      "relationships.json:REL00326.official_source_url",
+      "relationships.json:REL00327.official_source_url",
+      "relationships.json:REL00328.official_source_url",
+      "relationships.json:REL00329.official_source_url",
+      "relationships.json:REL00330.official_source_url",
+      "relationships.json:REL00331.official_source_url",
+      "relationships.json:REL00335.official_source_url",
+      "relationships.json:REL00336.official_source_url",
+      "relationships.json:REL00337.official_source_url",
+      "relationships.json:REL00501.official_source_url",
+      "relationships.json:REL00502.official_source_url",
+      "relationships.json:REL00504.official_source_url"
+    ],
+    "https://handlooms.nic.in/tenders.php": [
+      "pathway_requirements.json:idx_331.official_source_url",
+      "pathway_requirements.json:idx_332.official_source_url",
+      "pathway_requirements.json:idx_333.official_source_url",
+      "relationships.json:REL00332.official_source_url",
+      "relationships.json:REL00333.official_source_url",
+      "relationships.json:REL00334.official_source_url",
+      "relationships.json:REL00503.official_source_url"
+    ],
+    "https://commerce.gov.in/trade-promotion/market-access-initiative-mai-scheme/": [
+      "pathway_requirements.json:idx_337.official_source_url",
+      "pathway_requirements.json:idx_338.official_source_url",
+      "pathway_requirements.json:idx_339.official_source_url",
+      "pathway_requirements.json:idx_340.official_source_url",
+      "relationships.json:REL00338.official_source_url",
+      "relationships.json:REL00339.official_source_url",
+      "relationships.json:REL00340.official_source_url",
+      "relationships.json:REL00341.official_source_url",
+      "relationships.json:REL00505.official_source_url",
+      "relationships.json:REL00506.official_source_url"
+    ],
+    "https://commerce.gov.in/": [
+      "pathway_requirements.json:idx_341.official_source_url",
+      "pathway_requirements.json:idx_342.official_source_url",
+      "pathway_requirements.json:idx_343.official_source_url",
+      "pathway_requirements.json:idx_344.official_source_url",
+      "pathway_requirements.json:idx_345.official_source_url",
+      "relationships.json:REL00342.official_source_url",
+      "relationships.json:REL00343.official_source_url",
+      "relationships.json:REL00344.official_source_url",
+      "relationships.json:REL00345.official_source_url",
+      "relationships.json:REL00346.official_source_url",
+      "relationships.json:REL00507.official_source_url",
+      "relationships.json:REL00508.official_source_url",
+      "relationships.json:REL00509.official_source_url"
+    ],
+    "https://apeda.gov.in/": [
+      "pathway_requirements.json:idx_346.official_source_url",
+      "pathway_requirements.json:idx_347.official_source_url",
+      "pathway_requirements.json:idx_348.official_source_url",
+      "relationships.json:REL00347.official_source_url",
+      "relationships.json:REL00348.official_source_url",
+      "relationships.json:REL00349.official_source_url",
+      "relationships.json:REL00510.official_source_url",
+      "relationships.json:REL00511.official_source_url",
+      "relationships.json:REL00512.official_source_url"
+    ],
+    "https://mpeda.gov.in/": [
+      "pathway_requirements.json:idx_349.official_source_url",
+      "pathway_requirements.json:idx_350.official_source_url",
+      "pathway_requirements.json:idx_351.official_source_url",
+      "relationships.json:REL00350.official_source_url",
+      "relationships.json:REL00351.official_source_url",
+      "relationships.json:REL00352.official_source_url",
+      "relationships.json:REL00513.official_source_url",
+      "relationships.json:REL00514.official_source_url",
+      "relationships.json:REL00515.official_source_url"
+    ],
+    "https://www.indianspices.com/": [
+      "pathway_requirements.json:idx_352.official_source_url",
+      "pathway_requirements.json:idx_353.official_source_url",
+      "pathway_requirements.json:idx_354.official_source_url",
+      "relationships.json:REL00353.official_source_url",
+      "relationships.json:REL00354.official_source_url",
+      "relationships.json:REL00355.official_source_url",
+      "relationships.json:REL00516.official_source_url"
+    ],
+    "https://coffeeboard.gov.in/": [
+      "pathway_requirements.json:idx_355.official_source_url",
+      "pathway_requirements.json:idx_356.official_source_url",
+      "pathway_requirements.json:idx_357.official_source_url",
+      "relationships.json:REL00356.official_source_url",
+      "relationships.json:REL00357.official_source_url",
+      "relationships.json:REL00358.official_source_url",
+      "relationships.json:REL00517.official_source_url",
+      "relationships.json:REL00518.official_source_url"
+    ],
+    "https://teaboard.gov.in/": [
+      "pathway_requirements.json:idx_358.official_source_url",
+      "pathway_requirements.json:idx_359.official_source_url",
+      "pathway_requirements.json:idx_360.official_source_url",
+      "relationships.json:REL00359.official_source_url",
+      "relationships.json:REL00360.official_source_url",
+      "relationships.json:REL00361.official_source_url",
+      "relationships.json:REL00519.official_source_url"
+    ],
+    "https://rubberboard.gov.in/": [
+      "pathway_requirements.json:idx_361.official_source_url",
+      "pathway_requirements.json:idx_362.official_source_url",
+      "pathway_requirements.json:idx_363.official_source_url",
+      "relationships.json:REL00362.official_source_url",
+      "relationships.json:REL00363.official_source_url",
+      "relationships.json:REL00364.official_source_url",
+      "relationships.json:REL00520.official_source_url"
+    ],
+    "https://www.dgft.gov.in/CP/?opt=rodtep": [
+      "pathway_requirements.json:idx_368.official_source_url",
+      "pathway_requirements.json:idx_369.official_source_url",
+      "pathway_requirements.json:idx_370.official_source_url",
+      "relationships.json:REL00369.official_source_url",
+      "relationships.json:REL00370.official_source_url",
+      "relationships.json:REL00371.official_source_url",
+      "relationships.json:REL00522.official_source_url"
+    ]
+  }
+}

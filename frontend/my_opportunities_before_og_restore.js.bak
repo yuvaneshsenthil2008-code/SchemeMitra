@@ -1,0 +1,1279 @@
+/**
+ * SchemeMitra v2 — My Opportunities Dashboard & Inline Roadmap Component
+ * Clean, scheme-centric navigation: Best Matches, More Information Needed, Needs Verification, and Opportunity Roadmap.
+ */
+
+class MyOpportunitiesComponent {
+  constructor() {
+    this.analysisResult = null;
+    this.activeTab = "recommended"; // 'recommended', 'potentially', 'verification', 'graph'
+    this.selectedOppId = null;
+    this.graphSelectionMode = "TOP_3";
+    this.graphData = null;
+    this.graphZoom = 1.0;
+    this.graphPanX = 0;
+    this.graphPanY = 0;
+    this.selectedRequirementNode = null;
+    this.selectedSupportNode = null;
+    this.expandedInlineRoadmaps = {};
+    this.pathwayCache = {};
+  }
+
+  formatBusinessGoal(goal) {
+    if (!goal) return 'Start a business';
+    const g = String(goal).trim();
+    const ENUM_MAP = {
+      'START_BUSINESS': 'Start a business',
+      'ESTABLISH_ENTERPRISE': 'Establish an enterprise',
+      'EXPAND_BUSINESS': 'Expand existing business',
+      'UPGRADE_UNIT': 'Upgrade micro enterprise unit',
+      'TECH_INNOVATION': 'Technology innovation & commercialization',
+      'EXPORT_DEVELOPMENT': 'Export development',
+      'MODERNIZATION': 'Unit modernization',
+      'WORKING_CAPITAL': 'Working capital assistance'
+    };
+    if (ENUM_MAP[g.toUpperCase()]) {
+      return ENUM_MAP[g.toUpperCase()];
+    }
+    if (/^[A-Z0-9_]+$/.test(g)) {
+      return g.split('_').map(w => w.charAt(0) + w.slice(1).toLowerCase()).join(' ');
+    }
+    return g;
+  }
+
+  formatMissingProfileFact(info) {
+    if (!info) return '';
+    const s = String(info).trim();
+    const lower = s.toLowerCase();
+    if (lower === 'shg_membership' || lower.includes('shg_membership') || lower.includes('shg membership')) return 'SHG membership';
+    if (lower.includes('entity_type') || lower.includes('fpo/shg/cooperative')) return 'Entity type (FPO / SHG / Cooperative)';
+    if (lower.includes('dpiit')) return 'DPIIT startup recognition';
+    if (lower.includes('incubator') || lower.includes('prayas')) return 'Incubator / approved centre linkage';
+    if (lower.includes('category')) return 'Social category';
+    if (lower.includes('business stage')) return 'Business stage requirement';
+    if (lower === 'is_new_unit' || lower.includes('is_new_unit')) return 'New micro-enterprise status';
+    if (lower === 'prior_gov_subsidy' || lower.includes('prior_gov_subsidy')) return 'Prior government subsidy history';
+    if (lower === 'family_pmegp_availed' || lower.includes('family_pmegp_availed')) return 'Family PMEGP beneficiary status';
+    if (lower === 'udyam_registered' || lower.includes('udyam_registered')) return 'Udyam Registration status';
+    if (lower === 'udyam_category' || lower.includes('udyam_category')) return 'Udyam Enterprise Category (Micro / Small)';
+    if (lower === 'project_cost' || lower.includes('project_cost')) return 'Estimated project cost';
+    if (lower === 'education' || lower.includes('education')) return 'Educational qualification';
+    return s.replace(/_/g, ' ');
+  }
+
+  async toggleInlineRoadmap(opportunityId) {
+    if (!this.expandedInlineRoadmaps) this.expandedInlineRoadmaps = {};
+    const nextState = !this.expandedInlineRoadmaps[opportunityId];
+    this.expandedInlineRoadmaps[opportunityId] = nextState;
+
+    if (nextState && (!this.pathwayCache || !this.pathwayCache[opportunityId])) {
+      if (!this.pathwayCache) this.pathwayCache = {};
+      try {
+        const res = await fetch("/api/pathway/generate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            profile: window.app.userProfile || {},
+            opportunity_id: opportunityId
+          })
+        });
+        if (res.ok) {
+          this.pathwayCache[opportunityId] = await res.json();
+        }
+      } catch (err) {
+        console.warn("Inline pathway fetch failed:", err);
+      }
+    }
+    this.render();
+  }
+
+  buildInlineRoadmapHTML(scheme, profile) {
+    const opportunityId = scheme.opportunity_id || scheme.id;
+    const pathwayData = (this.pathwayCache && this.pathwayCache[opportunityId]) || null;
+
+    // 1. WHAT YOU ALREADY HAVE
+    const confirmedFacts = [];
+    if (profile.age !== null && profile.age !== undefined && profile.age !== "") {
+      confirmedFacts.push(`Age information available (${profile.age} yrs)`);
+    }
+    if (profile.state && String(profile.state).trim()) {
+      confirmedFacts.push(`State location confirmed (${profile.state})`);
+    }
+    if (profile.sector && String(profile.sector).trim()) {
+      confirmedFacts.push(`Business sector available (${profile.sector})`);
+    }
+    if ((profile.business_stage || profile.business_type) && String(profile.business_stage || profile.business_type).trim()) {
+      confirmedFacts.push(`Business stage confirmed (${profile.business_stage || profile.business_type})`);
+    }
+    if (profile.gender && String(profile.gender).trim()) {
+      confirmedFacts.push(`Gender specified (${profile.gender})`);
+    }
+    if (profile.education && String(profile.education).trim()) {
+      confirmedFacts.push(`Qualification level specified (${profile.education})`);
+    }
+
+    // Requirements passed
+    const requirements = pathwayData?.pathway?.requirements || [];
+    const completedReqs = requirements.filter(r => r.state === 'PASSED' || r.state === 'COMPLETED');
+    completedReqs.forEach(r => {
+      confirmedFacts.push(r.label || r.requirement_id);
+    });
+
+    // 2. PLEASE CONFIRM (VERIFY / UNTESTED / missing_profile_info)
+    const verifyFacts = [];
+    const missingProfile = scheme.missing_profile_info || pathwayData?.eligibility?.missing_profile_fields || [];
+    missingProfile.forEach(m => {
+      verifyFacts.push(this.formatMissingProfileFact(m));
+    });
+    const verifyReqs = requirements.filter(r => r.state === 'VERIFY' || r.state === 'UNTESTED');
+    verifyReqs.forEach(r => {
+      verifyFacts.push(r.label || r.requirement_id);
+    });
+
+    // 3. MY NEXT STEPS (ACTION_NEEDED / FAILED / gaps)
+    const nextSteps = [];
+    if (verifyFacts.length > 0) {
+      nextSteps.push("Confirm the missing information above");
+    }
+    const actionReqs = requirements.filter(r => r.state === 'ACTION_NEEDED' || r.state === 'FAILED');
+    actionReqs.forEach(r => {
+      nextSteps.push(r.label || r.requirement_id);
+    });
+    const gaps = scheme.scheme_gaps || scheme.missing_requirements || [];
+    gaps.forEach(g => {
+      if (!nextSteps.includes(g)) nextSteps.push(g);
+    });
+    nextSteps.push("Review the verified SchemeMitra Application Guide");
+    nextSteps.push("Proceed to the official government portal for direct application submission");
+
+    const rawStatus = scheme.eligibility_status || scheme.status || pathwayData?.eligibility?.status || 'POTENTIALLY_ELIGIBLE';
+    const isReady = (rawStatus === 'ELIGIBLE') && actionReqs.length === 0 && gaps.length === 0;
+
+    const officialAppUrl = scheme.application_url || pathwayData?.eligibility?.application_url || scheme.official_source_url || pathwayData?.eligibility?.official_source_url;
+
+    return `
+      <div class="inline-roadmap-panel" id="inlineRoadmap_${opportunityId}">
+        <div style="font-size: 0.8rem; font-weight: 800; color: #FF9933; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.85rem; border-bottom: 1px solid #E8DDD0; padding-bottom: 0.4rem;">
+          YOUR ROADMAP — ${scheme.opportunity_name || opportunityId}
+        </div>
+
+        <!-- 1. WHAT YOU ALREADY HAVE -->
+        <div style="margin-bottom: 1rem;">
+          <div style="font-size: 0.85rem; font-weight: 800; color: #138808; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.35rem;">
+            ✓ WHAT YOU ALREADY HAVE
+          </div>
+          <ul style="list-style: none; padding-left: 0; margin: 0; font-size: 0.85rem; color: #14532d; line-height: 1.6;">
+            ${confirmedFacts.map(f => `<li style="margin-bottom: 0.2rem;">• ${f}</li>`).join('')}
+          </ul>
+        </div>
+
+        <!-- 2. PLEASE CONFIRM -->
+        ${verifyFacts.length > 0 ? `
+          <div style="margin-bottom: 1rem;">
+            <div style="font-size: 0.85rem; font-weight: 800; color: #000080; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.35rem;">
+              ? PLEASE CONFIRM
+            </div>
+            <ul style="list-style: none; padding-left: 0; margin: 0; font-size: 0.85rem; color: #1e3a8a; line-height: 1.6;">
+              ${verifyFacts.map(f => `<li style="margin-bottom: 0.2rem;">• ${f}</li>`).join('')}
+            </ul>
+          </div>
+        ` : ''}
+
+        <!-- 3. MY NEXT STEPS -->
+        <div style="margin-bottom: 1.15rem;">
+          <div style="font-size: 0.85rem; font-weight: 800; color: #FF9933; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.35rem;">
+            ! MY NEXT STEPS
+          </div>
+          <ol style="padding-left: 1.2rem; margin: 0; font-size: 0.85rem; color: #2A2A2A; line-height: 1.6; font-weight: 600;">
+            ${nextSteps.map(s => `<li style="margin-bottom: 0.25rem;">${s}</li>`).join('')}
+          </ol>
+        </div>
+
+        <!-- 4. READY TO APPLY / ALMOST READY -->
+        <div style="background: #eaf7ea; border: 1px solid #bbf7d0; border-radius: 10px; padding: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+          <div>
+            <div style="font-weight: 800; font-size: 0.9rem; color: #14532d;">
+              ${isReady ? '○ READY TO APPLY' : (verifyFacts.length > 0 ? '○ MORE INFORMATION NEEDED' : '○ ALMOST READY')}
+            </div>
+            <div style="font-size: 0.8rem; color: #166534; margin-top: 0.15rem;">
+              ${isReady ? 'Official application process is open on verified government portal.' : 'Review requirements and guidance before official portal submission.'}
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button class="btn-outline" onclick="myOpportunities.openSchemeDetail('${opportunityId}')" style="font-size: 0.8rem; padding: 0.4rem 0.8rem; border-color: #138808; color: #138808; background: #ffffff;">
+              Open Application Guide
+            </button>
+            ${officialAppUrl ? `
+              <a href="${officialAppUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size: 0.8rem; padding: 0.4rem 0.8rem; background: #138808; color: #ffffff; text-decoration: none; border-radius: 8px;">
+                Continue to Official Government Website ↗
+              </a>
+            ` : `
+              <button class="btn-primary" onclick="schemeDetail.openApplyModal('${opportunityId}')" style="font-size: 0.8rem; padding: 0.4rem 0.8rem; background: #138808; color: #ffffff;">
+                Continue to Official Government Website ↗
+              </button>
+            `}
+          </div>
+        </div>
+
+      </div>
+    `;
+  }
+
+  async render() {
+    const container = document.getElementById("viewDashboard");
+    if (!container) return;
+
+    const t = (k) => window.i18n.get(k);
+    const profile = window.app.userProfile;
+
+    if (!profile || Object.keys(profile).length === 0) {
+      container.innerHTML = `
+        <section class="section-padding">
+          <div class="container" style="max-width: 720px; margin: 0 auto; text-align: center;">
+            <div style="background: #FFFDF8; border: 1px solid var(--border-color); border-top: 3px solid #FF9933; border-radius: 16px; padding: 2.5rem; box-shadow: var(--shadow-md);">
+              <div style="font-size: 3rem; margin-bottom: 1rem;">🎯</div>
+              <h2 style="font-size: 1.6rem; color: var(--primary-navy); margin-bottom: 0.75rem; font-weight: 800;">
+                Your Personalized Opportunities
+              </h2>
+              <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 2rem;">
+                Complete your profile to discover schemes matched to your goals, location and eligibility.
+              </p>
+              
+              <button class="btn-primary" onclick="app.showPage('profile')" style="font-size: 1.05rem; padding: 0.85rem 2.2rem; border-radius: 9999px; margin-bottom: 2rem; background: #138808;">
+                Set Up My Profile →
+              </button>
+
+              <div style="background: #F5F7FA; border-radius: 12px; padding: 1.5rem; text-align: left;">
+                <h4 style="font-size: 1rem; color: var(--primary-navy); margin-bottom: 1rem; font-weight: 700;">Why create a profile?</h4>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.95rem; color: var(--primary-navy);">
+                  <li><span style="color: #138808; font-weight: 800; margin-right: 0.5rem;">✓</span> Find relevant schemes</li>
+                  <li><span style="color: #138808; font-weight: 800; margin-right: 0.5rem;">✓</span> Understand your potential eligibility</li>
+                  <li><span style="color: #138808; font-weight: 800; margin-right: 0.5rem;">✓</span> See missing requirements</li>
+                  <li><span style="color: #138808; font-weight: 800; margin-right: 0.5rem;">✓</span> Get a personalized preparation roadmap</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      `;
+      return;
+    }
+
+    const hasAge = profile.age !== null && profile.age !== undefined && profile.age !== "" && !isNaN(Number(profile.age));
+    const hasState = Boolean(profile.state && String(profile.state).trim());
+    const hasSector = Boolean(profile.sector && String(profile.sector).trim());
+    const hasStage = Boolean((profile.business_stage || profile.business_type) && String(profile.business_stage || profile.business_type).trim());
+
+    if (!hasAge || !hasState || !hasSector || !hasStage) {
+      container.innerHTML = `
+        <section class="section-padding">
+          <div class="container" style="max-width: 720px; margin: 0 auto; text-align: center;">
+            <div style="background: #FFFDF8; border: 1px solid var(--border-color); border-top: 3px solid #FF9933; border-radius: 16px; padding: 2.5rem; box-shadow: var(--shadow-md);">
+              <div style="font-size: 3rem; margin-bottom: 1rem;">⚠️</div>
+              <h2 style="font-size: 1.6rem; color: var(--primary-navy); margin-bottom: 0.75rem; font-weight: 800;">
+                Your Profile Needs Information
+              </h2>
+              <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 2rem;">
+                Your profile needs a little more information before we can generate reliable matches. Please complete the required core fields (Age, State, Business Sector, Business Stage).
+              </p>
+              
+              <button class="btn-primary" onclick="app.showPage('profile')" style="font-size: 1.05rem; padding: 0.85rem 2.2rem; border-radius: 9999px; background: #FF9933; color: #ffffff;">
+                Complete Profile →
+              </button>
+            </div>
+          </div>
+        </section>
+      `;
+      return;
+    }
+
+    if (!this.analysisResult) {
+      container.innerHTML = `
+        <section class="section-padding">
+          <div class="container" style="text-align: center; padding: 4rem 0;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🔄</div>
+            <h3 data-i18n="analyzing_title">${t('analyzing_title')}</h3>
+            <p style="color: var(--text-muted);" data-i18n="analyzing_sub">${t('analyzing_sub')}</p>
+          </div>
+        </section>
+      `;
+    }
+
+    try {
+      const res = await fetch("/api/analyze", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          profile: profile,
+          selected_opportunity_id: this.selectedOppId
+        })
+      });
+
+      if (!res.ok) throw new Error("Analysis failed");
+      this.analysisResult = await res.json();
+
+      if (this.analysisResult && this.analysisResult.graph && !this.graphData) {
+        this.graphData = this.analysisResult.graph;
+      }
+
+      this.renderDashboard(container, profile);
+    } catch (err) {
+      console.error("Dashboard analysis error:", err);
+      container.innerHTML = `
+        <section class="section-padding">
+          <div class="container">
+            <div class="error-fallback">
+              <h3>Analysis Service Error</h3>
+              <p>${err.message}</p>
+              <button class="btn-primary" onclick="myOpportunities.render()" style="margin-top: 1rem;" data-i18n="btn_retry">${t('btn_retry')}</button>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+  }
+
+  renderDashboard(container, profile) {
+    const t = (k) => window.i18n.get(k);
+    const data = this.analysisResult || {};
+    const bestMatches = data.best_matches || [];
+    const needsInfoOpps = data.more_information_needed || [];
+    const needsVerif = data.needs_verification || [];
+    const notEligible = data.not_eligible || [];
+
+    const capVal = (profile.available_capital !== null && profile.available_capital !== undefined) 
+      ? profile.available_capital 
+      : (profile.extra && profile.extra.available_capital !== null && profile.extra.available_capital !== undefined ? Number(profile.extra.available_capital) : null);
+    const formattedCapital = (capVal !== null && capVal !== undefined) ? `₹${capVal.toLocaleString('en-IN')}` : 'Not specified';
+    const formattedIncome = profile.annual_income ? `₹${profile.annual_income.toLocaleString('en-IN')}` : 'N/A';
+    const formattedGoal = this.formatBusinessGoal(profile.business_goal);
+
+    if (data.applicability && data.applicability.personalized_matching_available === false) {
+      container.innerHTML = `
+        <section class="section-padding" style="background: var(--bg-light); min-height: 60vh;">
+          <div class="container" style="max-width: 860px;">
+            <div style="background:#ffffff;border:1px solid var(--border-color);border-radius:16px;padding:1.5rem;box-shadow:var(--shadow-sm);margin-bottom:1rem;">
+              <span class="badge badge-active" style="margin-bottom:0.6rem;">${t('profile_summary_title')}</span>
+              <h2 style="color:var(--primary-navy);margin:0 0 0.5rem;">${t('under18_title')}</h2>
+              <p style="color:var(--text-muted);line-height:1.6;margin:0 0 1rem;">${t('under18_msg')}</p>
+              <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+                <button class="btn-primary" onclick="app.showPage('explore')">${t('nav_explore')}</button>
+                <button class="btn-outline" onclick="app.showPage('profile')">${t('btn_edit_profile')}</button>
+              </div>
+            </div>
+          </div>
+        </section>`;
+      return;
+    }
+
+    container.innerHTML = `
+      <section class="section-padding" style="background: var(--bg-light);">
+        <div class="container">
+          
+          <!-- Profile Summary Header Card -->
+          <div style="background: #ffffff; border: 1px solid var(--border-color); border-top: 3px solid #FF9933; border-radius: 16px; padding: 1.25rem; margin-bottom: 1.75rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; box-shadow: var(--shadow-sm);">
+            <div>
+              <span class="badge badge-active" style="margin-bottom: 0.4rem;" data-i18n="profile_summary_title">${t('profile_summary_title')}</span>
+              <h2 style="font-size: 1.25rem; color: var(--primary-navy); line-height: 1.3;">
+                ${profile.gender || 'Entrepreneur'} (${profile.age || 'N/A'} yrs) • ${profile.state || 'India'} ${profile.sector ? '• ' + profile.sector : ''}
+              </h2>
+              <div style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.35rem; line-height: 1.5;">
+                ${profile.business_stage || 'Idea'} Stage • Annual income ${formattedIncome} • Available capital ${formattedCapital}
+              </div>
+              <div style="font-size: 0.875rem; color: var(--primary-navy); font-weight: 600; margin-top: 0.35rem;">
+                Goal: ${formattedGoal}
+              </div>
+            </div>
+            <button class="btn-outline" onclick="app.showPage('profile')" data-i18n="btn_edit_profile">${t('btn_edit_profile')}</button>
+          </div>
+
+          <!-- Clean Dashboard Navigation Tabs -->
+          <div style="display: flex; gap: 0.5rem; border-bottom: 2px solid var(--border-color); margin-bottom: 1.75rem; overflow-x: auto; padding-bottom: 2px; -webkit-overflow-scrolling: touch;">
+            <button class="tab-btn ${this.activeTab === 'recommended' ? 'active' : ''}" onclick="myOpportunities.switchTab('recommended')">
+              🏆 Best Matches (${bestMatches.length})
+            </button>
+            <button class="tab-btn ${this.activeTab === 'potentially' ? 'active' : ''}" onclick="myOpportunities.switchTab('potentially')">
+              ⚠️ More Information Needed (${needsInfoOpps.length})
+            </button>
+            <button class="tab-btn ${this.activeTab === 'verification' ? 'active' : ''}" onclick="myOpportunities.switchTab('verification')">
+              📋 Needs Verification (${needsVerif.length})
+            </button>
+            <button class="tab-btn ${this.activeTab === 'graph' ? 'active' : ''}" onclick="myOpportunities.switchTab('graph')">
+              🌐 ${t('tab_roadmap')}
+            </button>
+          </div>
+
+          <!-- Active Tab Content Container -->
+          <div id="tabContentArea">
+            ${this.renderActiveTabContent(data, bestMatches, needsInfoOpps, needsVerif, notEligible)}
+          </div>
+
+        </div>
+      </section>
+
+      <style>
+        .tab-btn {
+          padding: 0.65rem 1.1rem;
+          border: none;
+          background: transparent;
+          font-size: 0.925rem;
+          font-weight: 600;
+          color: var(--text-muted);
+          cursor: pointer;
+          border-bottom: 3px solid transparent;
+          margin-bottom: -2px;
+          white-space: nowrap;
+          min-height: 44px;
+        }
+        .tab-btn.active {
+          color: var(--primary-saffron);
+          border-bottom-color: var(--primary-saffron);
+        }
+      </style>
+    `;
+  }
+
+  async switchTab(tabKey) {
+    this.activeTab = tabKey;
+    this.render();
+  }
+
+  renderActiveTabContent(data, recs, needsInfoOpps, needsVerif, notEligible) {
+    try {
+      if (this.activeTab === "recommended") {
+        return this.renderBestMatchesList(recs);
+      } else if (this.activeTab === "potentially") {
+        return this.renderNeedsInfoList(needsInfoOpps);
+      } else if (this.activeTab === "verification") {
+        return this.renderNeedsVerificationList(needsVerif);
+      } else if (this.activeTab === "graph") {
+        try {
+          return this.renderOpportunityGraphTab(data, window.app.userProfile || {});
+        } catch (graphErr) {
+          console.error("Opportunity Graph rendering isolated error:", graphErr);
+          return `<div style="padding: 2rem; text-align: center; color: var(--crimson);">We couldn't load your opportunity graph: ${graphErr.message}</div>`;
+        }
+      } else {
+        return this.renderBestMatchesList(recs);
+      }
+    } catch (err) {
+      console.error("Dashboard tab rendering error:", err);
+      return `<div style="padding: 2rem; text-align: center; color: var(--crimson);">Error loading content: ${err.message}</div>`;
+    }
+  }
+
+  async toggleGraphPanel(opportunityId, panelType) {
+    if (!this.graphExpandedPanels) this.graphExpandedPanels = {};
+    const current = this.graphExpandedPanels[opportunityId];
+
+    if (current === panelType) {
+      this.graphExpandedPanels[opportunityId] = null;
+    } else {
+      this.graphExpandedPanels[opportunityId] = panelType;
+    }
+
+    if (panelType === 'reqs' && (!this.pathwayCache || !this.pathwayCache[opportunityId])) {
+      if (!this.pathwayCache) this.pathwayCache = {};
+      try {
+        const res = await fetch("/api/pathway/generate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            profile: window.app.userProfile || {},
+            opportunity_id: opportunityId
+          })
+        });
+        if (res.ok) {
+          this.pathwayCache[opportunityId] = await res.json();
+        }
+      } catch (err) {
+        console.warn("Pathway fetch failed for graph panel:", err);
+      }
+    }
+    this.render();
+    setTimeout(() => {
+      this.applyTransform();
+    }, 50);
+  }
+
+  switchGraphMode(mode) {
+    this.graphSelectionMode = mode;
+    this.render();
+    setTimeout(() => {
+      this.fitView();
+    }, 100);
+  }
+
+  zoomIn() {
+    this.graphZoom = Math.min(2.0, Math.round((this.graphZoom + 0.15) * 100) / 100);
+    this.applyTransform();
+  }
+
+  zoomOut() {
+    this.graphZoom = Math.max(0.5, Math.round((this.graphZoom - 0.15) * 100) / 100);
+    this.applyTransform();
+  }
+
+  resetZoom() {
+    this.graphZoom = 1.0;
+    this.graphPanX = 0;
+    this.graphPanY = 0;
+    this.applyTransform();
+  }
+
+  fitView() {
+    const viewport = document.getElementById("graphCanvasViewport");
+    const container = document.getElementById("graphNodesContainer");
+    if (!viewport || !container) return;
+
+    const cards = container.querySelectorAll(".graph-node-profile-card, .graph-node-opp-card");
+    if (cards.length === 0) return;
+
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    const layerRect = container.getBoundingClientRect();
+
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const left = (rect.left - layerRect.left) / (this.graphZoom || 1.0);
+      const top = (rect.top - layerRect.top) / (this.graphZoom || 1.0);
+      const right = left + rect.width / (this.graphZoom || 1.0);
+      const bottom = top + rect.height / (this.graphZoom || 1.0);
+
+      if (left < minX) minX = left;
+      if (top < minY) minY = top;
+      if (right > maxX) maxX = right;
+      if (bottom > maxY) maxY = bottom;
+    });
+
+    const padding = 50;
+    const contentWidth = (maxX - minX) + padding * 2;
+    const contentHeight = (maxY - minY) + padding * 2;
+    const viewportWidth = viewport.clientWidth;
+    const viewportHeight = viewport.clientHeight;
+
+    let scale = Math.min(viewportWidth / contentWidth, viewportHeight / contentHeight);
+    scale = Math.max(0.5, Math.min(1.4, Math.round(scale * 100) / 100));
+
+    const panX = Math.round((viewportWidth - contentWidth * scale) / 2 - (minX - padding) * scale);
+    const panY = Math.round((viewportHeight - contentHeight * scale) / 2 - (minY - padding) * scale);
+
+    this.graphZoom = scale;
+    this.graphPanX = panX;
+    this.graphPanY = panY;
+    this.applyTransform();
+  }
+
+  applyTransform() {
+    const layer = document.getElementById("graphTransformLayer");
+    if (layer) {
+      layer.style.transform = `translate(${this.graphPanX}px, ${this.graphPanY}px) scale(${this.graphZoom})`;
+    }
+    this.updateSvgConnectors();
+  }
+
+  updateSvgConnectors() {
+    const svg = document.getElementById("graphSvgOverlay");
+    const profileCard = document.querySelector(".graph-node-profile-card");
+    const oppCards = document.querySelectorAll(".graph-node-opp-card");
+    const container = document.getElementById("graphNodesContainer");
+
+    if (!svg || !profileCard || !container) return;
+
+    const layerRect = container.getBoundingClientRect();
+    const currentZoom = this.graphZoom || 1.0;
+
+    const profRect = profileCard.getBoundingClientRect();
+    const startX = (profRect.right - layerRect.left) / currentZoom;
+    const startY = (profRect.top - layerRect.top + profRect.height / 2) / currentZoom;
+
+    let pathsHtml = "";
+
+    oppCards.forEach(opp => {
+      const oppRect = opp.getBoundingClientRect();
+      const endX = (oppRect.left - layerRect.left) / currentZoom;
+      const endY = (oppRect.top - layerRect.top + 38) / currentZoom;
+
+      const dx = Math.max(50, (endX - startX) / 2);
+      const pathD = `M ${startX} ${startY} C ${startX + dx} ${startY}, ${endX - dx} ${endY}, ${endX} ${endY}`;
+
+      pathsHtml += `<path d="${pathD}" stroke="#3b82f6" stroke-width="2.5" fill="none" opacity="0.75" stroke-dasharray="0" />`;
+    });
+
+    svg.innerHTML = pathsHtml;
+  }
+
+  attachCanvasEvents() {
+    const viewport = document.getElementById("graphCanvasViewport");
+    if (!viewport || viewport.dataset.eventsAttached) return;
+    viewport.dataset.eventsAttached = "true";
+
+    viewport.addEventListener("mousedown", (e) => {
+      if (e.target.closest("button") || e.target.closest("a")) return;
+      this.isDraggingGraph = true;
+      this.dragStartX = e.clientX;
+      this.dragStartY = e.clientY;
+      this.startPanX = this.graphPanX;
+      this.startPanY = this.graphPanY;
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      if (!this.isDraggingGraph) return;
+      const dx = e.clientX - this.dragStartX;
+      const dy = e.clientY - this.dragStartY;
+      this.graphPanX = this.startPanX + dx;
+      this.graphPanY = this.startPanY + dy;
+      this.applyTransform();
+    });
+
+    window.addEventListener("mouseup", () => {
+      this.isDraggingGraph = false;
+    });
+
+    viewport.addEventListener("wheel", (e) => {
+      e.preventDefault();
+      const zoomFactor = e.deltaY < 0 ? 0.08 : -0.08;
+      const newZoom = Math.max(0.5, Math.min(2.0, Math.round((this.graphZoom + zoomFactor) * 100) / 100));
+      if (newZoom !== this.graphZoom) {
+        this.graphZoom = newZoom;
+        this.applyTransform();
+      }
+    }, { passive: false });
+  }
+
+  renderGraphView(graphData) {
+    console.log('SchemeMitra opportunity graph runtime');
+
+    if (this.graphError) {
+      return `
+        <div class="graph-viewport-card">
+          <div style="padding: 3rem 1.5rem; text-align: center;">
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚠️</div>
+            <h3 style="color: var(--primary-navy); margin-bottom: 0.5rem;">We couldn't load your opportunity graph</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">${this.graphError}</p>
+            <button class="btn-primary" onclick="myOpportunities.switchGraphMode('${this.graphSelectionMode || 'TOP_3'}')">Retry Graph Generation</button>
+          </div>
+        </div>
+      `;
+    }
+
+    const mode = this.graphSelectionMode || "TOP_3";
+    const profile = (window.app && window.app.userProfile) || (this.analysisResult && this.analysisResult.profile) || {};
+
+    let candidateOpps = (this.analysisResult && this.analysisResult.best_matches) || [];
+
+    if (!candidateOpps || candidateOpps.length === 0) {
+      const rawNodes = (graphData && graphData.nodes) || (this.graphData && this.graphData.nodes) || [];
+      candidateOpps = rawNodes.filter(n => n.type === "OPPORTUNITY").map(n => ({
+        opportunity_id: n.opportunity_id || n.id.replace('opp_', ''),
+        opportunity_name: n.label,
+        eligibility_status: n.status === "Eligible" ? "ELIGIBLE" : "POTENTIALLY_ELIGIBLE",
+        benefit_summary: n.metadata && n.metadata.benefit_summary,
+        support_types: n.metadata && n.metadata.support_types
+      }));
+    }
+
+    candidateOpps = candidateOpps.filter(o => (o.eligibility_status || o.status) !== "NOT_ELIGIBLE");
+
+    let limit = 3;
+    if (mode === "TOP_5") limit = 5;
+    if (mode === "ALL_RELEVANT") limit = Math.max(1, candidateOpps.length);
+
+    const selectedOpps = candidateOpps.slice(0, limit);
+
+    if (selectedOpps.length === 0) {
+      return `
+        <div class="graph-viewport-card">
+          <div style="padding: 3rem 1.5rem; text-align: center; color: var(--text-muted);">
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🕸️</div>
+            <h3 style="color: var(--primary-navy); margin-bottom: 0.5rem;">No relevant opportunities yet</h3>
+            <p style="font-size: 0.9rem;">Complete your profile or review opportunities that need more information to populate your graph.</p>
+          </div>
+        </div>
+      `;
+    }
+
+    const profileLines = [];
+
+    if (profile.gender || profile.age) {
+      const g = profile.gender || '';
+      const a = profile.age ? `${profile.age} yrs` : '';
+      profileLines.push(`👤 ${[g, a].filter(Boolean).join(', ')}`);
+    }
+
+    if (profile.state) {
+      profileLines.push(`📍 ${profile.state}`);
+    }
+
+    if (profile.sector || profile.target_sector) {
+      const secLabel = window.i18n ? window.i18n.getSectorLabel(profile.sector || profile.target_sector) : (profile.sector || profile.target_sector);
+      profileLines.push(`🏢 ${secLabel}`);
+    }
+
+    if (profile.annual_income !== null && profile.annual_income !== undefined && profile.annual_income > 0) {
+      profileLines.push(`💰 Annual Income: ₹${Number(profile.annual_income).toLocaleString('en-IN')}`);
+    }
+
+    if (profile.available_capital !== null && profile.available_capital !== undefined && profile.available_capital > 0) {
+      profileLines.push(`💵 Available Capital: ₹${Number(profile.available_capital).toLocaleString('en-IN')}`);
+    }
+
+    if (profile.project_cost !== null && profile.project_cost !== undefined && profile.project_cost > 0) {
+      profileLines.push(`🏗️ Project Cost: ₹${Number(profile.project_cost).toLocaleString('en-IN')}`);
+    }
+
+    if (profile.business_goal) {
+      profileLines.push(`🏁 Goal: ${this.formatBusinessGoal(profile.business_goal)}`);
+    }
+
+    const colX = {
+      PROFILE: 40,
+      OPPORTUNITY: 380,
+      DETAILS: 730
+    };
+
+    if (!this.expandedOppReqs) this.expandedOppReqs = {};
+    if (!this.expandedOppBens) this.expandedOppBens = {};
+    if (!this.expandedReqShowAll) this.expandedReqShowAll = {};
+
+    let currentY = 40;
+    const oppGap = 30;
+
+    const oppLayouts = [];
+
+    selectedOpps.forEach(opp => {
+      const oppId = opp.opportunity_id;
+      const isReqExpanded = !!this.expandedOppReqs[oppId];
+      const isBenExpanded = !!this.expandedOppBens[oppId];
+      const isShowAllReqs = !!this.expandedReqShowAll[oppId];
+
+      let oppReqs = [];
+      if (opp.scheme_gaps && opp.scheme_gaps.length > 0) {
+        oppReqs = opp.scheme_gaps.map((g, idx) => ({
+          id: `req_${oppId}_${idx}`,
+          label: g,
+          status: g.includes('Completed') || g.includes('✓') ? '✓ Completed' : (g.includes('Action') || g.includes('!') ? '! Action Needed' : '? Need to Confirm')
+        }));
+      } else if (graphData && graphData.nodes) {
+        oppReqs = graphData.nodes.filter(n => n.type === 'REQUIREMENT' && n.metadata && n.metadata.connected_opportunities && n.metadata.connected_opportunities.includes(oppId)).map(n => ({
+          id: n.id,
+          label: n.label,
+          status: n.status || '? Need to Confirm'
+        }));
+      }
+
+      let supportTypes = opp.support_types || [];
+      if ((!supportTypes || supportTypes.length === 0) && graphData && graphData.nodes) {
+        supportTypes = graphData.nodes.filter(n => n.type === 'SUPPORT' && n.metadata && n.metadata.connected_opportunities && n.metadata.connected_opportunities.includes(oppId)).map(n => n.metadata.support_type || n.label);
+      }
+
+      const visibleReqs = isShowAllReqs ? oppReqs : oppReqs.slice(0, 4);
+      const remainingReqCount = oppReqs.length - visibleReqs.length;
+
+      const oppCardH = 150;
+      const reqPanelH = isReqExpanded ? 50 + (visibleReqs.length * 48) + (remainingReqCount > 0 || isShowAllReqs ? 36 : 0) : 0;
+      const benPanelH = isBenExpanded ? 50 + (supportTypes.length * 45) : 0;
+
+      const clusterH = Math.max(oppCardH, reqPanelH, benPanelH);
+      const oppY = currentY;
+      const reqY = oppY;
+
+      let benX = colX.DETAILS;
+      let benY = oppY;
+      if (isReqExpanded && isBenExpanded) {
+        benX = colX.DETAILS + 290;
+      }
+
+      oppLayouts.push({
+        opp: opp,
+        oppId: oppId,
+        oppY: oppY,
+        reqY: reqY,
+        benX: benX,
+        benY: benY,
+        clusterH: clusterH,
+        isReqExpanded: isReqExpanded,
+        isBenExpanded: isBenExpanded,
+        isShowAllReqs: isShowAllReqs,
+        oppReqs: oppReqs,
+        visibleReqs: visibleReqs,
+        remainingReqCount: remainingReqCount,
+        supportTypes: supportTypes
+      });
+
+      currentY += clusterH + oppGap;
+    });
+
+    const totalCanvasH = Math.max(550, currentY + 40);
+
+    const maxDetailX = oppLayouts.some(l => l.isReqExpanded && l.isBenExpanded) ? colX.DETAILS + 560 : (oppLayouts.some(l => l.isReqExpanded || l.isBenExpanded) ? colX.DETAILS + 290 : colX.OPPORTUNITY + 300);
+    const totalCanvasW = Math.max(1200, maxDetailX + 60);
+
+    const profileY = Math.max(40, (totalCanvasH - 240) / 2);
+
+    const svgPaths = [];
+
+    oppLayouts.forEach(layout => {
+      const x1 = colX.PROFILE + 270;
+      const y1 = profileY + 120;
+      const x2 = colX.OPPORTUNITY;
+      const y2 = layout.oppY + 65;
+
+      const ctrlDist = Math.min(80, Math.abs(x2 - x1) / 2);
+      svgPaths.push(`<path d="M ${x1} ${y1} C ${x1 + ctrlDist} ${y1}, ${x2 - ctrlDist} ${y2}, ${x2} ${y2}" fill="none" stroke="#2563eb" stroke-width="2.5" opacity="0.8" />`);
+
+      if (layout.isReqExpanded) {
+        const rx1 = colX.OPPORTUNITY + 280;
+        const ry1 = layout.oppY + 65;
+        const rx2 = colX.DETAILS;
+        const ry2 = layout.reqY + 40;
+        svgPaths.push(`<path d="M ${rx1} ${ry1} C ${rx1 + 40} ${ry1}, ${rx2 - 40} ${ry2}, ${rx2} ${ry2}" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="5,4" opacity="0.85" />`);
+      }
+
+      if (layout.isBenExpanded) {
+        const bx1 = colX.OPPORTUNITY + 280;
+        const by1 = layout.oppY + 105;
+        const bx2 = layout.benX;
+        const by2 = layout.benY + 40;
+        svgPaths.push(`<path d="M ${bx1} ${by1} C ${bx1 + 40} ${by1}, ${bx2 - 40} ${by2}, ${bx2} ${by2}" fill="none" stroke="#7e22ce" stroke-width="2" stroke-dasharray="3,3" opacity="0.85" />`);
+      }
+    });
+
+    const profileBoxHtml = `
+      <div class="graph-profile-box" data-x="${colX.PROFILE}" data-y="${profileY}" style="left: ${colX.PROFILE}px; top: ${profileY}px;">
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; border-bottom: 1px solid #bae6fd; padding-bottom: 0.5rem;">
+          <span style="font-size: 1.3rem;">👤</span>
+          <h4 style="margin: 0; font-size: 0.95rem; color: var(--primary-navy); font-weight: 800; text-transform: uppercase;">YOUR PROFILE</h4>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.825rem; color: var(--primary-navy); font-weight: 600;">
+          ${profileLines.map(line => `<div>${line}</div>`).join('')}
+        </div>
+      </div>
+    `;
+
+    const oppsHtml = oppLayouts.map(layout => {
+      const opp = layout.opp;
+      const oppId = layout.oppId;
+
+      const st = opp.eligibility_status || opp.status || 'POTENTIALLY_ELIGIBLE';
+      let badgeStyle = 'background: #fffbe6; color: #b45309; border: 1px solid #fde68a;';
+      let badgeText = 'Potential Match';
+
+      if (st === 'ELIGIBLE') {
+        badgeStyle = 'background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0;';
+        badgeText = 'Eligible';
+      } else if (st === 'NEEDS_VERIFICATION') {
+        badgeStyle = 'background: #f3e8ff; color: #7e22ce; border: 1px solid #d8b4fe;';
+        badgeText = 'Needs Verification';
+      }
+
+      const nameObj = window.i18n ? window.i18n.getLocalizedSchemeName(opp) : { official: opp.opportunity_name || oppId, localized: null };
+
+      const cardHtml = `
+        <div class="graph-opp-card" data-x="${colX.OPPORTUNITY}" data-y="${layout.oppY}" style="left: ${colX.OPPORTUNITY}px; top: ${layout.oppY}px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.4rem; margin-bottom: 0.35rem;">
+            <span style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">OPPORTUNITY</span>
+            <span style="font-size: 0.7rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 4px; ${badgeStyle}">${badgeText}</span>
+          </div>
+
+          <h4 onclick="if(!myOpportunities.dragMoved) app.showSchemeDetail('${oppId}', 'dashboard', 'graph')"
+              style="margin: 0 0 0.5rem 0; font-size: 0.95rem; font-weight: 800; color: var(--primary-navy); cursor: pointer; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;"
+              title="${nameObj.official}">
+            🎯 ${nameObj.official}
+          </h4>
+
+          <div style="display: flex; gap: 0.4rem; margin-top: 0.65rem; border-top: 1px solid var(--border-color); padding-top: 0.5rem;">
+            <button class="graph-btn-action ${layout.isReqExpanded ? 'active' : ''}" onclick="if(!myOpportunities.dragMoved) myOpportunities.toggleOppReqs('${oppId}')">
+              📋 Requirements ${layout.isReqExpanded ? '▲' : '▼'}
+            </button>
+            <button class="graph-btn-action ${layout.isBenExpanded ? 'active' : ''}" onclick="if(!myOpportunities.dragMoved) myOpportunities.toggleOppBens('${oppId}')">
+              🎁 Benefits ${layout.isBenExpanded ? '▲' : '▼'}
+            </button>
+          </div>
+        </div>
+      `;
+
+      let reqPanelHtml = '';
+      if (layout.isReqExpanded) {
+        reqPanelHtml = `
+          <div class="graph-expanded-panel" data-x="${colX.DETAILS}" data-y="${layout.reqY}" style="left: ${colX.DETAILS}px; top: ${layout.reqY}px;">
+            <div style="font-size: 0.825rem; font-weight: 800; color: var(--primary-navy); border-bottom: 1px solid var(--border-color); padding-bottom: 0.4rem; display: flex; justify-content: space-between; align-items: center;">
+              <span>📋 Requirements (${layout.oppReqs.length})</span>
+              <button class="close-modal" onclick="myOpportunities.toggleOppReqs('${oppId}')" style="position: static; width: 22px; height: 22px; font-size: 0.8rem;">&times;</button>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.45rem;">
+              ${layout.oppReqs.length > 0 ? layout.visibleReqs.map(r => {
+                const isComp = r.status.includes('Completed') || r.status.includes('✓');
+                const isAct = r.status.includes('Action') || r.status.includes('!');
+                const icon = isComp ? '✓' : (isAct ? '!' : '?');
+                const iconBg = isComp ? '#ecfdf5; color: #047857;' : (isAct ? '#fffbe6; color: #b45309;' : '#eff6ff; color: #1d4ed8;');
+                return `
+                  <div style="display: flex; align-items: flex-start; gap: 0.4rem; font-size: 0.8rem; background: #f8fafc; padding: 0.45rem 0.6rem; border-radius: 6px; border: 1px solid var(--border-color);">
+                    <span style="font-weight: 800; font-size: 0.75rem; padding: 0.05rem 0.3rem; border-radius: 4px; background: ${iconBg}">${icon}</span>
+                    <span style="color: var(--primary-navy); font-weight: 600; line-height: 1.25;">${r.label}</span>
+                  </div>
+                `;
+              }).join('') : '<div style="font-size: 0.8rem; color: var(--text-muted);">Verified details unavailable</div>'}
+              ${layout.remainingReqCount > 0 ? `
+                <button onclick="myOpportunities.toggleReqShowAll('${oppId}')" style="background: none; border: none; color: var(--accent-blue); font-size: 0.775rem; font-weight: 700; cursor: pointer; text-align: left; padding: 0.2rem 0;">
+                  + ${layout.remainingReqCount} more requirement${layout.remainingReqCount > 1 ? 's' : ''}...
+                </button>
+              ` : (layout.isShowAllReqs && layout.oppReqs.length > 4 ? `
+                <button onclick="myOpportunities.toggleReqShowAll('${oppId}')" style="background: none; border: none; color: var(--accent-blue); font-size: 0.775rem; font-weight: 700; cursor: pointer; text-align: left; padding: 0.2rem 0;">
+                  Show less
+                </button>
+              ` : '')}
+            </div>
+          </div>
+        `;
+      }
+
+      let benPanelHtml = '';
+      if (layout.isBenExpanded) {
+        benPanelHtml = `
+          <div class="graph-expanded-panel" data-x="${layout.benX}" data-y="${layout.benY}" style="left: ${layout.benX}px; top: ${layout.benY}px;">
+            <div style="font-size: 0.825rem; font-weight: 800; color: #6b21a8; border-bottom: 1px solid var(--border-color); padding-bottom: 0.4rem; display: flex; justify-content: space-between; align-items: center;">
+              <span>🎁 Verified Benefits / Support</span>
+              <button class="close-modal" onclick="myOpportunities.toggleOppBens('${oppId}')" style="position: static; width: 22px; height: 22px; font-size: 0.8rem;">&times;</button>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.45rem;">
+              ${layout.supportTypes.length > 0 ? layout.supportTypes.map(st => {
+                const label = window.i18n ? window.i18n.getSupportTypeLabel(st) : st;
+                return `
+                  <div style="display: flex; align-items: center; gap: 0.45rem; font-size: 0.8rem; background: #fcf5ff; padding: 0.5rem 0.65rem; border-radius: 6px; border: 1px solid #e9d5ff; color: #6b21a8; font-weight: 700;">
+                    <span>${label}</span>
+                  </div>
+                `;
+              }).join('') : '<div style="font-size: 0.8rem; color: var(--text-muted);">Verified details unavailable</div>'}
+            </div>
+          </div>
+        `;
+      }
+
+      return cardHtml + '\n' + reqPanelHtml + '\n' + benPanelHtml;
+    }).join('\n');
+
+    setTimeout(() => {
+      this.attachCanvasPanListeners();
+      this.fitGraphView();
+    }, 50);
+
+    return `
+      <div class="graph-viewport-card">
+        <!-- Header & Selection Controls -->
+        <div class="graph-header-toolbar">
+          <div>
+            <h3 style="color: var(--primary-navy); margin: 0 0 0.25rem 0; font-size: 1.25rem;">Opportunity Graph</h3>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin: 0;">
+              See how your confirmed profile connects directly to matched opportunities, requirements, and support benefits.
+            </p>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+            <button class="graph-mode-pill ${mode === 'TOP_3' ? 'active' : ''}" onclick="myOpportunities.switchGraphMode('TOP_3')">Top 3 Best Matches</button>
+            <button class="graph-mode-pill ${mode === 'TOP_5' ? 'active' : ''}" onclick="myOpportunities.switchGraphMode('TOP_5')">Top 5</button>
+            <button class="graph-mode-pill ${mode === 'ALL_RELEVANT' ? 'active' : ''}" onclick="myOpportunities.switchGraphMode('ALL_RELEVANT')">All Relevant</button>
+
+            <div style="display: flex; gap: 0.35rem; margin-left: 0.5rem;">
+              <button class="btn-outline" onclick="myOpportunities.zoomGraph(0.15)" style="min-height: 38px; padding: 0.3rem 0.65rem; font-size: 0.85rem;" title="Zoom In">🔍 +</button>
+              <button class="btn-outline" onclick="myOpportunities.zoomGraph(-0.15)" style="min-height: 38px; padding: 0.3rem 0.65rem; font-size: 0.85rem;" title="Zoom Out">🔍 -</button>
+              <button class="btn-outline" onclick="myOpportunities.fitGraphView()" style="min-height: 38px; padding: 0.3rem 0.75rem; font-size: 0.85rem; font-weight: 600; color: var(--accent-blue);" title="Fit View to Content">⤢ Fit View</button>
+              <button class="btn-outline" onclick="myOpportunities.resetGraphView()" style="min-height: 38px; padding: 0.3rem 0.75rem; font-size: 0.85rem;" title="Reset View">↺ Reset</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Canvas Viewport -->
+        <div class="graph-canvas-wrapper" id="graphCanvasWrapper" style="cursor: grab;">
+          <div class="graph-zoom-stage" id="graphZoomStage" style="width: ${totalCanvasW}px; height: ${totalCanvasH}px; transform: translate(${this.graphPanX || 30}px, ${this.graphPanY || 30}px) scale(${this.graphZoom || 1.0});">
+            <svg width="${totalCanvasW}" height="${totalCanvasH}" style="position: absolute; top: 0; left: 0; pointer-events: none;">
+              ${svgPaths.join('\n')}
+            </svg>
+            ${profileBoxHtml}
+            ${oppsHtml}
+          </div>
+        </div>
+
+        <!-- Simplified Legend -->
+        <div class="graph-legend-bar">
+          <div style="display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap;">
+            <span><strong>Node Types:</strong></span>
+            <span>👤 Your Profile</span>
+            <span>🎯 Opportunity</span>
+            <span>📋 Requirements</span>
+            <span>🎁 Benefits / Support</span>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+            <span><strong>Status:</strong></span>
+            <span style="color: #047857; font-weight: 600;">🟢 Eligible</span>
+            <span style="color: #b45309; font-weight: 600;">🟠 Potential Match</span>
+            <span style="color: #7e22ce; font-weight: 600;">🔵 Needs Verification</span>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+            <span><strong>Requirement State:</strong></span>
+            <span style="color: #047857; font-weight: 600;">✓ Completed</span>
+            <span style="color: #b45309; font-weight: 600;">! Action Needed</span>
+            <span style="color: #1d4ed8; font-weight: 600;">? Need to Confirm</span>
+          </div>
+        </div>
+
+        <div style="font-size: 0.8rem; color: var(--text-muted); text-align: right; margin-top: -0.25rem;">
+          Only verified connections from official scheme requirements are displayed. Click any opportunity card for scheme details.
+        </div>
+      </div>
+    `;
+  }
+
+
+  openSchemeDetail(opportunityId) {
+    app.showSchemeDetail(opportunityId, 'dashboard', this.activeTab);
+  }
+
+
+  renderBestMatchesList(recs) {
+    const t = (k) => window.i18n.get(k);
+
+    if (!recs || recs.length === 0) {
+      return `
+        <div style="background: #ffffff; padding: 2.5rem 1.5rem; border-radius: 12px; text-align: center; color: var(--text-muted);">
+          No top matching opportunities currently meet all profile parameters. Review <strong>More Information Needed</strong> schemes to provide missing profile details.
+        </div>
+      `;
+    }
+
+    return `
+      <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+        ${recs.map((r, idx) => {
+          const nameObj = window.i18n.getLocalizedSchemeName(r);
+          const titleContent = nameObj.localized
+            ? `<span>${nameObj.localized}</span> <span style="font-size:0.85rem; color:var(--text-muted); font-weight:500;">(${nameObj.official})</span>`
+            : nameObj.official;
+          const supportLabels = (r.support_types || []).map(s => window.i18n.getSupportTypeLabel(s)).join(', ');
+
+          let badgeHtml = '';
+          if (r.eligibility_status === 'ELIGIBLE') {
+            badgeHtml = `<span class="badge badge-eligible" data-i18n="badge_eligible">${t('badge_eligible')}</span>`;
+          } else {
+            badgeHtml = `<span class="badge badge-potentially" data-i18n="badge_potentially">${t('badge_potentially')}</span>`;
+          }
+
+          const gaps = r.scheme_gaps || r.missing_requirements || [];
+          const displayedGaps = gaps.slice(0, 3);
+          const remainingCount = gaps.length - displayedGaps.length;
+
+          const isExpanded = !!(this.expandedInlineRoadmaps && this.expandedInlineRoadmaps[r.opportunity_id]);
+
+          return `
+            <div class="opp-card ${idx === 0 ? 'best-match' : ''}">
+              <div class="opp-card-header">
+                <div>
+                  <span class="opp-sector-tag">${window.i18n.getSectorLabel(r.primary_sector)}</span>
+                  ${idx === 0 ? '<span style="margin-left: 0.5rem; font-size: 0.75rem; font-weight: 800; color: #FF9933; text-transform: uppercase;">#1 Best Match</span>' : ''}
+                  <h3 class="opp-title" onclick="app.showSchemeDetail('${r.opportunity_id}', 'dashboard', 'recommended')">
+                    ${titleContent}
+                  </h3>
+                </div>
+                ${badgeHtml}
+              </div>
+
+              <p class="opp-benefit">${r.benefit_summary || ''}</p>
+
+              ${(r.why_match || []).length > 0 ? `
+                <div style="background: var(--emerald-bg); padding: 0.75rem; border-radius: 8px; margin-bottom: 1rem;">
+                  <strong style="color: var(--emerald); font-size: 0.85rem;" data-i18n="why_match_title">${t('why_match_title')}</strong>
+                  <ul style="margin-left: 1.25rem; font-size: 0.85rem; color: #065f46;">
+                    ${r.why_match.map(w => `<li>${w}</li>`).join('')}
+                  </ul>
+                </div>
+              ` : ''}
+
+              ${displayedGaps.length > 0 ? `
+                <div class="opp-gaps-summary" style="background: #fffbebf5; border: 1px solid #fde68a; padding: 0.75rem 0.9rem; border-radius: 8px; margin-bottom: 1rem;">
+                  <strong style="color: var(--amber); font-size: 0.85rem;">Your next actions:</strong>
+                  <ul style="margin-left: 1.25rem; font-size: 0.85rem; color: #92400e; margin-top: 0.25rem;">
+                    ${displayedGaps.map(g => `<li>${g}</li>`).join('')}
+                  </ul>
+                  ${remainingCount > 0 ? `<div style="font-size: 0.8rem; color: #b45309; margin-top: 0.25rem; font-weight: 600;">+${remainingCount} more requirement${remainingCount > 1 ? 's' : ''}</div>` : ''}
+                </div>
+              ` : ''}
+
+              <div class="opp-meta" style="margin-top: 1rem; display: flex; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+                <span>${t('lbl_support')}: <strong>${supportLabels}</strong></span>
+                <div style="margin-left: auto; display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                  <button class="btn-outline" onclick="myOpportunities.openSchemeDetail('${r.opportunity_id}')" style="font-size: 0.85rem; padding: 0.4rem 0.85rem;">
+                    View Scheme Details
+                  </button>
+                  <button class="btn-primary" onclick="myOpportunities.toggleInlineRoadmap('${r.opportunity_id}')" style="font-size: 0.85rem; padding: 0.4rem 0.85rem; background: #FF9933;">
+                    ${isExpanded ? 'Hide Roadmap Steps' : 'View Roadmap Steps'}
+                  </button>
+                </div>
+              </div>
+
+              ${isExpanded ? this.buildInlineRoadmapHTML(r, window.app.userProfile || {}) : ''}
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+  }
+
+  renderNeedsInfoList(needsInfoOpps) {
+    if (!needsInfoOpps || needsInfoOpps.length === 0) {
+      return `
+        <div style="background: #ffffff; padding: 2.5rem 1.5rem; border-radius: 12px; text-align: center; color: var(--text-muted);">
+          No schemes currently require additional profile information.
+        </div>
+      `;
+    }
+
+    return `
+      <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+        ${needsInfoOpps.map(r => {
+          const nameObj = window.i18n.getLocalizedSchemeName(r);
+          const titleContent = nameObj.localized
+            ? `<span>${nameObj.localized}</span> <span style="font-size:0.85rem; color:var(--text-muted); font-weight:500;">(${nameObj.official})</span>`
+            : nameObj.official;
+
+          const missingFacts = r.missing_profile_info || [];
+          const isExpanded = !!(this.expandedInlineRoadmaps && this.expandedInlineRoadmaps[r.opportunity_id]);
+
+          return `
+            <div class="opp-card">
+              <div class="opp-card-header">
+                <div>
+                  <span class="opp-sector-tag">${window.i18n.getSectorLabel(r.primary_sector)}</span>
+                  <h3 class="opp-title" onclick="myOpportunities.openSchemeDetail('${r.opportunity_id}')">
+                    ${titleContent}
+                  </h3>
+                </div>
+                <span class="badge" style="background: #fef3c7; color: #b45309; border: 1px solid #fde68a;">More information needed</span>
+              </div>
+
+              <p class="opp-benefit">${r.benefit_summary || ''}</p>
+
+              ${missingFacts.length > 0 ? `
+                <div class="needs-profile-info-box" style="background: #fffbebf5; border: 1px solid #fde68a; padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
+                  <strong style="color: #b45309; font-size: 0.9rem; display: block; margin-bottom: 0.6rem;">We need a little more information to assess this opportunity:</strong>
+                  <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                    ${missingFacts.map(info => {
+                      const lower = String(info).toLowerCase();
+                      if (lower.includes('is_new_unit') || lower.includes('new micro-enterprise status')) {
+                        return `
+                          <div style="display: flex; justify-content: space-between; align-items: center; background: #ffffff; padding: 0.6rem 0.85rem; border-radius: 8px; border: 1px solid #fde68a; flex-wrap: wrap; gap: 0.5rem;">
+                            <span style="font-size: 0.85rem; font-weight: 600; color: var(--primary-navy);">Is this project for a new unit?</span>
+                            <div style="display: flex; gap: 0.5rem;">
+                              <button class="btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;" onclick="myOpportunities.quickAnswerFact('is_new_unit', true)">[Yes]</button>
+                              <button class="btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;" onclick="myOpportunities.quickAnswerFact('is_new_unit', false)">[No]</button>
+                            </div>
+                          </div>
+                        `;
+                      }
+                      if (lower.includes('prior_gov_subsidy') || lower.includes('prior government subsidy')) {
+                        return `
+                          <div style="display: flex; justify-content: space-between; align-items: center; background: #ffffff; padding: 0.6rem 0.85rem; border-radius: 8px; border: 1px solid #fde68a; flex-wrap: wrap; gap: 0.5rem;">
+                            <span style="font-size: 0.85rem; font-weight: 600; color: var(--primary-navy);">Have you already received government subsidy for this unit?</span>
+                            <div style="display: flex; gap: 0.5rem;">
+                              <button class="btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;" onclick="myOpportunities.quickAnswerFact('prior_gov_subsidy', true)">[Yes]</button>
+                              <button class="btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;" onclick="myOpportunities.quickAnswerFact('prior_gov_subsidy', false)">[No]</button>
+                            </div>
+                          </div>
+                        `;
+                      }
+                      if (lower.includes('family_pmegp_availed') || lower.includes('family pmegp beneficiary')) {
+                        return `
+                          <div style="display: flex; justify-content: space-between; align-items: center; background: #ffffff; padding: 0.6rem 0.85rem; border-radius: 8px; border: 1px solid #fde68a; flex-wrap: wrap; gap: 0.5rem;">
+                            <span style="font-size: 0.85rem; font-weight: 600; color: var(--primary-navy);">Have you or your spouse already availed PMEGP?</span>
+                            <div style="display: flex; gap: 0.5rem;">
+                              <button class="btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;" onclick="myOpportunities.quickAnswerFact('family_pmegp_availed', true)">[Yes]</button>
+                              <button class="btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;" onclick="myOpportunities.quickAnswerFact('family_pmegp_availed', false)">[No]</button>
+                            </div>
+                          </div>
+                        `;
+                      }
+                      return `<div style="font-size: 0.85rem; color: #92400e;">📌 ${this.formatMissingProfileFact(info)}</div>`;
+                    }).join('')}
+                  </div>
+                </div>
+              ` : ''}
+
+              <div class="opp-meta" style="justify-content: flex-end; margin-top: 1rem; display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                <button class="btn-outline" onclick="myOpportunities.openSchemeDetail('${r.opportunity_id}')" style="font-size: 0.85rem; padding: 0.4rem 0.85rem;">
+                  View Scheme Details
+                </button>
+                <button class="btn-primary" onclick="myOpportunities.toggleInlineRoadmap('${r.opportunity_id}')" style="font-size: 0.85rem; padding: 0.4rem 0.85rem; background: #FF9933;">
+                  ${isExpanded ? 'Hide Roadmap Steps' : 'View Roadmap Steps'}
+                </button>
+              </div>
+
+              ${isExpanded ? this.buildInlineRoadmapHTML(r, window.app.userProfile || {}) : ''}
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+  }
+
+  quickAnswerFact(field, val) {
+    if (!window.app.userProfile) window.app.userProfile = {};
+    window.app.userProfile[field] = val;
+    if (!window.app.userProfile.extra) window.app.userProfile.extra = {};
+    window.app.userProfile.extra[field] = val;
+    window.app.saveProfileToStorage(window.app.userProfile);
+    this.render();
+  }
+
+  renderNeedsVerificationList(needsVerif) {
+    const t = (k) => window.i18n.get(k);
+
+    if (!needsVerif || needsVerif.length === 0) {
+      return `
+        <div style="background: #ffffff; padding: 2.5rem 1.5rem; border-radius: 12px; text-align: center; color: var(--text-muted);">
+          No schemes currently flagged for verification updates.
+        </div>
+      `;
+    }
+
+    return `
+      <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <div style="background: #f3e8ff; border: 1px solid #d8b4fe; padding: 0.85rem; border-radius: 8px; color: #6b21a8; font-size: 0.875rem;" data-i18n="needs_verification_notice">
+          ${t('needs_verification_notice')}
+        </div>
+
+        ${needsVerif.map(v => {
+          const nameObj = window.i18n.getLocalizedSchemeName(v);
+          const titleContent = nameObj.localized
+            ? `<span>${nameObj.localized}</span> <span style="font-size:0.85rem; color:var(--text-muted); font-weight:500;">(${nameObj.official})</span>`
+            : nameObj.official;
+
+          const isExpanded = !!(this.expandedInlineRoadmaps && this.expandedInlineRoadmaps[v.opportunity_id]);
+
+          return `
+            <div class="opp-card">
+              <div class="opp-card-header">
+                <h3 class="opp-title" onclick="myOpportunities.openSchemeDetail('${v.opportunity_id}')">${titleContent}</h3>
+                <span class="badge badge-verification" data-i18n="badge_needs_verification">${t('badge_needs_verification')}</span>
+              </div>
+              <p style="font-size: 0.875rem; color: var(--text-muted);">${v.lifecycle_warning || 'Scheme guideline period reached verification milestone.'}</p>
+              ${v.official_source_url ? `
+                <div style="margin-top: 0.5rem; font-size: 0.85rem;">
+                  Official Source: <a href="${v.official_source_url}" target="_blank" rel="noopener" style="color: var(--accent-blue); word-break: break-all;">${v.official_source_url} ↗</a>
+                </div>
+              ` : ''}
+              <div class="opp-meta" style="justify-content: flex-end; margin-top: 1rem; display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                <button class="btn-outline" onclick="myOpportunities.openSchemeDetail('${v.opportunity_id}')" style="font-size: 0.85rem; padding: 0.4rem 0.85rem;">
+                  View Scheme Details
+                </button>
+                <button class="btn-primary" onclick="myOpportunities.toggleInlineRoadmap('${v.opportunity_id}')" style="font-size: 0.85rem; padding: 0.4rem 0.85rem; background: #FF9933;">
+                  ${isExpanded ? 'Hide Roadmap Steps' : 'View Roadmap Steps'}
+                </button>
+              </div>
+
+              ${isExpanded ? this.buildInlineRoadmapHTML(v, window.app.userProfile || {}) : ''}
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+  }
+}
+
+window.myOpportunities = new MyOpportunitiesComponent();

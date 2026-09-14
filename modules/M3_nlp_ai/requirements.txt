@@ -1,0 +1,8 @@
+# Core M3 runtime uses only the Python standard library.
+# pytest is needed to run the supplied test suite.
+pytest>=9.0
+
+# Optional voice packages (install only if local microphone/TTS is required):
+# SpeechRecognition>=3.10
+# pyttsx3>=2.90
+# PyAudio may also be required by SpeechRecognition for microphone input.
