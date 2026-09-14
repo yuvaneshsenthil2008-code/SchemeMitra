@@ -260,13 +260,13 @@ class SchemeDetailComponent {
       matchCardHtml = `
         <div style="background: #ffffff; border: 2px solid var(--accent-blue); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.75rem; box-shadow: var(--shadow-md);">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
-            <h3 style="color: var(--primary-navy); margin: 0; font-size: 1.2rem;">Your Personalized Match Evaluation</h3>
+            <h3 style="color: var(--primary-navy); margin: 0; font-size: 1.2rem;">${t('why_match_title')}</h3>
             ${badgeHtml}
           </div>
 
           ${isNeedsInfo ? `
             <div style="background: #fffbebf5; border: 1px solid #fde68a; padding: 0.85rem; border-radius: 8px; margin-bottom: 1rem;">
-              <strong style="color: #b45309; font-size: 0.9rem;">More information needed to evaluate this opportunity:</strong>
+              <strong style="color: #b45309; font-size: 0.9rem;">${t('dash_tab_potentially')}:</strong>
               <ul style="margin-left: 1.25rem; font-size: 0.875rem; color: #92400e; margin-top: 0.35rem;">
                 ${missingFacts.map(fact => `<li>${this.formatMissingProfileFact(fact)}</li>`).join('')}
               </ul>
@@ -287,7 +287,7 @@ class SchemeDetailComponent {
 
           ${gaps.length > 0 ? `
             <div style="background: var(--amber-bg); padding: 0.85rem; border-radius: 8px;">
-              <strong style="color: var(--amber); font-size: 0.875rem;">Action Gaps & Requirements:</strong>
+              <strong style="color: var(--amber); font-size: 0.875rem;" data-i18n="action_gaps_title">${t('dash_action_needed_title')}</strong>
               <ul style="margin-left: 1.25rem; font-size: 0.875rem; color: #92400e; margin-top: 0.25rem;">
                 ${gaps.map(g => `<li>${g}</li>`).join('')}
               </ul>

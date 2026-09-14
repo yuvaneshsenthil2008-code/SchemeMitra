@@ -269,10 +269,16 @@ const NavbarController = {
       this.show();
     });
 
-    // 6. Pointer Click Cleanup (blur mouse-clicked item after action)
+    // 6. Pointer Click Cleanup (blur mouse-clicked item after action, excluding form controls like select/input)
     this.headerEl.addEventListener("click", (e) => {
-      if (this.lastInputMethod === "pointer" && document.activeElement && this.headerEl.contains(document.activeElement)) {
-        document.activeElement.blur();
+      const active = document.activeElement;
+      if (
+        this.lastInputMethod === "pointer" &&
+        active &&
+        this.headerEl.contains(active) &&
+        !active.matches("select, input, textarea, option")
+      ) {
+        active.blur();
       }
     });
 
@@ -333,6 +339,13 @@ class SchemeMitraApp {
       mainLang.addEventListener("change", (e) => {
         window.i18n.setLanguage(e.target.value);
         if (mobileLang) mobileLang.value = e.target.value;
+      });
+    }
+
+    if (mobileLang) {
+      mobileLang.addEventListener("change", (e) => {
+        window.i18n.setLanguage(e.target.value);
+        if (mainLang) mainLang.value = e.target.value;
       });
     }
 

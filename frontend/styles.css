@@ -441,9 +441,12 @@ textarea {
 }
 
 .sectors-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.25rem;
+  width: 100%;
+  margin-inline: auto;
 }
 
 .sector-card {
@@ -461,6 +464,9 @@ textarea {
   cursor: pointer;
   min-height: 140px;
   box-shadow: 0 4px 10px rgba(19, 136, 8, 0.15);
+  flex: 1 1 260px;
+  max-width: 320px;
+  box-sizing: border-box;
 }
 
 .sector-card:hover, .sector-card:active {
@@ -968,7 +974,12 @@ textarea {
   }
 
   .sectors-grid {
-    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .sector-card {
+    flex: 1 1 100%;
+    max-width: 100%;
   }
 
   .btn-primary, .btn-outline {

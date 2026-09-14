@@ -168,6 +168,8 @@ class MyOpportunitiesComponent {
       { type: "BANK_DOCUMENT", title: "Bank Statement / Financial Records", btnLabel: "I Have the Required Bank Document" }
     ];
 
+    const t = (k) => window.i18n ? window.i18n.get(k) : k;
+
     const listHtml = commonTypes.map(item => {
       const isAvail = availableTypes.has(item.type);
       return `
@@ -177,13 +179,13 @@ class MyOpportunitiesComponent {
               ${isAvail ? '✓' : '○'} ${item.title}
             </div>
             <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.15rem;">
-              ${isAvail ? 'Available in your prepared documents' : 'Not marked available yet'}
+              ${isAvail ? t('dash_doc_available') : t('dash_doc_not_available')}
             </div>
           </div>
           <div>
             ${isAvail ? `
               <button class="btn-outline" onclick="myOpportunities.removeArtifact('${item.type}')" style="font-size: 0.78rem; padding: 0.3rem 0.65rem; border-color: #dc2626; color: #dc2626; background: #ffffff;">
-                Remove
+                ${t('dash_btn_remove')}
               </button>
             ` : `
               <button class="btn-primary" onclick="myOpportunities.markArtifactAvailable('${item.type}')" style="font-size: 0.78rem; padding: 0.35rem 0.75rem; background: #2563eb; color: #ffffff; font-weight: 700;">
@@ -202,10 +204,10 @@ class MyOpportunitiesComponent {
           REUSABLE ARTIFACTS
         </div>
         <h3 style="font-size: 1.25rem; color: var(--primary-navy); font-weight: 800; margin-bottom: 0.3rem;">
-          📄 PREPARED DOCUMENTS (${arts.length})
+          📄 ${t('dash_prepared_docs_title')} (${arts.length})
         </h3>
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.4;">
-          Documents and artifacts you possess. When an artifact is available, you can confirm whether it satisfies specific scheme requirements.
+          ${t('dash_prepared_docs_desc')}
         </p>
 
         <div style="overflow-y: auto; flex: 1; padding-right: 0.25rem;">
@@ -916,19 +918,19 @@ class MyOpportunitiesComponent {
           <!-- Clean Dashboard Navigation Tabs -->
           <div style="display: flex; gap: 0.5rem; border-bottom: 2px solid var(--border-color); margin-bottom: 1.75rem; overflow-x: auto; padding-bottom: 2px; -webkit-overflow-scrolling: touch;">
             <button class="tab-btn ${this.activeTab === 'recommended' ? 'active' : ''}" onclick="myOpportunities.switchTab('recommended')">
-              🏆 Best Matches (${bestMatches.length})
+              🏆 ${t('dash_tab_recommended')} (${bestMatches.length})
             </button>
             <button class="tab-btn ${this.activeTab === 'potentially' ? 'active' : ''}" onclick="myOpportunities.switchTab('potentially')">
-              ⚠️ More Information Needed (${needsInfoOpps.length})
+              ⚠️ ${t('dash_tab_potentially')} (${needsInfoOpps.length})
             </button>
             <button class="tab-btn ${this.activeTab === 'verification' ? 'active' : ''}" onclick="myOpportunities.switchTab('verification')">
-              📋 Needs Verification (${needsVerif.length})
+              📋 ${t('dash_tab_verification')} (${needsVerif.length})
             </button>
             <button class="tab-btn ${this.activeTab === 'goal_pathway' ? 'active' : ''}" onclick="myOpportunities.switchTab('goal_pathway')">
-              🎯 Goal Pathway
+              🎯 ${t('dash_tab_goal_path')}
             </button>
             <button class="tab-btn ${this.activeTab === 'graph' ? 'active' : ''}" onclick="myOpportunities.switchTab('graph')">
-              🌐 ${t('tab_roadmap')}
+              🌐 ${t('dash_tab_graph')}
             </button>
           </div>
 

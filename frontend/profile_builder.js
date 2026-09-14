@@ -290,14 +290,14 @@ class ProfileBuilderComponent {
       if (clarification) {
         const readiness = window.profileForm.calculateReadiness(window.profileForm.currentProfile);
         const needsEducation = parsed.education_field && !parsed.education;
-        let noticeText = "";
+        const t = (k) => window.i18n ? window.i18n.get(k) : k;
         if (needsEducation) {
-          noticeText = "We understood your field of study, but not the qualification level. Please confirm your qualification level (e.g. B.E./B.Tech, Diploma, 12th Pass).";
+          noticeText = t('status_please_confirm') + ": " + (window.i18n.currentLang === 'ta' ? "உங்கள் கல்வித் தகுதியை உறுதிப்படுத்தவும் (Graduate, Diploma, 12th Pass)." : "Please confirm your qualification level (e.g. Degree, Diploma, 12th Pass).");
         } else if (!readiness.isComplete) {
           const missingNames = readiness.coreFields.filter(f => !f.valid).map(f => f.label).join(", ");
-          noticeText = `Complete the required fields (${missingNames}) to view personalized opportunities.`;
+          noticeText = t('profile_notice_incomplete');
         } else {
-          noticeText = "✓ Profile details populated! Core profile is 100% complete.";
+          noticeText = t('profile_notice_complete');
         }
         clarification.textContent = noticeText;
         clarification.style.display = "block";
