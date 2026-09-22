@@ -1,4 +1,18 @@
+# Environment
 .env
+.venv/
+venv/
+
+# Python
 __pycache__/
 *.pyc
 .pytest_cache/
+
+# Local/runtime data
+*.db
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
