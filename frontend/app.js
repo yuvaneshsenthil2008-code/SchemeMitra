@@ -1,6 +1,11 @@
-/**
- * SchemeMitra — Core Application Controller & State Manager (Mobile-Responsive & Fully Localized)
- */
+window.API_BASE = (typeof window !== "undefined" && (window.location.protocol === "file:" || (window.location.port && window.location.port !== "8000")))
+  ? "http://127.0.0.1:8000"
+  : "";
+window.getApiUrl = function(path) {
+  if (!path) return window.API_BASE;
+  if (path.startsWith("http://") || path.startsWith("https://")) return path;
+  return window.API_BASE + (path.startsWith("/") ? path : "/" + path);
+};
 
 const SUPPORT_FAMILY_MAP = Object.freeze({
   LOAN_CREDIT: ["CREDIT", "LOAN", "CREDIT_GUARANTEE"],
@@ -368,11 +373,49 @@ class SchemeMitraApp {
     NavbarController.initialize();
   }
 
+  normalizeProfileDefaults(profile = {}) {
+    const normalized = { ...(profile || {}) };
+    if (!normalized.selected_goal) {
+      normalized.selected_goal = normalized.business_goal || "GENERAL_READINESS";
+    }
+    if (normalized.disability_status === undefined) {
+      normalized.disability_status = null;
+    }
+    // Keep the legacy business_goal field synchronized for older pathway/NLP consumers.
+    if (!normalized.business_goal && normalized.selected_goal && normalized.selected_goal !== "GENERAL_READINESS") {
+      normalized.business_goal = normalized.selected_goal;
+    }
+    return normalized;
+  }
+
+  formatEligibleGenders(values, opportunity = null) {
+    if (opportunity && opportunity.gender_eligibility_display) return opportunity.gender_eligibility_display;
+    const list = Array.isArray(values) ? values.filter(Boolean) : [];
+    const all = ["Male", "Female", "Transgender"];
+    if (all.every(v => list.includes(v))) return window.i18n.get("lbl_all_genders");
+    return list.length ? list.join(" / ") : window.i18n.get("lbl_all_genders");
+  }
+
+  formatEligibleCategories(values, opportunity = null) {
+    if (opportunity && opportunity.social_category_eligibility_display) return opportunity.social_category_eligibility_display;
+    const list = Array.isArray(values) ? values.filter(Boolean) : [];
+    const all = ["General", "OBC", "SC", "ST", "Minority"];
+    if (all.every(v => list.includes(v))) return window.i18n.get("lbl_all_social_categories");
+    return list.length ? list.join(" / ") : window.i18n.get("lbl_all_social_categories");
+  }
+
+  formatDisabilityEligibility(value) {
+    return String(value || "ANY").toUpperCase() === "PERSON_WITH_DISABILITY"
+      ? window.i18n.get("lbl_persons_with_disabilities")
+      : window.i18n.get("lbl_any_disability_status");
+  }
+
   loadProfileFromStorage() {
     const saved = localStorage.getItem("oppo_profile");
     if (saved) {
       try {
-        this.userProfile = JSON.parse(saved);
+        this.userProfile = this.normalizeProfileDefaults(JSON.parse(saved));
+        localStorage.setItem("oppo_profile", JSON.stringify(this.userProfile));
       } catch (e) {
         this.userProfile = null;
       }
@@ -380,8 +423,8 @@ class SchemeMitraApp {
   }
 
   saveProfileToStorage(profile) {
-    this.userProfile = profile;
-    localStorage.setItem("oppo_profile", JSON.stringify(profile));
+    this.userProfile = this.normalizeProfileDefaults(profile);
+    localStorage.setItem("oppo_profile", JSON.stringify(this.userProfile));
     this.updateHeaderState();
 
     // Auto-redirect to target scheme page if user came from a scheme page Check Eligibility click
@@ -467,18 +510,18 @@ class SchemeMitraApp {
 
     if (oldClientId && oldClientId.trim()) {
       try {
-        const res = await fetch("/api/user/reset", {
+        const res = await fetch(window.getApiUrl("/api/user/reset"), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ client_id: oldClientId.trim() })
         });
         if (!res.ok) {
-          alert("Could not reset your SchemeMitra data. Please try again.");
+          alert(window.i18n ? window.i18n.get("alert_reset_error") : "Could not reset your SchemeMitra data. Please try again.");
           return;
         }
       } catch (err) {
         console.error("Server reset network error:", err);
-        alert("Could not reset your SchemeMitra data. Please try again.");
+        alert(window.i18n ? window.i18n.get("alert_reset_error") : "Could not reset your SchemeMitra data. Please try again.");
         return;
       }
     }
@@ -502,30 +545,30 @@ class SchemeMitraApp {
     this.updateHeaderState();
     this.closeResetModal();
     this.showPage("profile");
-    alert("SchemeMitra has been reset. You can start with a new profile.");
+    alert(window.i18n ? window.i18n.get("alert_reset_success") : "SchemeMitra has been reset. You can start with a new profile.");
   }
 
   async fetchHealthStats() {
-    const res = await fetch("/api/health");
+    const res = await fetch(window.getApiUrl("/api/health"));
     if (!res.ok) throw new Error("Health check failed");
     this.stats = await res.json();
     console.log("SchemeMitra Pipeline Version:", this.stats.pipeline_version || "candidate-pipeline-v2");
     
     // Dynamic dataset stats update — zero hardcoding
-    document.getElementById("statSchemes").textContent = this.stats.catalogue_count || 100;
-    document.getElementById("statRequirements").textContent = this.stats.requirements_count || 371;
-    document.getElementById("statRelationships").textContent = this.stats.relationships_count || 522;
+    document.getElementById("statSchemes").textContent = this.stats.catalogue_count || 102;
+    document.getElementById("statRequirements").textContent = this.stats.requirements_count || 379;
+    document.getElementById("statRelationships").textContent = this.stats.relationships_count || 534;
     document.getElementById("statSectors").textContent = this.stats.sectors_count || 10;
   }
 
   async fetchOpportunities(params = {}) {
-    let url = "/api/opportunities?limit=100";
+    let url = "/api/opportunities?limit=200";
     if (params.sector) url += `&sector=${encodeURIComponent(params.sector)}`;
     if (params.search) url += `&search=${encodeURIComponent(params.search)}`;
     if (params.support_type) url += `&support_type=${encodeURIComponent(params.support_type)}`;
     if (params.scope) url += `&scope=${encodeURIComponent(params.scope)}`;
 
-    const res = await fetch(url);
+    const res = await fetch(window.getApiUrl(url));
     if (!res.ok) throw new Error("Failed to fetch opportunities");
     const data = await res.json();
     this.opportunities = data.items || [];
@@ -586,7 +629,7 @@ class SchemeMitraApp {
     if (items.length === 0) {
       container.innerHTML = `
         <div style="text-align: center; padding: 3rem; background: #ffffff; border-radius: 12px; color: var(--text-muted);">
-          No matching opportunities found for the selected criteria.
+          ${window.i18n ? window.i18n.get("dash_no_matches_found") : "No matching opportunities found for the selected criteria."}
         </div>
       `;
       return;
@@ -623,9 +666,14 @@ class SchemeMitraApp {
             </span>
           </div>
           <p class="opp-benefit">${o.benefit_summary || o.eligibility_summary || ''}</p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.45rem 1rem; margin:0.65rem 0 0.75rem; font-size:0.78rem; color:var(--text-muted);">
+            <span>${window.i18n.get('lbl_gender')}: <strong style="color:var(--text-main);">${this.formatEligibleGenders(o.eligible_genders, o)}</strong></span>
+            <span>${window.i18n.get('lbl_social_category')}: <strong style="color:var(--text-main);">${this.formatEligibleCategories(o.eligible_social_categories, o)}</strong></span>
+            ${String(o.disability_eligibility || 'ANY').toUpperCase() === 'PERSON_WITH_DISABILITY' ? `<span>${window.i18n.get('lbl_disability_eligibility')}: <strong style="color:var(--text-main);">${this.formatDisabilityEligibility(o.disability_eligibility)}</strong></span>` : ''}
+          </div>
           <div class="opp-meta">
-            <span>${window.i18n.get('lbl_scope')}: <strong>${scopeLabel || 'Central'}</strong></span>
-            <span>${window.i18n.get('lbl_support')}: <strong>${supportLabels || 'Financial'}</strong></span>
+            <span>${window.i18n.get('lbl_scope')}: <strong>${scopeLabel || window.i18n.get('scope_central')}</strong></span>
+            <span>${window.i18n.get('lbl_support')}: <strong>${supportLabels || window.i18n.get('support_family_loan_credit')}</strong></span>
             <a href="#" onclick="app.showSchemeDetail('${o.opportunity_id}', 'explore'); return false;" style="margin-left: auto; color: var(--accent-blue); font-weight: 600; text-decoration: none; padding: 0.4rem 0;">${window.i18n.get('btn_view_details')}</a>
           </div>
         </div>

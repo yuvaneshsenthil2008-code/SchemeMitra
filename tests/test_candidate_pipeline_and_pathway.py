@@ -37,7 +37,7 @@ def canonical_profile():
 # 1. Food Processing canonical profile
 def test_canonical_food_processing_profile(opps, canonical_profile):
     res = filter_candidate_set(opps, canonical_profile)
-    assert len(opps) == 100
+    assert len(opps) == 102
     assert "candidate_set" in res
     assert "relevant" in res
     assert "relevant_needs_info" in res
@@ -89,7 +89,7 @@ def test_known_general_category_profile(opps):
     res = filter_candidate_set(opps, profile)
     # Schemes requiring SC (like NSFDC OPP038) should be in filtered_out
     filtered_reasons = [item.get("reason", "") for item in res["filtered_out"]]
-    sc_mismatches = [r for r in filtered_reasons if "category: Scheduled Caste" in r or "category: Scheduled Tribe" in r]
+    sc_mismatches = [r for r in filtered_reasons if "category: SC" in r or "category: ST" in r or "category: Scheduled Caste" in r or "category: Scheduled Tribe" in r]
     assert len(sc_mismatches) > 0
 
 # 5. SHG unknown / true / false

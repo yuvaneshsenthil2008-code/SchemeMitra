@@ -19,6 +19,8 @@ def build_why_match(opportunity: Opportunity, match: dict) -> dict:
         reasons.append({"type": "INFERRED_NEED", "text": "Offers support related to needs inferred from your profile conversation.", "support_types": match["inferred_need_matches"]})
     if match.get("sector_match"):
         reasons.append({"type": "SECTOR", "text": "The opportunity sector aligns with the sector in your profile."})
+    for text in match.get("demographic_matches") or []:
+        reasons.append({"type": "DEMOGRAPHIC_PROFILE_MATCH", "text": text})
     return {
         "reasons": reasons,
         "missing_profile_fields": opportunity.missing_profile_fields,

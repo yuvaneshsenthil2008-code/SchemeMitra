@@ -7,15 +7,18 @@ class EntrepreneurProfile:
     age: Optional[int] = None
     gender: Optional[str] = None
     category: Optional[str] = None
+    disability_status: Optional[str] = None
     state: Optional[str] = None
     district: Optional[str] = None
     annual_income: Optional[float] = None
     project_cost: Optional[float] = None
     education: Optional[str] = None
+    education_course: Optional[str] = None
     education_field: Optional[str] = None
     sector: Optional[str] = None
     business_stage: Optional[str] = None
     business_goal: Optional[str] = None
+    selected_goal: Optional[str] = "GENERAL_READINESS"
     target_group: Optional[str] = None
     target_entity: Optional[str] = None
     entity_type: Optional[str] = None
@@ -47,6 +50,10 @@ class EntrepreneurProfile:
         for src, dst in aliases.items():
             if dst not in d and src in d:
                 d[dst] = d[src]
+        if not d.get("selected_goal"):
+            d["selected_goal"] = d.get("business_goal") or "GENERAL_READINESS"
+        if not d.get("business_goal") and d.get("selected_goal") not in (None, "", "GENERAL_READINESS"):
+            d["business_goal"] = d.get("selected_goal")
         known = {f.name for f in fields(cls) if f.name != "extra"}
         kwargs = {k:v for k,v in d.items() if k in known}
         extra_combined = dict(d.get("extra") or {}) if isinstance(d.get("extra"), dict) else {}

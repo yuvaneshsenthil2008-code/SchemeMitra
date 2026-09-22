@@ -31,7 +31,7 @@ class MoneyParser:
 
     AMOUNT_RE = re.compile(
         r"(?<![\w.])(?:₹|rs\.?|inr|रु\.?|రూ\.?|ರೂ\.?|৳)?\s*"
-        r"([0-9][0-9,]*(?:\.[0-9]+)?)\s*"
+        r"([0-9][0-9,]*(?:\.[0-9]+)?|one|two|three|four|five|six|seven|eight|nine|ten|ஆறு|இரண்டு|மூன்று|ஐந்து|ஏழு|எட்டு|ஒன்பது|பத்து|दो|तीन|चार|पांच|छह|सात|आठ|नौ|दस)\s*"
         r"(k|thousand|thousands|l|lac|lacs|lakh|lakhs|cr|crore|crores)?"
         r"(?:\s*/-)?(?![a-z])",
         re.IGNORECASE,
@@ -67,10 +67,19 @@ class MoneyParser:
         if not allow_bare and not had_currency and not has_unit:
             return None
 
-        try:
-            number = float(raw_number.replace(",", ""))
-        except ValueError:
-            return None
+        word_num_map = {
+            "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10,
+            "ஆறு": 6, "இரண்டு": 2, "மூன்று": 3, "ஐந்து": 5, "ஏழு": 7, "எட்டு": 8, "ஒன்பது": 9, "பத்து": 10,
+            "दो": 2, "तीन": 3, "चार": 4, "पांच": 5, "छह": 6, "सात": 7, "आठ": 8, "नौ": 9, "दस": 10,
+        }
+        raw_key = raw_number.strip().lower()
+        if raw_key in word_num_map:
+            number = float(word_num_map[raw_key])
+        else:
+            try:
+                number = float(raw_number.replace(",", ""))
+            except ValueError:
+                return None
         if number < 0:
             return None
 

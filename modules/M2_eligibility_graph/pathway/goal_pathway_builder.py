@@ -16,9 +16,11 @@ from ..graph.graph_engine import OpportunityGraph
 from .requirement_presentation import format_requirement_presentation
 
 GOAL_MAP = {
+    "GENERAL_READINESS": "General Business Readiness",
     "START_BUSINESS": "Start a new business",
     "ESTABLISH_ENTERPRISE": "Establish a new micro-enterprise",
     "EXPAND_BUSINESS": "Expand existing business unit",
+    "GROW_BUSINESS": "Expand existing business unit",
     "UPGRADE_UNIT": "Upgrade micro enterprise unit",
     "TECH_INNOVATION": "Technology innovation & commercialization",
     "EXPORT_DEVELOPMENT": "Export development & market expansion",
@@ -97,12 +99,13 @@ class GoalPathwayBuilder:
             ep = profile
 
         if business_goal:
-            ep.business_goal = business_goal
+            ep.selected_goal = business_goal
+            ep.business_goal = None if business_goal == "GENERAL_READINESS" else business_goal
 
         raw_profile_dict = ep.to_dict() if hasattr(ep, "to_dict") else {}
 
         # 1. Goal Resolution & Clarification Check
-        raw_goal = ep.business_goal or (raw_profile_dict.get("extra") or {}).get("business_goal")
+        raw_goal = ep.selected_goal or ep.business_goal or (raw_profile_dict.get("extra") or {}).get("selected_goal") or (raw_profile_dict.get("extra") or {}).get("business_goal") or "GENERAL_READINESS"
         goal_key, goal_label = format_business_goal_label(raw_goal)
 
         if goal_key == "NEEDS_CLARIFICATION" and not force_general:
@@ -330,7 +333,13 @@ class GoalPathwayBuilder:
                 "business_stage": ep.business_stage or "Idea",
                 "sector": ep.sector or "Not specified",
                 "available_capital": ep.available_capital,
-                "known_facts_count": sum(v not in (None, "", [], {}) for k, v in ep.__dict__.items() if k != "extra")
+                "disability_status": ep.disability_status,
+                "selected_goal": ep.selected_goal or "GENERAL_READINESS",
+                "known_facts_count": sum(
+                    v not in (None, "", [], {})
+                    for k, v in ep.__dict__.items()
+                    if k not in {"extra", "selected_goal"} or (k == "selected_goal" and v not in (None, "", "GENERAL_READINESS"))
+                )
             },
             "summary": {
                 "total_steps": total_section_steps,

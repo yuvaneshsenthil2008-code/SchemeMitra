@@ -30,9 +30,9 @@ CANONICAL_SECTORS = [
 
 def test_catalogue_and_primary_sector_integrity():
     master = get_m1_opportunity_master()
-    assert len(master) == 100
+    assert len(master) == 102
     counts = {sector: sum(o["primary_sector"] == sector for o in master) for sector in CANONICAL_SECTORS}
-    assert counts == {sector: 10 for sector in CANONICAL_SECTORS}
+    assert counts == {**{sector: 10 for sector in CANONICAL_SECTORS}, "Finance & Credit": 11, "Social Empowerment & Inclusive Entrepreneurship": 11}
 
 
 def test_support_family_mapping_covers_all_current_support_types_and_allows_overlap():
@@ -63,15 +63,15 @@ def test_scope_normalization_counts_cover_catalogue():
     master = get_m1_opportunity_master()
     groups = [normalize_scope_group(o.get("scope")) for o in master]
     assert None not in groups
-    assert groups.count("CENTRAL") == 97
+    assert groups.count("CENTRAL") == 99
     assert groups.count("STATE") == 3
-    assert len(groups) == 100
+    assert len(groups) == 102
 
-    central = client.get("/api/opportunities", params={"scope": "CENTRAL", "limit": 100}).json()
-    state = client.get("/api/opportunities", params={"scope": "STATE", "limit": 100}).json()
-    assert central["total"] == 97
+    central = client.get("/api/opportunities", params={"scope": "CENTRAL", "limit": 200}).json()
+    state = client.get("/api/opportunities", params={"scope": "STATE", "limit": 200}).json()
+    assert central["total"] == 99
     assert state["total"] == 3
-    assert central["total"] + state["total"] == 100
+    assert central["total"] + state["total"] == 102
 
 
 def test_sector_intent_aliases_resolve_to_canonical_sectors():
@@ -92,7 +92,8 @@ def test_sector_intent_aliases_resolve_to_canonical_sectors():
         response = client.get("/api/opportunities", params={"search": query, "limit": 100})
         assert response.status_code == 200
         data = response.json()
-        assert data["total"] == 10
+        expected_count = 11 if expected in {"Finance & Credit", "Social Empowerment & Inclusive Entrepreneurship"} else 10
+        assert data["total"] == expected_count
         assert {o["primary_sector"] for o in data["items"]} == {expected}
 
 

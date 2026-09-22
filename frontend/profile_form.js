@@ -9,7 +9,14 @@ class ProfileFormComponent {
   }
 
   render(container, initialProfile = {}, onSaveCallback) {
-    this.currentProfile = { ...initialProfile };
+    const incoming = { ...(initialProfile || {}) };
+    if (!incoming.selected_goal) {
+      incoming.selected_goal = incoming.business_goal || "GENERAL_READINESS";
+    }
+    if (incoming.disability_status === undefined) {
+      incoming.disability_status = null;
+    }
+    this.currentProfile = incoming;
     this.onSaveCallback = onSaveCallback;
     this.updateForm(container);
   }
@@ -96,9 +103,9 @@ class ProfileFormComponent {
     }
 
     const allFieldKeys = [
-      "age", "gender", "state", "district", "category",
+      "age", "gender", "state", "district", "category", "disability_status",
       "annual_income", "available_capital", "project_cost",
-      "education", "education_field", "sector", "business_stage"
+      "education", "education_course", "education_field", "sector", "business_stage", "selected_goal"
     ];
     allFieldKeys.forEach(fieldKey => {
       const badgeEl = document.getElementById(`badge_${fieldKey}`);
@@ -239,7 +246,7 @@ class ProfileFormComponent {
               <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">${t('status_optional')}</div>
             </div>
 
-            <div>
+            <div style="margin-bottom: 1rem;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
                 <label style="font-size: 0.85rem; font-weight: 700; color: var(--primary-navy);">${t('lbl_category')}</label>
                 <span id="badge_category">${this.getStatusBadge('category', p)}</span>
@@ -254,6 +261,20 @@ class ProfileFormComponent {
               </select>
               <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">${t('status_needed_some')}</div>
             </div>
+
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
+                <label style="font-size: 0.85rem; font-weight: 700; color: var(--primary-navy);">${t('lbl_disability')}</label>
+                <span id="badge_disability_status">${this.getStatusBadge('disability_status', p)}</span>
+              </div>
+              <select id="inpDisabilityStatus" onchange="window.profileForm.handleInput('disability_status', this.value || null)" style="width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem;">
+                <option value="">${t('select_disability')}</option>
+                <option value="NONE" ${p.disability_status === 'NONE' ? 'selected' : ''}>${t('disability_none')}</option>
+                <option value="PERSON_WITH_DISABILITY" ${p.disability_status === 'PERSON_WITH_DISABILITY' ? 'selected' : ''}>${t('disability_yes')}</option>
+                <option value="PREFER_NOT_TO_SAY" ${p.disability_status === 'PREFER_NOT_TO_SAY' ? 'selected' : ''}>${t('disability_prefer_not')}</option>
+              </select>
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">${t('status_optional')}</div>
+            </div>
           </div>
 
           <!-- Section 2: FINANCIAL INFORMATION -->
@@ -267,7 +288,7 @@ class ProfileFormComponent {
                 <label style="font-size: 0.85rem; font-weight: 700; color: var(--primary-navy);">${t('lbl_income')}</label>
                 <span id="badge_annual_income">${this.getStatusBadge('annual_income', p)}</span>
               </div>
-              <input type="number" id="inpIncome" min="0" value="${p.annual_income !== null && p.annual_income !== undefined ? p.annual_income : ''}" placeholder="Enter annual income" 
+              <input type="number" id="inpIncome" min="0" value="${p.annual_income !== null && p.annual_income !== undefined ? p.annual_income : ''}" placeholder="${t('ph_income')}" 
                      oninput="window.profileForm.handleInput('annual_income', this.value ? parseFloat(this.value) : null)"
                      style="width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem;">
               <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">${t('status_optional')}</div>
@@ -278,7 +299,7 @@ class ProfileFormComponent {
                 <label style="font-size: 0.85rem; font-weight: 700; color: var(--primary-navy);">${t('lbl_capital')}</label>
                 <span id="badge_available_capital">${this.getStatusBadge('available_capital', p)}</span>
               </div>
-              <input type="number" id="inpCapital" min="0" value="${p.available_capital !== null && p.available_capital !== undefined ? p.available_capital : ''}" placeholder="Enter available capital" 
+              <input type="number" id="inpCapital" min="0" value="${p.available_capital !== null && p.available_capital !== undefined ? p.available_capital : ''}" placeholder="${t('ph_capital')}" 
                      oninput="window.profileForm.handleInput('available_capital', this.value ? parseFloat(this.value) : null)"
                      style="width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem;">
               <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">${t('status_optional')}</div>
@@ -289,7 +310,7 @@ class ProfileFormComponent {
                 <label style="font-size: 0.85rem; font-weight: 700; color: var(--primary-navy);">${t('lbl_project_cost')}</label>
                 <span id="badge_project_cost">${this.getStatusBadge('project_cost', p)}</span>
               </div>
-              <input type="number" id="inpProjectCost" min="0" value="${p.project_cost !== null && p.project_cost !== undefined ? p.project_cost : ''}" placeholder="Enter estimated project cost" 
+              <input type="number" id="inpProjectCost" min="0" value="${p.project_cost !== null && p.project_cost !== undefined ? p.project_cost : ''}" placeholder="${t('ph_project_cost')}" 
                      oninput="window.profileForm.handleInput('project_cost', this.value ? parseFloat(this.value) : null)"
                      style="width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem;">
               <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">${t('status_optional')}</div>
@@ -308,15 +329,26 @@ class ProfileFormComponent {
                 <span id="badge_education">${this.getStatusBadge('education', p)}</span>
               </div>
               <select id="inpEducation" onchange="window.profileForm.handleInput('education', this.value || null)" style="width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem;">
-                <option value="">${t('select_stage')} ▼</option>
-                <option value="Degree" ${p.education === 'Degree' ? 'selected' : ''}>Degree (Graduate)</option>
-                <option value="Postgraduate" ${p.education === 'Postgraduate' ? 'selected' : ''}>Postgraduate (Masters)</option>
-                <option value="Diploma" ${p.education === 'Diploma' ? 'selected' : ''}>Diploma / Polytechnic</option>
+                <option value="">${t('select_qualification')} ▼</option>
+                <option value="Degree" ${p.education === 'Degree' ? 'selected' : ''}>${t('qualification_degree')}</option>
+                <option value="Postgraduate" ${p.education === 'Postgraduate' ? 'selected' : ''}>${t('qualification_postgraduate')}</option>
+                <option value="Diploma" ${p.education === 'Diploma' ? 'selected' : ''}>${t('qualification_diploma')}</option>
                 <option value="ITI" ${p.education === 'ITI' ? 'selected' : ''}>ITI</option>
-                <option value="12th Pass" ${p.education === '12th Pass' ? 'selected' : ''}>12th Pass</option>
-                <option value="10th Pass" ${p.education === '10th Pass' ? 'selected' : ''}>10th Pass</option>
-                <option value="8th Pass" ${p.education === '8th Pass' ? 'selected' : ''}>8th Pass</option>
+                <option value="12th Pass" ${p.education === '12th Pass' ? 'selected' : ''}>${t('qualification_12th')}</option>
+                <option value="10th Pass" ${p.education === '10th Pass' ? 'selected' : ''}>${t('qualification_10th')}</option>
+                <option value="8th Pass" ${p.education === '8th Pass' ? 'selected' : ''}>${t('qualification_8th')}</option>
               </select>
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">${t('status_optional')}</div>
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
+                <label style="font-size: 0.85rem; font-weight: 700; color: var(--primary-navy);">${t('lbl_education_course')}</label>
+                <span id="badge_education_course">${this.getStatusBadge('education_course', p)}</span>
+              </div>
+              <input type="text" id="inpEducationCourse" value="${p.education_course || ''}" placeholder="${t('ph_education_course')}"
+                     oninput="window.profileForm.handleInput('education_course', this.value || null)"
+                     style="width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem;">
               <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">${t('status_optional')}</div>
             </div>
 
@@ -325,7 +357,7 @@ class ProfileFormComponent {
                 <label style="font-size: 0.85rem; font-weight: 700; color: var(--primary-navy);">${t('lbl_education_field')}</label>
                 <span id="badge_education_field">${this.getStatusBadge('education_field', p)}</span>
               </div>
-              <input type="text" id="inpEducationField" value="${p.education_field || ''}" placeholder="e.g. Computer Science, Mechanical" 
+              <input type="text" id="inpEducationField" value="${p.education_field || ''}" placeholder="${t('ph_education_field')}" 
                      oninput="window.profileForm.handleInput('education_field', this.value || null)"
                      style="width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem;">
               <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">${t('status_optional')}</div>
@@ -343,7 +375,7 @@ class ProfileFormComponent {
               <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">${t('status_required')}</div>
             </div>
 
-            <div>
+            <div style="margin-bottom: 1rem;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
                 <label style="font-size: 0.85rem; font-weight: 700; color: var(--primary-navy);">${t('lbl_business_stage')} *</label>
                 <span id="badge_business_stage">${this.getStatusBadge('business_stage', p)}</span>
@@ -355,6 +387,24 @@ class ProfileFormComponent {
                 <option value="Existing" ${(p.business_stage === 'Existing' || p.business_type === 'Existing') ? 'selected' : ''}>${t('stage_existing')}</option>
               </select>
               <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">${t('status_required')}</div>
+            </div>
+
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
+                <label style="font-size: 0.85rem; font-weight: 700; color: var(--primary-navy);">${t('lbl_selected_goal')}</label>
+                <span id="badge_selected_goal">${this.getStatusBadge('selected_goal', p)}</span>
+              </div>
+              <select id="inpSelectedGoal" onchange="window.profileForm.handleInput('selected_goal', this.value || 'GENERAL_READINESS')" style="width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem;">
+                <option value="GENERAL_READINESS" ${(p.selected_goal || 'GENERAL_READINESS') === 'GENERAL_READINESS' ? 'selected' : ''}>${t('goal_general_readiness')}</option>
+                <option value="START_BUSINESS" ${p.selected_goal === 'START_BUSINESS' ? 'selected' : ''}>${t('goal_start_business')}</option>
+                <option value="ESTABLISH_ENTERPRISE" ${p.selected_goal === 'ESTABLISH_ENTERPRISE' ? 'selected' : ''}>${t('goal_establish_enterprise')}</option>
+                <option value="EXPAND_BUSINESS" ${(p.selected_goal === 'EXPAND_BUSINESS' || p.selected_goal === 'GROW_BUSINESS') ? 'selected' : ''}>${t('goal_expand_business')}</option>
+                <option value="WORKING_CAPITAL" ${p.selected_goal === 'WORKING_CAPITAL' ? 'selected' : ''}>${t('goal_working_capital')}</option>
+                <option value="UPGRADE_UNIT" ${p.selected_goal === 'UPGRADE_UNIT' ? 'selected' : ''}>${t('goal_upgrade_unit')}</option>
+                <option value="TECH_INNOVATION" ${p.selected_goal === 'TECH_INNOVATION' ? 'selected' : ''}>${t('goal_tech_innovation')}</option>
+                <option value="EXPORT_DEVELOPMENT" ${p.selected_goal === 'EXPORT_DEVELOPMENT' ? 'selected' : ''}>${t('goal_export_development')}</option>
+              </select>
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">${t('goal_default_note')}</div>
             </div>
           </div>
 
@@ -388,6 +438,12 @@ class ProfileFormComponent {
       this.currentProfile.business_type = value;
       this.currentProfile.new_business = (value === "Idea" || value === "Startup");
     }
+    if (key === "selected_goal") {
+      const selected = value || "GENERAL_READINESS";
+      this.currentProfile.selected_goal = selected;
+      this.currentProfile._selectedGoalAutoDerived = false;
+      this.currentProfile.business_goal = selected === "GENERAL_READINESS" ? null : selected;
+    }
 
     // Selective DOM mutation: update dependent readiness card, field badges, and submit button
     // WITHOUT re-rendering the complete form container (which destroys focused input elements)!
@@ -396,14 +452,15 @@ class ProfileFormComponent {
 
   handleSubmit() {
     const readiness = this.calculateReadiness(this.currentProfile);
+    const t = (k) => window.i18n ? window.i18n.get(k) : k;
     if (!readiness.isComplete) {
-      alert("Please complete the required core fields (Age, State, Business Sector, Business Stage) before proceeding.");
+      alert(t('err_core_required'));
       return;
     }
 
     const p = this.currentProfile;
     if (p.age !== null && p.age !== undefined && (!Number.isInteger(Number(p.age)) || Number(p.age) < 1 || Number(p.age) > 120)) {
-      alert("Please enter a valid age between 1 and 120.");
+      alert(t('err_valid_age'));
       return;
     }
 

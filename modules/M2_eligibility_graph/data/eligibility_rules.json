@@ -1203,7 +1203,7 @@
     "Opportunity_ID": "OPP061",
     "Opportunity_Name": "Tamil Nadu Women Entrepreneurs Empowerment Scheme (TWEES)",
     "Target_Group_Rule": "Eligible women/transgender entrepreneurs under current TWEES guidelines",
-    "Gender_Rule": "Transgender",
+    "Gender_Rule": "Female|Transgender",
     "Social_Category_Rule": "ANY / component-specific",
     "Geography_Rule": "Tamil Nadu",
     "Age_Rule": "Not parameterized; check official component rules",
@@ -1212,8 +1212,8 @@
     "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
     "Other_Deterministic_Conditions": "IDENTITY_PROOF;GENDER_PROOF_IF_REQUIRED;DOCUMENT;DPR;ELIGIBLE_LENDER;TRAINING",
     "Rule_Completeness": "PARTIAL_STRUCTURED",
-    "Source_URL": "https://msmeonline.tn.gov.in/twees/",
-    "Last_Verified": "2026-09-12",
+    "Source_URL": "https://msmeonline.tn.gov.in/twees/pdf/twees_faqs.pdf",
+    "Last_Verified": "2026-09-15",
     "url_health": {
       "application_url_health": null,
       "official_source_url_health": null
@@ -1404,7 +1404,7 @@
     "Opportunity_Name": "Annal Ambedkar Business Champions Scheme (AABCS) – Tamil Nadu",
     "Target_Group_Rule": "Eligible SC/ST entrepreneurs and enterprises meeting current state rules",
     "Gender_Rule": "ANY / component-specific",
-    "Social_Category_Rule": "ANY / component-specific",
+    "Social_Category_Rule": "Scheduled Caste|Scheduled Tribe",
     "Geography_Rule": "Tamil Nadu",
     "Age_Rule": "Not parameterized; check official component rules",
     "Income_Rule": "Not parameterized; check official component rules",
@@ -1412,8 +1412,8 @@
     "Qualification_Rule": "Not parameterized unless stated in eligibility summary",
     "Other_Deterministic_Conditions": "CASTE_CERTIFICATE;ENTITY_OWNERSHIP;DOCUMENT;DPR;ELIGIBLE_LENDER",
     "Rule_Completeness": "PARTIAL_STRUCTURED",
-    "Source_URL": "https://msmeonline.tn.gov.in/aabcs/",
-    "Last_Verified": "2026-09-12",
+    "Source_URL": "https://msmeonline.tn.gov.in/aabcs/aabcs_desc.php",
+    "Last_Verified": "2026-09-15",
     "url_health": {
       "application_url_health": null,
       "official_source_url_health": null
@@ -1994,6 +1994,47 @@
     "Rule_Completeness": "PARTIAL_STRUCTURED",
     "Source_URL": "https://www.dgft.gov.in/CP/?opt=rodtep",
     "Last_Verified": "2026-09-12",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP101",
+    "Opportunity_Name": "NMDFC Term Loan Scheme",
+    "Target_Group_Rule": "Members of notified national minority communities under NMDFC eligibility rules",
+    "Gender_Rule": "ANY / benefit varies by gender under Credit Line-2",
+    "Social_Category_Rule": "Minority",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Not parameterized; check official scheme/channel-partner rules",
+    "Income_Rule": "Annual family income up to ₹8 lakh under Credit Line-2",
+    "Business_or_Entity_Rule": "Commercially viable and technically feasible income-generating venture; SCA/banking-partner conditions apply",
+    "Qualification_Rule": "Not parameterized unless required for the selected activity",
+    "Other_Deterministic_Conditions": "CATEGORY_PROOF;INCOME_PROOF;DOCUMENT;CHANNEL_PARTNER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://nmdfc.org/credit-2",
+    "Last_Verified": "2026-09-15",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": null
+    }
+  },
+  {
+    "Opportunity_ID": "OPP102",
+    "Opportunity_Name": "NDFDC Divyangjan Swavalamban Yojana",
+    "Target_Group_Rule": "Indian citizens with 40% or more disability and UDID, subject to scheme conditions",
+    "Gender_Rule": "ANY / women with disabilities may receive an additional interest rebate",
+    "Social_Category_Rule": "ANY / component-specific",
+    "Disability_Rule": "PERSON_WITH_DISABILITY",
+    "Geography_Rule": "Central",
+    "Age_Rule": "Above 18 years",
+    "Income_Rule": "No universal income ceiling encoded from verified scheme document",
+    "Business_or_Entity_Rule": "Self-employment/income-generating activity or other eligible scheme purpose; UDID and disability threshold apply",
+    "Qualification_Rule": "Not parameterized for self-employment component",
+    "Other_Deterministic_Conditions": "DISABILITY_CERTIFICATE;IDENTITY_PROOF;DOCUMENT;CHANNEL_PARTNER",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Source_URL": "https://www.ndfdc.nic.in/schemes/DIVYANGJAN%20SWAVALAMBAN%20YOJANA.pdf",
+    "Last_Verified": "2026-09-15",
     "url_health": {
       "application_url_health": null,
       "official_source_url_health": null

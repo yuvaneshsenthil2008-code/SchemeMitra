@@ -131,7 +131,7 @@ def test_pmegp_official_url_and_verification_date():
     pmegp = next((o for o in data if o.get("Opportunity_ID") == "OPP021"), None)
     assert pmegp is not None
     assert pmegp["Official_Source_URL"] == "https://www.pmegp.msme.gov.in/"
-    assert pmegp["Last_Verified"] == "2026-09-14"
+    assert pmegp["Last_Verified"] == "2026-09-15"
     assert pmegp["url_health"]["official_source_url_health"]["final_url"] == "https://www.pmegp.msme.gov.in/"
 
 def test_pmegp_requirement_source_links_updated():

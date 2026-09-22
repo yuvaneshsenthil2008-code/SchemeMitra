@@ -82,17 +82,39 @@ class Normalizer:
             "mpharm": "M.Pharm", "m.pharm": "M.Pharm", "master of pharmacy": "M.Pharm",
             "phd": "Ph.D", "ph.d": "Ph.D", "doctorate": "Ph.D",
             "diploma": "Diploma", "polytechnic": "Diploma",
-            "iti": "ITI", "12th": "12th", "10th": "10th", "8th": "8th"
+            "iti": "ITI", "12th": "12th", "10th": "10th", "8th": "8th",
+            "பி.டெக்": "B.Tech", "பி டெக்": "B.Tech", "பிடெக்": "B.Tech",
+            "பி.இ": "B.E.", "பி இ": "B.E.",
+            "बीटेक": "B.Tech", "बी टेक": "B.Tech", "बी.टेक": "B.Tech",
+            "बीई": "B.E.", "बी ई": "B.E."
         },
         "education_field": {
-            "cse": "Computer Science", "computer science": "Computer Science", "computer science and engineering": "Computer Science",
+            "cse": "Computer Science", "c s e": "Computer Science",
+            "computer science": "Computer Science",
+            "computer science and engineering": "Computer Science",
+            "computer science engineering": "Computer Science",
+            "computer signs engineering": "Computer Science",
+            "computer science engineer": "Computer Science",
+            "cs engineering": "Computer Science",
+            "கம்ப்யூட்டர் சயின்ஸ்": "Computer Science",
+            "கம்ப்யூட்டர் சயின்ஸ் இன்ஜினியரிங்": "Computer Science",
+            "கம்ப்யூட்டர் சயின்ஸ் இன்ஜினீயரிங்": "Computer Science",
+            "कंप्यूटर साइंस": "Computer Science",
+            "कंप्यूटर साइंस इंजीनियरिंग": "Computer Science",
+            "कंप्यूटर विज्ञान": "Computer Science",
             "ai": "Artificial Intelligence", "artificial intelligence": "Artificial Intelligence",
+            "ai/ml": "Artificial Intelligence", "ai & ml": "Artificial Intelligence",
             "computer applications": "Computer Applications", "bca": "Computer Applications", "mca": "Computer Applications",
             "mechanical": "Mechanical Engineering", "mechanical engineering": "Mechanical Engineering",
+            "மெக்கானிக்கல்": "Mechanical Engineering", "மெக்கானிக்கல் இன்ஜினியரிங்": "Mechanical Engineering",
+            "मैकेनिकल": "Mechanical Engineering", "मैकेनिकल इंजीनियरिंग": "Mechanical Engineering",
             "electrical engineering": "Electrical Engineering", "eee": "Electrical Engineering",
             "electronics and communication engineering": "Electronics and Communication Engineering", "ece": "Electronics and Communication Engineering",
             "civil": "Civil Engineering", "civil engineering": "Civil Engineering",
-            "information technology": "Information Technology", "data science": "Data Science", "cyber security": "Cyber Security", "cybersecurity": "Cyber Security", "software engineering": "Software Engineering", "electrician": "Electrician",
+            "சிவில் இன்ஜினியரிங்": "Civil Engineering", "सिविल इंजीनियरिंग": "Civil Engineering",
+            "information technology": "Information Technology", "it": "Information Technology",
+            "தகவல் தொழில்நுட்பம்": "Information Technology", "सूचना प्रौद्योगिकी": "Information Technology",
+            "data science": "Data Science", "cyber security": "Cyber Security", "cybersecurity": "Cyber Security", "software engineering": "Software Engineering", "electrician": "Electrician",
         },
         "category": {
             "sc": "SC", "scheduled caste": "SC", "st": "ST", "scheduled tribe": "ST",
@@ -143,6 +165,10 @@ class Normalizer:
             "fisheries": "Agriculture & Allied",
             "fishing": "Agriculture & Allied",
             "retail": "MSME & Manufacturing", "shop": "MSME & Manufacturing", "e-shop": "MSME & Manufacturing", "e shop": "MSME & Manufacturing", "ecommerce": "MSME & Manufacturing", "e-commerce": "MSME & Manufacturing", "online shop": "MSME & Manufacturing", "online store": "MSME & Manufacturing",
+            "விவசாயம்": "Agriculture & Allied", "வேளாண்மை": "Agriculture & Allied", "ஃபார்மிங்": "Agriculture & Allied",
+            "துணிக்கடை": "MSME & Manufacturing", "துணி கடை": "MSME & Manufacturing", "ஜவுளி": "MSME & Manufacturing", "ஆடை": "MSME & Manufacturing", "சில்லறை": "MSME & Manufacturing",
+            "कृषि": "Agriculture & Allied", "खेती": "Agriculture & Allied", "एग्रीकल्चर": "Agriculture & Allied", "फार्मिंग": "Agriculture & Allied", "एग्रीकल्चर एंड फार्मिंग": "Agriculture & Allied",
+            "दुकान": "MSME & Manufacturing", "रिटेल": "MSME & Manufacturing", "कपड़ा": "MSME & Manufacturing", "टेक्सटाइल": "MSME & Manufacturing",
         },
         "business_type": {
             "idea": "Idea", "planning": "Idea", "concept": "Idea",
@@ -168,6 +194,19 @@ class Normalizer:
             return self.STATE_MAP.get(lower, self.STATE_MAP.get(cleaned, value))
         mapping = self.NORMALIZATION_MAP.get(field, {})
         return mapping.get(lower, mapping.get(cleaned, value))
+
+    def normalize_technical_entities(self, text, language=None):
+        """Identify canonical technical entities in multilingual text without altering raw text."""
+        if not isinstance(text, str) or not text.strip():
+            return {}
+        entities = {}
+        lower = text.lower()
+        field_map = self.NORMALIZATION_MAP.get("education_field", {})
+        for phrase, canonical in field_map.items():
+            if phrase in (lower if phrase.isascii() else text):
+                entities["education_field"] = canonical
+                break
+        return entities
 
     def normalize_profile(self, profile):
         if not isinstance(profile, dict):

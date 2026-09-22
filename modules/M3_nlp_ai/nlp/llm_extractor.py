@@ -43,10 +43,12 @@ class LLMExtractor:
 User language: {language}
 
 Extract ONLY facts that are explicitly stated or unambiguously implied by the user's own situation.
-Never guess a missing fact. Never infer caste/category, gender, income, age, or location from names or stereotypes.
-Ignore facts that clearly belong to another person (father, mother, friend, etc.).
-Do not decide scheme eligibility. Do not rank schemes.
-Do not create preferred_support_types; that comes directly from UI selection.
+- Understand English, Tamil, Hindi, and code-switched combinations (e.g., Tamil/Hindi grammar with English technical words).
+- Do not discard English technical tokens inside non-English sentences (e.g., B.Tech, CSE, Computer Science Engineering).
+- Never guess a missing fact. Never infer caste/category, gender, income, age, or location from names or stereotypes.
+- Ignore facts that clearly belong to another person (father, mother, friend, etc.).
+- Do not decide scheme eligibility. Do not rank schemes.
+- Do not create preferred_support_types; that comes directly from UI selection.
 
 Return one JSON object only. Allowed fields:
 {', '.join(self.SUPPORTED_FIELDS)}

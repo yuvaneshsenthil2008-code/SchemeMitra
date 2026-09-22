@@ -44,10 +44,10 @@ class ProfileBuilderComponent {
               <div style="background: #ffffff; border: 1.5px solid var(--border-color); border-top: 4px solid var(--primary-saffron); border-radius: 16px; padding: 1.5rem; box-shadow: var(--shadow-sm); position: sticky; top: 90px;">
                 
                 <h3 style="font-size: 1.15rem; color: var(--primary-navy); margin: 0 0 0.35rem; font-weight: 800;">
-                  🤖 Talk to SchemeMitra
+                  🤖 <span data-i18n="profile_talk_title">${t('profile_talk_title')}</span>
                 </h3>
-                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.45;">
-                  Tell us about yourself and your business idea in simple natural language or voice.
+                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.45;" data-i18n="profile_talk_desc">
+                  ${t('profile_talk_desc')}
                 </p>
 
                 <div id="voiceAlert" style="display: ${this.speechSupported ? 'none' : 'block'}; background: var(--amber-bg); color: var(--amber); padding: 0.65rem; border-radius: 8px; font-size: 0.85rem; margin-bottom: 1rem;">
@@ -67,8 +67,8 @@ class ProfileBuilderComponent {
 
                 <!-- Natural Text Input -->
                 <div style="margin-bottom: 1rem;">
-                  <label style="display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 0.35rem; color: var(--primary-navy);" data-i18n="tell_us_label">Or type naturally here...</label>
-                  <textarea id="txtMessageInput" rows="4" data-i18n="txt_message_placeholder" placeholder="e.g. I am 24, from Chennai, completed B.Tech Computer Science and want to start an online clothing store." style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 8px; outline: none; font-family: inherit; font-size: 0.9rem; margin-bottom: 0.75rem; box-sizing: border-box;"></textarea>
+                  <label style="display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 0.35rem; color: var(--primary-navy);" data-i18n="tell_us_label">${t('tell_us_label')}</label>
+                  <textarea id="txtMessageInput" rows="4" data-i18n="txt_message_placeholder" placeholder="${t('txt_message_placeholder')}" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 8px; outline: none; font-family: inherit; font-size: 0.9rem; margin-bottom: 0.75rem; box-sizing: border-box;"></textarea>
                   <button class="btn-primary" onclick="profileBuilder.processInput()" style="width: 100%; font-size: 0.95rem; background: #FF9933; color: #ffffff;">
                     <span data-i18n="btn_extract_fields">${t('btn_extract_fields')}</span>
                   </button>
@@ -134,7 +134,7 @@ class ProfileBuilderComponent {
 
     const createRecognition = () => {
       const recognition = new SpeechRecognition();
-      recognition.lang = window.i18n.currentLang === "ta" ? "ta-IN" : (window.i18n.currentLang === "hi" ? "hi-IN" : "en-US");
+      recognition.lang = window.i18n.currentLang === "ta" ? "ta-IN" : (window.i18n.currentLang === "hi" ? "hi-IN" : "en-IN");
       recognition.continuous = true;
       recognition.interimResults = true;
       recognition.maxAlternatives = 3;
@@ -237,64 +237,114 @@ class ProfileBuilderComponent {
   }
 
   async processInput() {
-    const msg = document.getElementById("txtMessageInput").value;
+    const inputEl = document.getElementById("txtMessageInput");
+    const msg = inputEl ? inputEl.value : "";
     if (!msg || !msg.trim()) {
       alert(window.i18n.get("voice_status_default"));
       return;
     }
 
+    let data;
     try {
-      const res = await fetch("/api/profile/parse", {
+      // Each explicit extraction is a fresh interpretation of the new sentence.
+      // Preserve manually-entered/confirmed values, but remove fields that came from
+      // the previous extraction so stale auto-detected facts cannot leak forward.
+      const currentProfile = window.profileForm.currentProfile || {};
+      const priorDetectedFields = new Set(currentProfile._detectedFields || []);
+      const extractionBaseProfile = { ...currentProfile };
+      priorDetectedFields.forEach((key) => { delete extractionBaseProfile[key]; });
+      delete extractionBaseProfile._detectedFields;
+      delete extractionBaseProfile._selectedGoalAutoDerived;
+
+      const res = await fetch(window.getApiUrl("/api/profile/parse"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           message: msg,
-          existing_profile: window.profileForm.currentProfile || {}
+          existing_profile: extractionBaseProfile
         })
       });
 
-      if (!res.ok) throw new Error("Profile parsing failed");
-      const data = await res.json();
-      
+      if (!res.ok) {
+        let detail = "Profile parsing failed";
+        try {
+          const errBody = await res.json();
+          detail = errBody.detail || errBody.message || detail;
+        } catch (_) { /* non-JSON error response */ }
+        throw new Error(detail);
+      }
+      data = await res.json();
+    } catch (err) {
+      console.error("Profile extraction request failed:", err);
+      alert(window.i18n && window.i18n.get ? window.i18n.get("profile_extract_error") : "Could not extract profile fields. Please try again.");
+      return;
+    }
+
+    try {
       console.log('[PROFILE PARSE RAW]', data);
       const parsed = data.profile || {};
 
-      // Track newly detected fields
-      const detectedSet = new Set(window.profileForm.currentProfile._detectedFields || []);
+      const previousProfile = window.profileForm.currentProfile || {};
+      const previousDetected = new Set(previousProfile._detectedFields || []);
+      const nextProfile = { ...previousProfile };
+
+      // Remove only facts that were auto-detected in the previous extraction.
+      // Manual form values remain untouched unless the new sentence explicitly replaces them.
+      previousDetected.forEach((key) => {
+        delete nextProfile[key];
+      });
+      if (previousDetected.has("business_stage")) {
+        delete nextProfile.business_type;
+        delete nextProfile.new_business;
+      }
+
+      const detectedSet = new Set();
       Object.keys(parsed).forEach(k => {
         if (parsed[k] !== null && parsed[k] !== undefined && parsed[k] !== "") {
           detectedSet.add(k);
         }
       });
 
-      // Merge into structured form profile
-      window.profileForm.currentProfile = {
-        ...window.profileForm.currentProfile,
-        ...parsed,
-        _detectedFields: detectedSet
-      };
+      Object.assign(nextProfile, parsed);
+      nextProfile._detectedFields = detectedSet;
+
+      // A goal derived from a previous sentence should not survive a fresh extraction
+      // unless the user manually selected it.
+      if (previousProfile._selectedGoalAutoDerived === true && !parsed.business_goal && !parsed.selected_goal) {
+        nextProfile.selected_goal = "GENERAL_READINESS";
+        nextProfile._selectedGoalAutoDerived = false;
+      }
+      if (parsed.business_goal && (!previousProfile.selected_goal || previousProfile.selected_goal === "GENERAL_READINESS" || previousProfile._selectedGoalAutoDerived === true)) {
+        nextProfile.selected_goal = parsed.business_goal;
+        nextProfile._selectedGoalAutoDerived = true;
+      }
+      if (!nextProfile.selected_goal) {
+        nextProfile.selected_goal = "GENERAL_READINESS";
+      }
+
+      window.profileForm.currentProfile = nextProfile;
 
       if (parsed.business_stage) {
         window.profileForm.currentProfile.business_type = parsed.business_stage;
         window.profileForm.currentProfile.new_business = (parsed.business_stage === "Idea" || parsed.business_stage === "Startup");
       }
 
-      // Update the structured form on the left in real time!
+      // Re-render only after an explicit extraction action, never on each keystroke.
       const formContainer = document.getElementById("manualFormContainer");
       if (formContainer) {
         window.profileForm.updateForm(formContainer);
       }
 
-      // Update status notice
+      // Update status notice. Keep this post-extraction UI state separate from API errors.
       const clarification = document.getElementById("profileClarificationNotice");
       if (clarification) {
         const readiness = window.profileForm.calculateReadiness(window.profileForm.currentProfile);
         const needsEducation = parsed.education_field && !parsed.education;
         const t = (k) => window.i18n ? window.i18n.get(k) : k;
+        let noticeText = "";
         if (needsEducation) {
-          noticeText = t('status_please_confirm') + ": " + (window.i18n.currentLang === 'ta' ? "உங்கள் கல்வித் தகுதியை உறுதிப்படுத்தவும் (Graduate, Diploma, 12th Pass)." : "Please confirm your qualification level (e.g. Degree, Diploma, 12th Pass).");
+          noticeText = t('status_please_confirm') + ": " + t('profile_confirm_qualification');
         } else if (!readiness.isComplete) {
-          const missingNames = readiness.coreFields.filter(f => !f.valid).map(f => f.label).join(", ");
           noticeText = t('profile_notice_incomplete');
         } else {
           noticeText = t('profile_notice_complete');
@@ -303,8 +353,8 @@ class ProfileBuilderComponent {
         clarification.style.display = "block";
       }
     } catch (err) {
-      console.error("Profile parse error:", err);
-      alert("Error parsing profile message: " + err.message);
+      console.error("Profile form update error:", err);
+      alert(window.i18n && window.i18n.get ? window.i18n.get("profile_update_error") : "Profile fields were extracted, but the form could not finish updating. Please try again.");
     }
   }
 

@@ -25,6 +25,7 @@ BOOL_EXTRA = {
     "BANK_LINKAGE": "has_bank_linkage", "IDENTITY_PROOF": "has_identity_proof",
     "INCOME_PROOF": "has_income_proof", "CATEGORY_PROOF": "has_category_proof",
     "CASTE_CERTIFICATE": "has_caste_certificate", "TRIBE_CERTIFICATE": "has_tribe_certificate",
+    "DISABILITY_CERTIFICATE": "has_disability_certificate",
     "VENDING_CERTIFICATE_OR_RECOMMENDATION": "has_vending_certificate_or_recommendation",
     "TRANSGENDER_CERTIFICATE_OR_ID": "has_transgender_certificate_or_id",
     "LAND_OR_FARM_PROOF": "has_land_or_farm_proof", "LAND_OR_ACTIVITY_PROOF": "has_land_or_activity_proof",

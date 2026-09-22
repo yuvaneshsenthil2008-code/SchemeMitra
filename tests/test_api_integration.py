@@ -17,9 +17,9 @@ def test_health_endpoint():
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "ok"
-    assert data["catalogue_count"] == 100
-    assert data["requirements_count"] == 371
-    assert data["relationships_count"] == 522
+    assert data["catalogue_count"] == 102
+    assert data["requirements_count"] == 379
+    assert data["relationships_count"] == 534
     assert data["sectors_count"] == 10
     assert data["modules"]["m1"] is True
 
@@ -27,7 +27,7 @@ def test_list_opportunities():
     response = client.get("/api/opportunities")
     assert response.status_code == 200
     data = response.json()
-    assert data["total"] == 100
+    assert data["total"] == 102
     assert len(data["items"]) == 20
 
     # Sector filter test
@@ -114,7 +114,7 @@ def test_eligibility_check():
     data = response.json()
     assert "evaluations" in data
     assert "gaps" in data
-    assert len(data["evaluations"]) == 100
+    assert len(data["evaluations"]) == 102
 
 def test_opportunities_recommend():
     profile = {
@@ -187,11 +187,11 @@ def test_pathway_generate():
 
 def test_navigation_and_explore_public_access():
     """Explore Schemes must remain publicly available for all 100 schemes without a profile."""
-    res = client.get("/api/opportunities?limit=100")
+    res = client.get("/api/opportunities?limit=200")
     assert res.status_code == 200
     data = res.json()
-    assert data["total"] == 100
-    assert len(data["items"]) == 100
+    assert data["total"] == 102
+    assert len(data["items"]) == 102
 
 
 def test_btech_eshop_classification_regression():

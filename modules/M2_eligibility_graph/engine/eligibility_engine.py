@@ -13,6 +13,8 @@ CATEGORY_ALIASES = {
     "scheduled caste": {"sc", "scheduled caste", "scheduled_caste"},
     "scheduled tribe": {"st", "scheduled tribe", "scheduled_tribe"},
     "notified backward classes": {"obc", "backward class", "backward classes", "notified backward classes", "nbc"},
+    "minority": {"minority", "minorities"},
+    "general": {"general"},
 }
 GENDER_ALIASES = {
     "female": {"female", "woman", "women"},
@@ -73,20 +75,41 @@ class EligibilityEngine:
             else:
                 failed.append(self._detail("state", "Tamil Nadu", "Opportunity is restricted to Tamil Nadu.", profile.state))
 
-        # Gender: exact Female or Transgender only. 'Female' never includes Transgender.
+        # Gender: support verified multi-gender rules such as TWEES (Female OR Transgender).
         gender_rule = str(row.get("Gender_Rule") or "")
-        if gender_rule == "Transgender":
-            self._eval_exact(profile.gender, "Transgender", "gender", self._same_gender, passed, failed, missing)
+        allowed_genders = []
+        if "|" in gender_rule:
+            allowed_genders = [x.strip() for x in gender_rule.split("|") if x.strip()]
+        elif gender_rule == "Transgender":
+            allowed_genders = ["Transgender"]
         elif gender_rule.startswith("Female"):
-            self._eval_exact(profile.gender, "Female", "gender", self._same_gender, passed, failed, missing)
+            allowed_genders = ["Female"]
+        if allowed_genders:
+            self._eval_any(profile.gender, allowed_genders, "gender", self._same_gender, passed, failed, missing)
 
-        # Social category: only well-defined categories are hard evaluated.
+        # Social category: hard-evaluate only official, explicitly encoded category rules.
         category_rule = str(row.get("Social_Category_Rule") or "")
-        if category_rule in {"Scheduled Caste", "Scheduled Tribe", "Notified Backward Classes"}:
-            self._eval_exact(profile.category, category_rule, "category", self._same_category, passed, failed, missing)
+        allowed_categories = []
+        if "|" in category_rule:
+            allowed_categories = [x.strip() for x in category_rule.split("|") if x.strip()]
+        elif category_rule in {"Scheduled Caste", "Scheduled Tribe", "Notified Backward Classes", "Minority"}:
+            allowed_categories = [category_rule]
+        if allowed_categories:
+            self._eval_any(profile.category, allowed_categories, "category", self._same_category, passed, failed, missing)
         elif category_rule == "NSKFDC target group":
             # M1 does not encode a safe deterministic mapping for this phrase.
             uncertain.append(self._detail("target_group", category_rule, "Target-group definition is not fully parameterized in M1."))
+
+        # Disability status: only hard-evaluate when the official scheme is specifically for PwDs.
+        disability_rule = str(row.get("Disability_Rule") or "")
+        if disability_rule == "PERSON_WITH_DISABILITY":
+            actual = profile.disability_status
+            if actual in (None, "", "PREFER_NOT_TO_SAY"):
+                missing.append(self._detail("disability_status", "PERSON_WITH_DISABILITY", "Disability status is required for this opportunity."))
+            elif actual == "PERSON_WITH_DISABILITY":
+                passed.append(self._detail("disability_status", "PERSON_WITH_DISABILITY", "Person-with-disability requirement matched.", actual))
+            else:
+                failed.append(self._detail("disability_status", "PERSON_WITH_DISABILITY", "This opportunity is restricted to eligible persons with disabilities.", actual))
 
         # Explicit income ceilings currently present in M1.
         income_rule = str(row.get("Income_Rule") or "")
@@ -246,6 +269,18 @@ class EligibilityEngine:
 
     def evaluate_all(self, profile: EntrepreneurProfile | dict) -> list[dict]:
         return [self.evaluate_opportunity(profile, o["Opportunity_ID"]) for o in self.opportunities]
+
+    def _eval_any(self, actual, expected_values, field, comparator, passed, failed, missing):
+        expected_values = [x for x in expected_values if str(x).strip()]
+        label = " OR ".join(str(x) for x in expected_values)
+        if actual is None or str(actual).strip() == "":
+            missing.append(self._detail(field, label, f"{field.replace('_', ' ').title()} is required for this rule."))
+            return
+        matched = next((x for x in expected_values if comparator(actual, x)), None)
+        if matched is not None:
+            passed.append(self._detail(field, label, f"{field.replace('_', ' ').title()} requirement matched.", actual))
+        else:
+            failed.append(self._detail(field, label, f"{field.replace('_', ' ').title()} does not match the eligible group.", actual))
 
     def _eval_exact(self, actual, expected, field, comparator, passed, failed, missing):
         if actual is None or str(actual).strip() == "":

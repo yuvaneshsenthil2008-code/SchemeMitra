@@ -200,6 +200,14 @@ def normalize_m1_opportunity(raw: Dict[str, Any]) -> Dict[str, Any]:
         "verification_notes": raw.get("Verification_Notes") or raw.get("verification_notes", ""),
         "support_types": support_types,
         "rule_completeness": raw.get("Rule_Completeness") or raw.get("rule_completeness", ""),
+        "eligible_genders": list(raw.get("Eligible_Genders") or raw.get("eligible_genders") or ["Male", "Female", "Transgender"]),
+        "eligible_social_categories": list(raw.get("Eligible_Social_Categories") or raw.get("eligible_social_categories") or ["General", "OBC", "SC", "ST", "Minority"]),
+        "disability_eligibility": raw.get("Disability_Eligibility") or raw.get("disability_eligibility", "ANY"),
+        "demographic_targeting": bool(raw.get("Demographic_Targeting") or raw.get("demographic_targeting", False)),
+        "demographic_eligibility_notes": raw.get("Demographic_Eligibility_Notes") or raw.get("demographic_eligibility_notes", ""),
+        "gender_eligibility_display": raw.get("Gender_Eligibility_Display") or raw.get("gender_eligibility_display"),
+        "social_category_eligibility_display": raw.get("Social_Category_Eligibility_Display") or raw.get("social_category_eligibility_display"),
+        "demographic_benefit_variants": list(raw.get("Demographic_Benefit_Variants") or raw.get("demographic_benefit_variants") or []),
     }
     return normalized
 
@@ -248,16 +256,19 @@ def sanitize_profile(profile_data: Optional[Dict[str, Any]]) -> Dict[str, Any]:
         "age": None,
         "gender": None,
         "category": None,
+        "disability_status": None,
         "state": None,
         "district": None,
         "annual_income": None,
         "available_capital": None,
         "project_cost": None,
         "education": None,
+        "education_course": None,
         "education_field": None,
         "sector": None,
         "business_stage": None,
         "business_goal": None,
+        "selected_goal": "GENERAL_READINESS",
         "is_new_unit": None,
         "prior_gov_subsidy": None,
         "family_pmegp_availed": None,
@@ -279,6 +290,12 @@ def sanitize_profile(profile_data: Optional[Dict[str, Any]]) -> Dict[str, Any]:
             val = profile_data.get("income")
         if key == "available_capital" and val is None and isinstance(profile_data.get("extra"), dict):
             val = profile_data["extra"].get("available_capital")
+        if key == "selected_goal" and val is None:
+            val = profile_data.get("business_goal") or "GENERAL_READINESS"
+        if key == "business_goal" and val is None:
+            selected_goal = profile_data.get("selected_goal")
+            if selected_goal and selected_goal != "GENERAL_READINESS":
+                val = selected_goal
         if val is None:
             sanitized[key] = default
         else:
@@ -289,6 +306,10 @@ def sanitize_profile(profile_data: Optional[Dict[str, Any]]) -> Dict[str, Any]:
         sanitized["gender"] = None
     if sanitized["business_stage"] not in ["Idea", "Startup", "Existing", None]:
         sanitized["business_stage"] = None
+    if sanitized["disability_status"] not in ["NONE", "PERSON_WITH_DISABILITY", "PREFER_NOT_TO_SAY", None]:
+        sanitized["disability_status"] = None
+    if sanitized["selected_goal"] is None or not str(sanitized["selected_goal"]).strip():
+        sanitized["selected_goal"] = "GENERAL_READINESS"
 
     # Handle numeric types safely
     for num_field in ["age", "annual_income", "available_capital", "project_cost"]:
@@ -335,6 +356,33 @@ def sanitize_profile(profile_data: Optional[Dict[str, Any]]) -> Dict[str, Any]:
             sanitized["udyam_registered"] = False
 
     return sanitized
+
+def _canonical_category(value: Any) -> str:
+    v = str(value or "").strip().lower()
+    aliases = {
+        "sc": "SC", "scheduled caste": "SC",
+        "st": "ST", "scheduled tribe": "ST",
+        "obc": "OBC", "backward class": "OBC", "backward classes": "OBC", "notified backward classes": "OBC", "nbc": "OBC",
+        "minority": "Minority", "minorities": "Minority",
+        "general": "General",
+    }
+    return aliases.get(v, str(value or "").strip())
+
+def _canonical_gender(value: Any) -> str:
+    v = str(value or "").strip().lower()
+    if v in {"female", "woman", "women"}: return "Female"
+    if v in {"male", "man", "men"}: return "Male"
+    if v in {"transgender", "trans", "third gender", "thirunangai", "thirunambi", "hijra", "kinnar", "aravani"}: return "Transgender"
+    return str(value or "").strip()
+
+def _split_rule_values(rule: Any, mapping: Dict[str, str] | None = None) -> List[str]:
+    text = str(rule or "").strip()
+    if not text or text.upper().startswith("ANY"):
+        return []
+    parts = [x.strip() for x in text.split("|") if x.strip()]
+    if mapping:
+        return [mapping.get(x, x) for x in parts]
+    return parts
 
 def filter_candidate_set(opportunities: List[Dict[str, Any]], profile: Optional[Dict[str, Any]]) -> Dict[str, Any]:
     """Filters full catalogue into RELEVANT, RELEVANT_NEEDS_PROFILE_INFO, and FILTERED_OUT.
@@ -398,7 +446,8 @@ def filter_candidate_set(opportunities: List[Dict[str, Any]], profile: Optional[
             not is_entity_restricted and
             any(kw in text_content for kw in [
                 "micro-enterprises", "micro and small enterprises", "startups", 
-                "credit guarantee", "mudra", "greenfield", "incubation", "seed support", "nidhi", "genesis"
+                "credit guarantee", "mudra", "greenfield", "incubation", "seed support", "nidhi", "genesis",
+                "term loan", "concessional credit", "income-generating", "income generation", "self-employment loan", "self employment loan"
             ])
         )
 
@@ -428,37 +477,47 @@ def filter_candidate_set(opportunities: List[Dict[str, Any]], profile: Optional[
         known_mismatches = []
         unknown_requirements = []
 
-        # M2 Gender Rule
-        gender_rule = m2_rule.get("Gender_Rule", "")
-        if "Transgender" in gender_rule or "transgender" in text_content:
-            required_profile_fields.append("gender: Transgender")
-            if user_gender != "Transgender":
-                known_mismatches.append(f"gender: Transgender (user is {user_gender})")
-        elif "Female" in gender_rule or "women" in text_content or "female" in text_content:
-            required_profile_fields.append("gender: Female")
-            if user_gender == "Female":
-                known_matches.append("gender: Female")
-
-        # M2 Social Category Rule
-        category_rule = m2_rule.get("Social_Category_Rule", "")
-        cat_req = None
-        if category_rule in ["Scheduled Caste", "Scheduled Tribe", "Notified Backward Classes"]:
-            cat_req = category_rule
-        elif "scheduled caste" in text_content or "sc certificate" in text_content or "nsfdc" in text_content:
-            cat_req = "Scheduled Caste"
-        elif "backward class" in text_content or "nbcfdc" in text_content:
-            cat_req = "Notified Backward Classes"
-        elif "scheduled tribe" in text_content or "nstfdc" in text_content:
-            cat_req = "Scheduled Tribe"
-
-        if cat_req:
-            required_profile_fields.append(f"category: {cat_req}")
-            if user_category is None:
-                unknown_requirements.append(f"category: {cat_req}")
-            elif user_category == cat_req:
-                known_matches.append(f"category: {cat_req}")
+        # Demographic applicability — driven by verified M2 rules, not text guessing.
+        gender_rule = str(m2_rule.get("Gender_Rule", "") or "")
+        allowed_genders = _split_rule_values(gender_rule)
+        if gender_rule.startswith("Female") and "|" not in gender_rule:
+            allowed_genders = ["Female"]
+        elif gender_rule == "Transgender":
+            allowed_genders = ["Transgender"]
+        if allowed_genders:
+            required_profile_fields.append("gender: " + " / ".join(allowed_genders))
+            if user_gender is None:
+                unknown_requirements.append("gender: " + " / ".join(allowed_genders))
+            elif _canonical_gender(user_gender) in {_canonical_gender(x) for x in allowed_genders}:
+                known_matches.append(f"gender: {_canonical_gender(user_gender)}")
             else:
-                known_mismatches.append(f"category: {cat_req} (user is {user_category})")
+                known_mismatches.append(f"gender: {' / '.join(allowed_genders)} (user is {user_gender})")
+
+        category_rule = str(m2_rule.get("Social_Category_Rule", "") or "")
+        category_map = {"Scheduled Caste":"SC", "Scheduled Tribe":"ST", "Notified Backward Classes":"OBC", "Minority":"Minority"}
+        allowed_categories = _split_rule_values(category_rule, category_map)
+        if category_rule == "NSKFDC target group":
+            allowed_categories = []  # separate target-group definition, not the profile caste/category field
+            unknown_requirements.append("NSKFDC target-group eligibility")
+        if allowed_categories:
+            required_profile_fields.append("category: " + " / ".join(allowed_categories))
+            if user_category is None:
+                unknown_requirements.append("category: " + " / ".join(allowed_categories))
+            elif _canonical_category(user_category) in {_canonical_category(x) for x in allowed_categories}:
+                known_matches.append(f"category: {_canonical_category(user_category)}")
+            else:
+                known_mismatches.append(f"category: {' / '.join(allowed_categories)} (user is {user_category})")
+
+        disability_rule = str(m2_rule.get("Disability_Rule", "") or "")
+        if disability_rule == "PERSON_WITH_DISABILITY":
+            required_profile_fields.append("disability: Person with disability")
+            dval = profile.get("disability_status")
+            if not dval or dval == "PREFER_NOT_TO_SAY":
+                unknown_requirements.append("disability status / UDID eligibility")
+            elif dval == "PERSON_WITH_DISABILITY":
+                known_matches.append("disability: Person with disability")
+            else:
+                known_mismatches.append("disability: Person with disability required")
 
         # Entity Requirements (SHG, FPO, Cooperative)
         if any(k in text_content for k in ["shg member", "shg seed"]):
@@ -622,6 +681,14 @@ def format_analyze_response(
             "scope": item.get("scope"),
             "rule_completeness": item.get("rule_completeness"),
             "last_verified": item.get("last_verified"),
+            "eligible_genders": item.get("eligible_genders", ["Male", "Female", "Transgender"]),
+            "eligible_social_categories": item.get("eligible_social_categories", ["General", "OBC", "SC", "ST", "Minority"]),
+            "disability_eligibility": item.get("disability_eligibility", "ANY"),
+            "demographic_targeting": item.get("demographic_targeting", False),
+            "demographic_eligibility_notes": item.get("demographic_eligibility_notes", ""),
+            "gender_eligibility_display": item.get("gender_eligibility_display"),
+            "social_category_eligibility_display": item.get("social_category_eligibility_display"),
+            "demographic_benefit_variants": item.get("demographic_benefit_variants", []),
         }
 
         rule_comp = item.get("rule_completeness", "SUMMARY_ONLY")

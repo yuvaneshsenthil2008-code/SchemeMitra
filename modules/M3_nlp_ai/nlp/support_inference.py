@@ -59,7 +59,10 @@ class SupportInference:
         start_patterns = [
             r"\b(?:want|planning|plan|going) to start\b", r"\bstart(?:ing)? (?:a |my )?business\b",
             r"\bnew business\b", r"\bstartup\b", r"business\s+start\s+pann", r"business\s+shuru",
-            "தொழில் தொடங்க", "வணிகம் தொடங்க", "व्यवसाय शुरू", "बिजनेस शुरू", "వ్యాపారం ప్రారంభ", "ವ್ಯವಹಾರ ಆರಂಭ", "ബിസിനസ് തുടങ്ങ", "ব্যবসা শুরু",
+            "தொழில் தொடங்க", "வணிகம் தொடங்க", "வியாபாரம் தொடங்க", "தொழில் ஆரம்பிக்க", "வணிகம் ஆரம்பிக்க", "வியாபாரம் ஆரம்பிக்க",
+            "பிசினஸ் ஆரம்பிக்க", "கடை ஆரம்பிக்க", "ஆரம்பிக்கணும்", "ஆரம்பிக்கணும்னு",
+            "व्यवसाय शुरू", "बिजनेस शुरू", "बिजनेस चालू", "व्यवसाय चालू", "स्टार्ट करना है",
+            "వ్యాపారం ప్రారంభ", "ವ್ಯವಹಾರ ಆರಂಭ", "ബിസിനസ് തുടങ്ങ", "ব্যবসা শুরু",
         ]
         grow_patterns = [
             r"\bgrow(?:\s+my|\s+the)?(?:\s+existing)?(?:\s+\w+){0,3}\s+business\b", r"\bexpand(?:\s+my|\s+the)?(?:\s+existing)?(?:\s+\w+){0,3}\s+business\b", r"\bscale(?:\s+my|\s+the)?(?:\s+existing)?(?:\s+\w+){0,3}\s+business\b",

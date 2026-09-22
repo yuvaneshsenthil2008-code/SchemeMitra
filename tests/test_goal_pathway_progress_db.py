@@ -238,9 +238,9 @@ def test_m1_json_files_remain_unchanged():
     reqs = get_m1_pathway_requirements()
     rels = get_m1_relationships()
 
-    assert len(master) == 100
-    assert len(reqs) == 371
-    assert len(rels) == 522
+    assert len(master) == 102
+    assert len(reqs) == 379
+    assert len(rels) == 534
 
 def test_duplicate_complete_request_is_idempotent():
     client_id = f"test_client_{uuid.uuid4()}"

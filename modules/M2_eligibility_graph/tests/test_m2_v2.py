@@ -9,13 +9,13 @@ from OpportunityOS_v2_M2_eligibility_graph.pathway.pathway_engine import Pathway
 
 
 def test_loads_100_opportunities():
-    assert len(EligibilityEngine().opportunities) == 100
+    assert len(EligibilityEngine().opportunities) == 102
 
 def test_graph_counts_and_integrity():
     v=OpportunityGraph().validate()
-    assert v["opportunity_nodes"] == 100
-    assert v["requirement_nodes"] == 371
-    assert v["relationship_count"] == 522
+    assert v["opportunity_nodes"] == 102
+    assert v["requirement_nodes"] == 379
+    assert v["relationship_count"] == 534
     assert v["valid"] is True
 
 def test_expired_or_closed_not_recommendable():
@@ -91,5 +91,5 @@ def test_pathway_does_not_invent_successors():
 
 def test_all_results_have_safety_fields():
     results=EligibilityEngine().evaluate_all({})
-    assert len(results)==100
+    assert len(results)==102
     assert all("recommendable" in x and "official_source_url" in x and "rule_completeness" in x for x in results)

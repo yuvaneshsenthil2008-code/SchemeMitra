@@ -36,7 +36,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP002",
@@ -75,7 +91,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP003",
@@ -114,7 +146,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP004",
@@ -153,7 +201,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP005",
@@ -192,7 +256,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP006",
@@ -231,7 +311,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP007",
@@ -270,7 +366,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP008",
@@ -309,7 +421,21 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Female"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP009",
@@ -348,7 +474,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP010",
@@ -387,7 +529,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP011",
@@ -426,7 +584,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP012",
@@ -465,7 +639,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP013",
@@ -504,7 +694,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP014",
@@ -543,7 +749,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP015",
@@ -582,7 +804,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP016",
@@ -621,7 +859,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP017",
@@ -660,7 +914,23 @@
         "fallback_official_url": "https://mofpi.gov.in/",
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP018",
@@ -699,7 +969,23 @@
         "fallback_official_url": "https://mofpi.gov.in/",
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP019",
@@ -738,7 +1024,23 @@
         "fallback_official_url": "https://mofpi.gov.in/",
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP020",
@@ -777,7 +1079,23 @@
         "fallback_official_url": "https://mofpi.gov.in/",
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP021",
@@ -796,7 +1114,7 @@
     "Official_Source_URL": "https://www.pmegp.msme.gov.in/",
     "Lifecycle_Status": "ACTIVE",
     "Recommendable": "TRUE",
-    "Last_Verified": "2026-09-14",
+    "Last_Verified": "2026-09-15",
     "Verification_Notes": "",
     "Support_Types": "CREDIT;SUBSIDY",
     "Required_Registrations": "None explicitly identified at this level; verify component guidelines",
@@ -816,7 +1134,47 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-14"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "Open across genders and listed social categories; verified PMEGP guidelines provide special-category contribution/subsidy terms for specified groups.",
+    "Demographic_Benefit_Variants": [
+      {
+        "variant_id": "PMEGP_SPECIAL_CATEGORY_SUPPORT",
+        "label": "Special-category PMEGP benefit for your profile",
+        "match_any": {
+          "social_categories": [
+            "SC",
+            "ST",
+            "OBC",
+            "Minority"
+          ],
+          "genders": [
+            "Female",
+            "Transgender"
+          ],
+          "disability_status": [
+            "PERSON_WITH_DISABILITY"
+          ]
+        },
+        "benefit_summary": "Special-category terms: 5% beneficiary contribution; margin-money subsidy 25% for urban projects and 35% for rural projects.",
+        "source_url": "https://www.kviconline.gov.in/pmegpeportal/dashboard/notification/Revised_PMEGP_Scheme_Guidelines_07122023_compressed.pdf",
+        "verified_on": "2026-09-15",
+        "evidence_note": "Revised PMEGP guidelines list SC, ST, OBC, minorities, women, transgenders and differently-abled persons among special categories."
+      }
+    ]
   },
   {
     "Opportunity_ID": "OPP022",
@@ -855,7 +1213,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP023",
@@ -894,7 +1268,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP024",
@@ -933,7 +1323,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP025",
@@ -972,7 +1378,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP026",
@@ -1011,7 +1433,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP027",
@@ -1050,7 +1488,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP028",
@@ -1089,7 +1543,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP029",
@@ -1128,7 +1598,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP030",
@@ -1167,7 +1653,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP031",
@@ -1206,7 +1708,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP032",
@@ -1245,7 +1763,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP033",
@@ -1284,7 +1818,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP034",
@@ -1324,7 +1874,23 @@
         "checked_at": "2026-09-14",
         "url": "https://www.ncgtc.in/cgss/"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP035",
@@ -1363,7 +1929,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Female"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "Historical Stand-Up India eligibility used an OR structure: SC/ST entrepreneurs of any gender, or women entrepreneurs; scheme ended 31-03-2025.",
+    "Demographic_Benefit_Variants": [],
+    "Gender_Eligibility_Display": "Women; any gender for SC/ST applicants (historical eligibility)",
+    "Social_Category_Eligibility_Display": "SC / ST, or women from any social category (historical eligibility)"
   },
   {
     "Opportunity_ID": "OPP036",
@@ -1402,7 +1984,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP037",
@@ -1441,7 +2039,19 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "SC"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP038",
@@ -1480,7 +2090,19 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "SC"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP039",
@@ -1519,7 +2141,19 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "SC"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP040",
@@ -1558,7 +2192,19 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "OBC"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP041",
@@ -1597,7 +2243,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP042",
@@ -1636,7 +2298,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP043",
@@ -1675,7 +2353,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP044",
@@ -1714,7 +2408,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP045",
@@ -1753,7 +2463,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP046",
@@ -1792,7 +2518,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP047",
@@ -1831,7 +2573,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP048",
@@ -1870,7 +2628,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP049",
@@ -1909,7 +2683,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP050",
@@ -1948,7 +2738,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP051",
@@ -1987,7 +2793,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP052",
@@ -2026,7 +2848,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP053",
@@ -2065,7 +2903,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP054",
@@ -2104,7 +2958,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP055",
@@ -2143,7 +3013,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP056",
@@ -2182,7 +3068,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP057",
@@ -2221,7 +3123,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP058",
@@ -2260,7 +3178,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP059",
@@ -2299,7 +3233,23 @@
         "fallback_official_url": "https://rural.gov.in/",
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP060",
@@ -2338,7 +3288,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP061",
@@ -2377,7 +3343,22 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "Official TWEES FAQ states the scheme is for women entrepreneurs and also transgender entrepreneurs in Tamil Nadu.",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP062",
@@ -2416,7 +3397,21 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Female"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP063",
@@ -2455,7 +3450,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP064",
@@ -2494,7 +3505,21 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Female"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP065",
@@ -2533,7 +3558,21 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Female"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP066",
@@ -2572,7 +3611,21 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Female"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP067",
@@ -2611,7 +3664,17 @@
         "fallback_official_url": "https://nsfdc.nic.in/",
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Female"
+    ],
+    "Eligible_Social_Categories": [
+      "SC"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP068",
@@ -2650,7 +3713,17 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Female"
+    ],
+    "Eligible_Social_Categories": [
+      "OBC"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP069",
@@ -2689,7 +3762,17 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Female"
+    ],
+    "Eligible_Social_Categories": [
+      "OBC"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP070",
@@ -2728,7 +3811,21 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Female"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP071",
@@ -2767,7 +3864,20 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "SC",
+      "ST"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "Official Tamil Nadu AABCS page restricts beneficiaries to SC/ST-owned enterprises.",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP072",
@@ -2806,7 +3916,21 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP073",
@@ -2845,7 +3969,19 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "SC"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP074",
@@ -2884,7 +4020,19 @@
         "fallback_official_url": "https://nsfdc.nic.in/",
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "SC"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP075",
@@ -2923,7 +4071,19 @@
         "fallback_official_url": "https://nsfdc.nic.in/",
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "SC"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP076",
@@ -2962,7 +4122,19 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "OBC"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP077",
@@ -3001,7 +4173,19 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "ST"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP078",
@@ -3040,7 +4224,17 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Female"
+    ],
+    "Eligible_Social_Categories": [
+      "ST"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP079",
@@ -3079,7 +4273,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP080",
@@ -3118,7 +4328,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP081",
@@ -3157,7 +4383,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP082",
@@ -3196,7 +4438,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP083",
@@ -3235,7 +4493,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP084",
@@ -3274,7 +4548,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP085",
@@ -3313,7 +4603,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP086",
@@ -3352,7 +4658,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP087",
@@ -3391,7 +4713,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP088",
@@ -3430,7 +4768,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP089",
@@ -3469,7 +4823,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP090",
@@ -3508,7 +4878,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP091",
@@ -3547,7 +4933,23 @@
         "fallback_official_url": "https://commerce.gov.in/",
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP092",
@@ -3586,7 +4988,23 @@
         "fallback_official_url": "https://commerce.gov.in/",
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP093",
@@ -3625,7 +5043,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP094",
@@ -3664,7 +5098,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP095",
@@ -3703,7 +5153,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP096",
@@ -3742,7 +5208,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP097",
@@ -3781,7 +5263,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP098",
@@ -3820,7 +5318,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP099",
@@ -3859,7 +5373,23 @@
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
       }
-    }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
   },
   {
     "Opportunity_ID": "OPP100",
@@ -3897,6 +5427,162 @@
         "semantic_status": "NORMAL",
         "fallback_official_url": null,
         "checked_at": "2026-09-12"
+      }
+    },
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": false,
+    "Demographic_Eligibility_Notes": "",
+    "Demographic_Benefit_Variants": []
+  },
+  {
+    "Opportunity_ID": "OPP101",
+    "Opportunity_Name": "NMDFC Term Loan Scheme",
+    "Record_Type": "SCHEME",
+    "Primary_Sector": "Finance & Credit",
+    "Secondary_Sectors": "Agriculture & Allied;MSME & Manufacturing;Handicrafts, Handloom & Artisan Economy",
+    "Ministry_Department": "National Minorities Development & Finance Corporation / Ministry of Minority Affairs",
+    "Scope": "Central",
+    "Target_Beneficiary": "Eligible individuals belonging to notified minority communities under NMDFC income and channel-partner norms",
+    "Benefit_Summary": "Concessional term-loan finance for commercially viable and technically feasible income-generating ventures; Credit Line-2 supports projects up to ₹30 lakh.",
+    "Eligibility_Summary": "Member of a notified minority community; annual family income up to ₹8 lakh for Credit Line-2; SCA/banking-partner and project conditions apply.",
+    "Prerequisite_Types": "CATEGORY_PROOF;INCOME_PROOF;DOCUMENT;CHANNEL_PARTNER",
+    "Required_Documents_Summary": "Minority-community eligibility proof, income proof, KYC/application and project documents required by the SCA/banking partner.",
+    "Application_Route": "NMDFC State Channelizing Agency / Banking Partner",
+    "Official_Source_URL": "https://nmdfc.org/credit-2",
+    "Lifecycle_Status": "ACTIVE",
+    "Recommendable": "TRUE",
+    "Last_Verified": "2026-09-15",
+    "Verification_Notes": "Official NMDFC Credit Line-2 page verifies term-loan quantum and gender-differentiated rates; NMDFC official eligibility material identifies notified minority communities.",
+    "Support_Types": "LOAN;CREDIT",
+    "Required_Registrations": "Apply through an NMDFC State Channelizing Agency/banking partner as applicable.",
+    "Required_Certifications": "Minority-community eligibility evidence as required by channel partner.",
+    "Required_Training": "Not identified as a universal prerequisite on the verified Term Loan page.",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "Minority"
+    ],
+    "Disability_Eligibility": "ANY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "Scheme targets members of communities notified as national minorities; gender does not restrict access to the Term Loan scheme.",
+    "Demographic_Benefit_Variants": [
+      {
+        "variant_id": "NMDFC_CL2_WOMEN_INTEREST_CONCESSION",
+        "label": "Women beneficiary concession for your profile",
+        "match_all": {
+          "social_categories": [
+            "Minority"
+          ],
+          "genders": [
+            "Female"
+          ]
+        },
+        "benefit_summary": "Under Credit Line-2 Term Loan, the beneficiary interest rate is 6% p.a. for women versus 8% p.a. for male beneficiaries.",
+        "source_url": "https://nmdfc.org/credit-2",
+        "verified_on": "2026-09-15",
+        "evidence_note": "Official NMDFC Credit Line-2 page states the gender-differentiated beneficiary rates."
+      }
+    ],
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": {
+        "original_url": "https://nmdfc.org/credit-2",
+        "checked_url": "https://nmdfc.org/credit-2",
+        "final_url": "https://nmdfc.org/credit-2",
+        "purpose": "OFFICIAL_SOURCE",
+        "status": "WORKING",
+        "http_status": 200,
+        "semantic_status": "NORMAL",
+        "fallback_official_url": "https://nmdfc.org/nmdfcschemes",
+        "checked_at": "2026-09-15"
+      }
+    }
+  },
+  {
+    "Opportunity_ID": "OPP102",
+    "Opportunity_Name": "NDFDC Divyangjan Swavalamban Yojana",
+    "Record_Type": "SCHEME",
+    "Primary_Sector": "Social Empowerment & Inclusive Entrepreneurship",
+    "Secondary_Sectors": "Finance & Credit;MSME & Manufacturing;Agriculture & Allied;Skills & Employment",
+    "Ministry_Department": "National Divyangjan Finance and Development Corporation / Department of Empowerment of Persons with Disabilities",
+    "Scope": "Central",
+    "Target_Beneficiary": "Indian citizens with 40% or more disability and a UDID number, subject to scheme conditions",
+    "Benefit_Summary": "Concessional credit for self-employment/income-generation and other approved empowerment purposes for persons with disabilities.",
+    "Eligibility_Summary": "Person with 40% or more disability, generally above 18 years for self-employment, with UDID; purpose and lending conditions apply.",
+    "Prerequisite_Types": "DISABILITY_CERTIFICATE;IDENTITY_PROOF;DOCUMENT;CHANNEL_PARTNER",
+    "Required_Documents_Summary": "UDID/disability proof, age/identity evidence and loan/application documents required by NDFDC/implementing agency.",
+    "Application_Route": "NDFDC / State Channelizing Agency / partner agency / official online loan facility",
+    "Official_Source_URL": "https://www.ndfdc.nic.in/schemes/DIVYANGJAN%20SWAVALAMBAN%20YOJANA.pdf",
+    "Lifecycle_Status": "ACTIVE",
+    "Recommendable": "TRUE",
+    "Last_Verified": "2026-09-15",
+    "Verification_Notes": "Official NDFDC scheme document verifies 40%+ disability, UDID, age and self-employment concessional-credit terms.",
+    "Support_Types": "LOAN;CREDIT",
+    "Required_Registrations": "UDID number is required by the verified scheme document.",
+    "Required_Certifications": "Disability evidence / UDID required.",
+    "Required_Training": "Not a universal prerequisite for the self-employment loan component.",
+    "Rule_Completeness": "PARTIAL_STRUCTURED",
+    "Eligible_Genders": [
+      "Male",
+      "Female",
+      "Transgender"
+    ],
+    "Eligible_Social_Categories": [
+      "General",
+      "OBC",
+      "SC",
+      "ST",
+      "Minority"
+    ],
+    "Disability_Eligibility": "PERSON_WITH_DISABILITY",
+    "Demographic_Targeting": true,
+    "Demographic_Eligibility_Notes": "Open across social categories and genders, but specifically restricted to eligible persons with disabilities under the scheme definition.",
+    "Demographic_Benefit_Variants": [
+      {
+        "variant_id": "NDFDC_WOMAN_WITH_DISABILITY_REBATE",
+        "label": "Additional concession for your profile",
+        "match_all": {
+          "genders": [
+            "Female"
+          ],
+          "disability_status": [
+            "PERSON_WITH_DISABILITY"
+          ]
+        },
+        "benefit_summary": "NDFDC states a special 1% interest rebate for women with disabilities on self-employment loans up to ₹50,000.",
+        "source_url": "https://www.ndfdc.nic.in/schemes",
+        "verified_on": "2026-09-15",
+        "evidence_note": "Official NDFDC schemes page states this additional rebate for women with disabilities."
+      }
+    ],
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": {
+        "original_url": "https://www.ndfdc.nic.in/schemes/DIVYANGJAN%20SWAVALAMBAN%20YOJANA.pdf",
+        "checked_url": "https://www.ndfdc.nic.in/schemes/DIVYANGJAN%20SWAVALAMBAN%20YOJANA.pdf",
+        "final_url": "https://www.ndfdc.nic.in/schemes/DIVYANGJAN%20SWAVALAMBAN%20YOJANA.pdf",
+        "purpose": "OFFICIAL_SOURCE",
+        "status": "WORKING",
+        "http_status": 200,
+        "semantic_status": "NORMAL",
+        "fallback_official_url": "https://www.ndfdc.nic.in/schemes",
+        "checked_at": "2026-09-15"
       }
     }
   }

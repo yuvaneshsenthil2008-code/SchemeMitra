@@ -25,11 +25,11 @@ def test_reset_profile_flow_api():
     assert "applicability" in data_empty or "recommendations" in data_empty or "profile" in data_empty
 
     # Explore schemes remains functional regardless of profile state
-    res_explore = client.get("/api/opportunities?limit=100")
+    res_explore = client.get("/api/opportunities?limit=200")
     assert res_explore.status_code == 200
     data_explore = res_explore.json()
-    assert data_explore["total"] == 100
-    assert len(data_explore["items"]) == 100
+    assert data_explore["total"] == 102
+    assert len(data_explore["items"]) == 102
 
 def test_roadmap_routing_and_scheme_specific_content():
     """Verify /api/pathway/generate returns distinct, scheme-specific roadmap content."""

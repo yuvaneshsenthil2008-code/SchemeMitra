@@ -120,6 +120,10 @@ class EntityExtractor:
             value = self.rules._extract_sector(raw)
             return {"sector": value} if value else {}
 
+        if field in {"education_field", "field_of_study"}:
+            value = self.rules._extract_education_field(raw)
+            return {"education_field": value} if value else {}
+
         return {}
 
     def _closed_choice(self, text, field, aliases, cutoff):

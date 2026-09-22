@@ -81,15 +81,20 @@ class SchemeDetailComponent {
   }
 
   formatBusinessGoal(goal) {
-    if (!goal) return 'Establish an enterprise';
+    if (window.i18n && window.i18n.getGoalLabel) {
+      return window.i18n.getGoalLabel(goal);
+    }
+    if (!goal) return 'General Business Readiness';
     const g = String(goal).trim();
     const ENUM_MAP = {
-      'START_BUSINESS': 'Start a business',
-      'ESTABLISH_ENTERPRISE': 'Establish an enterprise',
-      'EXPAND_BUSINESS': 'Expand existing business',
+      'GENERAL_READINESS': 'General Business Readiness',
+      'START_BUSINESS': 'Start a new business',
+      'ESTABLISH_ENTERPRISE': 'Establish a new micro-enterprise',
+      'EXPAND_BUSINESS': 'Expand existing business unit',
+      'GROW_BUSINESS': 'Expand existing business unit',
       'UPGRADE_UNIT': 'Upgrade micro enterprise unit',
       'TECH_INNOVATION': 'Technology innovation & commercialization',
-      'EXPORT_DEVELOPMENT': 'Export development',
+      'EXPORT_DEVELOPMENT': 'Export development & market expansion',
       'MODERNIZATION': 'Unit modernization',
       'WORKING_CAPITAL': 'Working capital assistance'
     };
@@ -122,6 +127,74 @@ class SchemeDetailComponent {
     return st.replace(/_/g, ' ');
   }
 
+  canonicalCategory(value) {
+    const v = String(value || '').trim().toLowerCase();
+    if (!v) return '';
+    if (v === 'sc' || v.includes('scheduled caste')) return 'SC';
+    if (v === 'st' || v.includes('scheduled tribe')) return 'ST';
+    if (v === 'obc' || v.includes('other backward') || v.includes('backward class')) return 'OBC';
+    if (v.includes('minority')) return 'Minority';
+    if (v === 'general' || v === 'gen') return 'General';
+    return String(value).trim();
+  }
+
+  formatEligibleGenders(opp) {
+    if (opp.gender_eligibility_display) return opp.gender_eligibility_display;
+    const list = Array.isArray(opp.eligible_genders) ? opp.eligible_genders.filter(Boolean) : [];
+    const all = ['Male', 'Female', 'Transgender'];
+    if (all.every(v => list.includes(v))) return window.i18n.get('lbl_all_genders');
+    return list.length ? list.join(' / ') : window.i18n.get('lbl_all_genders');
+  }
+
+  formatEligibleCategories(opp) {
+    if (opp.social_category_eligibility_display) return opp.social_category_eligibility_display;
+    const list = Array.isArray(opp.eligible_social_categories) ? opp.eligible_social_categories.filter(Boolean) : [];
+    const all = ['General', 'OBC', 'SC', 'ST', 'Minority'];
+    if (all.every(v => list.includes(v))) return window.i18n.get('lbl_all_social_categories');
+    return list.length ? list.join(' / ') : window.i18n.get('lbl_all_social_categories');
+  }
+
+  formatDisabilityEligibility(opp) {
+    return String(opp.disability_eligibility || 'ANY').toUpperCase() === 'PERSON_WITH_DISABILITY'
+      ? window.i18n.get('lbl_persons_with_disabilities')
+      : window.i18n.get('lbl_any_disability_status');
+  }
+
+  demographicVariantMatches(variant, profile) {
+    if (!variant || !profile) return false;
+    const actual = {
+      social_categories: this.canonicalCategory(profile.category),
+      genders: String(profile.gender || '').trim(),
+      disability_status: String(profile.disability_status || '').trim().toUpperCase()
+    };
+
+    const dimensionMatches = (rules) => Object.entries(rules || {}).map(([key, values]) => {
+      const allowed = Array.isArray(values) ? values.map(v => String(v)) : [];
+      if (!allowed.length) return true;
+      let value = actual[key] || '';
+      if (key === 'social_categories') value = this.canonicalCategory(value);
+      if (key === 'disability_status') value = String(value).toUpperCase();
+      return allowed.some(v => key === 'social_categories'
+        ? this.canonicalCategory(v) === value
+        : (key === 'disability_status' ? String(v).toUpperCase() === value : String(v) === value));
+    });
+
+    if (variant.match_all) {
+      const checks = dimensionMatches(variant.match_all);
+      if (!checks.length || !checks.every(Boolean)) return false;
+    }
+    if (variant.match_any) {
+      const checks = dimensionMatches(variant.match_any);
+      if (!checks.length || !checks.some(Boolean)) return false;
+    }
+    return Boolean(variant.match_all || variant.match_any);
+  }
+
+  getPersonalizedDemographicBenefit(opp, profile) {
+    if (!profile || !Array.isArray(opp.demographic_benefit_variants)) return null;
+    return opp.demographic_benefit_variants.find(v => this.demographicVariantMatches(v, profile)) || null;
+  }
+
   async loadAndRender(opportunityId, returnPage = "explore", returnTab = "recommended") {
     this.opportunityId = opportunityId;
     this.returnPage = returnPage;
@@ -143,7 +216,7 @@ class SchemeDetailComponent {
 
     try {
       // 1. Fetch public scheme detail from M1
-      const resScheme = await fetch(`/api/opportunities/${opportunityId}`);
+      const resScheme = await fetch(window.getApiUrl(`/api/opportunities/${opportunityId}`));
       if (!resScheme.ok) throw new Error("Failed to load scheme details");
       this.schemeData = await resScheme.json();
 
@@ -151,7 +224,7 @@ class SchemeDetailComponent {
 
       // 2. If confirmed profile exists, fetch personalized analyze & pathway data
       if (profile) {
-        const resPath = await fetch("/api/pathway/generate", {
+        const resPath = await fetch(window.getApiUrl("/api/pathway/generate"), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -163,7 +236,7 @@ class SchemeDetailComponent {
           this.pathwayData = await resPath.json();
         }
 
-        const resAna = await fetch("/api/analyze", {
+        const resAna = await fetch(window.getApiUrl("/api/analyze"), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -217,6 +290,7 @@ class SchemeDetailComponent {
   renderScreen(container, profile) {
     const t = (k) => window.i18n.get(k);
     const opp = this.schemeData || {};
+    const personalizedDemographicBenefit = this.getPersonalizedDemographicBenefit(opp, profile);
     const nameObj = window.i18n.getLocalizedSchemeName(opp);
     const titleContent = nameObj.localized
       ? `<h1 style="font-size: 1.6rem; color: var(--primary-navy); margin: 0.4rem 0 0.15rem 0; line-height: 1.3;">${nameObj.localized}</h1>
@@ -303,7 +377,7 @@ class SchemeDetailComponent {
       const steps = pathway.steps || [];
       const isOfficialSeq = pathway.ordering_confidence === 'OFFICIAL_SEQUENCE';
       const disclaimer = pathway.disclaimer || "Your pathway is based on verified scheme requirements and the information in your profile. The suggested order is guidance unless an official sequence is specified.";
-      const formattedUserGoal = this.formatBusinessGoal(pathway.user_business_goal || profile.business_goal);
+      const formattedUserGoal = this.formatBusinessGoal(pathway.user_business_goal || profile.selected_goal || profile.business_goal);
 
       pathwayBlockHtml = `
         <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.75rem; box-shadow: var(--shadow-sm);">
@@ -467,10 +541,18 @@ class SchemeDetailComponent {
               </button>
             </div>
 
-            <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.25rem; font-size: 0.875rem; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 0.85rem;">
+            <div style="display: flex; flex-wrap: wrap; gap: 0.65rem 1.25rem; margin-top: 1.25rem; font-size: 0.875rem; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 0.85rem;">
               <span>Scope: <strong>${window.i18n.getScopeLabel(opp.scope)}</strong></span>
               <span>Target: <strong>${opp.target_beneficiary || 'Eligible Citizens'}</strong></span>
+              <span>${window.i18n.get('lbl_gender')}: <strong>${this.formatEligibleGenders(opp)}</strong></span>
+              <span>${window.i18n.get('lbl_social_category')}: <strong>${this.formatEligibleCategories(opp)}</strong></span>
+              <span>${window.i18n.get('lbl_disability_eligibility')}: <strong>${this.formatDisabilityEligibility(opp)}</strong></span>
             </div>
+            ${opp.demographic_eligibility_notes ? `
+              <div style="margin-top:0.75rem; font-size:0.8rem; color:#475569; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:0.65rem 0.8rem;">
+                ${opp.demographic_eligibility_notes}
+              </div>
+            ` : ''}
           </div>
 
           <!-- Scheme Overview Card -->
@@ -482,6 +564,15 @@ class SchemeDetailComponent {
                 <h4 style="color: var(--primary-navy); margin-bottom: 0.3rem; font-size: 0.95rem;">${window.i18n.get('detail_benefits')}</h4>
                 <p style="color: var(--text-main); font-size: 0.925rem; line-height: 1.5;">${opp.benefit_summary || 'N/A'}</p>
               </div>
+
+              ${personalizedDemographicBenefit ? `
+                <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-left:4px solid #138808; border-radius:10px; padding:0.9rem 1rem;">
+                  <h4 style="color:#166534; margin:0 0 0.35rem 0; font-size:0.95rem;">${window.i18n.get('detail_profile_specific_benefit')}</h4>
+                  <div style="font-size:0.78rem; color:#15803d; font-weight:700; margin-bottom:0.35rem;">${personalizedDemographicBenefit.label || ''}</div>
+                  <p style="color:#14532d; font-size:0.9rem; line-height:1.5; margin:0;">${personalizedDemographicBenefit.benefit_summary || ''}</p>
+                  ${personalizedDemographicBenefit.source_url ? `<a href="${personalizedDemographicBenefit.source_url}" target="_blank" rel="noopener noreferrer" style="display:inline-block; margin-top:0.5rem; color:#166534; font-size:0.8rem; font-weight:700;">${window.i18n.get('detail_verified_source')} ↗</a>` : ''}
+                </div>
+              ` : ''}
 
               <div>
                 <h4 style="color: var(--primary-navy); margin-bottom: 0.3rem; font-size: 0.95rem;">${window.i18n.get('detail_eligibility')}</h4>
@@ -594,7 +685,7 @@ class SchemeDetailComponent {
       const langNameMap = { 'en': 'English', 'ta': 'Tamil', 'hi': 'Hindi' };
       const reqLang = langNameMap[currentLang] || currentLang;
 
-      const res = await fetch("/api/pathway/copilot", {
+      const res = await fetch(window.getApiUrl("/api/pathway/copilot"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

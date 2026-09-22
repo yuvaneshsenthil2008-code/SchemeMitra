@@ -19,9 +19,11 @@ STAGE_ORDER = {
 }
 
 GOAL_MAP = {
+    "GENERAL_READINESS": "General Business Readiness",
     "START_BUSINESS": "Start a business",
     "ESTABLISH_ENTERPRISE": "Establish an enterprise",
     "EXPAND_BUSINESS": "Expand existing business",
+    "GROW_BUSINESS": "Expand existing business",
     "UPGRADE_UNIT": "Upgrade micro enterprise unit",
     "TECH_INNOVATION": "Technology innovation & commercialization",
     "EXPORT_DEVELOPMENT": "Export development"
@@ -29,7 +31,7 @@ GOAL_MAP = {
 
 def format_business_goal(goal: str | None) -> str:
     if not goal:
-        return "Enterprise Establishment"
+        return "General Business Readiness"
     g_str = str(goal).strip()
     if g_str.upper() in GOAL_MAP:
         return GOAL_MAP[g_str.upper()]
@@ -172,7 +174,7 @@ class PathwayEngine:
         step_seq += 1
 
         # User Goal Node
-        formatted_user_goal = format_business_goal(profile.business_goal)
+        formatted_user_goal = format_business_goal(profile.selected_goal or profile.business_goal or "GENERAL_READINESS")
         steps.append({
             "step_number": step_seq,
             "step_type": "USER_GOAL",

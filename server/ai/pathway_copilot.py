@@ -69,7 +69,7 @@ def build_trusted_context(
     if profile.get("project_cost") is not None and profile.get("project_cost") > 0:
         prof_sum["project_cost"] = profile["project_cost"]
 
-    raw_goal = str(profile.get("business_goal") or "").strip()
+    raw_goal = str(profile.get("selected_goal") or profile.get("business_goal") or "GENERAL_READINESS").strip()
     if raw_goal: prof_sum["goal"] = raw_goal
 
     # 2. M2 Eligibility Evaluation

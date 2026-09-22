@@ -25,15 +25,21 @@ client = TestClient(app)
 def test_reset_user_data_db_function_idempotency():
     cid = "test_reset_client_999"
 
-    # Setup progress & artifact
+    # Setup progress plus one legacy artifact row. The artifact feature is removed,
+    # but reset intentionally cleans historical rows from existing prototype DBs.
     progress_db.complete_requirement(cid, "REQ0086")
-    progress_db.set_artifact_available(cid, "DPR")
+    conn = progress_db.get_connection()
+    try:
+        with conn:
+            conn.execute(
+                "INSERT OR REPLACE INTO user_artifacts (client_id, artifact_type, status, display_name, notes, created_at, updated_at) VALUES (?, ?, 'AVAILABLE', ?, '', '', '')",
+                (cid, "DPR", "Detailed Project Report (legacy)")
+            )
+    finally:
+        conn.close()
 
-    # Verify counts before reset
     completed = progress_db.get_completed_requirement_ids(cid)
-    artifacts = progress_db.get_user_artifacts(cid)
     assert len(completed) == 1
-    assert len(artifacts) == 1
 
     # First reset (Case A)
     res1 = progress_db.reset_user_data(cid)
@@ -41,11 +47,15 @@ def test_reset_user_data_db_function_idempotency():
     assert res1["goal_requirement_progress_deleted"] == 1
     assert res1["user_artifacts_deleted"] == 1
 
-    # Verify zero records left
+    # Verify zero progress records and legacy artifact rows left
     completed_after = progress_db.get_completed_requirement_ids(cid)
-    artifacts_after = progress_db.get_user_artifacts(cid)
     assert len(completed_after) == 0
-    assert len(artifacts_after) == 0
+    conn = progress_db.get_connection()
+    try:
+        count = conn.execute("SELECT COUNT(*) FROM user_artifacts WHERE client_id = ?", (cid,)).fetchone()[0]
+    finally:
+        conn.close()
+    assert count == 0
 
     # Second reset (Case B & E - Reset twice / zero rows)
     res2 = progress_db.reset_user_data(cid)

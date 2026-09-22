@@ -29,6 +29,18 @@
         "null"
       ]
     },
+    "disability_status": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "NONE",
+        "PERSON_WITH_DISABILITY",
+        "PREFER_NOT_TO_SAY",
+        null
+      ]
+    },
     "state": {
       "type": [
         "string",
@@ -103,6 +115,14 @@
         "string",
         "null"
       ]
+    },
+    "selected_goal": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": "GENERAL_READINESS",
+      "description": "User-selected planning goal. UI provides verified preset options, while custom legacy/NLP goals remain supported."
     },
     "preferred_support_types": {
       "type": "array",

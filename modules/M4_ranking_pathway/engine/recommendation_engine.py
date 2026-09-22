@@ -41,6 +41,12 @@ class RecommendationEngine:
                 "application_guide": build_application_guide(o),
                 "official_source_url": o.official_source_url,
                 "last_verified": o.last_verified,
+                "eligible_genders": o.eligible_genders,
+                "eligible_social_categories": o.eligible_social_categories,
+                "disability_eligibility": o.disability_eligibility,
+                "demographic_targeting": o.demographic_targeting,
+                "demographic_eligibility_notes": o.demographic_eligibility_notes,
+                "demographic_benefit_variants": o.demographic_benefit_variants,
                 "missing_profile_fields": o.missing_profile_fields,
             })
 

@@ -20,8 +20,6 @@ class MyOpportunitiesComponent {
     this.goalPathwayData = null;
     this.completedActionsCount = 0;
     this.completedActionsList = [];
-    this.userArtifactsCount = 0;
-    this.userArtifactsList = [];
     this.userProgressOverlay = this.loadUserProgressOverlay();
   }
 
@@ -30,8 +28,6 @@ class MyOpportunitiesComponent {
     this.goalPathwayData = null;
     this.completedActionsCount = 0;
     this.completedActionsList = [];
-    this.userArtifactsCount = 0;
-    this.userArtifactsList = [];
     this.userProgressOverlay = {};
     this.expandedInlineRoadmaps = {};
     this.pathwayCache = {};
@@ -53,7 +49,7 @@ class MyOpportunitiesComponent {
   async fetchCompletedActions() {
     const cid = this.getClientId();
     try {
-      const res = await fetch(`/api/pathway/goal/completed-actions?client_id=${encodeURIComponent(cid)}`);
+      const res = await fetch(window.getApiUrl(`/api/pathway/goal/completed-actions?client_id=${encodeURIComponent(cid)}`));
       if (res.ok) {
         const data = await res.json();
         this.completedActionsList = data.completed_actions || [];
@@ -64,188 +60,7 @@ class MyOpportunitiesComponent {
     }
   }
 
-  async fetchUserArtifacts() {
-    const cid = this.getClientId();
-    try {
-      const res = await fetch(`/api/pathway/artifacts?client_id=${encodeURIComponent(cid)}`);
-      if (res.ok) {
-        const data = await res.json();
-        this.userArtifactsList = data.artifacts || [];
-        this.userArtifactsCount = data.count || 0;
-      }
-    } catch (err) {
-      console.error("Failed to fetch user artifacts:", err);
-    }
-  }
-
-  async markArtifactAvailable(artifactType, notes = "") {
-    const cid = this.getClientId();
-    try {
-      const res = await fetch("/api/pathway/artifacts/mark-available", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          client_id: cid,
-          artifact_type: artifactType,
-          notes: notes
-        })
-      });
-      if (res.ok) {
-        await this.fetchGoalPathway();
-        if (document.getElementById("preparedDocumentsModal")?.classList.contains("active")) {
-          this.openPreparedDocumentsModal();
-        }
-      } else {
-        alert("Could not update document availability. Please try again.");
-      }
-    } catch (err) {
-      console.error("Failed to mark artifact available:", err);
-      alert("Could not update document availability. Please try again.");
-    }
-  }
-
-  async removeArtifact(artifactType) {
-    const warningMsg = "This document was previously used for completed requirement records.\nChanging availability does not automatically change your confirmed scheme progress.\n\nAre you sure you want to mark this document as Not Available?";
-    if (!window.confirm(warningMsg)) {
-      return;
-    }
-
-    const cid = this.getClientId();
-    try {
-      const res = await fetch("/api/pathway/artifacts/remove", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          client_id: cid,
-          artifact_type: artifactType
-        })
-      });
-      if (res.ok) {
-        await this.fetchGoalPathway();
-        if (document.getElementById("preparedDocumentsModal")?.classList.contains("active")) {
-          this.openPreparedDocumentsModal();
-        }
-      } else {
-        alert("Could not update document availability. Please try again.");
-      }
-    } catch (err) {
-      console.error("Failed to remove artifact:", err);
-      alert("Could not update document availability. Please try again.");
-    }
-  }
-
-  async confirmSchemeRequirementWithArtifact(reqId, schemeName, artifactTitle = "document") {
-    if (!reqId || reqId === "undefined" || reqId === "null") {
-      console.error("confirmSchemeRequirementWithArtifact received invalid requirement_id:", reqId);
-      alert("Could not save your progress. Invalid requirement ID.");
-      return;
-    }
-    const confirmMsg = `Confirm that your existing ${artifactTitle} satisfies this scheme requirement (${schemeName})?\n\nThis records your own progress and is not official government verification.`;
-    if (!window.confirm(confirmMsg)) {
-      return;
-    }
-    await this.toggleGoalRequirement(reqId, false, true);
-  }
-
-  async openPreparedDocumentsModal() {
-    await this.fetchUserArtifacts();
-    let modal = document.getElementById("preparedDocumentsModal");
-    if (!modal) {
-      modal = document.createElement("div");
-      modal.id = "preparedDocumentsModal";
-      modal.className = "modal-overlay";
-      document.body.appendChild(modal);
-    }
-
-    const arts = this.userArtifactsList || [];
-    const availableTypes = new Set(arts.map(a => a.artifact_type));
-
-    const commonTypes = [
-      { type: "DPR", title: "Detailed Project Report (DPR)", btnLabel: "I Have a DPR" },
-      { type: "IDENTITY_PROOF", title: "Identity / KYC Proof (Aadhaar, PAN, Voter ID)", btnLabel: "I Have Identity / KYC Proof" },
-      { type: "REGISTRATION_CERTIFICATE", title: "Business Registration / Udyam Certificate", btnLabel: "I Have This Registration Certificate" },
-      { type: "LAND_OR_LEASE_DOCUMENT", title: "Land Ownership / Lease Agreement", btnLabel: "I Have Land / Lease Documents" },
-      { type: "BANK_DOCUMENT", title: "Bank Statement / Financial Records", btnLabel: "I Have the Required Bank Document" }
-    ];
-
-    const t = (k) => window.i18n ? window.i18n.get(k) : k;
-
-    const listHtml = commonTypes.map(item => {
-      const isAvail = availableTypes.has(item.type);
-      return `
-        <div style="background: #ffffff; border: 1px solid var(--border-color); border-left: 4px solid ${isAvail ? '#138808' : '#64748b'}; border-radius: 10px; padding: 0.85rem 1rem; margin-bottom: 0.75rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-          <div>
-            <div style="font-size: 0.9rem; font-weight: 700; color: var(--primary-navy);">
-              ${isAvail ? '✓' : '○'} ${item.title}
-            </div>
-            <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.15rem;">
-              ${isAvail ? t('dash_doc_available') : t('dash_doc_not_available')}
-            </div>
-          </div>
-          <div>
-            ${isAvail ? `
-              <button class="btn-outline" onclick="myOpportunities.removeArtifact('${item.type}')" style="font-size: 0.78rem; padding: 0.3rem 0.65rem; border-color: #dc2626; color: #dc2626; background: #ffffff;">
-                ${t('dash_btn_remove')}
-              </button>
-            ` : `
-              <button class="btn-primary" onclick="myOpportunities.markArtifactAvailable('${item.type}')" style="font-size: 0.78rem; padding: 0.35rem 0.75rem; background: #2563eb; color: #ffffff; font-weight: 700;">
-                ${item.btnLabel}
-              </button>
-            `}
-          </div>
-        </div>
-      `;
-    }).join("");
-
-    modal.innerHTML = `
-      <div class="modal-card" style="max-width: 620px; max-height: 85vh; display: flex; flex-direction: column;">
-        <button class="close-modal" onclick="document.getElementById('preparedDocumentsModal').classList.remove('active')">&times;</button>
-        <div style="font-size: 0.8rem; font-weight: 800; color: #2563eb; text-transform: uppercase; margin-bottom: 0.35rem;">
-          REUSABLE ARTIFACTS
-        </div>
-        <h3 style="font-size: 1.25rem; color: var(--primary-navy); font-weight: 800; margin-bottom: 0.3rem;">
-          📄 ${t('dash_prepared_docs_title')} (${arts.length})
-        </h3>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.4;">
-          ${t('dash_prepared_docs_desc')}
-        </p>
-
-        <div style="overflow-y: auto; flex: 1; padding-right: 0.25rem;">
-          ${listHtml}
-        </div>
-      </div>
-    `;
-
-    modal.classList.add("active");
-  }
-
-  getClientId() {
-    let cid = localStorage.getItem("schememitra_client_id");
-    if (!cid) {
-      if (typeof crypto !== "undefined" && crypto.randomUUID) {
-        cid = crypto.randomUUID();
-      } else {
-        cid = 'client_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-      }
-      localStorage.setItem("schememitra_client_id", cid);
-    }
-    return cid;
-  }
-
-  async fetchCompletedActions() {
-    const cid = this.getClientId();
-    try {
-      const res = await fetch(`/api/pathway/goal/completed-actions?client_id=${encodeURIComponent(cid)}`);
-      if (res.ok) {
-        const data = await res.json();
-        this.completedActionsList = data.completed_actions || [];
-        this.completedActionsCount = data.count || 0;
-      }
-    } catch (err) {
-      console.error("Failed to fetch completed actions:", err);
-    }
-  }
-
+  // "Completed Actions" remains an active feature; only its display label is localized.
   async openCompletedActionsModal() {
     await this.fetchCompletedActions();
     let modal = document.getElementById("completedActionsModal");
@@ -400,7 +215,7 @@ class MyOpportunitiesComponent {
 
       for (const reqId of legacyReqIds) {
         try {
-          await fetch("/api/pathway/goal/progress/complete", {
+          await fetch(window.getApiUrl("/api/pathway/goal/progress/complete"), {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ client_id: cid, requirement_id: reqId })
@@ -421,10 +236,7 @@ class MyOpportunitiesComponent {
     const cid = this.getClientId();
     try {
       await this.migrateLegacyProgressIfNeeded();
-      await Promise.all([
-        this.fetchCompletedActions(),
-        this.fetchUserArtifacts()
-      ]);
+      await this.fetchCompletedActions();
 
       const serverOverlay = {
         completed_requirements: (this.completedActionsList || []).map(a => ({
@@ -434,13 +246,13 @@ class MyOpportunitiesComponent {
         }))
       };
 
-      const res = await fetch("/api/pathway/goal/generate", {
+      const res = await fetch(window.getApiUrl("/api/pathway/goal/generate"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           client_id: cid,
           profile: profile,
-          business_goal: profile.business_goal,
+          business_goal: profile.selected_goal || profile.business_goal || "GENERAL_READINESS",
           user_progress_overlay: serverOverlay,
           force_general: forceGeneral
         })
@@ -448,10 +260,6 @@ class MyOpportunitiesComponent {
       if (res.ok) {
         const data = await res.json();
         this.goalPathwayData = data;
-        if (data.user_artifacts) {
-          this.userArtifactsList = data.user_artifacts;
-          this.userArtifactsCount = data.user_artifacts.length;
-        }
         if (data.user_progress_overlay) {
           this.userProgressOverlay = data.user_progress_overlay;
           this.saveUserProgressOverlay(data.user_progress_overlay);
@@ -471,76 +279,61 @@ class MyOpportunitiesComponent {
     }
     if (!isCurrentlyCompleted && !skipConfirm) {
       const confirmMsg = "Mark this requirement as completed?\n\nThis records your own progress and is not official government verification.";
-      if (!window.confirm(confirmMsg)) {
-        return;
-      }
+      if (!window.confirm(confirmMsg)) return;
     }
+
     const profile = (typeof window.app.getProfile === "function" ? window.app.getProfile() : window.app.userProfile) || {};
     const cid = this.getClientId();
     const action = isCurrentlyCompleted ? "REOPEN" : "COMPLETE";
-    try {
-      const endpoint = isCurrentlyCompleted 
-        ? "/api/pathway/goal/progress/reopen" 
-        : "/api/pathway/goal/progress/complete";
 
-      const res = await fetch(endpoint, {
+    try {
+      // One authoritative server round-trip persists the overlay and returns the recomputed pathway.
+      const res = await fetch(window.getApiUrl("/api/pathway/goal/update"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           client_id: cid,
-          requirement_id: reqId
+          profile: profile,
+          business_goal: profile.selected_goal || profile.business_goal || "GENERAL_READINESS",
+          user_progress_overlay: { completed_requirements: [] },
+          completed_requirement_id: reqId,
+          action: action
         })
       });
 
-      if (res.ok) {
-        await this.fetchCompletedActions();
-        await this.fetchUserArtifacts();
-
-        const serverOverlay = {
-          completed_requirements: (this.completedActionsList || []).map(a => ({
-            requirement_id: a.requirement_id,
-            status: "COMPLETED",
-            confirmed_by_user: true
-          }))
-        };
-
-        const updateRes = await fetch("/api/pathway/goal/generate", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            client_id: cid,
-            profile: profile,
-            business_goal: profile.business_goal,
-            user_progress_overlay: serverOverlay
-          })
-        });
-
-        if (updateRes.ok) {
-          const data = await updateRes.json();
-          this.goalPathwayData = data;
-          if (data.user_progress_overlay) {
-            this.userProgressOverlay = data.user_progress_overlay;
-            this.saveUserProgressOverlay(data.user_progress_overlay);
-          }
-        }
-      } else {
-        alert("Could not save your progress. Please try again.");
+      if (!res.ok) {
+        let detail = "Could not save your progress. Please try again.";
+        try {
+          const body = await res.json();
+          detail = body.detail || detail;
+        } catch (_) { /* non-JSON server error */ }
+        console.error("Goal pathway progress update failed:", res.status, detail);
+        alert(detail);
         return;
+      }
+
+      const data = await res.json();
+      this.goalPathwayData = data;
+      if (data.user_progress_overlay) {
+        this.userProgressOverlay = data.user_progress_overlay;
+        this.saveUserProgressOverlay(data.user_progress_overlay);
+      }
+      await this.fetchCompletedActions();
+      this.render();
+
+      if (document.getElementById("completedActionsModal")?.classList.contains("active")) {
+        this.openCompletedActionsModal();
       }
     } catch (err) {
       console.error("Failed to update goal pathway requirement:", err);
       alert("Could not save your progress. Please try again.");
-      return;
-    }
-    this.render();
-    if (document.getElementById("completedActionsModal")?.classList.contains("active")) {
-      this.openCompletedActionsModal();
     }
   }
 
   async setGoalClarification(selectedGoal) {
     if (!window.app.userProfile) window.app.userProfile = {};
-    window.app.userProfile.business_goal = selectedGoal;
+    window.app.userProfile.selected_goal = selectedGoal || "GENERAL_READINESS";
+    window.app.userProfile.business_goal = selectedGoal && selectedGoal !== "GENERAL_READINESS" ? selectedGoal : null;
     if (typeof window.app.saveProfileToStorage === "function") {
       window.app.saveProfileToStorage(window.app.userProfile);
     }
@@ -548,15 +341,20 @@ class MyOpportunitiesComponent {
   }
 
   formatBusinessGoal(goal) {
-    if (!goal) return 'Start a business';
+    if (window.i18n && window.i18n.getGoalLabel) {
+      return window.i18n.getGoalLabel(goal);
+    }
+    if (!goal) return 'General Business Readiness';
     const g = String(goal).trim();
     const ENUM_MAP = {
-      'START_BUSINESS': 'Start a business',
-      'ESTABLISH_ENTERPRISE': 'Establish an enterprise',
-      'EXPAND_BUSINESS': 'Expand existing business',
+      'GENERAL_READINESS': 'General Business Readiness',
+      'START_BUSINESS': 'Start a new business',
+      'ESTABLISH_ENTERPRISE': 'Establish a new micro-enterprise',
+      'EXPAND_BUSINESS': 'Expand existing business unit',
+      'GROW_BUSINESS': 'Expand existing business unit',
       'UPGRADE_UNIT': 'Upgrade micro enterprise unit',
       'TECH_INNOVATION': 'Technology innovation & commercialization',
-      'EXPORT_DEVELOPMENT': 'Export development',
+      'EXPORT_DEVELOPMENT': 'Export development & market expansion',
       'MODERNIZATION': 'Unit modernization',
       'WORKING_CAPITAL': 'Working capital assistance'
     };
@@ -567,6 +365,17 @@ class MyOpportunitiesComponent {
       return g.split('_').map(w => w.charAt(0) + w.slice(1).toLowerCase()).join(' ');
     }
     return g;
+  }
+
+  formatDisabilityStatus(status) {
+    if (window.i18n && window.i18n.getDisabilityLabel) {
+      return window.i18n.getDisabilityLabel(status);
+    }
+    const value = String(status || "").trim().toUpperCase();
+    if (value === "PERSON_WITH_DISABILITY") return "Person with disability";
+    if (value === "NONE") return "No disability";
+    if (value === "PREFER_NOT_TO_SAY") return "Prefer not to say";
+    return "Not provided";
   }
 
   formatMissingProfileFact(info) {
@@ -597,7 +406,7 @@ class MyOpportunitiesComponent {
     if (nextState && (!this.pathwayCache || !this.pathwayCache[opportunityId])) {
       if (!this.pathwayCache) this.pathwayCache = {};
       try {
-        const res = await fetch("/api/pathway/generate", {
+        const res = await fetch(window.getApiUrl("/api/pathway/generate"), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -616,63 +425,66 @@ class MyOpportunitiesComponent {
   }
 
   buildInlineRoadmapHTML(scheme, profile) {
+    const t = (k) => window.i18n ? window.i18n.get(k) : k;
     const opportunityId = scheme.opportunity_id || scheme.id;
     const pathwayData = (this.pathwayCache && this.pathwayCache[opportunityId]) || null;
+    const nameObj = window.i18n ? window.i18n.getLocalizedSchemeName(scheme) : { official: scheme.opportunity_name || opportunityId };
 
     // 1. WHAT YOU ALREADY HAVE
     const confirmedFacts = [];
     if (profile.age !== null && profile.age !== undefined && profile.age !== "") {
-      confirmedFacts.push(`Age information available (${profile.age} yrs)`);
+      confirmedFacts.push(window.i18n.localizeRoadmapText(`Age information available (${profile.age} yrs)`));
     }
     if (profile.state && String(profile.state).trim()) {
-      confirmedFacts.push(`State location confirmed (${profile.state})`);
+      confirmedFacts.push(window.i18n.localizeRoadmapText(`State location confirmed (${window.i18n.getStateLabel(profile.state)})`));
     }
     if (profile.sector && String(profile.sector).trim()) {
-      confirmedFacts.push(`Business sector available (${profile.sector})`);
+      confirmedFacts.push(window.i18n.localizeRoadmapText(`Business sector available (${window.i18n.getSectorLabel(profile.sector)})`));
     }
     if ((profile.business_stage || profile.business_type) && String(profile.business_stage || profile.business_type).trim()) {
-      confirmedFacts.push(`Business stage confirmed (${profile.business_stage || profile.business_type})`);
+      confirmedFacts.push(window.i18n.localizeRoadmapText(`Business stage confirmed (${window.i18n.getStageLabel(profile.business_stage || profile.business_type)})`));
     }
     if (profile.gender && String(profile.gender).trim()) {
-      confirmedFacts.push(`Gender specified (${profile.gender})`);
+      confirmedFacts.push(window.i18n.localizeRoadmapText(`Gender specified (${window.i18n.getGenderLabel(profile.gender)})`));
     }
     if (profile.education && String(profile.education).trim()) {
-      confirmedFacts.push(`Qualification level specified (${profile.education})`);
+      confirmedFacts.push(window.i18n.localizeRoadmapText(`Qualification level specified (${profile.education})`));
     }
 
     // Requirements passed
     const requirements = pathwayData?.pathway?.requirements || [];
     const completedReqs = requirements.filter(r => r.state === 'PASSED' || r.state === 'COMPLETED');
     completedReqs.forEach(r => {
-      confirmedFacts.push(r.label || r.requirement_id);
+      confirmedFacts.push(window.i18n.localizeRoadmapText(r.label || r.requirement_id));
     });
 
     // 2. PLEASE CONFIRM (VERIFY / UNTESTED / missing_profile_info)
     const verifyFacts = [];
     const missingProfile = scheme.missing_profile_info || pathwayData?.eligibility?.missing_profile_fields || [];
     missingProfile.forEach(m => {
-      verifyFacts.push(this.formatMissingProfileFact(m));
+      verifyFacts.push(window.i18n.localizeRoadmapText(this.formatMissingProfileFact(m)));
     });
     const verifyReqs = requirements.filter(r => r.state === 'VERIFY' || r.state === 'UNTESTED');
     verifyReqs.forEach(r => {
-      verifyFacts.push(r.label || r.requirement_id);
+      verifyFacts.push(window.i18n.localizeRoadmapText(r.label || r.requirement_id));
     });
 
     // 3. MY NEXT STEPS (ACTION_NEEDED / FAILED / gaps)
     const nextSteps = [];
     if (verifyFacts.length > 0) {
-      nextSteps.push("Confirm the missing information above");
+      nextSteps.push(window.i18n.localizeRoadmapText("Confirm the missing information above"));
     }
     const actionReqs = requirements.filter(r => r.state === 'ACTION_NEEDED' || r.state === 'FAILED');
     actionReqs.forEach(r => {
-      nextSteps.push(r.label || r.requirement_id);
+      nextSteps.push(window.i18n.localizeRoadmapText(r.label || r.requirement_id));
     });
     const gaps = scheme.scheme_gaps || scheme.missing_requirements || [];
     gaps.forEach(g => {
-      if (!nextSteps.includes(g)) nextSteps.push(g);
+      const locG = window.i18n.localizeRoadmapText(g);
+      if (!nextSteps.includes(locG)) nextSteps.push(locG);
     });
-    nextSteps.push("Review the verified SchemeMitra Application Guide");
-    nextSteps.push("Proceed to the official government portal for direct application submission");
+    nextSteps.push(window.i18n.localizeRoadmapText("Review the verified SchemeMitra Application Guide"));
+    nextSteps.push(window.i18n.localizeRoadmapText("Proceed to the official government portal for direct application submission"));
 
     const rawStatus = scheme.eligibility_status || scheme.status || pathwayData?.eligibility?.status || 'POTENTIALLY_ELIGIBLE';
     const isReady = (rawStatus === 'ELIGIBLE') && actionReqs.length === 0 && gaps.length === 0;
@@ -682,13 +494,13 @@ class MyOpportunitiesComponent {
     return `
       <div class="inline-roadmap-panel" id="inlineRoadmap_${opportunityId}">
         <div style="font-size: 0.8rem; font-weight: 800; color: #FF9933; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.85rem; border-bottom: 1px solid #E8DDD0; padding-bottom: 0.4rem;">
-          YOUR ROADMAP — ${scheme.opportunity_name || opportunityId}
+          ${t('roadmap_your_roadmap')} — ${nameObj.official}
         </div>
 
         <!-- 1. WHAT YOU ALREADY HAVE -->
         <div style="margin-bottom: 1rem;">
           <div style="font-size: 0.85rem; font-weight: 800; color: #138808; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.35rem;">
-            ✓ WHAT YOU ALREADY HAVE
+            ✓ ${t('roadmap_what_you_have')}
           </div>
           <ul style="list-style: none; padding-left: 0; margin: 0; font-size: 0.85rem; color: #14532d; line-height: 1.6;">
             ${confirmedFacts.map(f => `<li style="margin-bottom: 0.2rem;">• ${f}</li>`).join('')}
@@ -699,7 +511,7 @@ class MyOpportunitiesComponent {
         ${verifyFacts.length > 0 ? `
           <div style="margin-bottom: 1rem;">
             <div style="font-size: 0.85rem; font-weight: 800; color: #000080; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.35rem;">
-              ? PLEASE CONFIRM
+              ? ${t('roadmap_please_confirm')}
             </div>
             <ul style="list-style: none; padding-left: 0; margin: 0; font-size: 0.85rem; color: #1e3a8a; line-height: 1.6;">
               ${verifyFacts.map(f => `<li style="margin-bottom: 0.2rem;">• ${f}</li>`).join('')}
@@ -710,7 +522,7 @@ class MyOpportunitiesComponent {
         <!-- 3. MY NEXT STEPS -->
         <div style="margin-bottom: 1.15rem;">
           <div style="font-size: 0.85rem; font-weight: 800; color: #FF9933; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.35rem;">
-            ! MY NEXT STEPS
+            ! ${t('roadmap_my_next_steps')}
           </div>
           <ol style="padding-left: 1.2rem; margin: 0; font-size: 0.85rem; color: #2A2A2A; line-height: 1.6; font-weight: 600;">
             ${nextSteps.map(s => `<li style="margin-bottom: 0.25rem;">${s}</li>`).join('')}
@@ -721,23 +533,23 @@ class MyOpportunitiesComponent {
         <div style="background: #eaf7ea; border: 1px solid #bbf7d0; border-radius: 10px; padding: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
           <div>
             <div style="font-weight: 800; font-size: 0.9rem; color: #14532d;">
-              ${isReady ? '○ READY TO APPLY' : (verifyFacts.length > 0 ? '○ MORE INFORMATION NEEDED' : '○ ALMOST READY')}
+              ${isReady ? '○ ' + t('status_ready_to_apply') : (verifyFacts.length > 0 ? '○ ' + t('badge_more_info_needed') : '○ ' + t('status_almost_ready'))}
             </div>
             <div style="font-size: 0.8rem; color: #166534; margin-top: 0.15rem;">
-              ${isReady ? 'Official application process is open on verified government portal.' : 'Review requirements and guidance before official portal submission.'}
+              ${isReady ? t('sub_ready_to_apply') : t('sub_almost_ready')}
             </div>
           </div>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
             <button class="btn-outline" onclick="myOpportunities.openSchemeDetail('${opportunityId}')" style="font-size: 0.8rem; padding: 0.4rem 0.8rem; border-color: #138808; color: #138808; background: #ffffff;">
-              Open Application Guide
+              ${t('dash_open_app_guide')}
             </button>
             ${officialAppUrl ? `
               <a href="${officialAppUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size: 0.8rem; padding: 0.4rem 0.8rem; background: #138808; color: #ffffff; text-decoration: none; border-radius: 8px;">
-                Continue to Official Government Website ↗
+                ${t('dash_continue_official_govt_site')} ↗
               </a>
             ` : `
               <button class="btn-primary" onclick="schemeDetail.openApplyModal('${opportunityId}')" style="font-size: 0.8rem; padding: 0.4rem 0.8rem; background: #138808; color: #ffffff;">
-                Continue to Official Government Website ↗
+                ${t('dash_continue_official_govt_site')} ↗
               </button>
             `}
           </div>
@@ -828,7 +640,7 @@ class MyOpportunitiesComponent {
     }
 
     try {
-      const res = await fetch("/api/analyze", {
+      const res = await fetch(window.getApiUrl("/api/analyze"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -874,7 +686,9 @@ class MyOpportunitiesComponent {
       : (profile.extra && profile.extra.available_capital !== null && profile.extra.available_capital !== undefined ? Number(profile.extra.available_capital) : null);
     const formattedCapital = (capVal !== null && capVal !== undefined) ? `₹${capVal.toLocaleString('en-IN')}` : 'Not specified';
     const formattedIncome = profile.annual_income ? `₹${profile.annual_income.toLocaleString('en-IN')}` : 'N/A';
-    const formattedGoal = this.formatBusinessGoal(profile.business_goal);
+    const formattedGoal = this.formatBusinessGoal(profile.selected_goal || profile.business_goal || "GENERAL_READINESS");
+    const localizedStage = window.i18n.getStageLabel(profile.business_stage || 'Idea');
+    const localizedStageSummary = window.i18n.currentLang === 'en' ? `${localizedStage} ${t('stage_lbl')}` : localizedStage;
 
     if (data.applicability && data.applicability.personalized_matching_available === false) {
       container.innerHTML = `
@@ -903,13 +717,16 @@ class MyOpportunitiesComponent {
             <div>
               <span class="badge badge-active" style="margin-bottom: 0.4rem;" data-i18n="profile_summary_title">${t('profile_summary_title')}</span>
               <h2 style="font-size: 1.25rem; color: var(--primary-navy); line-height: 1.3;">
-                ${profile.gender || 'Entrepreneur'} (${profile.age || 'N/A'} yrs) • ${profile.state || 'India'} ${profile.sector ? '• ' + profile.sector : ''}
+                ${window.i18n.getGenderLabel(profile.gender || 'Entrepreneur')} (${profile.age || 'N/A'} ${t('yrs_unit')}) • ${window.i18n.getStateLabel(profile.state || 'India')} ${profile.sector ? '• ' + window.i18n.getSectorLabel(profile.sector) : ''}
               </h2>
               <div style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.35rem; line-height: 1.5;">
-                ${profile.business_stage || 'Idea'} Stage • Annual income ${formattedIncome} • Available capital ${formattedCapital}
+                ${localizedStageSummary} • ${t('profile_annual_income')} ${formattedIncome} • ${t('profile_available_capital')} ${formattedCapital}
               </div>
               <div style="font-size: 0.875rem; color: var(--primary-navy); font-weight: 600; margin-top: 0.35rem;">
-                Goal: ${formattedGoal}
+                ${t('lbl_goal')}: ${formattedGoal}
+              </div>
+              <div style="font-size: 0.825rem; color: var(--text-muted); margin-top: 0.25rem;">
+                ${t('profile_disability_lbl')}: ${this.formatDisabilityStatus(profile.disability_status)}
               </div>
             </div>
             <button class="btn-outline" onclick="app.showPage('profile')" data-i18n="btn_edit_profile">${t('btn_edit_profile')}</button>
@@ -964,6 +781,16 @@ class MyOpportunitiesComponent {
     `;
   }
 
+  rerenderDashboardFromState() {
+    const container = document.getElementById("viewDashboard");
+    const profile = (window.app && typeof window.app.getProfile === "function" ? window.app.getProfile() : (window.app && window.app.userProfile)) || {};
+    if (container && this.analysisResult) {
+      this.renderDashboard(container, profile);
+      return true;
+    }
+    return false;
+  }
+
   async switchTab(tabKey) {
     this.activeTab = tabKey;
     if (tabKey === 'graph' && (!this.graphData || !this.graphData.nodes)) {
@@ -996,9 +823,9 @@ class MyOpportunitiesComponent {
             <div class="graph-viewport-card">
               <div style="padding: 3rem 1.5rem; text-align: center;">
                 <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚠️</div>
-                <h3 style="color: var(--primary-navy); margin-bottom: 0.5rem;">We couldn't load your opportunity graph</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">${graphErr.message || 'Error rendering graph view.'}</p>
-                <button class="btn-primary" onclick="myOpportunities.switchGraphMode('TOP_3')">Retry Graph Generation</button>
+                <h3 style="color: var(--primary-navy); margin-bottom: 0.5rem;">${t('graph_error_title')}</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">${graphErr && graphErr.message && window.i18n.currentLang === 'en' ? graphErr.message : t('graph_render_error')}</p>
+                <button class="btn-primary" onclick="myOpportunities.switchGraphMode('TOP_3')">${t('graph_retry')}</button>
               </div>
             </div>
           `;
@@ -1013,12 +840,13 @@ class MyOpportunitiesComponent {
   }
 
   renderGoalPathwayView(data) {
+    const t = (k) => window.i18n ? window.i18n.get(k) : k;
     if (!data) {
       return `
         <div style="background: #ffffff; padding: 3rem 1.5rem; border-radius: 16px; text-align: center; border: 1px solid var(--border-color);">
           <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔄</div>
-          <h3 style="color: var(--primary-navy); margin-bottom: 0.5rem;">Assembling Your Goal Pathway</h3>
-          <p style="color: var(--text-muted); font-size: 0.95rem;">Evaluating your profile facts, matched schemes, and verified requirements...</p>
+          <h3 style="color: var(--primary-navy); margin-bottom: 0.5rem;">${t('gp_loading_title')}</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">${t('gp_loading_sub')}</p>
         </div>
       `;
     }
@@ -1031,32 +859,32 @@ class MyOpportunitiesComponent {
           <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
             <span style="font-size: 2.2rem;">🎯</span>
             <div>
-              <span class="badge" style="background: #fef3c7; color: #b45309; border: 1px solid #fde68a;">Clarification Needed</span>
+              <span class="badge" style="background: #fef3c7; color: #b45309; border: 1px solid #fde68a;">${t('gp_clarification_needed')}</span>
               <h3 style="font-size: 1.3rem; color: var(--primary-navy); margin: 0.25rem 0 0 0; font-weight: 800;">
-                Clarify Your Primary Business Goal
+                ${t('gp_clarify_goal')}
               </h3>
             </div>
           </div>
 
           <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
-            ${data.disclaimer || "Please clarify your primary business objective to generate a goal-specific pathway."}
+            ${data.disclaimer && window.i18n.currentLang === 'en' ? data.disclaimer : t('gp_clarify_default')}
           </p>
 
           <div style="font-weight: 700; color: var(--primary-navy); font-size: 1rem; margin-bottom: 1rem;">
-            ${promptInfo.question || "What are you hoping to do next?"}
+            ${promptInfo.question && window.i18n.currentLang === 'en' ? promptInfo.question : t('gp_clarify_question')}
           </div>
 
           <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
             ${options.map(opt => `
               <button class="btn-primary" onclick="myOpportunities.setGoalClarification('${opt.key}')" style="font-size: 0.9rem; padding: 0.65rem 1.25rem; background: #138808; border-radius: 8px; font-weight: 600;">
-                ${opt.label}
+                ${window.i18n.getGoalLabel(opt.key || opt.label)}
               </button>
             `).join("")}
           </div>
 
           <div style="border-top: 1px solid #fde68a; padding-top: 1rem; text-align: right;">
             <button class="btn-outline" onclick="myOpportunities.fetchGoalPathway(true)" style="font-size: 0.85rem; padding: 0.45rem 1rem;">
-              Continue with General Business Readiness →
+              ${t('gp_continue_general')} →
             </button>
           </div>
         </div>
@@ -1082,39 +910,35 @@ class MyOpportunitiesComponent {
         <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
           <div>
             <span class="badge badge-active" style="margin-bottom: 0.4rem;">
-              ${isGeneral ? '🏢 General Business Readiness' : '🎯 YOUR GOAL'}
+              ${isGeneral ? '🏢 ' + t('gp_general_readiness_badge') : '🎯 ' + t('gp_your_goal_badge')}
             </span>
             <h2 style="font-size: 1.4rem; color: var(--primary-navy); font-weight: 800; margin: 0.25rem 0 0.35rem 0;">
-              ${goalInfo.display_label || goalInfo.raw_text || 'General Business Readiness'}
+              ${this.formatBusinessGoal(goalInfo.raw_text || profile.selected_goal || profile.business_goal || 'GENERAL_READINESS')}
             </h2>
             <div style="font-size: 0.875rem; color: var(--text-muted);">
-              Stage: <strong>${currState.business_stage || 'Idea'}</strong> • Sector: <strong>${currState.sector || 'Not specified'}</strong>
+              ${t('gp_stage')}: <strong>${window.i18n.getStageLabel(currState.business_stage || profile.business_stage || 'Idea')}</strong> • ${t('gp_sector')}: <strong>${window.i18n.getSectorLabel(currState.sector || profile.sector || profile.target_sector || t('gp_not_specified'))}</strong>
             </div>
           </div>
           <button class="btn-outline" onclick="myOpportunities.fetchGoalPathway(false)" style="font-size: 0.85rem; padding: 0.4rem 0.9rem;">
-            ↺ Refresh Pathway
+            ↺ ${t('gp_refresh_pathway')}
           </button>
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 12px; padding: 1rem;">
           <div>
-            <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Matched Opportunities</div>
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">${t('gp_matched_opportunities')}</div>
             <div style="font-size: 1.35rem; font-weight: 800; color: var(--primary-navy);">${summary.matched_schemes_count || 0}</div>
           </div>
           <div>
-            <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Unresolved Actions</div>
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">${t('gp_unresolved_actions')}</div>
             <div style="font-size: 1.35rem; font-weight: 800; color: ${summary.unresolved_actions_count > 0 ? '#d97706' : '#138808'};">
               ${summary.unresolved_actions_count || 0}
             </div>
           </div>
-          <div>
-            <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Total Pathway Steps</div>
-            <div style="font-size: 1.35rem; font-weight: 800; color: #2563eb;">${summary.total_steps || 0}</div>
-          </div>
         </div>
 
         <div style="font-size: 0.8rem; color: #b45309; background: #fffbe6; border: 1px solid #fde68a; border-radius: 8px; padding: 0.5rem 0.75rem; margin-top: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem;">
-          <span>ℹ️</span> Suggested planning pathway — not an official scheme sequence.
+          <span>ℹ️</span> ${t('gp_suggested_note')}
         </div>
       </div>
     `;
@@ -1126,51 +950,63 @@ class MyOpportunitiesComponent {
     
     const formattedCap = (capVal !== null && capVal !== undefined && capVal !== "") 
       ? `₹${Number(capVal).toLocaleString('en-IN')}` 
-      : 'Not provided';
+      : t('gp_not_provided');
       
     const incVal = profile.annual_income;
     const formattedInc = (incVal !== null && incVal !== undefined && incVal !== "" && Number(incVal) > 0)
       ? `₹${Number(incVal).toLocaleString('en-IN')}`
-      : 'Not provided';
+      : t('gp_not_provided');
 
     const whereYouAreHtml = `
       <div style="background: #ffffff; border: 1px solid var(--border-color); border-left: 4px solid #138808; border-radius: 14px; padding: 1.25rem; margin-bottom: 1.5rem;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
           <h3 style="font-size: 1.1rem; color: var(--primary-navy); font-weight: 800; margin: 0; display: flex; align-items: center; gap: 0.4rem;">
-            <span>👤</span> WHERE YOU ARE NOW
+            <span>👤</span> ${t('dash_where_you_are_now')}
           </h3>
           <span style="font-size: 0.775rem; font-weight: 700; color: #138808; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 0.2rem 0.55rem; border-radius: 6px;">
-            Confirmed Profile Context
+            ${t('gp_confirmed_context')}
           </span>
         </div>
         <p style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 1rem;">
-          SchemeMitra understands your current situation based on confirmed profile facts.
+          ${t('gp_where_now_desc')}
         </p>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.85rem; font-size: 0.875rem;">
           <div style="background: #f8fafc; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid #e2e8f0;">
-            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Business Stage</div>
-            <div style="font-weight: 700; color: var(--primary-navy); margin-top: 0.15rem;">${currState.business_stage || profile.business_stage || profile.business_type || 'Idea'}</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">${t('gp_business_stage')}</div>
+            <div style="font-weight: 700; color: var(--primary-navy); margin-top: 0.15rem;">${window.i18n.getStageLabel(currState.business_stage || profile.business_stage || profile.business_type || 'Idea')}</div>
           </div>
           <div style="background: #f8fafc; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid #e2e8f0;">
-            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Primary Sector</div>
-            <div style="font-weight: 700; color: var(--primary-navy); margin-top: 0.15rem;">${currState.sector || profile.sector || profile.target_sector || 'Not provided'}</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">${t('gp_primary_sector')}</div>
+            <div style="font-weight: 700; color: var(--primary-navy); margin-top: 0.15rem;">${window.i18n.getSectorLabel(currState.sector || profile.sector || profile.target_sector || t('gp_not_provided'))}</div>
           </div>
           <div style="background: #f8fafc; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid #e2e8f0;">
-            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Available Capital</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">${t('lbl_available_capital')}</div>
             <div style="font-weight: 700; color: var(--primary-navy); margin-top: 0.15rem;">${formattedCap}</div>
           </div>
           <div style="background: #f8fafc; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid #e2e8f0;">
-            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Annual Income</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">${t('lbl_annual_income')}</div>
             <div style="font-weight: 700; color: var(--primary-navy); margin-top: 0.15rem;">${formattedInc}</div>
           </div>
           <div style="background: #f8fafc; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid #e2e8f0;">
-            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Known Facts Count</div>
-            <div style="font-weight: 700; color: var(--primary-navy); margin-top: 0.15rem;">${currState.known_facts_count || 0} facts</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">${t('lbl_gender')}</div>
+            <div style="font-weight: 700; color: var(--primary-navy); margin-top: 0.15rem;">${currState.gender || profile.gender ? window.i18n.getGenderLabel(currState.gender || profile.gender) : t('gp_not_provided')}</div>
           </div>
           <div style="background: #f8fafc; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid #e2e8f0;">
-            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Selected Goal</div>
-            <div style="font-weight: 700; color: var(--primary-navy); margin-top: 0.15rem;">${goalInfo.display_label || this.formatBusinessGoal(profile.business_goal)}</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">${t('lbl_social_category')}</div>
+            <div style="font-weight: 700; color: var(--primary-navy); margin-top: 0.15rem;">${currState.category || profile.category ? window.i18n.getCategoryLabel(currState.category || profile.category) : t('gp_not_provided')}</div>
+          </div>
+          <div style="background: #f8fafc; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">${t('lbl_disability')}</div>
+            <div style="font-weight: 700; color: var(--primary-navy); margin-top: 0.15rem;">${this.formatDisabilityStatus(currState.disability_status || profile.disability_status)}</div>
+          </div>
+          <div style="background: #f8fafc; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">${t('gp_known_facts')}</div>
+            <div style="font-weight: 700; color: var(--primary-navy); margin-top: 0.15rem;">${currState.known_facts_count || 0} ${t('gp_facts_unit')}</div>
+          </div>
+          <div style="background: #f8fafc; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">${t('dash_selected_goal')}</div>
+            <div style="font-weight: 700; color: var(--primary-navy); margin-top: 0.15rem;">${this.formatBusinessGoal(goalInfo.raw_text || profile.selected_goal || profile.business_goal || "GENERAL_READINESS")}</div>
           </div>
         </div>
       </div>
@@ -1184,29 +1020,29 @@ class MyOpportunitiesComponent {
       <div style="background: #ffffff; border: 1px solid var(--border-color); border-left: 4px solid #d97706; border-radius: 14px; padding: 1.25rem; margin-bottom: 1.5rem;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
           <h3 style="font-size: 1.1rem; color: var(--primary-navy); font-weight: 800; margin: 0; display: flex; align-items: center; gap: 0.4rem;">
-            <span>🔍</span> WHAT NEEDS ATTENTION
+            <span>🔍</span> ${t('dash_what_needs_attention')}
           </h3>
           <span style="font-size: 0.775rem; font-weight: 700; color: #b45309; background: #fffbe6; border: 1px solid #fde68a; padding: 0.2rem 0.55rem; border-radius: 6px;">
-            Unresolved Requirements Summary
+            ${t('gp_unresolved_summary')}
           </span>
         </div>
         <p style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 1rem;">
-          Backend gap evaluation breakdown across your matched opportunities (excluding completed items).
+          ${t('gp_gap_desc')}
         </p>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
           <div style="background: #fffbebf5; border: 1px solid #fde68a; border-radius: 10px; padding: 0.85rem; display: flex; align-items: center; justify-content: space-between;">
             <div>
-              <div style="font-size: 0.75rem; font-weight: 800; color: #b45309; text-transform: uppercase;">! Action Needed</div>
-              <div style="font-size: 1.4rem; font-weight: 800; color: #b45309; margin-top: 0.15rem;">${actionNeededCount} ${actionNeededCount === 1 ? 'item' : 'items'}</div>
+              <div style="font-size: 0.75rem; font-weight: 800; color: #b45309; text-transform: uppercase;">! ${t('dash_action_needed')}</div>
+              <div style="font-size: 1.4rem; font-weight: 800; color: #b45309; margin-top: 0.15rem;">${actionNeededCount} ${t('gp_items_unit')}</div>
             </div>
             <span style="font-size: 1.8rem;">!</span>
           </div>
 
           <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 0.85rem; display: flex; align-items: center; justify-content: space-between;">
             <div>
-              <div style="font-size: 0.75rem; font-weight: 800; color: #1d4ed8; text-transform: uppercase;">? Need to Confirm</div>
-              <div style="font-size: 1.4rem; font-weight: 800; color: #1d4ed8; margin-top: 0.15rem;">${needToConfirmCount} ${needToConfirmCount === 1 ? 'item' : 'items'}</div>
+              <div style="font-size: 0.75rem; font-weight: 800; color: #1d4ed8; text-transform: uppercase;">? ${t('dash_need_to_confirm')}</div>
+              <div style="font-size: 1.4rem; font-weight: 800; color: #1d4ed8; margin-top: 0.15rem;">${needToConfirmCount} ${t('gp_items_unit')}</div>
             </div>
             <span style="font-size: 1.8rem;">?</span>
           </div>
@@ -1222,34 +1058,13 @@ class MyOpportunitiesComponent {
       return 0;
     });
 
-    // Safeguard 1: Grouping by requirement_type (for shared artifacts) or normalized title.
-    const SHARED_ARTIFACT_TYPES = new Set([
-      "DPR",
-      "IDENTITY_PROOF",
-      "REGISTRATION_CERTIFICATE",
-      "LAND_OR_LEASE_DOCUMENT",
-      "BANK_DOCUMENT"
-    ]);
-
-    const SHARED_ARTIFACT_NAMES = {
-      "DPR": "Detailed Project Report (DPR)",
-      "IDENTITY_PROOF": "Identity / KYC Proof",
-      "REGISTRATION_CERTIFICATE": "Registration Certificate",
-      "LAND_OR_LEASE_DOCUMENT": "Land / Lease Document",
-      "BANK_DOCUMENT": "Bank Account / Financial Statement"
-    };
-
+    // Group repeated presentation labels for readability while keeping every canonical requirement separate.
     const groupedActionsMap = new Map();
     sortedNextActions.forEach(act => {
       const typeStr = (act.requirement_type || 'REQ').trim().toUpperCase();
       const titleStr = (act.title || act.node_id || '').trim().toLowerCase();
 
-      let groupKey = "";
-      if (SHARED_ARTIFACT_TYPES.has(typeStr)) {
-        groupKey = `ARTIFACT:${typeStr}`;
-      } else {
-        groupKey = `${typeStr}:${titleStr}`;
-      }
+      const groupKey = `${typeStr}:${titleStr}`;
 
       if (!groupedActionsMap.has(groupKey)) {
         groupedActionsMap.set(groupKey, {
@@ -1257,7 +1072,6 @@ class MyOpportunitiesComponent {
           title: act.display_title || act.title || act.node_id,
           display_title: act.display_title || act.title || act.node_id,
           requirement_type: typeStr,
-          isSharedArtifact: SHARED_ARTIFACT_TYPES.has(typeStr),
           items: []
         });
       }
@@ -1268,101 +1082,11 @@ class MyOpportunitiesComponent {
     if (sortedNextActions.length === 0) {
       nextActionsContentHtml = `
         <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 1rem; text-align: center; color: #15803d; font-weight: 700;">
-          ✓ All outstanding requirements confirmed! Check your Requirement Progress below.
+          ✓ ${t('gp_all_confirmed')}
         </div>
       `;
     } else {
       nextActionsContentHtml = Array.from(groupedActionsMap.values()).map(group => {
-        if (group.isSharedArtifact) {
-          const availArtifact = (this.userArtifactsList || []).find(a => a.artifact_type === group.requirement_type);
-          const isArtifactAvailable = !!availArtifact;
-          const artifactTitle = SHARED_ARTIFACT_NAMES[group.requirement_type] || group.title || group.requirement_type;
-
-          const buttonLabels = {
-            "DPR": "I Have a DPR",
-            "IDENTITY_PROOF": "I Have Identity / KYC Proof",
-            "REGISTRATION_CERTIFICATE": "I Have This Registration Certificate",
-            "LAND_OR_LEASE_DOCUMENT": "I Have Land / Lease Documents",
-            "BANK_DOCUMENT": "I Have the Required Bank Document"
-          };
-          const markAvailableLabel = buttonLabels[group.requirement_type] || `I Have This ${artifactTitle}`;
-
-          const confirmBtnLabel = group.requirement_type === "DPR"
-            ? "✓ Confirm DPR for this Scheme"
-            : "✓ Confirm for this Scheme";
-
-          return `
-            <div style="background: #ffffff; border: 1.5px solid #2563eb; border-radius: 12px; padding: 1.1rem; margin-bottom: 0.5rem;">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
-                <div>
-                  <div style="font-size: 0.725rem; font-weight: 800; color: #2563eb; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.15rem;">
-                    📄 Document You Can Reuse
-                  </div>
-                  <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--primary-navy); margin: 0 0 0.2rem 0;">
-                    ${artifactTitle}
-                  </h4>
-                  <div style="font-size: 0.78rem; color: #2563eb; font-weight: 700;">
-                    Applies to ${group.items.length} matched ${group.items.length === 1 ? 'opportunity' : 'opportunities'}
-                  </div>
-                </div>
-
-                <div>
-                  ${isArtifactAvailable ? `
-                    <div style="display: flex; align-items: center; gap: 0.4rem;">
-                      <span class="badge" style="background: #dcfce7; color: #15803d; border: 1px solid #86efac; padding: 0.25rem 0.6rem; font-size: 0.8rem; font-weight: 700;">
-                        ✓ ${artifactTitle} Available
-                      </span>
-                      <button class="btn-outline" onclick="myOpportunities.removeArtifact('${group.requirement_type}')" style="font-size: 0.75rem; padding: 0.2rem 0.5rem; border-color: #cbd5e1; color: #475569;">
-                        Change
-                      </button>
-                    </div>
-                  ` : `
-                    <button class="btn-primary" onclick="myOpportunities.markArtifactAvailable('${group.requirement_type}')" style="font-size: 0.8rem; padding: 0.35rem 0.85rem; background: #2563eb; color: #ffffff; font-weight: 700;">
-                      ${markAvailableLabel}
-                    </button>
-                  `}
-                </div>
-              </div>
-
-              ${group.requirement_type === 'DPR' && isArtifactAvailable ? `
-                <div style="font-size: 0.78rem; color: #b45309; background: #fffbe6; border: 1px solid #fde68a; border-radius: 6px; padding: 0.4rem 0.65rem; margin-bottom: 0.6rem; font-weight: 600;">
-                  ℹ️ Your DPR may need changes to meet each scheme's specific requirements.
-                </div>
-              ` : ''}
-
-              <div style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 0.75rem; line-height: 1.4;">
-                ${isArtifactAvailable
-                  ? `Artifact is marked available in your prepared documents. Confirm whether your existing ${artifactTitle} satisfies each scheme requirement below:`
-                  : `Possess this document? Mark it available above. Scheme-specific requirements must still be confirmed below:`
-                }
-              </div>
-
-              <div style="display: flex; flex-direction: column; gap: 0.6rem; border-top: 1px solid #f1f5f9; padding-top: 0.75rem;">
-                ${group.items.map(act => {
-                  const schemeName = act.source_opportunity_name || act.opportunity_name || act.opportunity_id;
-                  const safeScheme = schemeName.replace(/'/g, "");
-                  const safeTitle = artifactTitle.replace(/'/g, "");
-                  return `
-                    <div style="display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid #e2e8f0; gap: 0.75rem; flex-wrap: wrap;">
-                      <div style="flex: 1; min-width: 220px;">
-                        <div style="font-size: 0.875rem; font-weight: 700; color: var(--primary-navy);">
-                          🏛️ ${schemeName}
-                        </div>
-                        <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.15rem;">
-                          ${isArtifactAvailable ? 'Confirm that your existing ' + artifactTitle + ' satisfies this scheme requirement' : 'Requirement: ' + act.title}
-                        </div>
-                      </div>
-                      <button class="btn-outline" onclick="myOpportunities.confirmSchemeRequirementWithArtifact('${act.node_id}', '${safeScheme}', '${safeTitle}')" style="font-size: 0.8rem; padding: 0.35rem 0.85rem; border-color: #138808; color: #138808; background: #ffffff; font-weight: 700;">
-                        ${confirmBtnLabel}
-                      </button>
-                    </div>
-                  `;
-                }).join("")}
-              </div>
-            </div>
-          `;
-        }
-
         if (group.items.length === 1) {
           const act = group.items[0];
           const isAct = act.status === "ACTION_NEEDED";
@@ -1375,36 +1099,36 @@ class MyOpportunitiesComponent {
               <div style="flex: 1; min-width: 240px;">
                 <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
                   <span style="font-size: 0.725rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 4px; ${badgeStyle}">
-                    ${act.status_label || (isAct ? '! Action Needed' : '? Need to Confirm')}
+                    ${isAct ? '! ' + t('dash_action_needed') : '? ' + t('dash_need_to_confirm')}
                   </span>
                   <span style="font-size: 0.725rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">
                     ${act.requirement_type || 'REQUIREMENT'}
                   </span>
                 </div>
                 <div style="font-size: 0.925rem; color: var(--primary-navy); font-weight: 700;">
-                  ${act.display_title || act.title}
+                  ${window.i18n.localizeRequirementAction(act.display_title || act.title)}
                 </div>
                 <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem;">
-                  Source Scheme: <strong>${act.source_opportunity_name || act.opportunity_name || act.opportunity_id}</strong>
+                  ${t('gp_source_scheme')}: <strong>${act.source_opportunity_name || act.opportunity_name || act.opportunity_id}</strong>
                 </div>
                 ${(act.requirement_type === 'ENTITY_REGISTRATION' || act.supporting_text) ? `
                   <div style="font-size: 0.78rem; color: #b45309; font-weight: 600; margin-top: 0.25rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-                    <span>${act.supporting_text || 'Exact registration type needs confirmation.'}</span>
-                    ${act.official_source_url ? `<a href="${act.official_source_url}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-blue); text-decoration: underline;">Official Scheme Source ↗</a>` : ''}
+                    <span>${act.requirement_type === 'ENTITY_REGISTRATION' ? t('gp_exact_registration') : (act.supporting_text || t('gp_exact_registration'))}</span>
+                    ${act.official_source_url ? `<a href="${act.official_source_url}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-blue); text-decoration: underline;">${t('dash_official_scheme_source')} ↗</a>` : ''}
                   </div>
                 ` : ((act.requirement_type === 'DOCUMENT' || act.requirement_type === 'DOCUMENTATION') ? `
                   <div style="font-size: 0.78rem; color: #b45309; font-weight: 600; margin-top: 0.25rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-                    <span>Exact documents need confirmation.</span>
-                    ${act.official_source_url ? `<a href="${act.official_source_url}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-blue); text-decoration: underline;">Official Scheme Source ↗</a>` : ''}
+                    <span>${t('dash_exact_docs_confirm')}.</span>
+                    ${act.official_source_url ? `<a href="${act.official_source_url}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-blue); text-decoration: underline;">${t('dash_official_scheme_source')} ↗</a>` : ''}
                   </div>
                 ` : (act.official_source_url ? `
                   <div style="font-size: 0.78rem; margin-top: 0.25rem;">
-                    <a href="${act.official_source_url}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-blue); text-decoration: underline; font-weight: 600;">Official Scheme Source ↗</a>
+                    <a href="${act.official_source_url}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-blue); text-decoration: underline; font-weight: 600;">${t('dash_official_scheme_source')} ↗</a>
                   </div>
                 ` : ''))}
               </div>
               <button class="btn-outline" onclick="myOpportunities.toggleGoalRequirement('${act.node_id}', false)" style="font-size: 0.8rem; padding: 0.4rem 0.85rem; border-color: #138808; color: #138808; background: #ffffff; min-height: 38px;">
-                ✓ Mark Completed
+                ✓ ${t('dash_mark_completed')}
               </button>
             </div>
           `;
@@ -1414,10 +1138,10 @@ class MyOpportunitiesComponent {
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
                 <div>
                   <div style="font-size: 0.925rem; color: var(--primary-navy); font-weight: 800;">
-                    ${group.display_title || group.title}
+                    ${window.i18n.localizeRequirementAction(group.display_title || group.title)}
                   </div>
                   <div style="font-size: 0.78rem; color: #2563eb; font-weight: 700; margin-top: 0.15rem;">
-                    Applies to ${group.items.length} matched opportunities (Mark each canonical requirement separately below)
+                    ${t('gp_applies_prefix')} ${group.items.length} ${t('gp_matched_opportunities_lower')} (${t('gp_mark_each_note')})
                   </div>
                 </div>
               </div>
@@ -1433,30 +1157,30 @@ class MyOpportunitiesComponent {
                       <div style="flex: 1; min-width: 220px;">
                         <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.2rem;">
                           <span style="font-size: 0.7rem; font-weight: 800; padding: 0.1rem 0.4rem; border-radius: 4px; ${badgeStyle}">
-                            ${act.status_label || (isAct ? '! Action Needed' : '? Need to Confirm')}
+                            ${isAct ? '! ' + t('dash_action_needed') : '? ' + t('dash_need_to_confirm')}
                           </span>
                         </div>
                         <div style="font-size: 0.8rem; color: var(--text-muted);">
-                          Source Scheme: <strong>${act.source_opportunity_name || act.opportunity_name || act.opportunity_id}</strong>
+                          ${t('gp_source_scheme')}: <strong>${act.source_opportunity_name || act.opportunity_name || act.opportunity_id}</strong>
                         </div>
                         ${(act.requirement_type === 'ENTITY_REGISTRATION' || act.supporting_text) ? `
                           <div style="font-size: 0.75rem; color: #b45309; font-weight: 600; margin-top: 0.2rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-                            <span>${act.supporting_text || 'Exact registration type needs confirmation.'}</span>
-                            ${act.official_source_url ? `<a href="${act.official_source_url}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-blue); text-decoration: underline;">Official Scheme Source ↗</a>` : ''}
+                            <span>${act.requirement_type === 'ENTITY_REGISTRATION' ? t('gp_exact_registration') : (act.supporting_text || t('gp_exact_registration'))}</span>
+                            ${act.official_source_url ? `<a href="${act.official_source_url}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-blue); text-decoration: underline;">${t('dash_official_scheme_source')} ↗</a>` : ''}
                           </div>
                         ` : ((act.requirement_type === 'DOCUMENT' || act.requirement_type === 'DOCUMENTATION') ? `
                           <div style="font-size: 0.75rem; color: #b45309; font-weight: 600; margin-top: 0.2rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-                            <span>Exact documents need confirmation.</span>
-                            ${act.official_source_url ? `<a href="${act.official_source_url}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-blue); text-decoration: underline;">Official Scheme Source ↗</a>` : ''}
+                            <span>${t('dash_exact_docs_confirm')}.</span>
+                            ${act.official_source_url ? `<a href="${act.official_source_url}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-blue); text-decoration: underline;">${t('dash_official_scheme_source')} ↗</a>` : ''}
                           </div>
                         ` : (act.official_source_url ? `
                           <div style="font-size: 0.75rem; margin-top: 0.2rem;">
-                            <a href="${act.official_source_url}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-blue); text-decoration: underline; font-weight: 600;">Official Scheme Source ↗</a>
+                            <a href="${act.official_source_url}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-blue); text-decoration: underline; font-weight: 600;">${t('dash_official_scheme_source')} ↗</a>
                           </div>
                         ` : ''))}
                       </div>
                       <button class="btn-outline" onclick="myOpportunities.toggleGoalRequirement('${act.node_id}', false)" style="font-size: 0.775rem; padding: 0.35rem 0.75rem; border-color: #138808; color: #138808; background: #ffffff; min-height: 36px;">
-                        ✓ Mark Completed
+                        ✓ ${t('dash_mark_completed')}
                       </button>
                     </div>
                   `;
@@ -1472,19 +1196,16 @@ class MyOpportunitiesComponent {
       <div style="background: #fffbebf5; border: 1px solid #fde68a; border-radius: 14px; padding: 1.25rem; margin-bottom: 1.5rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
           <div style="font-weight: 800; font-size: 1.1rem; color: #b45309; display: flex; align-items: center; gap: 0.4rem;">
-            <span>✅</span> NEXT ACTIONS TO REVIEW (${sortedNextActions.length})
+            <span>✅</span> ${t('dash_next_actions_to_review')} (${sortedNextActions.length})
           </div>
           <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-            <button class="btn-outline" onclick="myOpportunities.openPreparedDocumentsModal()" style="font-size: 0.8rem; padding: 0.35rem 0.75rem; border-color: #2563eb; color: #2563eb; background: #ffffff; font-weight: 700; cursor: pointer;">
-              📄 Prepared Documents (${this.userArtifactsCount || 0})
-            </button>
             <button class="btn-outline" onclick="myOpportunities.openCompletedActionsModal()" style="font-size: 0.8rem; padding: 0.35rem 0.75rem; border-color: #138808; color: #138808; background: #ffffff; font-weight: 700; cursor: pointer;">
-              ✓ Completed Actions (${this.completedActionsCount || 0})
+              ✓ ${t('dash_completed_actions')} (${this.completedActionsCount || 0})
             </button>
           </div>
         </div>
         <p style="font-size: 0.825rem; color: #78350f; margin-bottom: 1rem;">
-          Review and confirm these action items to progress towards your goal.
+          ${t('gp_next_actions_desc')}
         </p>
 
         <div style="display: flex; flex-direction: column; gap: 0.75rem;">
@@ -1500,10 +1221,10 @@ class MyOpportunitiesComponent {
       <div style="margin-bottom: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1rem;">
           <h3 style="font-size: 1.1rem; color: var(--primary-navy); font-weight: 800; margin: 0;">
-            🏛️ OPPORTUNITIES THIS PATHWAY CONNECTS TO
+            🏛️ ${t('dash_opportunities_pathway_connects')}
           </h3>
           <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">
-            ${secASteps.length} matched scheme${secASteps.length !== 1 ? 's' : ''} (M4 Rank Order Preserved)
+            ${secASteps.length} ${t('gp_matched_opportunities_lower')} (${t('gp_rank_preserved')})
           </span>
         </div>
 
@@ -1511,29 +1232,29 @@ class MyOpportunitiesComponent {
           ${secASteps.map(step => `
             <div style="background: #ffffff; border: 1px solid var(--border-color); border-left: 4px solid #2563eb; border-radius: 12px; padding: 1.15rem;">
               <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.4rem;">
-                <span style="font-size: 0.75rem; font-weight: 800; color: #2563eb; text-transform: uppercase;">CONNECTED SCHEME</span>
-                <span class="badge ${step.status === 'ELIGIBLE' ? 'badge-eligible' : 'badge-potentially'}">${step.status_label || step.status}</span>
+                <span style="font-size: 0.75rem; font-weight: 800; color: #2563eb; text-transform: uppercase;">${t('gp_connected_scheme')}</span>
+                <span class="badge ${step.status === 'ELIGIBLE' ? 'badge-eligible' : 'badge-potentially'}">${window.i18n.getStatusLabel(step.status || step.status_label)}</span>
               </div>
               <h4 onclick="myOpportunities.openSchemeDetail('${step.opportunity_id}')" style="font-size: 1.05rem; font-weight: 800; color: var(--primary-navy); margin: 0 0 0.5rem 0; cursor: pointer;">
                 🎯 ${step.title || step.opportunity_name}
               </h4>
               <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5; margin: 0 0 0.85rem 0;">
-                ${step.verified_benefit_summary || ''}
+                ${window.i18n.localizeBenefit(step.verified_benefit_summary || '')}
               </p>
               <div style="font-size: 0.8rem; color: var(--accent-blue); font-weight: 600; margin-bottom: 0.65rem;">
-                Supports eligibility assessment for your goal
+                ${t('gp_supports_goal')}
               </div>
               <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; border-top: 1px solid #f1f5f9; padding-top: 0.65rem;">
                 <div style="font-size: 0.8rem; color: var(--text-muted);">
-                  Support: <strong>${(step.verified_support_types || []).join(', ') || 'Official Support'}</strong>
+                  ${t('lbl_support')}: <strong>${(step.verified_support_types || []).map(st => window.i18n.getSupportTypeLabel(st)).join(', ') || t('gp_official_support')}</strong>
                 </div>
                 <div style="display: flex; gap: 0.5rem;">
                   <button class="btn-outline" onclick="myOpportunities.openSchemeDetail('${step.opportunity_id}')" style="font-size: 0.8rem; padding: 0.35rem 0.75rem;">
-                    View Scheme Details
+                    ${t('btn_view_scheme_details')}
                   </button>
                   ${step.official_source_url ? `
                     <a href="${step.official_source_url}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size: 0.8rem; padding: 0.35rem 0.75rem; background: #138808; color: #ffffff; text-decoration: none; border-radius: 8px;">
-                      Official Scheme Source ↗
+                      ${t('dash_official_scheme_source')} ↗
                     </a>
                   ` : ''}
                 </div>
@@ -1559,10 +1280,10 @@ class MyOpportunitiesComponent {
       <div style="margin-bottom: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1rem;">
           <h3 style="font-size: 1.1rem; color: var(--primary-navy); font-weight: 800; margin: 0;">
-            🎁 VERIFIED SUPPORT AVAILABLE
+            🎁 ${t('dash_verified_support_available')}
           </h3>
           <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">
-            ${secCSteps.length} support item${secCSteps.length !== 1 ? 's' : ''}
+            ${secCSteps.length} ${t('gp_support_items_unit')}
           </span>
         </div>
 
@@ -1576,14 +1297,14 @@ class MyOpportunitiesComponent {
                 ${items.map(step => `
                   <div style="background: #fcf5ff; border: 1px solid #e9d5ff; border-radius: 10px; padding: 0.85rem;">
                     <div style="font-size: 0.75rem; font-weight: 800; color: #6b21a8; text-transform: uppercase; margin-bottom: 0.35rem;">
-                      🎁 ${step.display_label || step.support_type}
+                      🎁 ${window.i18n.getSupportTypeLabel(step.support_type || step.display_label)}
                     </div>
                     <div style="font-size: 0.825rem; color: #581c87; line-height: 1.4; margin-bottom: 0.65rem;">
-                      ${step.benefit_summary || ''}
+                      ${window.i18n.localizeBenefit(step.benefit_summary || '')}
                     </div>
                     ${step.official_source_url ? `
                       <a href="${step.official_source_url}" target="_blank" rel="noopener noreferrer" style="font-size: 0.775rem; color: #7e22ce; font-weight: 600; text-decoration: none;">
-                        Official Scheme Source ↗
+                        ${t('dash_official_scheme_source')} ↗
                       </a>
                     ` : ''}
                   </div>
@@ -1625,13 +1346,13 @@ class MyOpportunitiesComponent {
                 <span>🏛️</span> ${group.opportunity_name}
               </div>
               <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; font-weight: 600;">
-                <span style="color: #15803d;">${completedCount} Completed</span> • 
-                <span style="color: #b45309;">${actionNeededCount} Action Needed</span> • 
-                <span style="color: #1d4ed8;">${needToConfirmCount} Need to Confirm</span>
+                <span style="color: #15803d;">${completedCount} ${t('dash_completed')}</span> • 
+                <span style="color: #b45309;">${actionNeededCount} ${t('dash_action_needed')}</span> • 
+                <span style="color: #1d4ed8;">${needToConfirmCount} ${t('dash_need_to_confirm')}</span>
               </div>
             </div>
             <span style="font-size: 0.8rem; color: var(--accent-blue); font-weight: 700; background: #eff6ff; padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid #bfdbfe;">
-              ${group.steps.length} requirement${group.steps.length !== 1 ? 's' : ''} ▼
+              ${group.steps.length} ${t('gp_requirement_unit')} ▼
             </span>
           </summary>
 
@@ -1642,7 +1363,7 @@ class MyOpportunitiesComponent {
               
               let statusIcon = "✓";
               let badgeStyle = "background: #dcfce7; color: #15803d; border: 1px solid #86efac;";
-              let machineLabel = "Completed";
+              let machineLabel = t('dash_completed');
               let rowBg = "#f0fdf4";
               let borderLeftCol = "#138808";
 
@@ -1650,13 +1371,13 @@ class MyOpportunitiesComponent {
                 if (isAct) {
                   statusIcon = "!";
                   badgeStyle = "background: #fef3c7; color: #b45309; border: 1px solid #fde68a;";
-                  machineLabel = "Action Needed";
+                  machineLabel = t('dash_action_needed');
                   rowBg = "#ffffff";
                   borderLeftCol = "#d97706";
                 } else {
                   statusIcon = "?";
                   badgeStyle = "background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;";
-                  machineLabel = "Need to Confirm";
+                  machineLabel = t('dash_need_to_confirm');
                   rowBg = "#ffffff";
                   borderLeftCol = "#2563eb";
                 }
@@ -1670,7 +1391,7 @@ class MyOpportunitiesComponent {
                         ${statusIcon} ${machineLabel}
                       </span>
                       <span style="font-size: 0.875rem; font-weight: 700; color: var(--primary-navy);">
-                        ${step.display_title || step.title}
+                        ${window.i18n.localizeRequirementAction(step.display_title || step.title)}
                       </span>
                       <span style="font-size: 0.7rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">
                         [${step.requirement_type || 'REQUIREMENT'}]
@@ -1679,25 +1400,22 @@ class MyOpportunitiesComponent {
 
                     <details style="display: inline-block;">
                       <summary style="cursor: pointer; font-size: 0.775rem; color: var(--accent-blue); font-weight: 700; outline: none;">
-                        View Details
+                        ${t('gp_view_details')}
                       </summary>
                       <div style="margin-top: 0.4rem; padding: 0.5rem 0.75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 0.78rem; color: var(--primary-navy); display: flex; flex-direction: column; gap: 0.3rem;">
-                        <div><strong>Requirement ID:</strong> <code>${step.node_id || step.step_id}</code></div>
-                        <div><strong>Source Scheme:</strong> ${step.source_opportunity_name || step.opportunity_name}</div>
+                        <div><strong>${t('gp_requirement_id')}:</strong> <code>${step.node_id || step.step_id}</code></div>
+                        <div><strong>${t('gp_source_scheme')}:</strong> ${step.source_opportunity_name || step.opportunity_name}</div>
                         ${(step.requirement_type === 'ENTITY_REGISTRATION' || step.supporting_text) ? `
-                          <div style="color: #b45309; font-weight: 600;">${step.supporting_text || 'Exact registration type needs confirmation.'}</div>
+                          <div style="color: #b45309; font-weight: 600;">${step.requirement_type === 'ENTITY_REGISTRATION' ? t('gp_exact_registration') : (step.supporting_text || t('gp_exact_registration'))}</div>
                         ` : ''}
-                        ${SHARED_ARTIFACT_TYPES.has(step.requirement_type) ? `
-                          <div><strong>Artifact Available:</strong> <span style="font-weight: 700; color: ${(this.userArtifactsList || []).some(a => a.artifact_type === step.requirement_type) ? '#15803d' : '#475569'};">${(this.userArtifactsList || []).some(a => a.artifact_type === step.requirement_type) ? 'Yes ✓' : 'No'}</span></div>
-                        ` : ''}
-                        <div><strong>Basis:</strong> ${step.ui_label || step.basis}</div>
+                        <div><strong>${t('gp_basis')}:</strong> ${step.ui_label || step.basis}</div>
                         <div style="display: flex; gap: 0.75rem; align-items: center; margin-top: 0.25rem; flex-wrap: wrap;">
                           <button class="btn-outline" onclick="myOpportunities.toggleGoalRequirement('${step.node_id}', ${isComp})" style="font-size: 0.75rem; padding: 0.25rem 0.6rem; border-color: ${isComp ? '#dc2626' : '#138808'}; color: ${isComp ? '#dc2626' : '#138808'}; background: #ffffff;">
-                            ${isComp ? '↺ Reopen Requirement' : '✓ Mark as Completed'}
+                            ${isComp ? '↺ ' + t('gp_reopen_requirement') : '✓ ' + t('gp_mark_as_completed')}
                           </button>
                           ${step.official_source_url ? `
                             <a href="${step.official_source_url}" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color: var(--accent-blue); font-weight: 600; text-decoration: none;">
-                              Official Scheme Source ↗
+                              ${t('dash_official_scheme_source')} ↗
                             </a>
                           ` : ''}
                         </div>
@@ -1717,14 +1435,14 @@ class MyOpportunitiesComponent {
         <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1rem;">
           <div>
             <h3 style="font-size: 1.1rem; color: var(--primary-navy); font-weight: 800; margin: 0;">
-              📋 YOUR REQUIREMENT PROGRESS
+              📋 ${t('dash_your_requirement_progress')}
             </h3>
             <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.15rem;">
-              Full requirement ledger grouped by scheme • Where do I currently stand?
+              ${t('gp_requirement_progress_sub')}
             </div>
           </div>
           <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">
-            ${secBSteps.length} canonical requirement${secBSteps.length !== 1 ? 's' : ''}
+            ${secBSteps.length} ${t('gp_canonical_requirements')}
           </span>
         </div>
 
@@ -1738,12 +1456,12 @@ class MyOpportunitiesComponent {
     const destinationHtml = `
       <div style="background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 16px; padding: 1.75rem; text-align: center; margin-bottom: 1.5rem;">
         <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🏁</div>
-        <span class="badge badge-active" style="margin-bottom: 0.5rem;">YOUR GOAL DESTINATION</span>
+        <span class="badge badge-active" style="margin-bottom: 0.5rem;">${t('dash_your_goal_destination')}</span>
         <h3 style="font-size: 1.3rem; color: #14532d; font-weight: 800; margin: 0.35rem 0 0.5rem 0;">
-          ${goalInfo.display_label || goalInfo.raw_text || 'General Business Readiness'}
+          ${this.formatBusinessGoal(goalInfo.raw_text || profile.selected_goal || profile.business_goal || 'GENERAL_READINESS')}
         </h3>
         <p style="font-size: 0.9rem; color: #166534; max-width: 680px; margin: 0 auto; line-height: 1.5;">
-          Progress toward your goal updates dynamically as you confirm completed requirements and refine your profile information.
+          ${t('gp_destination_desc')}
         </p>
       </div>
     `;
@@ -1764,10 +1482,11 @@ class MyOpportunitiesComponent {
 
   /* REBUILT OPPORTUNITY-CENTRIC GRAPH RENDERER */
   async switchGraphMode(mode) {
+    const t = (k) => window.i18n ? window.i18n.get(k) : k;
     this.graphSelectionMode = mode;
     const profile = (typeof window.app.getProfile === "function" ? window.app.getProfile() : window.app.userProfile) || {};
     try {
-      const res = await fetch("/api/graph/generate", {
+      const res = await fetch(window.getApiUrl("/api/graph/generate"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -1779,34 +1498,34 @@ class MyOpportunitiesComponent {
         this.graphData = await res.json();
         this.graphError = null;
       } else {
-        this.graphError = `Graph server returned status ${res.status}`;
+        this.graphError = `${t('graph_server_error')} (${res.status})`;
       }
     } catch (e) {
       console.error("Failed to switch graph mode:", e);
       this.graphError = e.message;
     }
-    this.render();
+    if (!this.rerenderDashboardFromState()) await this.render();
     setTimeout(() => this.fitGraphView(), 60);
   }
 
   toggleOppReqs(oppId) {
     if (!this.expandedOppReqs) this.expandedOppReqs = {};
     this.expandedOppReqs[oppId] = !this.expandedOppReqs[oppId];
-    this.render();
+    if (!this.rerenderDashboardFromState()) this.render();
     setTimeout(() => this.fitGraphView(), 60);
   }
 
   toggleOppBens(oppId) {
     if (!this.expandedOppBens) this.expandedOppBens = {};
     this.expandedOppBens[oppId] = !this.expandedOppBens[oppId];
-    this.render();
+    if (!this.rerenderDashboardFromState()) this.render();
     setTimeout(() => this.fitGraphView(), 60);
   }
 
   toggleReqShowAll(oppId) {
     if (!this.expandedReqShowAll) this.expandedReqShowAll = {};
     this.expandedReqShowAll[oppId] = !this.expandedReqShowAll[oppId];
-    this.render();
+    if (!this.rerenderDashboardFromState()) this.render();
     setTimeout(() => this.fitGraphView(), 60);
   }
 
@@ -1923,16 +1642,16 @@ class MyOpportunitiesComponent {
   }
 
   renderGraphView(graphData) {
-    console.log('SchemeMitra opportunity graph runtime');
+    const t = (k) => window.i18n ? window.i18n.get(k) : k;
 
     if (this.graphError) {
       return `
         <div class="graph-viewport-card">
           <div style="padding: 3rem 1.5rem; text-align: center;">
             <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚠️</div>
-            <h3 style="color: var(--primary-navy); margin-bottom: 0.5rem;">We couldn't load your opportunity graph</h3>
+            <h3 style="color: var(--primary-navy); margin-bottom: 0.5rem;">${t('graph_error_title')}</h3>
             <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">${this.graphError}</p>
-            <button class="btn-primary" onclick="myOpportunities.switchGraphMode('${this.graphSelectionMode || 'TOP_3'}')">Retry Graph Generation</button>
+            <button class="btn-primary" onclick="myOpportunities.switchGraphMode('${this.graphSelectionMode || 'TOP_3'}')">${t('graph_retry')}</button>
           </div>
         </div>
       `;
@@ -1941,17 +1660,20 @@ class MyOpportunitiesComponent {
     const mode = this.graphSelectionMode || "TOP_3";
     const profile = (window.app && window.app.userProfile) || (this.analysisResult && this.analysisResult.profile) || {};
 
-    let candidateOpps = (this.analysisResult && this.analysisResult.best_matches) || [];
+    const rawNodes = (graphData && Array.isArray(graphData.nodes) ? graphData.nodes : ((this.graphData && Array.isArray(this.graphData.nodes)) ? this.graphData.nodes : []));
+    const graphOpportunityNodes = rawNodes.filter(n => n && n.type === "OPPORTUNITY");
 
-    if (!candidateOpps || candidateOpps.length === 0) {
-      const rawNodes = (graphData && graphData.nodes) || (this.graphData && this.graphData.nodes) || [];
-      candidateOpps = rawNodes.filter(n => n.type === "OPPORTUNITY").map(n => ({
-        opportunity_id: n.opportunity_id || n.id.replace('opp_', ''),
-        opportunity_name: n.label,
-        eligibility_status: n.status === "Eligible" ? "ELIGIBLE" : "POTENTIALLY_ELIGIBLE",
-        benefit_summary: n.metadata && n.metadata.benefit_summary,
-        support_types: n.metadata && n.metadata.support_types
-      }));
+    let candidateOpps = graphOpportunityNodes.map(n => ({
+      opportunity_id: n.opportunity_id || (typeof n.id === 'string' ? n.id.replace('opp_', '') : ''),
+      opportunity_name: n.label,
+      eligibility_status: (n.metadata && n.metadata.eligibility_status) || (n.status === "Eligible" ? "ELIGIBLE" : (n.status === "Needs Verification" ? "NEEDS_VERIFICATION" : "POTENTIALLY_ELIGIBLE")),
+      benefit_summary: n.metadata && n.metadata.benefit_summary,
+      support_types: (n.metadata && n.metadata.support_types) || []
+    })).filter(o => o.opportunity_id);
+
+    // Fall back to the analysis ranking only if the graph API did not return opportunity nodes.
+    if (candidateOpps.length === 0) {
+      candidateOpps = (this.analysisResult && this.analysisResult.best_matches) || [];
     }
 
     candidateOpps = candidateOpps.filter(o => (o.eligibility_status || o.status) !== "NOT_ELIGIBLE");
@@ -1967,8 +1689,8 @@ class MyOpportunitiesComponent {
         <div class="graph-viewport-card">
           <div style="padding: 3rem 1.5rem; text-align: center; color: var(--text-muted);">
             <div style="font-size: 2.5rem; margin-bottom: 1rem;">🕸️</div>
-            <h3 style="color: var(--primary-navy); margin-bottom: 0.5rem;">No relevant opportunities yet</h3>
-            <p style="font-size: 0.9rem;">Complete your profile or review opportunities that need more information to populate your graph.</p>
+            <h3 style="color: var(--primary-navy); margin-bottom: 0.5rem;">${t('graph_empty_title')}</h3>
+            <p style="font-size: 0.9rem;">${t('graph_empty_sub')}</p>
           </div>
         </div>
       `;
@@ -1977,13 +1699,17 @@ class MyOpportunitiesComponent {
     const profileLines = [];
 
     if (profile.gender || profile.age) {
-      const g = profile.gender || '';
-      const a = profile.age ? `${profile.age} yrs` : '';
+      const g = profile.gender ? window.i18n.getGenderLabel(profile.gender) : '';
+      const a = profile.age ? `${profile.age} ${t('yrs_unit')}` : '';
       profileLines.push(`👤 ${[g, a].filter(Boolean).join(', ')}`);
     }
 
     if (profile.state) {
-      profileLines.push(`📍 ${profile.state}`);
+      profileLines.push(`📍 ${window.i18n.getStateLabel(profile.state)}`);
+    }
+
+    if (profile.category) {
+      profileLines.push(`🧩 ${t('lbl_social_category')}: ${window.i18n.getCategoryLabel(profile.category)}`);
     }
 
     if (profile.sector || profile.target_sector) {
@@ -1992,20 +1718,23 @@ class MyOpportunitiesComponent {
     }
 
     if (profile.annual_income !== null && profile.annual_income !== undefined && profile.annual_income > 0) {
-      profileLines.push(`💰 Annual Income: ₹${Number(profile.annual_income).toLocaleString('en-IN')}`);
+      profileLines.push(`💰 ${t('lbl_annual_income')}: ₹${Number(profile.annual_income).toLocaleString('en-IN')}`);
     }
 
     if (profile.available_capital !== null && profile.available_capital !== undefined && profile.available_capital > 0) {
-      profileLines.push(`💵 Available Capital: ₹${Number(profile.available_capital).toLocaleString('en-IN')}`);
+      profileLines.push(`💵 ${t('lbl_available_capital')}: ₹${Number(profile.available_capital).toLocaleString('en-IN')}`);
     }
 
     if (profile.project_cost !== null && profile.project_cost !== undefined && profile.project_cost > 0) {
-      profileLines.push(`🏗️ Project Cost: ₹${Number(profile.project_cost).toLocaleString('en-IN')}`);
+      profileLines.push(`🏗️ ${t('graph_project_cost_lbl')}: ₹${Number(profile.project_cost).toLocaleString('en-IN')}`);
     }
 
-    if (profile.business_goal) {
-      profileLines.push(`🏁 Goal: ${this.formatBusinessGoal(profile.business_goal)}`);
+    if (profile.disability_status) {
+      profileLines.push(`♿ ${t('lbl_disability')}: ${this.formatDisabilityStatus(profile.disability_status)}`);
     }
+
+    const selectedGoal = profile.selected_goal || profile.business_goal || "GENERAL_READINESS";
+    profileLines.push(`🏁 ${t('lbl_goal')}: ${this.formatBusinessGoal(selectedGoal)}`);
 
     const colX = {
       PROFILE: 40,
@@ -2130,7 +1859,7 @@ class MyOpportunitiesComponent {
       <div class="graph-profile-box" data-x="${colX.PROFILE}" data-y="${profileY}" style="left: ${colX.PROFILE}px; top: ${profileY}px;">
         <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; border-bottom: 1px solid #bae6fd; padding-bottom: 0.5rem;">
           <span style="font-size: 1.3rem;">👤</span>
-          <h4 style="margin: 0; font-size: 0.95rem; color: var(--primary-navy); font-weight: 800; text-transform: uppercase;">YOUR PROFILE</h4>
+          <h4 style="margin: 0; font-size: 0.95rem; color: var(--primary-navy); font-weight: 800; text-transform: uppercase;">${t('graph_your_profile')}</h4>
         </div>
         <div style="display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.825rem; color: var(--primary-navy); font-weight: 600;">
           ${profileLines.map(line => `<div>${line}</div>`).join('')}
@@ -2144,14 +1873,14 @@ class MyOpportunitiesComponent {
 
       const st = opp.eligibility_status || opp.status || 'POTENTIALLY_ELIGIBLE';
       let badgeStyle = 'background: #fffbe6; color: #b45309; border: 1px solid #fde68a;';
-      let badgeText = 'Potential Match';
+      let badgeText = t('badge_potentially');
 
       if (st === 'ELIGIBLE') {
         badgeStyle = 'background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0;';
-        badgeText = 'Eligible';
+        badgeText = t('badge_eligible');
       } else if (st === 'NEEDS_VERIFICATION') {
         badgeStyle = 'background: #f3e8ff; color: #7e22ce; border: 1px solid #d8b4fe;';
-        badgeText = 'Needs Verification';
+        badgeText = t('badge_needs_verification');
       }
 
       const nameObj = window.i18n ? window.i18n.getLocalizedSchemeName(opp) : { official: opp.opportunity_name || oppId, localized: null };
@@ -2159,7 +1888,7 @@ class MyOpportunitiesComponent {
       const cardHtml = `
         <div class="graph-opp-card" data-x="${colX.OPPORTUNITY}" data-y="${layout.oppY}" style="left: ${colX.OPPORTUNITY}px; top: ${layout.oppY}px;">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.4rem; margin-bottom: 0.35rem;">
-            <span style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">OPPORTUNITY</span>
+            <span style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">${t('graph_opportunity')}</span>
             <span style="font-size: 0.7rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 4px; ${badgeStyle}">${badgeText}</span>
           </div>
 
@@ -2171,10 +1900,10 @@ class MyOpportunitiesComponent {
 
           <div style="display: flex; gap: 0.4rem; margin-top: 0.65rem; border-top: 1px solid var(--border-color); padding-top: 0.5rem;">
             <button class="graph-btn-action ${layout.isReqExpanded ? 'active' : ''}" onclick="if(!myOpportunities.dragMoved) myOpportunities.toggleOppReqs('${oppId}')">
-              📋 Requirements ${layout.isReqExpanded ? '▲' : '▼'}
+              📋 ${t('graph_tab_reqs')} ${layout.isReqExpanded ? '▲' : '▼'}
             </button>
             <button class="graph-btn-action ${layout.isBenExpanded ? 'active' : ''}" onclick="if(!myOpportunities.dragMoved) myOpportunities.toggleOppBens('${oppId}')">
-              🎁 Benefits ${layout.isBenExpanded ? '▲' : '▼'}
+              🎁 ${t('graph_tab_bens')} ${layout.isBenExpanded ? '▲' : '▼'}
             </button>
           </div>
         </div>
@@ -2185,7 +1914,7 @@ class MyOpportunitiesComponent {
         reqPanelHtml = `
           <div class="graph-expanded-panel" data-x="${colX.DETAILS}" data-y="${layout.reqY}" style="left: ${colX.DETAILS}px; top: ${layout.reqY}px;">
             <div style="font-size: 0.825rem; font-weight: 800; color: var(--primary-navy); border-bottom: 1px solid var(--border-color); padding-bottom: 0.4rem; display: flex; justify-content: space-between; align-items: center;">
-              <span>📋 Outstanding Requirements (${layout.oppReqs.length})</span>
+              <span>📋 ${t('graph_outstanding_reqs')} (${layout.oppReqs.length})</span>
               <button class="close-modal" onclick="myOpportunities.toggleOppReqs('${oppId}')" style="position: static; width: 22px; height: 22px; font-size: 0.8rem;">&times;</button>
             </div>
             <div style="display: flex; flex-direction: column; gap: 0.45rem;">
@@ -2196,17 +1925,17 @@ class MyOpportunitiesComponent {
                 return `
                   <div style="display: flex; align-items: flex-start; gap: 0.4rem; font-size: 0.8rem; background: #f8fafc; padding: 0.45rem 0.6rem; border-radius: 6px; border: 1px solid var(--border-color);">
                     <span style="font-weight: 800; font-size: 0.75rem; padding: 0.05rem 0.3rem; border-radius: 4px; background: ${iconBg}">${icon}</span>
-                    <span style="color: var(--primary-navy); font-weight: 600; line-height: 1.25;">${r.label}</span>
+                    <span style="color: var(--primary-navy); font-weight: 600; line-height: 1.25;">${window.i18n.localizeRequirementAction(r.label)}</span>
                   </div>
                 `;
-              }).join('') : '<div style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">No outstanding requirements</div>'}
+              }).join('') : `<div style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">${t('graph_no_outstanding')}</div>`}
               ${layout.remainingReqCount > 0 ? `
                 <button onclick="myOpportunities.toggleReqShowAll('${oppId}')" style="background: none; border: none; color: var(--accent-blue); font-size: 0.775rem; font-weight: 700; cursor: pointer; text-align: left; padding: 0.2rem 0;">
-                  + ${layout.remainingReqCount} more requirement${layout.remainingReqCount > 1 ? 's' : ''}...
+                  + ${layout.remainingReqCount} ${t('more_reqs_unit')}...
                 </button>
               ` : (layout.isShowAllReqs && layout.oppReqs.length > 4 ? `
                 <button onclick="myOpportunities.toggleReqShowAll('${oppId}')" style="background: none; border: none; color: var(--accent-blue); font-size: 0.775rem; font-weight: 700; cursor: pointer; text-align: left; padding: 0.2rem 0;">
-                  Show less
+                  ${t('graph_show_less')}
                 </button>
               ` : '')}
             </div>
@@ -2219,7 +1948,7 @@ class MyOpportunitiesComponent {
         benPanelHtml = `
           <div class="graph-expanded-panel" data-x="${layout.benX}" data-y="${layout.benY}" style="left: ${layout.benX}px; top: ${layout.benY}px;">
             <div style="font-size: 0.825rem; font-weight: 800; color: #6b21a8; border-bottom: 1px solid var(--border-color); padding-bottom: 0.4rem; display: flex; justify-content: space-between; align-items: center;">
-              <span>🎁 Verified Benefits / Support</span>
+              <span>🎁 ${t('graph_verified_benefits')}</span>
               <button class="close-modal" onclick="myOpportunities.toggleOppBens('${oppId}')" style="position: static; width: 22px; height: 22px; font-size: 0.8rem;">&times;</button>
             </div>
             <div style="display: flex; flex-direction: column; gap: 0.45rem;">
@@ -2230,7 +1959,7 @@ class MyOpportunitiesComponent {
                     <span>${label}</span>
                   </div>
                 `;
-              }).join('') : '<div style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">Verified details unavailable</div>'}
+              }).join('') : `<div style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">${t('graph_verified_unavailable')}</div>`}
             </div>
           </div>
         `;
@@ -2249,22 +1978,22 @@ class MyOpportunitiesComponent {
         <!-- Header & Selection Controls -->
         <div class="graph-header-toolbar">
           <div>
-            <h3 style="color: var(--primary-navy); margin: 0 0 0.25rem 0; font-size: 1.25rem;">Opportunity Graph</h3>
+            <h3 style="color: var(--primary-navy); margin: 0 0 0.25rem 0; font-size: 1.25rem;" data-i18n="dash_tab_graph">${t('dash_tab_graph')}</h3>
             <p style="color: var(--text-muted); font-size: 0.875rem; margin: 0;">
-              See how your confirmed profile connects directly to matched opportunities, requirements, and support benefits.
+              ${t('graph_intro')}
             </p>
           </div>
 
           <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
-            <button class="graph-mode-pill ${mode === 'TOP_3' ? 'active' : ''}" onclick="myOpportunities.switchGraphMode('TOP_3')">Top 3 Best Matches</button>
-            <button class="graph-mode-pill ${mode === 'TOP_5' ? 'active' : ''}" onclick="myOpportunities.switchGraphMode('TOP_5')">Top 5</button>
-            <button class="graph-mode-pill ${mode === 'ALL_RELEVANT' ? 'active' : ''}" onclick="myOpportunities.switchGraphMode('ALL_RELEVANT')">All Relevant</button>
+            <button class="graph-mode-pill ${mode === 'TOP_3' ? 'active' : ''}" onclick="myOpportunities.switchGraphMode('TOP_3')">${t('graph_mode_top3')}</button>
+            <button class="graph-mode-pill ${mode === 'TOP_5' ? 'active' : ''}" onclick="myOpportunities.switchGraphMode('TOP_5')">${t('graph_mode_top5')}</button>
+            <button class="graph-mode-pill ${mode === 'ALL_RELEVANT' ? 'active' : ''}" onclick="myOpportunities.switchGraphMode('ALL_RELEVANT')">${t('graph_mode_all')}</button>
 
             <div style="display: flex; gap: 0.35rem; margin-left: 0.5rem;">
-              <button class="btn-outline" onclick="myOpportunities.zoomGraph(0.15)" style="min-height: 38px; padding: 0.3rem 0.65rem; font-size: 0.85rem;" title="Zoom In">🔍 +</button>
-              <button class="btn-outline" onclick="myOpportunities.zoomGraph(-0.15)" style="min-height: 38px; padding: 0.3rem 0.65rem; font-size: 0.85rem;" title="Zoom Out">🔍 -</button>
-              <button class="btn-outline" onclick="myOpportunities.fitGraphView()" style="min-height: 38px; padding: 0.3rem 0.75rem; font-size: 0.85rem; font-weight: 600; color: var(--accent-blue);" title="Fit View to Content">⤢ Fit View</button>
-              <button class="btn-outline" onclick="myOpportunities.resetGraphView()" style="min-height: 38px; padding: 0.3rem 0.75rem; font-size: 0.85rem;" title="Reset View">↺ Reset</button>
+              <button class="btn-outline" onclick="myOpportunities.zoomGraph(0.15)" style="min-height: 38px; padding: 0.3rem 0.65rem; font-size: 0.85rem;" title="${t('graph_zoom_in_title')}">🔍 +</button>
+              <button class="btn-outline" onclick="myOpportunities.zoomGraph(-0.15)" style="min-height: 38px; padding: 0.3rem 0.65rem; font-size: 0.85rem;" title="${t('graph_zoom_out_title')}">🔍 -</button>
+              <button class="btn-outline" onclick="myOpportunities.fitGraphView()" style="min-height: 38px; padding: 0.3rem 0.75rem; font-size: 0.85rem; font-weight: 600; color: var(--accent-blue);" title="${t('graph_fit_title')}">⤢ ${t('graph_fit_view')}</button>
+              <button class="btn-outline" onclick="myOpportunities.resetGraphView()" style="min-height: 38px; padding: 0.3rem 0.75rem; font-size: 0.85rem;" title="${t('graph_reset_title')}">↺ ${t('graph_reset')}</button>
             </div>
           </div>
         </div>
@@ -2283,27 +2012,27 @@ class MyOpportunitiesComponent {
         <!-- Simplified Legend -->
         <div class="graph-legend-bar">
           <div style="display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap;">
-            <span><strong>Node Types:</strong></span>
-            <span>👤 Your Profile</span>
-            <span>🎯 Opportunity</span>
-            <span>📋 Requirements</span>
-            <span>🎁 Benefits / Support</span>
+            <span><strong>${t('graph_node_types_lbl')}:</strong></span>
+            <span>👤 ${t('graph_your_profile')}</span>
+            <span>🎯 ${t('graph_opportunity')}</span>
+            <span>📋 ${t('legend_requirements')}</span>
+            <span>🎁 ${t('legend_benefits')}</span>
           </div>
           <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-            <span><strong>Status:</strong></span>
-            <span style="color: #047857; font-weight: 600;">🟢 Eligible</span>
-            <span style="color: #b45309; font-weight: 600;">🟠 Potential Match</span>
-            <span style="color: #7e22ce; font-weight: 600;">🔵 Needs Verification</span>
+            <span><strong>${t('graph_status_lbl')}:</strong></span>
+            <span style="color: #047857; font-weight: 600;">🟢 ${t('badge_eligible')}</span>
+            <span style="color: #b45309; font-weight: 600;">🟠 ${t('graph_status_potential')}</span>
+            <span style="color: #7e22ce; font-weight: 600;">🔵 ${t('badge_needs_verification')}</span>
           </div>
           <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-            <span><strong>Requirement State:</strong></span>
-            <span style="color: #b45309; font-weight: 600;">! Action Needed</span>
-            <span style="color: #1d4ed8; font-weight: 600;">? Need to Confirm</span>
+            <span><strong>${t('graph_req_state_lbl')}:</strong></span>
+            <span style="color: #b45309; font-weight: 600;">! ${t('dash_action_needed')}</span>
+            <span style="color: #1d4ed8; font-weight: 600;">? ${t('dash_need_to_confirm')}</span>
           </div>
         </div>
 
         <div style="font-size: 0.8rem; color: var(--text-muted); text-align: right; margin-top: -0.25rem;">
-          Only verified connections from official scheme requirements are displayed. Click any opportunity card for scheme details.
+          ${t('graph_footnote')}
         </div>
       </div>
     `;
@@ -2353,7 +2082,7 @@ class MyOpportunitiesComponent {
               <div class="opp-card-header">
                 <div>
                   <span class="opp-sector-tag">${window.i18n.getSectorLabel(r.primary_sector)}</span>
-                  ${idx === 0 ? '<span style="margin-left: 0.5rem; font-size: 0.75rem; font-weight: 800; color: #FF9933; text-transform: uppercase;">#1 Best Match</span>' : ''}
+                  ${idx === 0 ? `<span style="margin-left: 0.5rem; font-size: 0.75rem; font-weight: 800; color: #FF9933; text-transform: uppercase;">#1 ${t('badge_best_match_1')}</span>` : ''}
                   <h3 class="opp-title" onclick="app.showSchemeDetail('${r.opportunity_id}', 'dashboard', 'recommended')">
                     ${titleContent}
                   </h3>
@@ -2361,24 +2090,24 @@ class MyOpportunitiesComponent {
                 ${badgeHtml}
               </div>
 
-              <p class="opp-benefit">${r.benefit_summary || ''}</p>
+              <p class="opp-benefit">${window.i18n.localizeBenefit(r.benefit_summary || '')}</p>
 
               ${(r.why_match || []).length > 0 ? `
                 <div style="background: var(--emerald-bg); padding: 0.75rem; border-radius: 8px; margin-bottom: 1rem;">
                   <strong style="color: var(--emerald); font-size: 0.85rem;" data-i18n="why_match_title">${t('why_match_title')}</strong>
                   <ul style="margin-left: 1.25rem; font-size: 0.85rem; color: #065f46;">
-                    ${r.why_match.map(w => `<li>${w}</li>`).join('')}
+                    ${r.why_match.map(w => `<li>${window.i18n.localizeRequirementAction(w)}</li>`).join('')}
                   </ul>
                 </div>
               ` : ''}
 
               ${displayedGaps.length > 0 ? `
                 <div class="opp-gaps-summary" style="background: #fffbebf5; border: 1px solid #fde68a; padding: 0.75rem 0.9rem; border-radius: 8px; margin-bottom: 1rem;">
-                  <strong style="color: var(--amber); font-size: 0.85rem;">Your next actions:</strong>
+                  <strong style="color: var(--amber); font-size: 0.85rem;" data-i18n="next_actions_title">${t('lbl_your_next_actions')}:</strong>
                   <ul style="margin-left: 1.25rem; font-size: 0.85rem; color: #92400e; margin-top: 0.25rem;">
-                    ${displayedGaps.map(g => `<li>${g}</li>`).join('')}
+                    ${displayedGaps.map(g => `<li>${window.i18n.localizeRequirementAction(g)}</li>`).join('')}
                   </ul>
-                  ${remainingCount > 0 ? `<div style="font-size: 0.8rem; color: #b45309; margin-top: 0.25rem; font-weight: 600;">+${remainingCount} more requirement${remainingCount > 1 ? 's' : ''}</div>` : ''}
+                  ${remainingCount > 0 ? `<div style="font-size: 0.8rem; color: #b45309; margin-top: 0.25rem; font-weight: 600;">+${remainingCount} ${t('more_reqs_unit')}</div>` : ''}
                 </div>
               ` : ''}
 
@@ -2386,10 +2115,10 @@ class MyOpportunitiesComponent {
                 <span>${t('lbl_support')}: <strong>${supportLabels}</strong></span>
                 <div style="margin-left: auto; display: flex; gap: 0.6rem; flex-wrap: wrap;">
                   <button class="btn-outline" onclick="myOpportunities.openSchemeDetail('${r.opportunity_id}')" style="font-size: 0.85rem; padding: 0.4rem 0.85rem;">
-                    View Scheme Details
+                    ${t('btn_view_scheme_details')}
                   </button>
                   <button class="btn-primary" onclick="myOpportunities.toggleInlineRoadmap('${r.opportunity_id}')" style="font-size: 0.85rem; padding: 0.4rem 0.85rem; background: #FF9933;">
-                    ${isExpanded ? 'Hide Roadmap Steps' : 'View Roadmap Steps'}
+                    ${isExpanded ? t('btn_hide_roadmap_steps') : t('btn_view_roadmap_steps')}
                   </button>
                 </div>
               </div>
@@ -2403,6 +2132,8 @@ class MyOpportunitiesComponent {
   }
 
   renderNeedsInfoList(needsInfoOpps) {
+    const t = (k) => window.i18n.get(k);
+
     if (!needsInfoOpps || needsInfoOpps.length === 0) {
       return `
         <div style="background: #ffffff; padding: 2.5rem 1.5rem; border-radius: 12px; text-align: center; color: var(--text-muted);">
@@ -2431,24 +2162,24 @@ class MyOpportunitiesComponent {
                     ${titleContent}
                   </h3>
                 </div>
-                <span class="badge" style="background: #fef3c7; color: #b45309; border: 1px solid #fde68a;">More information needed</span>
+                <span class="badge" style="background: #fef3c7; color: #b45309; border: 1px solid #fde68a;">${t('dash_more_info_needed_status')}</span>
               </div>
 
-              <p class="opp-benefit">${r.benefit_summary || ''}</p>
+              <p class="opp-benefit">${window.i18n.localizeBenefit(r.benefit_summary || '')}</p>
 
               ${missingFacts.length > 0 ? `
                 <div class="needs-profile-info-box" style="background: #fffbebf5; border: 1px solid #fde68a; padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
-                  <strong style="color: #b45309; font-size: 0.9rem; display: block; margin-bottom: 0.6rem;">We need a little more information to assess this opportunity:</strong>
+                  <strong style="color: #b45309; font-size: 0.9rem; display: block; margin-bottom: 0.6rem;">${t('more_info_sub')}</strong>
                   <div style="display: flex; flex-direction: column; gap: 0.75rem;">
                     ${missingFacts.map(info => {
                       const lower = String(info).toLowerCase();
                       if (lower.includes('is_new_unit') || lower.includes('new micro-enterprise status')) {
                         return `
                           <div style="display: flex; justify-content: space-between; align-items: center; background: #ffffff; padding: 0.6rem 0.85rem; border-radius: 8px; border: 1px solid #fde68a; flex-wrap: wrap; gap: 0.5rem;">
-                            <span style="font-size: 0.85rem; font-weight: 600; color: var(--primary-navy);">Is this project for a new unit?</span>
+                            <span style="font-size: 0.85rem; font-weight: 600; color: var(--primary-navy);">${t('q_is_new_unit')}</span>
                             <div style="display: flex; gap: 0.5rem;">
-                              <button class="btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;" onclick="myOpportunities.quickAnswerFact('is_new_unit', true)">[Yes]</button>
-                              <button class="btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;" onclick="myOpportunities.quickAnswerFact('is_new_unit', false)">[No]</button>
+                              <button class="btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;" onclick="myOpportunities.quickAnswerFact('is_new_unit', true)">[${t('btn_yes')}]</button>
+                              <button class="btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;" onclick="myOpportunities.quickAnswerFact('is_new_unit', false)">[${t('btn_no')}]</button>
                             </div>
                           </div>
                         `;
@@ -2456,10 +2187,10 @@ class MyOpportunitiesComponent {
                       if (lower.includes('prior_gov_subsidy') || lower.includes('prior government subsidy')) {
                         return `
                           <div style="display: flex; justify-content: space-between; align-items: center; background: #ffffff; padding: 0.6rem 0.85rem; border-radius: 8px; border: 1px solid #fde68a; flex-wrap: wrap; gap: 0.5rem;">
-                            <span style="font-size: 0.85rem; font-weight: 600; color: var(--primary-navy);">Have you already received government subsidy for this unit?</span>
+                            <span style="font-size: 0.85rem; font-weight: 600; color: var(--primary-navy);">${t('q_prior_subsidy')}</span>
                             <div style="display: flex; gap: 0.5rem;">
-                              <button class="btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;" onclick="myOpportunities.quickAnswerFact('prior_gov_subsidy', true)">[Yes]</button>
-                              <button class="btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;" onclick="myOpportunities.quickAnswerFact('prior_gov_subsidy', false)">[No]</button>
+                              <button class="btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;" onclick="myOpportunities.quickAnswerFact('prior_gov_subsidy', true)">[${t('btn_yes')}]</button>
+                              <button class="btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;" onclick="myOpportunities.quickAnswerFact('prior_gov_subsidy', false)">[${t('btn_no')}]</button>
                             </div>
                           </div>
                         `;
@@ -2467,15 +2198,15 @@ class MyOpportunitiesComponent {
                       if (lower.includes('family_pmegp_availed') || lower.includes('family pmegp beneficiary')) {
                         return `
                           <div style="display: flex; justify-content: space-between; align-items: center; background: #ffffff; padding: 0.6rem 0.85rem; border-radius: 8px; border: 1px solid #fde68a; flex-wrap: wrap; gap: 0.5rem;">
-                            <span style="font-size: 0.85rem; font-weight: 600; color: var(--primary-navy);">Have you or your spouse already availed PMEGP?</span>
+                            <span style="font-size: 0.85rem; font-weight: 600; color: var(--primary-navy);">${t('q_family_pmegp')}</span>
                             <div style="display: flex; gap: 0.5rem;">
-                              <button class="btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;" onclick="myOpportunities.quickAnswerFact('family_pmegp_availed', true)">[Yes]</button>
-                              <button class="btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;" onclick="myOpportunities.quickAnswerFact('family_pmegp_availed', false)">[No]</button>
+                              <button class="btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;" onclick="myOpportunities.quickAnswerFact('family_pmegp_availed', true)">[${t('btn_yes')}]</button>
+                              <button class="btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;" onclick="myOpportunities.quickAnswerFact('family_pmegp_availed', false)">[${t('btn_no')}]</button>
                             </div>
                           </div>
                         `;
                       }
-                      return `<div style="font-size: 0.85rem; color: #92400e;">📌 ${this.formatMissingProfileFact(info)}</div>`;
+                      return `<div style="font-size: 0.85rem; color: #92400e;">📌 ${window.i18n.localizeRequirementAction(this.formatMissingProfileFact(info))}</div>`;
                     }).join('')}
                   </div>
                 </div>
@@ -2483,10 +2214,10 @@ class MyOpportunitiesComponent {
 
               <div class="opp-meta" style="justify-content: flex-end; margin-top: 1rem; display: flex; gap: 0.6rem; flex-wrap: wrap;">
                 <button class="btn-outline" onclick="myOpportunities.openSchemeDetail('${r.opportunity_id}')" style="font-size: 0.85rem; padding: 0.4rem 0.85rem;">
-                  View Scheme Details
+                  ${t('btn_view_scheme_details')}
                 </button>
                 <button class="btn-primary" onclick="myOpportunities.toggleInlineRoadmap('${r.opportunity_id}')" style="font-size: 0.85rem; padding: 0.4rem 0.85rem; background: #FF9933;">
-                  ${isExpanded ? 'Hide Roadmap Steps' : 'View Roadmap Steps'}
+                  ${isExpanded ? t('btn_hide_roadmap_steps') : t('btn_view_roadmap_steps')}
                 </button>
               </div>
 
@@ -2546,10 +2277,10 @@ class MyOpportunitiesComponent {
               ` : ''}
               <div class="opp-meta" style="justify-content: flex-end; margin-top: 1rem; display: flex; gap: 0.6rem; flex-wrap: wrap;">
                 <button class="btn-outline" onclick="myOpportunities.openSchemeDetail('${v.opportunity_id}')" style="font-size: 0.85rem; padding: 0.4rem 0.85rem;">
-                  View Scheme Details
+                  ${t('btn_view_scheme_details')}
                 </button>
                 <button class="btn-primary" onclick="myOpportunities.toggleInlineRoadmap('${v.opportunity_id}')" style="font-size: 0.85rem; padding: 0.4rem 0.85rem; background: #FF9933;">
-                  ${isExpanded ? 'Hide Roadmap Steps' : 'View Roadmap Steps'}
+                  ${isExpanded ? t('btn_hide_roadmap_steps') : t('btn_view_roadmap_steps')}
                 </button>
               </div>
 

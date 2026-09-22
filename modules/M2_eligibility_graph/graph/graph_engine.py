@@ -15,14 +15,16 @@ SUPPORT_LABELS = {
 }
 
 GOAL_MAP = {
-    "START_BUSINESS": "Start a Business",
-    "ESTABLISH_ENTERPRISE": "Establish an Enterprise",
-    "EXPAND_BUSINESS": "Expand Existing Business",
-    "UPGRADE_UNIT": "Upgrade Micro Enterprise",
-    "TECH_INNOVATION": "Technology Innovation",
-    "EXPORT_DEVELOPMENT": "Export Development",
+    "GENERAL_READINESS": "General Business Readiness",
+    "START_BUSINESS": "Start a new business",
+    "ESTABLISH_ENTERPRISE": "Establish a new micro-enterprise",
+    "EXPAND_BUSINESS": "Expand existing business unit",
+    "GROW_BUSINESS": "Expand existing business unit",
+    "UPGRADE_UNIT": "Upgrade micro enterprise unit",
+    "TECH_INNOVATION": "Technology innovation & commercialization",
+    "EXPORT_DEVELOPMENT": "Export development & market expansion",
     "MODERNIZATION": "Unit Modernization",
-    "WORKING_CAPITAL": "Working Capital Assistance"
+    "WORKING_CAPITAL": "Working capital assistance"
 }
 
 def eval_req_status(req_node_id: str, req_type: str, action_label: str, profile: dict) -> str:
@@ -135,6 +137,7 @@ class OpportunityGraph:
         stage = profile.get("business_stage") or "Idea"
         gender = profile.get("gender")
         age = profile.get("age")
+        disability_status = profile.get("disability_status")
         profile_summary = f"{state} • {sector} • {stage} Stage"
         if gender and age:
             profile_summary = f"{gender} ({age} yrs) • " + profile_summary
@@ -152,14 +155,15 @@ class OpportunityGraph:
                 "sector": sector,
                 "business_stage": stage,
                 "gender": gender,
-                "age": age
+                "age": age,
+                "disability_status": disability_status
             }
         })
 
         # B. USER_GOAL Node
-        raw_goal = str(profile.get("business_goal") or "").strip()
-        formatted_goal = GOAL_MAP.get(raw_goal.upper(), raw_goal if raw_goal else "Your Business Goal")
-        if raw_goal and raw_goal == raw_goal.upper() and "_" in raw_goal:
+        raw_goal = str(profile.get("selected_goal") or profile.get("business_goal") or "GENERAL_READINESS").strip()
+        formatted_goal = "General Business Readiness" if raw_goal.upper() == "GENERAL_READINESS" else GOAL_MAP.get(raw_goal.upper(), raw_goal if raw_goal else "General Business Readiness")
+        if raw_goal and raw_goal.upper() not in GOAL_MAP and raw_goal == raw_goal.upper() and "_" in raw_goal:
             formatted_goal = raw_goal.replace("_", " ").title()
 
         nodes.append({

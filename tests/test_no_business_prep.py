@@ -4,7 +4,7 @@ Ensures:
 - Goal Pathway contains NO PLANNING_GUIDANCE steps or sec_preparation section.
 - total_steps is recalculated across Sections A through C only.
 - M1/M2/M4 pipeline data remains completely intact.
-- Completed Actions and Prepared Documents remain functional.
+- Completed Actions remain functional; Prepared Documents is intentionally removed.
 """
 
 import sys

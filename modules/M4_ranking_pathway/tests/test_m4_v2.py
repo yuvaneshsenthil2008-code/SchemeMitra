@@ -34,7 +34,7 @@ def find_nonrecommendable():
 
 
 def test_master_has_100():
-    assert len(json.loads((ROOT/'data/opportunity_master.json').read_text()))==100
+    assert len(json.loads((ROOT/'data/opportunity_master.json').read_text()))==102
 
 
 def test_not_eligible_never_recommended():

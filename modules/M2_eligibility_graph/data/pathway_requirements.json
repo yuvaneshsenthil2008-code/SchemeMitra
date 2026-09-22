@@ -8160,5 +8160,181 @@
         "checked_at": "2026-09-12"
       }
     }
+  },
+  {
+    "requirement_node_id": "REQ0372",
+    "opportunity_id": "OPP101",
+    "opportunity_name": "NMDFC Term Loan Scheme",
+    "requirement_type": "CATEGORY_PROOF",
+    "action_label": "Provide minority-community eligibility proof",
+    "blocking_default": true,
+    "ordering": "DISPLAY_HINT_ONLY",
+    "evidence_basis": "Derived from verified official eligibility/application information; exact document form remains governed by the official scheme/channel partner.",
+    "official_source_url": "https://nmdfc.org/credit-2",
+    "last_verified": "2026-09-15",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": {
+        "url": "https://nmdfc.org/credit-2",
+        "status": "WORKING",
+        "final_url": "https://nmdfc.org/credit-2",
+        "http_status": 200,
+        "checked_at": "2026-09-15"
+      }
+    }
+  },
+  {
+    "requirement_node_id": "REQ0373",
+    "opportunity_id": "OPP101",
+    "opportunity_name": "NMDFC Term Loan Scheme",
+    "requirement_type": "INCOME_PROOF",
+    "action_label": "Provide annual family income proof",
+    "blocking_default": true,
+    "ordering": "DISPLAY_HINT_ONLY",
+    "evidence_basis": "Derived from verified official eligibility/application information; exact document form remains governed by the official scheme/channel partner.",
+    "official_source_url": "https://nmdfc.org/credit-2",
+    "last_verified": "2026-09-15",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": {
+        "url": "https://nmdfc.org/credit-2",
+        "status": "WORKING",
+        "final_url": "https://nmdfc.org/credit-2",
+        "http_status": 200,
+        "checked_at": "2026-09-15"
+      }
+    }
+  },
+  {
+    "requirement_node_id": "REQ0374",
+    "opportunity_id": "OPP101",
+    "opportunity_name": "NMDFC Term Loan Scheme",
+    "requirement_type": "DOCUMENT",
+    "action_label": "Prepare NMDFC/SCA application and KYC documents",
+    "blocking_default": true,
+    "ordering": "DISPLAY_HINT_ONLY",
+    "evidence_basis": "Derived from verified official eligibility/application information; exact document form remains governed by the official scheme/channel partner.",
+    "official_source_url": "https://nmdfc.org/credit-2",
+    "last_verified": "2026-09-15",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": {
+        "url": "https://nmdfc.org/credit-2",
+        "status": "WORKING",
+        "final_url": "https://nmdfc.org/credit-2",
+        "http_status": 200,
+        "checked_at": "2026-09-15"
+      }
+    }
+  },
+  {
+    "requirement_node_id": "REQ0375",
+    "opportunity_id": "OPP101",
+    "opportunity_name": "NMDFC Term Loan Scheme",
+    "requirement_type": "CHANNEL_PARTNER",
+    "action_label": "Apply through an NMDFC SCA or banking partner",
+    "blocking_default": true,
+    "ordering": "DISPLAY_HINT_ONLY",
+    "evidence_basis": "Derived from verified official eligibility/application information; exact document form remains governed by the official scheme/channel partner.",
+    "official_source_url": "https://nmdfc.org/credit-2",
+    "last_verified": "2026-09-15",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": {
+        "url": "https://nmdfc.org/credit-2",
+        "status": "WORKING",
+        "final_url": "https://nmdfc.org/credit-2",
+        "http_status": 200,
+        "checked_at": "2026-09-15"
+      }
+    }
+  },
+  {
+    "requirement_node_id": "REQ0376",
+    "opportunity_id": "OPP102",
+    "opportunity_name": "NDFDC Divyangjan Swavalamban Yojana",
+    "requirement_type": "DISABILITY_CERTIFICATE",
+    "action_label": "Provide UDID / qualifying disability proof",
+    "blocking_default": true,
+    "ordering": "DISPLAY_HINT_ONLY",
+    "evidence_basis": "Derived from verified official eligibility/application information; exact document form remains governed by the official scheme/channel partner.",
+    "official_source_url": "https://www.ndfdc.nic.in/schemes/DIVYANGJAN%20SWAVALAMBAN%20YOJANA.pdf",
+    "last_verified": "2026-09-15",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": {
+        "url": "https://www.ndfdc.nic.in/schemes/DIVYANGJAN%20SWAVALAMBAN%20YOJANA.pdf",
+        "status": "WORKING",
+        "final_url": "https://www.ndfdc.nic.in/schemes/DIVYANGJAN%20SWAVALAMBAN%20YOJANA.pdf",
+        "http_status": 200,
+        "checked_at": "2026-09-15"
+      }
+    }
+  },
+  {
+    "requirement_node_id": "REQ0377",
+    "opportunity_id": "OPP102",
+    "opportunity_name": "NDFDC Divyangjan Swavalamban Yojana",
+    "requirement_type": "IDENTITY_PROOF",
+    "action_label": "Prepare identity and age proof",
+    "blocking_default": true,
+    "ordering": "DISPLAY_HINT_ONLY",
+    "evidence_basis": "Derived from verified official eligibility/application information; exact document form remains governed by the official scheme/channel partner.",
+    "official_source_url": "https://www.ndfdc.nic.in/schemes/DIVYANGJAN%20SWAVALAMBAN%20YOJANA.pdf",
+    "last_verified": "2026-09-15",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": {
+        "url": "https://www.ndfdc.nic.in/schemes/DIVYANGJAN%20SWAVALAMBAN%20YOJANA.pdf",
+        "status": "WORKING",
+        "final_url": "https://www.ndfdc.nic.in/schemes/DIVYANGJAN%20SWAVALAMBAN%20YOJANA.pdf",
+        "http_status": 200,
+        "checked_at": "2026-09-15"
+      }
+    }
+  },
+  {
+    "requirement_node_id": "REQ0378",
+    "opportunity_id": "OPP102",
+    "opportunity_name": "NDFDC Divyangjan Swavalamban Yojana",
+    "requirement_type": "DOCUMENT",
+    "action_label": "Prepare NDFDC loan/application documents",
+    "blocking_default": true,
+    "ordering": "DISPLAY_HINT_ONLY",
+    "evidence_basis": "Derived from verified official eligibility/application information; exact document form remains governed by the official scheme/channel partner.",
+    "official_source_url": "https://www.ndfdc.nic.in/schemes/DIVYANGJAN%20SWAVALAMBAN%20YOJANA.pdf",
+    "last_verified": "2026-09-15",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": {
+        "url": "https://www.ndfdc.nic.in/schemes/DIVYANGJAN%20SWAVALAMBAN%20YOJANA.pdf",
+        "status": "WORKING",
+        "final_url": "https://www.ndfdc.nic.in/schemes/DIVYANGJAN%20SWAVALAMBAN%20YOJANA.pdf",
+        "http_status": 200,
+        "checked_at": "2026-09-15"
+      }
+    }
+  },
+  {
+    "requirement_node_id": "REQ0379",
+    "opportunity_id": "OPP102",
+    "opportunity_name": "NDFDC Divyangjan Swavalamban Yojana",
+    "requirement_type": "CHANNEL_PARTNER",
+    "action_label": "Use NDFDC / approved implementing channel",
+    "blocking_default": true,
+    "ordering": "DISPLAY_HINT_ONLY",
+    "evidence_basis": "Derived from verified official eligibility/application information; exact document form remains governed by the official scheme/channel partner.",
+    "official_source_url": "https://www.ndfdc.nic.in/schemes/DIVYANGJAN%20SWAVALAMBAN%20YOJANA.pdf",
+    "last_verified": "2026-09-15",
+    "url_health": {
+      "application_url_health": null,
+      "official_source_url_health": {
+        "url": "https://www.ndfdc.nic.in/schemes/DIVYANGJAN%20SWAVALAMBAN%20YOJANA.pdf",
+        "status": "WORKING",
+        "final_url": "https://www.ndfdc.nic.in/schemes/DIVYANGJAN%20SWAVALAMBAN%20YOJANA.pdf",
+        "http_status": 200,
+        "checked_at": "2026-09-15"
+      }
+    }
   }
 ]

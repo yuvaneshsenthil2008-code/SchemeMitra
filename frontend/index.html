@@ -70,7 +70,7 @@
   <!-- Mobile Navigation Drawer -->
   <div id="mobileNavDrawer" class="mobile-nav-drawer">
     <div class="mobile-nav-header">
-      <span style="font-weight: 800; font-size: 1.2rem; color: #ffffff;">Navigation Menu</span>
+      <span style="font-weight: 800; font-size: 1.2rem; color: #ffffff;" data-i18n="nav_menu_title">Navigation Menu</span>
       <button class="close-modal" onclick="app.toggleMobileNav()">&times;</button>
     </div>
     
@@ -100,8 +100,8 @@
   <!-- Global Error Fallback Container -->
   <div id="errorBoundary" class="container" style="display: none;">
     <div class="error-fallback">
-      <h3 id="errorTitle">Application Notice</h3>
-      <p id="errorMessage">An unexpected issue occurred. Please refresh or retry.</p>
+      <h3 id="errorTitle" data-i18n="error_title">Application Notice</h3>
+      <p id="errorMessage" data-i18n="error_msg">An unexpected issue occurred. Please refresh or retry.</p>
       <button class="btn-primary" onclick="window.location.reload()" style="margin-top: 1rem;" data-i18n="btn_retry">Retry</button>
     </div>
   </div>
@@ -115,7 +115,7 @@
       <section class="hero-section">
         <div class="container">
           <h1 class="hero-title" data-i18n="hero_title">Empowering Indian Entrepreneurs with Transparent Opportunity Intelligence</h1>
-          <p class="hero-subtitle" data-i18n="hero_subtitle">Search 100 official central and state schemes, discover verified requirements, and build your step-by-step pathway to success.</p>
+          <p class="hero-subtitle" data-i18n="hero_subtitle">Search 102 official central and state schemes, discover verified requirements, and build your step-by-step pathway to success.</p>
           
           <div class="hero-search-box">
             <input type="text" id="heroSearchInput" data-i18n="search_placeholder" placeholder="Search schemes by name, sector, benefit, or ID...">
@@ -129,15 +129,15 @@
         <div class="container">
           <div class="stats-grid">
             <div class="stat-item">
-              <div class="stat-val" id="statSchemes">100</div>
+              <div class="stat-val" id="statSchemes">102</div>
               <div class="stat-lbl" data-i18n="stat_schemes">Official Schemes</div>
             </div>
             <div class="stat-item">
-              <div class="stat-val" id="statRequirements">371</div>
+              <div class="stat-val" id="statRequirements">379</div>
               <div class="stat-lbl" data-i18n="stat_requirements">Verified Requirements</div>
             </div>
             <div class="stat-item">
-              <div class="stat-val" id="statRelationships">522</div>
+              <div class="stat-val" id="statRelationships">534</div>
               <div class="stat-lbl" data-i18n="stat_relationships">Relationship Edges</div>
             </div>
             <div class="stat-item">
@@ -297,7 +297,6 @@
       <div style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 1.75rem; white-space: pre-line;" data-i18n="confirm_reset_msg">This will permanently clear:
 • your profile
 • completed actions
-• prepared documents
 • Goal Pathway progress
 
 Official scheme data will not be affected.</div>
@@ -313,10 +312,10 @@ Official scheme data will not be affected.</div>
     <div class="modal-card" style="max-width: 820px; width: 94%; max-height: 90vh; overflow-y: auto; padding: 2rem; background: #FFFDF8; border: 1px solid #E8DDD0; border-top: 4px solid #FF9933; border-radius: 16px;">
       <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; border-bottom: 2px solid #E8DDD0; padding-bottom: 1rem;">
         <div>
-          <button class="btn-outline" onclick="myOpportunities.closeRoadmapModal()" style="font-size: 0.85rem; padding: 0.35rem 0.85rem; margin-bottom: 0.5rem; display: inline-flex; align-items: center; gap: 0.35rem;">
+          <button class="btn-outline" onclick="myOpportunities.closeRoadmapModal()" style="font-size: 0.85rem; padding: 0.35rem 0.85rem; margin-bottom: 0.5rem; display: inline-flex; align-items: center; gap: 0.35rem;" data-i18n="dash_btn_back_to_my_opps">
             ← Back to My Opportunities
           </button>
-          <h3 style="font-size: 1.35rem; color: #FF9933; margin: 0; font-weight: 800;" id="roadmapModalTitle">Selected Scheme Roadmap</h3>
+          <h3 style="font-size: 1.35rem; color: #FF9933; margin: 0; font-weight: 800;" id="roadmapModalTitle" data-i18n="dash_selected_roadmap">Selected Scheme Roadmap</h3>
         </div>
         <button class="close-modal" onclick="myOpportunities.closeRoadmapModal()" style="position: relative; top: 0; right: 0;">&times;</button>
       </div>
@@ -354,7 +353,7 @@ Official scheme data will not be affected.</div>
     <div class="container">
       <div class="footer-content">
         <div>
-          <strong>SchemeMitra</strong> — <span data-i18n="tagline">AI-powered scheme matching for entrepreneurs</span> • <span style="font-size: 0.85rem; color: var(--text-muted);">Applications are submitted directly on official government portals.</span>
+          <strong>SchemeMitra</strong> — <span data-i18n="tagline">AI-powered scheme matching for entrepreneurs</span> • <span style="font-size: 0.85rem; color: var(--text-muted);" data-i18n="footer_app_notice">Applications are submitted directly on official government portals.</span>
         </div>
       </div>
     </div>

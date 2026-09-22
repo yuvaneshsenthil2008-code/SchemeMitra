@@ -20,20 +20,28 @@ def test_pmegp_official_url_corrected():
     assert (app_url or src_url) == "https://www.pmegp.msme.gov.in/"
     assert "kviconline.gov.in" not in (app_url or src_url)
 
-def test_no_broken_www_pmegp_urls_remain_in_catalogue():
-    """Verify that no broken www.kviconline.gov.in URLs remain anywhere in the dataset."""
+def test_no_retired_pmegp_portal_url_remains_in_catalogue():
+    """Retired PMEGP portal links must not be used as scheme handoff URLs.
+
+    Official KVIC guideline PDFs on kviconline.gov.in remain valid provenance evidence,
+    so this test intentionally targets only the retired /pmegpportal/ address.
+    """
     json_files = [
         os.path.join(M1_DIR, "opportunity_master.json"),
         os.path.join(M1_DIR, "pathway_reference_enriched.json"),
         os.path.join(M1_DIR, "pathway_requirements.json"),
         os.path.join(M1_DIR, "relationships.json"),
     ]
-
+    retired_fragments = [
+        "https://kviconline.gov.in/pmegpportal/",
+        "https://www.kviconline.gov.in/pmegpportal/",
+    ]
     for jf in json_files:
         if os.path.exists(jf):
             with open(jf, "r", encoding="utf-8") as f:
                 content = f.read()
-            assert "www.kviconline.gov.in" not in content, f"Found obsolete www.kviconline.gov.in in {os.path.basename(jf)}"
+            for retired in retired_fragments:
+                assert retired not in content, f"Found retired PMEGP portal URL in {os.path.basename(jf)}"
 
 def test_pmfme_maintenance_classification():
     """Verify that PMFME scheme URL is preserved and classified as UNDER_MAINTENANCE in operational health metadata."""

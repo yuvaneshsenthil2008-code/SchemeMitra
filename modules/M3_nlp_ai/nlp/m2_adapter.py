@@ -5,8 +5,8 @@ recommendability, ranking, or invents requirements.
 """
 
 M2_FIELDS = (
-    "age","gender","category","state","district","annual_income","project_cost",
-    "education","education_field","sector","business_stage","business_goal",
+    "age","gender","category","disability_status","state","district","annual_income","project_cost",
+    "education","education_course","education_field","sector","business_stage","business_goal","selected_goal",
     "target_group","target_entity","entity_type","greenfield","existing_business",
     "street_vendor","artisan_trade","preferred_support_types","support_needs",
     "registrations","certifications","trainings","documents","extra",
@@ -29,11 +29,12 @@ def build_m2_profile(profile: dict) -> dict:
         existing = str(stage).lower() == "existing"
     out = {
         "age": profile.get("age"), "gender": profile.get("gender"),
-        "category": profile.get("category"), "state": profile.get("state"),
+        "category": profile.get("category"), "disability_status": profile.get("disability_status"), "state": profile.get("state"),
         "district": profile.get("district"), "annual_income": income,
         "project_cost": profile.get("project_cost"), "education": profile.get("education"),
-        "education_field": profile.get("education_field"), "sector": profile.get("sector"),
+        "education_course": profile.get("education_course"), "education_field": profile.get("education_field"), "sector": profile.get("sector"),
         "business_stage": stage, "business_goal": profile.get("business_goal"),
+        "selected_goal": profile.get("selected_goal") or profile.get("business_goal") or "GENERAL_READINESS",
         "target_group": profile.get("target_group"), "target_entity": profile.get("target_entity"),
         "entity_type": profile.get("entity_type"), "greenfield": profile.get("greenfield"),
         "existing_business": existing, "street_vendor": profile.get("street_vendor"),

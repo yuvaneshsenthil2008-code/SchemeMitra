@@ -37,6 +37,12 @@ class Opportunity:
     uncertain_rules: list[dict] = field(default_factory=list)
     lifecycle_warning: str | None = None
     last_verified: str | None = None
+    eligible_genders: list[str] = field(default_factory=lambda: ["Male", "Female", "Transgender"])
+    eligible_social_categories: list[str] = field(default_factory=lambda: ["General", "OBC", "SC", "ST", "Minority"])
+    disability_eligibility: str = "ANY"
+    demographic_targeting: bool = False
+    demographic_eligibility_notes: str = ""
+    demographic_benefit_variants: list[dict] = field(default_factory=list)
 
     @classmethod
     def from_m1_m2(cls, m1: dict, m2: dict) -> "Opportunity":
@@ -65,6 +71,12 @@ class Opportunity:
             uncertain_rules=list(m2.get("uncertain_rules") or []),
             lifecycle_warning=m2.get("lifecycle_warning"),
             last_verified=m2.get("last_verified") or m1.get("Last_Verified"),
+            eligible_genders=list(m1.get("Eligible_Genders") or ["Male", "Female", "Transgender"]),
+            eligible_social_categories=list(m1.get("Eligible_Social_Categories") or ["General", "OBC", "SC", "ST", "Minority"]),
+            disability_eligibility=str(m1.get("Disability_Eligibility") or "ANY"),
+            demographic_targeting=bool(m1.get("Demographic_Targeting", False)),
+            demographic_eligibility_notes=str(m1.get("Demographic_Eligibility_Notes") or ""),
+            demographic_benefit_variants=list(m1.get("Demographic_Benefit_Variants") or []),
         )
 
     def is_safe_to_recommend(self) -> bool:

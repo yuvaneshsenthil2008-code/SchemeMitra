@@ -171,7 +171,7 @@ async def list_opportunities(
     support_type: Optional[str] = None,
     scope: Optional[str] = None,
     page: int = Query(1, ge=1),
-    limit: int = Query(20, ge=1, le=100)
+    limit: int = Query(20, ge=1, le=200)
 ):
     """GET /api/opportunities — Public catalogue discovery (no profile required)."""
     master = get_m1_opportunity_master()
@@ -254,8 +254,9 @@ async def parse_profile(payload: ParseProfileRequest):
                 assistant.profile[k] = v
 
     resp = assistant.process_message(payload.message)
-    m2_payload = assistant.to_m2_payload()
-    canonical_profile = sanitize_profile(m2_payload.get("profile", {}))
+    # /api/profile/parse returns the canonical user profile, not the reduced M2 adapter payload.
+    # This preserves presentation fields such as education_course while eligibility adapters remain unchanged.
+    canonical_profile = sanitize_profile(assistant.profile)
 
     missing = assistant._get_missing_fields() if hasattr(assistant, "_get_missing_fields") else []
     lang = getattr(assistant, "conversation_language", "English")
@@ -354,9 +355,6 @@ async def generate_goal_pathway(payload: GoalPathwayPayload):
         m4_data_dir=M4_DATA_DIR
     )
     res = format_goal_pathway_response(raw_pathway)
-    if payload.client_id:
-        from server import progress_db
-        res["user_artifacts"] = progress_db.get_user_artifacts(payload.client_id)
     return res
 
 @app.post("/api/pathway/goal/update")
@@ -434,19 +432,8 @@ async def update_goal_pathway(payload: GoalPathwayUpdatePayload):
     )
     res = format_goal_pathway_response(raw_pathway)
     res["user_progress_overlay"] = overlay
-    if payload.client_id:
-        from server import progress_db
-        res["user_artifacts"] = progress_db.get_user_artifacts(payload.client_id)
     return res
 
-class MarkArtifactAvailableRequest(BaseModel):
-    client_id: str
-    artifact_type: str
-    notes: Optional[str] = None
-
-class RemoveArtifactRequest(BaseModel):
-    client_id: str
-    artifact_type: str
 
 @app.post("/api/pathway/goal/progress/complete")
 async def progress_complete_requirement(payload: CompleteRequirementRequest):
@@ -480,36 +467,6 @@ async def list_completed_actions(client_id: str = Query(..., description="Client
     from server import progress_db
     return progress_db.get_completed_actions(client_id)
 
-@app.post("/api/pathway/artifacts/mark-available")
-async def api_mark_artifact_available(payload: MarkArtifactAvailableRequest):
-    """POST /api/pathway/artifacts/mark-available — Marks reusable artifact/document as AVAILABLE for client."""
-    from server import progress_db
-    try:
-        return progress_db.set_artifact_available(payload.client_id, payload.artifact_type, payload.notes)
-    except ValueError as e:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=str(e)
-        )
-
-@app.post("/api/pathway/artifacts/remove")
-async def api_remove_artifact(payload: RemoveArtifactRequest):
-    """POST /api/pathway/artifacts/remove — Removes reusable artifact availability for client."""
-    from server import progress_db
-    try:
-        return progress_db.remove_artifact(payload.client_id, payload.artifact_type)
-    except ValueError as e:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=str(e)
-        )
-
-@app.get("/api/pathway/artifacts")
-async def list_user_artifacts(client_id: str = Query(..., description="Client or user UUID")):
-    """GET /api/pathway/artifacts — Returns all available reusable artifacts for client."""
-    from server import progress_db
-    arts = progress_db.get_user_artifacts(client_id)
-    return {"artifacts": arts, "count": len(arts)}
 
 class UserResetPayload(BaseModel):
     client_id: Optional[str] = None

@@ -54,7 +54,7 @@ class RuleExtractor:
     CITY_STATE_MAP = {
         # Tamil Nadu districts / major cities
         "ariyalur": ("Ariyalur", "Tamil Nadu"), "chengalpattu": ("Chengalpattu", "Tamil Nadu"),
-        "chennai": ("Chennai", "Tamil Nadu"), "coimbatore": ("Coimbatore", "Tamil Nadu"),
+        "chennai": ("Chennai", "Tamil Nadu"), "சென்னை": ("Chennai", "Tamil Nadu"), "சென்னையில்": ("Chennai", "Tamil Nadu"), "चेन्नई": ("Chennai", "Tamil Nadu"), "coimbatore": ("Coimbatore", "Tamil Nadu"),
         "cuddalore": ("Cuddalore", "Tamil Nadu"), "dharmapuri": ("Dharmapuri", "Tamil Nadu"),
         "dindigul": ("Dindigul", "Tamil Nadu"), "erode": ("Erode", "Tamil Nadu"),
         "kallakurichi": ("Kallakurichi", "Tamil Nadu"), "kanchipuram": ("Kanchipuram", "Tamil Nadu"),
@@ -126,10 +126,10 @@ class RuleExtractor:
         "technology": "Technology", "software": "Technology", "it business": "Technology",
         "education": "Education", "healthcare": "Healthcare", "medical": "Healthcare",
         # Tamil
-        "உணவு பதப்படுத்துதல்": "Food Processing", "உணவு": "Food", "வேளாண்மை": "Agriculture", "விவசாயம்": "Agriculture", "ஜவுளி": "Textile",
+        "உணவு பதப்படுத்துதல்": "Food Processing", "உணவு": "Food", "வேளாண்மை": "Agriculture", "விவசாயம்": "Agriculture", "ஃபார்மிங்": "Agriculture", "ஜவுளி": "Textile", "துணிக்கடை": "Textile", "துணி கடை": "Textile", "ஆடை கடை": "Textile",
         "தையல்": "Textile", "கைத்தொழில்": "Handicrafts", "கைவினை": "Handicrafts", "சில்லறை": "Retail", "உற்பத்தி": "Manufacturing", "தொழில்நுட்பம்": "Technology",
         # Hindi
-        "खाद्य प्रसंस्करण": "Food Processing", "फूड": "Food", "खाद्य": "Food", "रेस्टोरेंट": "Food", "कृषि": "Agriculture", "खेती": "Agriculture",
+        "खाद्य प्रसंस्करण": "Food Processing", "फूड": "Food", "खाद्य": "Food", "रेस्टोरेंट": "Food", "कृषि": "Agriculture", "खेती": "Agriculture", "एग्रीकल्चर": "Agriculture", "फार्मिंग": "Agriculture", "एग्रीकल्चर एंड फार्मिंग": "Agriculture",
         "टेक्सटाइल": "Textile", "कपड़ा": "Textile", "सिलाई": "Textile", "हस्तशिल्प": "Handicrafts", "दुकान": "Retail", "निर्माण": "Manufacturing",
         "टेक्नोलॉजी": "Technology", "सॉफ्टवेयर": "Technology",
         # Telugu
@@ -143,9 +143,9 @@ class RuleExtractor:
     }
 
     QUALIFICATION_COURSE_PATTERNS = [
-        (r"\b(?:b\.?\s*tech|btech|bachelor\s+of\s+technology)\b", "B.Tech", "Degree", None),
-        (r"\b(?:b\.?\s*e\.?|be|bachelor\s+of\s+engineering)\b", "B.E.", "Degree", None),
-        (r"\b(?:b\.?\s*sc\.?|bsc|bachelor\s+of\s+science)\b", "B.Sc", "Degree", None),
+        (r"\b(?:b\.?\s*tech|btech|bachelor\s+of\s+technology)\b|பி\.?\s*டெக்|பிடெக்|बी\.?\s*टेक|बीटेक", "B.Tech", "Degree", None),
+        (r"\b(?:b\.?\s*e\.?|be|bachelor\s+of\s+engineering)\b|பி\.?\s*இ|बी\.?\s*ई", "B.E.", "Degree", None),
+        (r"\b(?:b\.?\s*sc\.?|bsc|bachelor\s+of\s+science)\b|பி\.?\s*எஸ்சி", "B.Sc", "Degree", None),
         (r"\b(?:bca|bachelor\s+of\s+computer\s+applications?)\b", "BCA", "Degree", "Computer Applications"),
         (r"\b(?:b\.?\s*com\.?|bcom|bachelor\s+of\s+commerce)\b", "B.Com", "Degree", "Commerce"),
         (r"\b(?:bba|bachelor\s+of\s+business\s+administration)\b", "BBA", "Degree", "Business Administration"),
@@ -155,8 +155,8 @@ class RuleExtractor:
         (r"\b(?:llb|bachelor\s+of\s+laws?)\b", "LLB", "Degree", "Law"),
         (r"\b(?:mbbs)\b", "MBBS", "Degree", "Medicine"),
 
-        (r"\b(?:m\.?\s*tech|mtech|master\s+of\s+technology)\b", "M.Tech", "Postgraduate", None),
-        (r"\b(?:m\.?\s*e\.?|me|master\s+of\s+engineering)\b", "M.E.", "Postgraduate", None),
+        (r"\b(?:m\.?\s*tech|mtech|master\s+of\s+technology)\b|எம்\.?\s*டெக்", "M.Tech", "Postgraduate", None),
+        (r"\b(?:m\.?\s*e\.?|me|master\s+of\s+engineering)\b|எம்\.?\s*இ", "M.E.", "Postgraduate", None),
         (r"\b(?:m\.?\s*sc\.?|msc|master\s+of\s+science)\b", "M.Sc", "Postgraduate", None),
         (r"\b(?:mca|master\s+of\s+computer\s+applications?)\b", "MCA", "Postgraduate", "Computer Applications"),
         (r"\b(?:mba|master\s+of\s+business\s+administration)\b", "MBA", "Postgraduate", "Business Administration"),
@@ -165,33 +165,33 @@ class RuleExtractor:
         (r"\b(?:m\.?\s*pharm\.?|mpharm|master\s+of\s+pharmacy)\b", "M.Pharm", "Postgraduate", "Pharmacy"),
         (r"\b(?:ph\.?d|doctorate)\b", "Ph.D", "PhD", None),
 
-        (r"\b(?:diploma|polytechnic)\b", "Diploma", "Diploma", None),
+        (r"\b(?:diploma|polytechnic)\b|டிப்ளோமா|டிப்ளமோ|डिप्लोमा", "Diploma", "Diploma", None),
         (r"\b(?:iti|industrial\s+training\s+institute)\b", "ITI", "ITI", None),
 
-        (r"\b(?:12th(?:\s*pass)?|higher\s+secondary|hsc)\b", "12th", "12th Pass", None),
-        (r"\b(?:10th(?:\s*pass)?|sslc|secondary\s+school)\b", "10th", "10th Pass", None),
-        (r"\b(?:8th(?:\s*pass)?)\b", "8th", "8th Pass", None),
+        (r"\b(?:12th(?:\s*pass)?|higher\s+secondary|hsc)\b|12வது|बारहवीं", "12th", "12th Pass", None),
+        (r"\b(?:10th(?:\s*pass)?|sslc|secondary\s+school)\b|10வது|दसवीं", "10th", "10th Pass", None),
+        (r"\b(?:8th(?:\s*pass)?)\b|8வது|आठवीं", "8th", "8th Pass", None),
     ]
 
     EDUCATION_PATTERNS = [
         (r"\b(?:ph\.?d|doctorate)\b", "PhD"),
-        (r"\b(?:post\s*graduate|postgraduate|masters?|m\.?tech|m\.?e|m\.?sc|mba|mca|m\.?com)\b", "Postgraduate"),
-        (r"\b(?:graduate|graduation|degree|bachelor'?s?|b\.?tech|b\.?e|b\.?sc|bca|b\.?com|bba|b\.?a\.?|b\.?pharm|b\.?arch|llb|mbbs)\b", "Degree"),
+        (r"\b(?:post\s*graduate|postgraduate|masters?|m\.?tech|m\.?e|m\.?sc|mba|mca|m\.?com|master\s+of\s+engineering)\b", "Postgraduate"),
+        (r"\b(?:graduate|graduation|degree|bachelor'?s?|b\.?tech|b\.?e|b\.?sc|bca|b\.?com|bba|b\.?a\.?|b\.?pharm|b\.?arch|llb|mbbs|bachelor\s+of\s+engineering)\b", "Degree"),
         (r"\b(?:12th|higher secondary|hsc)\b", "12th Pass"),
         (r"\b(?:10th|sslc|secondary school)\b", "10th Pass"),
         (r"\b(?:8th)\b", "8th Pass"),
-        (r"\bdiploma\b", "Diploma"), (r"\biti\b", "ITI"),
+        (r"\bdiploma\b|டிப்ளோமா|டிப்ளமோ|डिप्लोमा", "Diploma"), (r"\biti\b", "ITI"),
     ]
 
     EDUCATION_FIELD_PATTERNS = [
-        (r"\b(?:computer\s+science(?:\s+and\s+engineering)?|cse)\b", "Computer Science"),
+        (r"\b(?:computer\s+science(?:\s+and\s+engineering)?(?:\s+engineer)?|computer\s+signs\s+engineering|cs\s+engineering|cse|c\s*s\s*e)\b|கம்ப்யூட்டர்\s+சயின்ஸ்(?:\s+இன்ஜினியரிங்|\s+இன்ஜினீயரிங்)?|கம்ப்யூட்டர்\s+சாயின்ஸ்|कंप्यूटर\s+साइंस(?:\s+इंजीनियरिंग)?|कंप्यूटर\s+विज्ञान", "Computer Science"),
         (r"\b(?:artificial\s+intelligence|ai(?:\s+and\s+ml)?|ai\s*&\s*ml)\b", "Artificial Intelligence"),
         (r"\b(?:computer\s+applications?|bca|mca)\b", "Computer Applications"),
-        (r"\b(?:mechanical\s+engineering|mechanical)\b", "Mechanical Engineering"),
+        (r"\b(?:mechanical\s+engineering|mechanical)\b|மெக்கானிக்கல்(?:\s+இன்ஜினியரிங்)?|मैकेनिकल(?:\s+इंजीनियरिंग)?", "Mechanical Engineering"),
         (r"\b(?:electrical\s+(?:and\s+electronics\s+)?engineering|eee)\b", "Electrical Engineering"),
         (r"\b(?:electronics\s+(?:and\s+communication\s+)?engineering|ece)\b", "Electronics and Communication Engineering"),
-        (r"\b(?:civil\s+engineering|civil)\b", "Civil Engineering"),
-        (r"\b(?:information\s+technology|it)\b", "Information Technology"),
+        (r"\b(?:civil\s+engineering|civil)\b|சிவில்(?:\s+இன்ஜினியரிங்)?|सिविल(?:\s+इंजीनियरिंग)?", "Civil Engineering"),
+        (r"\b(?:information\s+technology)\b|தகவல்\s+தொழில்நுட்பம்|सूचना\s+प्रौद्योगिकी", "Information Technology"),
         (r"\b(?:data\s+science)\b", "Data Science"),
         (r"\b(?:cyber\s*security|cybersecurity)\b", "Cyber Security"),
         (r"\b(?:software\s+engineering)\b", "Software Engineering"),
@@ -326,11 +326,29 @@ class RuleExtractor:
 
     # ------------------------- STATE -------------------------
     def _location_is_third_party(self, lower, start_index):
-        prefix = lower[max(0, start_index - 55):start_index]
-        return bool(re.search(
-            r"\b(?:my\s+)?(?:friend|father|mother|dad|mom|brother|sister|husband|wife|son|daughter)\b[^.!?]{0,35}\b(?:live|lives|stay|stays|from|in)\s*$",
+        prefix = lower[max(0, start_index - 70):start_index]
+        english = re.search(
+            r"\b(?:my\s+)?(?:friend|father|mother|dad|mom|brother|sister|husband|wife|son|daughter)\b[^.!?]{0,45}\b(?:live|lives|stay|stays|from|in)\s*$",
             prefix,
-        ))
+        )
+        tamil = re.search(r"(?:என்|எனது)\s*(?:நண்பன்|நண்பர்|அப்பா|அம்மா|சகோதரன்|சகோதரி|கணவர்|மனைவி)[^.!?]{0,45}$", prefix)
+        hindi = re.search(r"(?:मेरा|मेरी|मेरे)\s*(?:दोस्त|मित्र|पिता|माँ|मां|भाई|बहन|पति|पत्नी|बेटा|बेटी)[^.!?]{0,45}$", prefix)
+        return bool(english or tamil or hindi)
+
+    def _native_self_location_context(self, text, start_index, end_index):
+        before = text[max(0, start_index - 30):start_index]
+        after = text[end_index:min(len(text), end_index + 45)]
+        # Conversational Tamil: "நான் சென்னையில் இருக்கேன் / வசிக்கிறேன்".
+        tamil_self = bool(re.search(r"(?:^|\s)(?:நான்|நா)\s*$", before))
+        tamil_residence = bool(re.search(r"(?:இருக்க|வசிக்க|தங்கி|சேர்ந்த|இருந்து)", after))
+        if tamil_self and tamil_residence:
+            return True
+        # Conversational Hindi: "मैं चेन्नई में रहता/रहती हूं" or "मैं चेन्नई से हूं".
+        hindi_self = bool(re.search(r"(?:^|\s)(?:मैं|मै)\s*$", before))
+        hindi_residence = bool(re.search(r"^\s*(?:में\s*)?(?:रहत|रहता|रहती|रहते|रहूँ|रहूं|रहता\s+हूँ|रहता\s+हूं)|^\s*से\s+(?:हूँ|हूं|है)", after))
+        if hindi_self and hindi_residence:
+            return True
+        return False
 
     def _extract_self_city(self, text):
         lower = text.lower()
@@ -374,7 +392,9 @@ class RuleExtractor:
                 if self._location_is_third_party(lower, m.start()):
                     continue
                 prefix = lower[max(0, m.start() - 30):m.start()]
-                if re.search(r"\b(?:live|stay|reside|located|based)\s+in\s*$", prefix) or len(text.split()) <= 4:
+                if (re.search(r"\b(?:live|stay|reside|located|based)\s+in\s*$", prefix)
+                        or self._native_self_location_context(text, m.start(), m.end())
+                        or len(text.split()) <= 4):
                     return self.CITY_STATE_MAP[city_key]
         return None
 
@@ -418,10 +438,19 @@ class RuleExtractor:
         return city[0] if city else None
 
     # ------------------------- EDUCATION -------------------------
+    def _education_is_third_party(self, lower, start_index):
+        prefix = lower[max(0, start_index - 50):start_index]
+        return bool(re.search(
+            r"\b(?:friend|father|mother|dad|mom|brother|sister|husband|wife|son|daughter|cousin|someone|relative|neighbor)\b.{0,45}\b(?:is|has|studied|studying|completed|doing|does|in|degree|b\.?tech|b\.?e|bsc|bca|mca)\s*$",
+            prefix,
+            re.IGNORECASE,
+        ))
+
     def _extract_education_course(self, text):
         lower = text.lower()
         for p, course_name, level, default_field in self.QUALIFICATION_COURSE_PATTERNS:
-            if re.search(p, lower):
+            m = re.search(p, lower, re.IGNORECASE)
+            if m and not self._education_is_third_party(lower, m.start()):
                 return course_name
         return None
 
@@ -429,11 +458,13 @@ class RuleExtractor:
         lower = text.lower()
         # 1. Check qualification patterns
         for p, course_name, level, default_field in self.QUALIFICATION_COURSE_PATTERNS:
-            if re.search(p, lower):
+            m = re.search(p, lower, re.IGNORECASE)
+            if m and not self._education_is_third_party(lower, m.start()):
                 return level
         # 2. Check general education level patterns
         for p, value in self.EDUCATION_PATTERNS:
-            if re.search(p, lower):
+            m = re.search(p, lower, re.IGNORECASE)
+            if m and not self._education_is_third_party(lower, m.start()):
                 return value
         lex = {
             "degree mudich": "Degree", "degree mudichiten": "Degree", "padichu mudich": "Degree",
@@ -443,7 +474,8 @@ class RuleExtractor:
             "ಪದವಿ": "Degree", "ಡಿಪ್ಲೊಮಾ": "Diploma", "പഠനം": "School", "ഡിഗ്രി": "Degree", "ഡിപ്ലോമ": "Diploma", "ডিগ্রি": "Degree", "ডিপ্লোমা": "Diploma",
         }
         for key, value in lex.items():
-            if key in (lower if key.isascii() else text):
+            idx = lower.find(key.lower()) if key.isascii() else text.find(key)
+            if idx != -1 and not self._education_is_third_party(lower, idx):
                 return value
 
         # CRITICAL AMBIGUITY RULE:
@@ -452,17 +484,18 @@ class RuleExtractor:
 
     def _extract_education_field(self, text):
         lower = text.lower()
-        # 1. Check if course implies field (e.g. BCA -> Computer Applications)
-        for p, course_name, level, default_field in self.QUALIFICATION_COURSE_PATTERNS:
-            if default_field and re.search(p, lower):
-                for f_pattern, f_value in self.EDUCATION_FIELD_PATTERNS:
-                    if re.search(f_pattern, lower):
-                        return f_value
-                return default_field
-        # 2. Check explicit field patterns
+        # 1. Check explicit field patterns FIRST
         for pattern, value in self.EDUCATION_FIELD_PATTERNS:
-            if re.search(pattern, lower):
+            m = re.search(pattern, lower, re.IGNORECASE)
+            if m and not self._education_is_third_party(lower, m.start()):
                 return value
+
+        # 2. Check if course implies field (e.g. BCA -> Computer Applications)
+        for p, course_name, level, default_field in self.QUALIFICATION_COURSE_PATTERNS:
+            if default_field:
+                m = re.search(p, lower, re.IGNORECASE)
+                if m and not self._education_is_third_party(lower, m.start()):
+                    return default_field
         return None
 
     # ------------------------- CATEGORY -------------------------
@@ -485,7 +518,9 @@ class RuleExtractor:
         lower = text.lower()
         # A course/degree field is not automatically the user's business sector.
         if self._extract_education_course(text) and not re.search(
-            r"\b(?:business|enterprise|startup|start|launch|run|running|sector|industry|shop|store|farm|farming|manufactur|export|service|restaurant|bakery|tailor|handicraft|make|sell|open)\b",
+            r"(?:\b(?:business|enterprise|startup|start|launch|run|running|sector|industry|shop|store|farm|farming|manufactur|export|service|restaurant|bakery|tailor|handicraft|make|sell|open)\b|"
+            r"பிசினஸ்|தொழில்|வணிகம்|வியாபாரம்|கடை|துணிக்கடை|விவசாயம்|வேளாண்மை|ஆரம்பிக்க|தொடங்க|"
+            r"बिजनेस|व्यवसाय|दुकान|कृषि|खेती|एग्रीकल्चर|फार्मिंग|शुरू|चालू|स्टार्ट)",
             lower,
         ):
             return None
@@ -562,7 +597,12 @@ class RuleExtractor:
         if any(re.search(p, lower) for p in idea_start):
             return "Idea"
 
-        native_start = ["தொழில் தொடங்க", "வணிகம் தொடங்க", "வியாபாரம் தொடங்க", "व्यवसाय शुरू", "बिजनेस शुरू", "వ్యాపారం ప్రారంభ", "వ్యాపారం మొదలు", "ವ್ಯವಹಾರ ಆರಂಭ", "ಬಿಸಿನೆಸ್ ಆರಂಭ", "ബിസിനസ് തുടങ്ങ", "ব্যবসা শুরু"]
+        native_start = [
+            "தொழில் தொடங்க", "வணிகம் தொடங்க", "வியாபாரம் தொடங்க", "தொழில் ஆரம்பிக்க", "வணிகம் ஆரம்பிக்க", "வியாபாரம் ஆரம்பிக்க",
+            "பிசினஸ் ஆரம்பிக்க", "பிசினஸ் தொடங்க", "கடை ஆரம்பிக்க", "கடை தொடங்க", "ஆரம்பிக்கணும்", "ஆரம்பிக்கணும்னு",
+            "व्यवसाय शुरू", "बिजनेस शुरू", "बिजनेस चालू", "व्यवसाय चालू", "स्टार्ट करना है",
+            "వ్యాపారం ప్రారంభ", "వ్యాపారం మొదలు", "ವ್ಯವಹಾರ ಆರಂಭ", "ಬಿಸಿನೆಸ್ ಆರಂಭ", "ബിസിനസ് തുടങ്ങ", "ব্যবসা শুরু"
+        ]
         if any(x in text for x in native_start):
             return "Idea"
         return None
@@ -570,7 +610,7 @@ class RuleExtractor:
     # ------------------------- MONEY -------------------------
     def _amount_after_context(self, text, patterns):
         lower = text.lower()
-        amount_expr = r"(?:₹|rs\.?|inr|रु\.?)?\s*([0-9][0-9,]*(?:\.[0-9]+)?)\s*(k|thousand|thousands|l|lac|lacs|lakh|lakhs|cr|crore|crores)?(?:\s*/-)?"
+        amount_expr = r"(?:₹|rs\.?|inr|रु\.?)?\s*([0-9][0-9,]*(?:\.[0-9]+)?|one|two|three|four|five|six|seven|eight|nine|ten|ஆறு|இரண்டு|மூன்று|ஐந்து|ஏழு|எட்டு|ஒன்பது|பத்து|दो|तीन|चार|पांच|छह|सात|आठ|नौ|दस)\s*(k|thousand|thousands|l|lac|lacs|lakh|lakhs|cr|crore|crores)?(?:\s*/-)?"
         for prefix, suffix in patterns:
             p = prefix + amount_expr + suffix
             m = re.search(p, lower, re.IGNORECASE)
@@ -595,11 +635,11 @@ class RuleExtractor:
 
     def _extract_project_cost(self, text):
         patterns = [
-            (r"\b(?:my\s+)?(?:project|business)\s+(?:will\s+)?(?:cost|budget)\s*(?:is|will be|:)?\s*", r""),
-            (r"\b(?:project|business)\s+(?:cost|budget)\s*(?:is|:)?\s*", r""),
-            (r"\bbudget\s*(?:is|:)?\s*", r""),
+            (r"\b(?:my\s+)?(?:project|business)\s+(?:will\s+)?(?:cost|budget)\s*(?:is|will be|:)?\s*(?:around|approx|approximately|about)?\s*", r""),
+            (r"\b(?:project|business)\s+(?:cost|budget)\s*(?:is|:)?\s*(?:around|approx|approximately|about)?\s*", r""),
+            (r"\bbudget\s*(?:is|:)?\s*(?:around|approx|approximately|about)?\s*", r""),
             (r"\bi\s+need\s+", r"\s+(?:for|to fund)\s+(?:the\s+|my\s+)?(?:project|business)\b"),
-            (r"\b(?:mera|meri)\s+(?:project|business)\s+(?:ka\s+)?(?:cost|budget)\s*(?:hai|is|:)?\s*", r""),
+            (r"\b(?:mera|meri)\s+(?:project|business)\s+(?:ka\s+)?(?:cost|budget)\s*(?:hai|is|:)?\s*(?:around|approx|approximately|about)?\s*", r""),
             (r"\b(?:project|business)\s+ku\s+", r"\s+venum\b"),
             (r"\b(?:business|project)\s+ku\s+", r""),
         ]
@@ -615,8 +655,8 @@ class RuleExtractor:
             return val
 
         lower = text.lower()
-        amount_expr = r"(?:₹|rs\.?|inr|रु\.?)?\s*([0-9][0-9,]*(?:\.[0-9]+)?)\s*(k|thousand|thousands|l|lac|lacs|lakh|lakhs|cr|crore|crores)?(?:\s*/-)?"
-        suffix_pattern = amount_expr + r"\s+(?:available capital|of my own money|as own capital|own money|as own contribution|from my savings|of my savings|capital)\b"
+        amount_expr = r"(?:₹|rs\.?|inr|रु\.?)?\s*([0-9][0-9,]*(?:\.[0-9]+)?|one|two|three|four|five|six|seven|eight|nine|ten|ஆறு|இரண்டு|மூன்று|ஐந்து|ஏழு|எட்டு|ஒன்பது|பத்து|दो|तीन|चार|पांच|छह|सात|आठ|नौ|दस)\s*(k|thousand|thousands|l|lac|lacs|lakh|lakhs|cr|crore|crores)?(?:\s*/-)?"
+        suffix_pattern = amount_expr + r"\s+(?:rupees?\s+|rs\.?\s*)?(?:available capital|of my own money|as own capital|own money|as own contribution|from my savings|of my savings|capital)\b"
         m = re.search(suffix_pattern, lower)
         if m:
             raw = f"{m.group(1)}{m.group(2) or ''}"
@@ -624,7 +664,7 @@ class RuleExtractor:
             if parsed:
                 return parsed.amount
 
-        prefix_pattern = r"\b(?:i have|have|saved|capital of|own capital of)\s+" + amount_expr + r"\s+(?:available capital|available|capital)\b"
+        prefix_pattern = r"\b(?:i have|have|saved|capital of|own capital of)\s+" + amount_expr + r"\s+(?:rupees?\s+|rs\.?\s*)?(?:available capital|available|capital)\b"
         m2 = re.search(prefix_pattern, lower)
         if m2:
             raw = f"{m2.group(1)}{m2.group(2) or ''}"

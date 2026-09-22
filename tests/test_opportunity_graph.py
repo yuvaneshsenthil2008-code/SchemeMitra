@@ -77,3 +77,21 @@ def test_pathway_generation_for_graph_panel():
         assert state in ["PASSED", "COMPLETED", "GAP", "ACTION_NEEDED", "FAILED", "VERIFY", "UNCONFIRMED", "NEEDS_VERIFICATION"], (
             f"Requirement state '{state}' must map to one of the 3 standard design statuses (Completed, Action Needed, Need to Confirm)"
         )
+
+
+def test_graph_generate_endpoint_returns_renderable_nodes_and_edges():
+    profile = {
+        "age": 32,
+        "gender": "Male",
+        "state": "Tamil Nadu",
+        "sector": "MSME & Manufacturing",
+        "business_stage": "Idea",
+        "business_goal": "START_BUSINESS",
+    }
+    response = client.post("/api/graph/generate", json={"profile": profile, "selection_mode": "TOP_3"})
+    assert response.status_code == 200
+    data = response.json()
+    assert isinstance(data.get("nodes"), list) and data["nodes"]
+    assert isinstance(data.get("edges"), list)
+    assert any(n.get("type") == "USER_PROFILE" for n in data["nodes"])
+    assert any(n.get("type") == "OPPORTUNITY" for n in data["nodes"])

@@ -1,0 +1,1895 @@
+import json
+
+en_keys = {
+    "brand_name": "SchemeMitra",
+    "tagline": "AI-powered scheme matching for entrepreneurs",
+    "header_top_bar": "Independent Scheme Discovery & Guidance Platform • Applications submitted on official government portals",
+
+    "nav_home": "Home",
+    "nav_explore": "Explore Schemes",
+    "nav_how_it_works": "How It Works",
+    "nav_set_profile": "Set Your Profile",
+    "nav_my_opportunities": "My Opportunities",
+    "nav_reset_profile": "Reset Profile",
+    "nav_menu_title": "Navigation Menu",
+
+    "confirm_reset_title": "Reset your SchemeMitra profile?",
+    "confirm_reset_msg": "This will permanently clear:\n• your profile\n• completed actions\n• Goal Pathway progress\n\nOfficial scheme data will not be affected.",
+    "btn_reset_confirm": "Reset Everything",
+    "btn_cancel": "Cancel",
+
+    "hero_title": "Empowering Indian Entrepreneurs with Transparent Opportunity Intelligence",
+    "hero_subtitle": "Search 102 official central and state schemes, discover verified requirements, and build your step-by-step pathway to success.",
+    "search_placeholder": "Search schemes by name, sector, benefit, or ID...",
+    "btn_search": "Search",
+    "btn_set_profile": "Set Your Profile",
+    "btn_speak_profile": "Speak to build your profile",
+    "btn_show_my_schemes": "Show My Schemes",
+    "btn_view_scheme_details": "View Scheme Details",
+    "btn_view_roadmap_steps": "View Roadmap Steps",
+
+    "stat_schemes": "Official Schemes",
+    "stat_requirements": "Verified Requirements",
+    "stat_relationships": "Relationship Edges",
+    "stat_sectors": "Focus Sectors",
+
+    "sec_sectors_title": "Explore Opportunities by Sector",
+    "sec_sectors_sub": "Select a sector to browse verified government support programs",
+    "sec_how_title": "How SchemeMitra Helps You",
+    "sec_how_sub": "Discover, evaluate, and navigate government schemes tailored to your business goal",
+    "how_card1_title": "1. Tell Us About Yourself",
+    "how_card1_desc": "Share your location, background, business stage, interests and goals so SchemeMitra can understand which opportunities are relevant to you.",
+    "how_card2_title": "2. Find Opportunities That Fit You",
+    "how_card2_desc": "See opportunities ranked around your profile, understand why they may suit you, and identify any information or requirements you still need to complete.",
+    "how_card3_title": "3. See Your Opportunity Journey",
+    "how_card3_desc": "Explore how your profile, requirements, suitable opportunities and available support connect to your business goal through a personalized visual graph.",
+
+    "filters_title": "Filter Opportunities",
+    "filter_sector": "Primary Sector",
+    "filter_support": "Support Type",
+    "filter_stage": "Business Stage",
+    "filter_scope": "Scope",
+    "filter_all_sector": "All Sectors",
+    "filter_all_support": "All Support Types",
+    "filter_all_scope": "All Scopes",
+    "results_found": "Opportunities Found",
+    "lbl_schemes_available": "Schemes Available",
+    "lbl_scope": "Scope",
+    "lbl_support": "Support",
+    "lbl_gender": "Gender",
+    "lbl_social_category": "Social Category",
+    "lbl_disability_eligibility": "Disability",
+    "lbl_all_genders": "All genders",
+    "lbl_all_social_categories": "All social categories",
+    "lbl_any_disability_status": "Any disability status",
+    "lbl_persons_with_disabilities": "Persons with disabilities",
+    "detail_profile_specific_benefit": "Benefit for your profile",
+    "detail_verified_source": "Verified official source",
+    "btn_view_details": "View Details →",
+    "btn_apply_filters_close": "Apply Filters & Close",
+    "btn_filter_mobile": "⚙️ Filter Opportunities",
+    "quick_filter_placeholder": "Quick filter...",
+    "btn_clear_filters": "Clear Filters",
+    "lbl_search": "Search",
+
+    "support_family_loan_credit": "Loan / Credit",
+    "support_family_subsidy_grant": "Subsidy / Grant",
+    "support_family_training": "Training & Skill Support",
+    "support_family_infrastructure": "Infrastructure & Equipment",
+    "support_family_market": "Market & Export Support",
+    "support_family_incubation": "Incubation & Mentorship",
+    "support_family_certification": "Certification",
+    "support_family_fellowship": "Fellowship",
+    "support_family_other": "Other Support",
+    "support_overlap_note": "A scheme may offer more than one type of support, so it can appear in multiple support categories.",
+
+    "match_scheme_name": "Matched scheme name",
+    "match_sector": "Matched sector",
+    "match_id": "Matched opportunity ID",
+    "related_match": "Related match",
+
+    "sort_by": "Sort By",
+    "sort_name": "Scheme Name",
+    "sort_sector": "Sector",
+    "badge_active": "ACTIVE",
+    "badge_needs_verification": "NEEDS VERIFICATION",
+    "badge_eligible": "ELIGIBLE",
+    "badge_potentially": "POTENTIALLY ELIGIBLE",
+    "badge_not_eligible": "NOT ELIGIBLE",
+
+    "tab_recommended": "Best Matches",
+    "tab_potentially": "More Information Needed",
+    "tab_pathway": "Opportunity Pathway",
+    "tab_graph": "Opportunity Graph",
+    "tab_verification": "Needs Verification",
+    "tab_application_guide": "Application Guide",
+
+    "detail_overview": "Overview",
+    "detail_benefits": "Benefits & Support",
+    "detail_eligibility": "Eligibility Summary",
+    "detail_documents": "Required Documents",
+    "detail_application": "Application Route",
+    "detail_official_url": "Official Source Link",
+    "detail_official_website": "Official Website",
+    "detail_lifecycle": "Lifecycle Status",
+
+    "voice_unsupported": "Browser Speech Recognition is unavailable in this environment. Please type your profile details below.",
+    "offline_title": "Backend Unavailable",
+    "offline_msg": "Unable to connect to the SchemeMitra server. Please check your connection and retry.",
+    "btn_retry": "Retry Connection",
+    "alert_reset_error": "Could not reset your SchemeMitra data. Please try again.",
+    "alert_reset_success": "SchemeMitra has been reset. You can start with a new profile.",
+    "alert_progress_save_error": "Could not save your progress. Please try again.",
+    "alert_mark_completed_confirm": "Mark this requirement as completed?\n\nThis records your own progress and is not official government verification.",
+    "alert_core_fields_required": "Please complete the required core fields (Age, State, Business Sector, Business Stage) before proceeding.",
+    "footer_app_notice": "Applications are submitted directly on official government portals.",
+    "error_title": "Application Notice",
+    "error_msg": "An unexpected issue occurred. Please refresh or retry.",
+
+    "profile_builder_sub": "Use your voice or answer in plain language to extract your canonical profile",
+    "profile_talk_title": "🤖 Talk to SchemeMitra",
+    "profile_talk_desc": "Tell us about yourself and your business idea in simple natural language or voice.",
+    "voice_error_prefix": "Speech recognition error:",
+    "tab_conversational": "Conversational / Voice Assistant",
+    "tab_structured_form": "Structured Form Input",
+    "voice_status_default": "Click the microphone button to start speaking, or type below.",
+    "voice_status_listening": "Listening... Speak now.",
+    "voice_status_done": "Recording complete. Click 'Extract Profile Fields' to proceed.",
+    "voice_status_silence": "Stopped after 3 seconds of silence. Review the transcript, then extract your profile.",
+    "tell_us_label": "Or type naturally here...",
+    "txt_message_placeholder": "e.g. I am a 24-year-old female from Tamil Nadu with a degree wanting to start a food processing business with Rs 3 lakh income...",
+    "btn_extract_fields": "Extract Profile Fields",
+    "review_title": "Review & Confirm Your Extracted Profile",
+    "review_sub": "Review the fields extracted from your input. You can edit any field before saving.",
+    "btn_start_over": "Start Over",
+    "btn_edit_profile": "Edit Profile",
+    "basic_details": "Basic Details",
+    "financial_details": "Financial Details (₹)",
+    "business_info": "Business Info",
+
+    "profile_section_personal": "1. PERSONAL DETAILS",
+    "profile_section_financial": "2. FINANCIAL INFORMATION",
+    "profile_section_business": "3. BUSINESS DETAILS",
+    "lbl_age": "Age (Years)",
+    "lbl_state": "State",
+    "lbl_district": "District",
+    "lbl_category": "Social Category",
+    "lbl_disability": "Disability",
+    "select_disability": "Select disability status",
+    "disability_none": "No disability",
+    "disability_yes": "Person with disability",
+    "disability_prefer_not": "Prefer not to say",
+    "lbl_income": "Annual Family Income",
+    "lbl_capital": "Available Own Capital",
+    "lbl_project_cost": "Estimated Project Cost",
+    "lbl_target_sector": "Target Sector",
+    "lbl_business_stage": "Business Stage",
+    "lbl_selected_goal": "Selected Goal",
+    "lbl_education": "Educational Qualification",
+    "lbl_education_field": "Field of Study / Trade",
+    "lbl_education_course": "Degree / Course",
+    "ph_education_course": "e.g. B.Tech, B.E., Diploma",
+    "ph_education_field": "e.g. Computer Science, Mechanical",
+    "ph_income": "Enter annual income",
+    "ph_capital": "Enter available capital",
+    "ph_project_cost": "Enter estimated project cost",
+    "select_qualification": "Select Qualification",
+    "select_gender": "Select Gender",
+    "select_category": "Select Category",
+    "select_sector": "Select Sector",
+    "select_stage": "Select Stage",
+    "qualification_degree": "Degree (Graduate)",
+    "qualification_postgraduate": "Postgraduate (Masters)",
+    "qualification_diploma": "Diploma / Polytechnic",
+    "qualification_12th": "12th Pass",
+    "qualification_10th": "10th Pass",
+    "qualification_8th": "8th Pass",
+
+    "goal_general_readiness": "General Business Readiness",
+    "goal_start_business": "Start a new business",
+    "goal_establish_enterprise": "Establish a new micro-enterprise",
+    "goal_expand_business": "Expand existing business unit",
+    "goal_working_capital": "Working capital assistance",
+    "goal_upgrade_unit": "Upgrade micro enterprise unit",
+    "goal_tech_innovation": "Technology innovation & commercialization",
+    "goal_export_development": "Export development & market expansion",
+    "goal_modernization": "Unit modernization",
+    "goal_default_note": "Defaults to General Business Readiness. You can change it anytime.",
+
+    "profile_confirm_qualification": "Please confirm your qualification level (e.g. Degree, Diploma, 12th Pass).",
+    "profile_extract_error": "Could not extract profile fields. Please try again.",
+    "profile_update_error": "Profile fields were extracted, but the form could not finish updating. Please try again.",
+    "age_invalid": "Please enter a valid age between 1 and 120.",
+    "under18_title": "Personalized Scheme Matching for Under-18 Profile",
+    "under18_msg": "Most entrepreneurship opportunities in this catalogue are intended for adults. You can still explore schemes, but personalized matches will depend on each scheme's verified age requirements.",
+    "lbl_preferred_support": "Preferred Support Type",
+    "btn_save_confirm_profile": "Save & Confirm Profile",
+    "profile_readiness_title": "Profile readiness",
+    "profile_readiness_100": "✓ Profile Readiness: 100%",
+    "profile_core_required_note": "Core required fields: Age, Location State, Business Sector, and Business Stage.",
+    "profile_notice_complete": "✓ Your core profile is ready! Click above to generate personalized scheme matches.",
+    "profile_notice_incomplete": "⚠️ Complete the required core fields above (Age, State, Business Sector, Business Stage) to view personalized opportunities.",
+    "profile_core_progress": "Core Required Fields: {completed} / {total} ({percentage}%)",
+
+    "no_profile_title": "Your Personalized Opportunities",
+    "no_profile_msg": "Complete your profile to discover schemes matched to your goals, location and eligibility.",
+    "no_profile_sub": "Complete your profile to discover schemes matched to your goals, location and eligibility.",
+    "no_profile_why_title": "Why create a profile?",
+    "no_profile_check1": "Find relevant schemes",
+    "no_profile_check2": "Understand your potential eligibility",
+    "no_profile_check3": "See missing requirements",
+    "no_profile_check4": "Get a personalized preparation roadmap",
+    "incomplete_profile_title": "Your Profile Needs Information",
+    "incomplete_profile_sub": "Complete the required core fields to view your personalized opportunities.",
+    "btn_complete_profile": "Complete Profile",
+    "btn_find_my_opportunities": "Find My Opportunities",
+    "core_gate_warning": "Complete the required core fields above to view personalized opportunities.",
+    "analyzing_title": "Analyzing Opportunities for Your Profile...",
+    "analyzing_sub": "Evaluating schemes for your profile criteria...",
+    "profile_summary_title": "Confirmed Profile",
+    "why_match_title": "Why You Match:",
+    "action_gaps_title": "Action Gaps Required:",
+    "action_gaps_sub": "Complete required prerequisites (e.g. Udyam Registration, DPR).",
+    "needs_verification_notice": "Verification Notice: These schemes are in historical or verification-required status.",
+
+    "dash_title": "My Opportunities",
+    "dash_sub": "Personalized schemes, eligibility progress, pathway steps, and visual graph",
+    "dash_tab_recommended": "Best Matches",
+    "dash_tab_potentially": "More Information Needed",
+    "dash_tab_goal_path": "Opportunity Pathway",
+    "dash_tab_graph": "Opportunity Graph",
+    "dash_tab_verification": "Needs Verification",
+    "dash_tab_guide": "Application Guide",
+    "dash_action_needed_title": "Action Gaps Required:",
+    "dash_action_gaps_sub": "Complete required prerequisites (e.g. Udyam Registration, DPR).",
+    "dash_prerequisites_title": "Prerequisites Completed",
+    "dash_no_matches_found": "No matching opportunities found for your profile criteria.",
+    "dash_btn_roadmap_steps": "View Roadmap Steps",
+    "dash_btn_apply_now": "Apply",
+    "dash_btn_check_eligibility": "Check My Eligibility for This Scheme",
+    "dash_btn_back_to_my_opps": "← Back to My Opportunities",
+    "dash_selected_roadmap": "Selected Scheme Roadmap",
+    "dash_manage_docs": "Manage Prepared Business Documents",
+
+    "dash_goal_pathway_title": "Opportunity Pathway",
+    "dash_selected_goal": "Selected Goal",
+    "dash_your_goal": "Your Goal",
+    "dash_where_you_are_now": "WHERE YOU ARE NOW",
+    "dash_what_needs_attention": "WHAT NEEDS ATTENTION",
+    "dash_next_actions": "Next Actions",
+    "dash_next_actions_to_review": "Next Actions to Review",
+    "dash_opportunities_pathway_connects": "Opportunities This Pathway Connects To",
+    "dash_verified_support_available": "Verified Support Available",
+    "dash_your_requirement_progress": "Your Requirement Progress",
+    "dash_your_goal_destination": "Your Goal Destination",
+    "dash_completed_actions": "Completed Actions",
+    "dash_mark_completed": "Mark Completed",
+    "dash_reopen": "Reopen",
+    "dash_action_needed": "Action Needed",
+    "dash_need_to_confirm": "Need to Confirm",
+    "dash_completed": "Completed",
+    "dash_official_scheme_source": "Official Scheme Source",
+    "dash_exact_docs_confirm": "Exact documents need confirmation",
+    "dash_what_you_already_have": "WHAT YOU ALREADY HAVE",
+    "dash_please_confirm": "PLEASE CONFIRM",
+    "dash_my_next_steps": "MY NEXT STEPS",
+    "dash_ready_to_apply": "READY TO APPLY",
+    "dash_almost_ready": "ALMOST READY",
+    "dash_more_info_needed_status": "MORE INFORMATION NEEDED",
+    "dash_open_app_guide": "Open Application Guide",
+    "dash_continue_official_govt_site": "Continue to Official Government Website ↗",
+    "dash_pathway_history": "PATHWAY HISTORY",
+    "dash_completed_actions_sub": "Actions you marked as completed. These are user-confirmed progress records, not official government verification.",
+
+    "graph_title": "Opportunity Graph Visualization",
+    "graph_sub": "Network graph connecting verified prerequisite relationships.",
+    "graph_note": "Only verified prerequisite edges are shown.",
+    "graph_node_user_profile": "Your Profile",
+    "graph_node_opportunity": "Target Opportunity",
+    "graph_node_requirement": "Requirement Node",
+    "graph_node_support": "Support",
+    "graph_status_eligible": "Eligible",
+    "graph_status_potential": "Potential Match",
+    "graph_status_action_needed": "Action Needed",
+    "graph_status_needs_verification": "Needs Verification",
+    "graph_btn_zoom_in": "🔍 +",
+    "graph_btn_zoom_out": "🔍 -",
+    "graph_btn_reset_zoom": "Reset Zoom",
+    "graph_legend_title": "Graph Legend",
+    "graph_filter_all_types": "All Node Types",
+    "graph_search_placeholder": "Search graph nodes...",
+    "graph_title_label": "Opportunity Graph",
+    "graph_subtitle_label": "Network graph connecting verified prerequisite relationships.",
+    "graph_note_label": "Only verified prerequisite edges are shown.",
+    "tab_roadmap": "Your Opportunity Graph",
+    "roadmap_title": "Your Opportunity Graph",
+    "roadmap_sub": "Visualizing your profile, matched opportunities, verified requirements, and benefits",
+    "node_target_opp": "Target Opportunity",
+    "node_req": "Requirement Node",
+    "node_support": "Support",
+    "btn_zoom_in": "🔍 +",
+    "btn_zoom_out": "🔍 -",
+    "btn_reset_zoom": "Reset Zoom",
+    "btn_view_pathway_graph": "View Pathway & Graph",
+    "btn_view_pathway_gaps": "View Pathway & Gaps",
+
+    "guide_title": "Application Guide",
+    "guide_sub": "Step-by-step document submission & portal guide",
+    "guide_docs": "Required Documents",
+    "guide_channel": "Application Channel",
+    "guide_verification": "Verification & Tracking",
+    "check_eligibility_cta": "Check My Eligibility for This Scheme",
+    "close": "Close",
+    "official_portal_notice": "SchemeMitra provides eligibility evaluation and preparation guidance. Final applications and approvals take place exclusively on official government portals.",
+    "btn_continue_official_portal": "Continue on Official Government Portal ↗",
+    "platform_positioning_disclaimer": "Note on Application Submission: SchemeMitra is a scheme discovery and guidance platform. We guide you through eligibility, prerequisites, and document preparation. SchemeMitra does not accept applications or grant approvals — final applications must be submitted directly on official government portals.",
+    "btn_apply": "Apply",
+    "btn_official_source": "Official Source ↗",
+    "apply_modal_title": "Apply for this Scheme",
+    "apply_modal_desc": "Applications for this scheme are submitted through the official government website. SchemeMitra provides discovery and guidance but does not process applications.",
+    "apply_modal_desc_fallback": "Applications for this scheme are submitted through the official government website. SchemeMitra provides discovery and guidance but does not process applications. Use the official scheme website below to view the latest application instructions and application route.",
+    "btn_visit_official_apply": "Visit Official Website to Apply ↗",
+    "btn_visit_official_scheme": "Visit Official Scheme Website ↗",
+    "apply_modal_no_url": "A verified official application link is not currently available in SchemeMitra.",
+
+    "sector_agri": "Agriculture & Allied",
+    "sector_food": "Food Processing & Agri Value Addition",
+    "sector_msme": "MSME & Manufacturing",
+    "sector_finance": "Finance & Credit",
+    "sector_startup": "Startup & Innovation",
+    "sector_skills": "Skills & Employment",
+    "sector_women": "Women & SHG Entrepreneurship",
+    "sector_social": "Social Empowerment & Inclusive Entrepreneurship",
+    "sector_handicrafts": "Handicrafts, Handloom & Artisan Economy",
+    "sector_export": "Export, Market Access & Business Growth",
+
+    "sup_credit": "Loan / Credit",
+    "sup_subsidy": "Capital Subsidy",
+    "sup_grant": "Grant / Seed Funding",
+    "sup_training": "Training & Skill Support",
+    "sup_infrastructure": "Infrastructure & Equipment",
+    "sup_certification": "Certification",
+    "sup_credit_guarantee": "Credit Guarantee",
+    "sup_equipment_support": "Equipment Support",
+    "sup_export_support": "Export Support",
+    "sup_fellowship": "Fellowship",
+    "sup_incubation": "Incubation",
+    "sup_market_access": "Market Access",
+    "sup_mentorship": "Mentorship",
+    "sup_other_support": "Other Support",
+    "sup_skill_development": "Skill Development",
+
+    "scope_central": "Central Govt",
+    "scope_state": "State Govt",
+
+    "gender_male": "Male",
+    "gender_female": "Female",
+    "gender_trans": "Transgender",
+    "cat_general": "General",
+    "cat_obc": "OBC",
+    "cat_sc": "SC",
+    "cat_st": "ST",
+    "cat_minority": "Minority",
+    "stage_idea": "Idea",
+    "stage_startup": "Startup",
+    "stage_existing": "Existing Business",
+    "status_detected": "✓ Detected",
+    "status_confirmed": "✓ Confirmed",
+    "status_required": "Required",
+    "status_optional": "Optional / May improve matches",
+    "status_needed_some": "Needed for some schemes",
+    "status_please_confirm": "Please confirm",
+
+    "req_prep_docs": "Prepare required documents",
+    "req_prep_kyc": "Prepare identity/KYC proof",
+    "req_prep_dpr": "Prepare a Detailed Project Report (DPR)",
+    "req_complete_training": "Complete required training",
+    "req_approach_lender": "Approach eligible lender / obtain credit appraisal",
+    "req_register_entity": "Register the entity/organisation",
+    "req_obtain_cert": "Obtain required certification",
+    "req_confirm_eligibility": "Confirm eligibility",
+    "req_submit_app": "Submit application",
+    "req_udyam": "Udyam Registration",
+    "req_gst": "GST Registration",
+    "req_pan": "PAN Card",
+    "req_aadhaar": "Aadhaar Card",
+    "req_bank_proof": "Bank Account Proof",
+    "req_land_lease": "Land / Ownership Lease Document",
+
+    "ben_financial_assist": "Financial Assistance",
+    "ben_tech_support": "Technology Support",
+    "ben_entrepreneurship_support": "Entrepreneurship Support",
+    "ben_interest_subsidy": "Interest Subsidy",
+    "ben_margin_subsidy": "Margin Money Subsidy",
+
+    "lbl_yrs": "yrs",
+    "lbl_annual_income": "Annual income",
+    "lbl_available_capital": "Available capital",
+    "lbl_goal": "Goal",
+    "lbl_disability": "Disability",
+    "lbl_entrepreneur": "Entrepreneur",
+    "badge_best_match_1": "#1 BEST MATCH",
+    "badge_best_match": "BEST MATCH",
+    "lbl_your_next_actions": "Your next actions:",
+    "btn_view_scheme_details": "View Scheme Details",
+    "btn_view_roadmap_steps": "View Roadmap Steps",
+    "btn_hide_roadmap_steps": "Hide Roadmap Steps",
+    "roadmap_your_roadmap": "YOUR ROADMAP",
+    "roadmap_what_you_have": "WHAT YOU ALREADY HAVE",
+    "roadmap_please_confirm": "PLEASE CONFIRM",
+    "roadmap_my_next_steps": "MY NEXT STEPS",
+    "roadmap_age_available": "Age information available",
+    "roadmap_state_confirmed": "State location confirmed",
+    "roadmap_sector_available": "Business sector available",
+    "roadmap_stage_confirmed": "Business stage confirmed",
+    "roadmap_gender_specified": "Gender specified",
+    "roadmap_qualification_specified": "Qualification level specified",
+    "roadmap_confirm_missing": "Confirm the missing information above",
+    "roadmap_review_guide": "Review the verified SchemeMitra Application Guide",
+    "roadmap_proceed_portal": "Proceed to the official government portal for direct application submission",
+    "more_info_title": "MORE INFORMATION NEEDED",
+    "more_info_sub": "We need a little more information to assess this opportunity:",
+    "q_is_new_unit": "Is this project for a new unit?",
+    "q_prior_subsidy": "Have you already received government subsidy for this unit?",
+    "q_family_pmegp": "Have you or your spouse already availed PMEGP?",
+    "btn_yes": "Yes",
+    "btn_no": "No",
+    "graph_your_profile": "YOUR PROFILE",
+    "graph_opportunity": "OPPORTUNITY",
+    "graph_outstanding_reqs": "Outstanding Requirements",
+    "graph_verified_benefits": "Verified Benefits / Support",
+    "graph_mode_top3": "Top 3 Best Matches",
+    "graph_mode_top5": "Top 5",
+    "graph_mode_top_3": "Top 3 Best Matches",
+    "graph_mode_top_5": "Top 5",
+    "graph_mode_all": "All Relevant",
+    "graph_tab_reqs": "Requirements",
+    "graph_tab_bens": "Benefits",
+    "graph_fit_view": "Fit View",
+    "graph_reset": "Reset View",
+    "btn_fit_view": "Fit View",
+    "btn_reset": "Reset View",
+    "graph_node_types_lbl": "Node Types:",
+    "graph_status_lbl": "Status:",
+    "graph_req_state_lbl": "Requirement State:",
+    "legend_node_types": "Node Types:",
+    "legend_your_profile": "Your Profile",
+    "legend_opportunity": "Opportunity",
+    "legend_requirements": "Requirements",
+    "legend_benefits": "Benefits / Support",
+    "legend_status": "Status:",
+    "legend_eligible": "Eligible",
+    "legend_potential_match": "Potential Match",
+    "legend_needs_verification": "Needs Verification",
+    "legend_req_state": "Requirement State:",
+    "legend_action_needed": "Action Needed",
+    "legend_need_confirm": "Need to Confirm",
+    "graph_footnote": "Only verified connections from official scheme requirements are displayed. Click any opportunity card for scheme details.",
+    "yrs_unit": "yrs",
+    "stage_lbl": "Stage",
+    "profile_annual_income": "Annual income",
+    "profile_available_capital": "Available capital",
+    "profile_disability_lbl": "Disability",
+    "next_actions_title": "Your next actions:",
+    "inline_roadmap_title": "YOUR ROADMAP",
+    "inline_roadmap_already_have": "WHAT YOU ALREADY HAVE",
+    "inline_roadmap_please_confirm": "PLEASE CONFIRM",
+    "inline_roadmap_next_steps": "MY NEXT STEPS",
+    "badge_more_info_needed": "MORE INFORMATION NEEDED",
+    "status_ready_to_apply": "READY TO APPLY",
+    "status_almost_ready": "ALMOST READY",
+    "sub_ready_to_apply": "Official application process is open on verified government portal.",
+    "sub_almost_ready": "Review requirements and guidance before official portal submission.",
+    "btn_open_app_guide": "Open Application Guide",
+    "btn_continue_official_govt": "Continue to Official Government Website",
+    "more_reqs_unit": "more requirements",
+    "err_core_required": "Please complete required core fields.",
+    "err_valid_age": "Please enter a valid age.",
+    "state_tn": "Tamil Nadu",
+    "state_kl": "Kerala",
+    "state_ka": "Karnataka",
+    "state_ap": "Andhra Pradesh",
+    "state_ts": "Telangana",
+    "state_mh": "Maharashtra",
+    "state_dl": "Delhi",
+    "state_up": "Uttar Pradesh",
+    "state_wb": "West Bengal",
+    "state_rj": "Rajasthan",
+    "state_gj": "Gujarat",
+    "state_mp": "Madhya Pradesh",
+    "req_proposal": "Event Proposal",
+    "req_incubator_linkage": "Apply through/secure linkage with an eligible incubator",
+    "req_incubator_centre": "Incubator / approved centre linkage",
+    "req_general_proposal": "Proposal",
+    "fact_shg": "SHG membership",
+    "fact_entity": "Entity type (FPO / SHG / Cooperative)",
+    "fact_dpiit": "DPIIT startup recognition",
+    "fact_subsidy": "Prior government subsidy history",
+    "fact_pmegp": "Family PMEGP beneficiary status",
+    "fact_new_unit": "New micro-enterprise status",
+    "fact_udyam_status": "Udyam Registration status",
+    "fact_udyam_cat": "Udyam Enterprise Category (Micro / Small)",
+    "fact_project_cost": "Estimated project cost",
+    "fact_education": "Educational qualification",
+    "fact_social_cat": "Social category",
+    "fact_stage_req": "Business stage requirement",
+    "desc_ic_scheme": "Support for international exhibitions, conferences, market exposure and cooperation activities",
+    "desc_pmegp": "Credit linked subsidy scheme for setting up new micro-enterprises in manufacturing and service sectors.",
+}
+
+ta_keys = {
+    "brand_name": "SchemeMitra",
+    "tagline": "தொழில்முனைவோருக்கான AI ஆதரவு திட்ட பொருத்தம்",
+    "header_top_bar": "தனித்துவமான திட்ட கண்டுபிடிப்பு & வழிகாட்டுதல் தளம் • விண்ணப்பங்கள் அதிகாரப்பூர்வ அரசுத் தளங்களில் சமர்ப்பிக்கப்படுகின்றன",
+
+    "nav_home": "முகப்பு",
+    "nav_explore": "திட்டங்களை ஆராய்க",
+    "nav_how_it_works": "செயல்படும் முறை",
+    "nav_set_profile": "சுயவிவரத்தை அமைக்கவும்",
+    "nav_my_opportunities": "எனக்கான வாய்ப்புகள்",
+    "nav_reset_profile": "சுயவிவரத்தை மீட்டமைக்க",
+    "nav_menu_title": "வழிசெலுத்தல் மெனு",
+
+    "confirm_reset_title": "உங்கள் சுயவிவரத்தை மீட்டமைக்கவா?",
+    "confirm_reset_msg": "இது உங்கள் சுயவிவரத்தையும் சேமிக்கப்பட்ட முன்னேற்றத்தையும் நிரந்தரமாக நீக்கும்:\n• சுயவிவரம்\n• நிறைவுசெய்த நடவடிக்கைகள்\n• இலக்கு பாதை முன்னேற்றம்\n\nஅதிகாரப்பூர்வ திட்டத் தரவு பாதிக்கப்படாது.",
+    "btn_reset_confirm": "அனைத்தையும் மீட்டமைக்கவும்",
+    "btn_cancel": "ரத்து செய்",
+
+    "hero_title": "வெளிப்படையான வாய்ப்பு நுண்ணறிவுடன் இந்திய தொழில்முனைவோரை வலுப்படுத்துதல்",
+    "hero_subtitle": "102 அதிகாரப்பூர்வ மத்திய மற்றும் மாநில திட்டங்களைத் தேடி, சரிபார்க்கப்பட்ட தேவைகளைக் கண்டறிந்து, உங்கள் இலக்குக்கான வழியை உருவாக்குங்கள்.",
+    "search_placeholder": "திட்டத்தின் பெயர், துறை, பயன் அல்லது ஐடி மூலம் தேடவும்...",
+    "btn_search": "தேடுக",
+    "btn_set_profile": "சுயவிவரத்தை அமைக்கவும்",
+    "btn_speak_profile": "பேசி சுயவிவரத்தை உருவாக்கவும்",
+    "btn_show_my_schemes": "எனக்கான திட்டங்களைக் காட்டு",
+    "btn_view_scheme_details": "திட்டத்தின் விவரங்களைப் பார்க்க",
+    "btn_view_roadmap_steps": "வழிகாட்டி படிகளைப் பார்க்க",
+
+    "stat_schemes": "அதிகாரப்பூர்வ திட்டங்கள்",
+    "stat_requirements": "சரிபார்க்கப்பட்ட தகுதிகள்",
+    "stat_relationships": "தொடர்பு இணைப்புகள்",
+    "stat_sectors": "முக்கிய துறைகள்",
+
+    "sec_sectors_title": "துறை வாரியாக வாய்ப்புகளை ஆராய்க",
+    "sec_sectors_sub": "அரசு ஆதரவு திட்டங்களைப் பார்க்க ஒரு துறையைத் தேர்ந்தெடுக்கவும்",
+    "sec_how_title": "SchemeMitra உங்களுக்கு எவ்வாறு உதவுகிறது",
+    "sec_how_sub": "உங்கள் வணிக இலக்கிற்கு ஏற்ப அரசுத் திட்டங்களைக் கண்டறிந்து, மதிப்பீடு செய்து, வழிகாட்டலைப் பெறுங்கள்",
+    "how_card1_title": "1. உங்களைப் பற்றி எங்களிடம் கூறுங்கள்",
+    "how_card1_desc": "உங்கள் இருப்பிடம், பின்னணி, தொழில் நிலை, ஆர்வங்கள் மற்றும் இலக்குகளைப் பகிர்ந்து கொள்ளுங்கள், இதனால் SchemeMitra உங்களுக்குப் பொருத்தமான வாய்ப்புகளைப் புரிந்து கொள்ள முடியும்.",
+    "how_card2_title": "2. உங்களுக்குப் பொருத்தமான வாய்ப்புகளைக் கண்டறியவும்",
+    "how_card2_desc": "உங்கள் சுயவிவரத்தின் அடிப்படையில் வரிசைப்படுத்தப்பட்ட வாய்ப்புகளைப் பாருங்கள், அவை ஏன் உங்களுக்குப் பொருந்தக்கூடும் என்பதைப் புரிந்து கொள்ளுங்கள், மேலும் நீங்கள் பூர்த்தி செய்ய வேண்டிய தகவல்கள் அல்லது தேவைகளைக் கண்டறியவும்.",
+    "how_card3_title": "3. உங்கள் வாய்ப்புப் பயணத்தைப் பாருங்கள்",
+    "how_card3_desc": "உங்கள் சுயவிவரம், தேவைகள், பொருத்தமான வாய்ப்புகள் மற்றும் கிடைக்கக்கூடிய ஆதரவு ஆகியவை தனிப்பயனாக்கப்பட்ட காட்சி வரைபடம் மூலம் உங்கள் வணிக இலக்குடன் எவ்வாறு இணைகின்றன என்பதை ஆராயுங்கள்.",
+
+    "filters_title": "வாய்ப்புகளை வடிகட்டுக",
+    "filter_sector": "முதன்மை துறை",
+    "filter_support": "ஆதரவு வகை",
+    "filter_stage": "தொழில் நிலை",
+    "filter_scope": "அரசு வரம்பு",
+    "filter_all_sector": "அனைத்து துறைகளும்",
+    "filter_all_support": "அனைத்து ஆதரவு வகைகளும்",
+    "filter_all_scope": "அனைத்து வரம்புகளும்",
+    "results_found": "வாய்ப்புகள் கண்டறியப்பட்டன",
+    "lbl_schemes_available": "திட்டங்கள் உள்ளன",
+    "lbl_scope": "வரம்பு",
+    "lbl_support": "ஆதரவு",
+    "lbl_gender": "பாலினம்",
+    "lbl_social_category": "சமூகப் பிரிவு",
+    "lbl_disability_eligibility": "மாற்றுத்திறன் தகுதி",
+    "lbl_all_genders": "அனைத்து பாலினங்களும்",
+    "lbl_all_social_categories": "அனைத்து சமூகப் பிரிவுகளும்",
+    "lbl_any_disability_status": "எந்த மாற்றுத்திறன் நிலையிலும்",
+    "lbl_persons_with_disabilities": "மாற்றுத்திறனாளிகள்",
+    "detail_profile_specific_benefit": "உங்கள் சுயவிவரத்திற்கான சிறப்பு பயன்",
+    "detail_verified_source": "சரிபார்க்கப்பட்ட அதிகாரப்பூர்வ மூலம்",
+    "btn_view_details": "விவரங்களைப் பார்க்க →",
+    "btn_apply_filters_close": "வடிகட்டிகளைப் பயன்படுத்து & மூடு",
+    "btn_filter_mobile": "⚙️ வடிகட்டிகள்",
+    "quick_filter_placeholder": "விரைவு வடிகட்டி...",
+    "btn_clear_filters": "வடிகட்டிகளை அழி",
+    "lbl_search": "தேடல்",
+
+    "support_family_loan_credit": "கடன் / நிதி",
+    "support_family_subsidy_grant": "மானியம் / உதவித்தொகை",
+    "support_family_training": "பயிற்சி & திறன் ஆதரவு",
+    "support_family_infrastructure": "உள்கட்டமைப்பு & உபகரணங்கள்",
+    "support_family_market": "சந்தை & ஏற்றுமதி ஆதரவு",
+    "support_family_incubation": "இன்க்யூபேஷன் & வழிகாட்டுதல்",
+    "support_family_certification": "சான்றிதழ் ஆதரவு",
+    "support_family_fellowship": "ஃபெல்லோஷிப்",
+    "support_family_other": "பிற ஆதரவு",
+    "support_overlap_note": "ஒரு திட்டம் ஒன்றுக்கு மேற்பட்ட ஆதரவு வகைகளை வழங்கலாம்; அதனால் அது பல ஆதரவு பிரிவுகளில் தோன்றலாம்.",
+
+    "match_scheme_name": "திட்டப் பெயர் பொருந்தியது",
+    "match_sector": "துறை பொருந்தியது",
+    "match_id": "வாய்ப்பு அடையாளம் பொருந்தியது",
+    "related_match": "தொடர்புடைய பொருத்தம்",
+
+    "sort_by": "வரிசைப்படுத்து",
+    "sort_name": "திட்டத்தின் பெயர்",
+    "sort_sector": "துறை",
+    "badge_active": "செயலில் உள்ளது",
+    "badge_needs_verification": "சரிபார்ப்பு தேவை",
+    "badge_eligible": "முழுத் தகுதி உள்ளது",
+    "badge_potentially": "சாத்தியமான தகுதி / இடைவெளிகள்",
+    "badge_not_eligible": "தகுதி இல்லை",
+
+    "tab_recommended": "பரிந்துரைக்கப்பட்டவை",
+    "tab_potentially": "கூடுதல் தகவல் தேவைப்படுபவை",
+    "tab_pathway": "வாய்ப்பு பாதை",
+    "tab_graph": "வாய்ப்பு வரைபடம்",
+    "tab_verification": "சரிபார்ப்பு தேவை",
+    "tab_application_guide": "விண்ணப்ப வழிகாட்டி",
+
+    "detail_overview": "மேலோட்டம்",
+    "detail_benefits": "நன்மைகள் & ஆதரவு",
+    "detail_eligibility": "தகுதி சுருக்கம்",
+    "detail_documents": "தேவையான ஆவணங்கள்",
+    "detail_application": "விண்ணப்பிக்கும் முறை",
+    "detail_official_url": "அதிகாரப்பூர்வ தள இணைப்பு",
+    "detail_official_website": "அதிகாரப்பூர்வ இணையதளம்",
+    "detail_lifecycle": "நிலை நிலைமை",
+
+    "voice_unsupported": "உங்கள் உலாவியில் குரல் அங்கீகாரம் கிடைக்கவில்லை. கீழே தட்டச்சு செய்யவும்.",
+    "offline_title": "சேவையகம் கிடைக்கவில்லை",
+    "offline_msg": "SchemeMitra சேவையகத்துடன் இணைக்க முடியவில்லை. இணைய இணைப்பைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்.",
+    "btn_retry": "மீண்டும் முயல்க",
+    "alert_reset_error": "SchemeMitra தரவை மீட்டமைக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
+    "alert_reset_success": "SchemeMitra மீட்டமைக்கப்பட்டது. புதிய சுயவிவரத்துடன் தொடங்கலாம்.",
+    "alert_progress_save_error": "உங்கள் முன்னேற்றத்தைச் சேமிக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
+    "alert_mark_completed_confirm": "இந்தத் தேவையை நிறைவடைந்ததாகக் குறிக்கவா?\n\nஇது உங்கள் சொந்த முன்னேற்றத்தைப் பதிவுசெய்கிறது, அதிகாரப்பூர்வ அரசுச் சரிபார்ப்பு அல்ல.",
+    "alert_core_fields_required": "தொடர்வதற்கு முன் தேவையான கட்டாயப் புலங்களை (வயது, மாநிலம், வணிகத் துறை, வணிக நிலை) நிரப்பவும்.",
+    "footer_app_notice": "விண்ணப்பங்கள் அதிகாரப்பூர்வ அரசுத் தளங்களில் மட்டுமே நேரடியாகச் சமர்ப்பிக்கப்படுகின்றன.",
+    "error_title": "செயலி அறிவிப்பு",
+    "error_msg": "எதிர்பாராத சிக்கல் ஏற்பட்டது. பக்கத்தைப் புதுப்பிக்கவும் அல்லது மீண்டும் முயற்சிக்கவும்.",
+
+    "profile_builder_sub": "உங்கள் குரல் அல்லது எளிய உரையைப் பயன்படுத்தி சுயவிவரத்தைப் பெறவும்",
+    "profile_talk_title": "🤖 SchemeMitra உடன் பேசுங்கள்",
+    "profile_talk_desc": "எளிய இயற்கை மொழி அல்லது குரல் மூலம் உங்களைப் பற்றியும் உங்கள் தொழில் யோசனையைப் பற்றியும் கூறுங்கள்.",
+    "voice_error_prefix": "குரல் அங்கீகாரப் பிழை:",
+    "tab_conversational": "உரையாடல் / குரல் உதவியாளர்",
+    "tab_structured_form": "படிவ உள்ளீடு",
+    "voice_status_default": "பேசத் தொடங்க மைக்கை அழுத்தவும், அல்லது கீழே தட்டச்சு செய்யவும்.",
+    "voice_status_listening": "கேட்கிறது... இப்போது பேசுங்கள்.",
+    "voice_status_done": "பதிவு முடிந்தது. 'சுயவிவரப் புலங்களைப் பிரித்தெடு' என்பதைக் கிளிக் செய்யவும்.",
+    "voice_status_silence": "3 விநாடிகள் பேச்சில்லாததால் பதிவு நிறுத்தப்பட்டது. உரையைச் சரிபார்த்து சுயவிவரத்தைப் பிரித்தெடுக்கவும்.",
+    "tell_us_label": "அல்லது இங்கே இயல்பாக தட்டச்சு செய்யவும்...",
+    "txt_message_placeholder": "எடுத்துக்காட்டு: நான் தமிழ்நாட்டைச் சேர்ந்த 24 வயது பெண், பட்டதாரி, உணவு பதப்படுத்துதல் தொழிலைத் தொடங்க விரும்புகிறேன்...",
+    "btn_extract_fields": "சுயவிவரப் புலங்களைப் பிரித்தெடு",
+    "review_title": "பிரித்தெடுக்கப்பட்ட சுயவிவரத்தை மதிப்பாய்வு செய்க",
+    "review_sub": "சேமிப்பதற்கு முன் எந்தப் புலத்தையும் திருத்தலாம்.",
+    "btn_start_over": "மீண்டும் தொடங்குக",
+    "btn_edit_profile": "சுயவிவரத்தைத் திருத்து",
+    "basic_details": "அடிப்படை விவரங்கள்",
+    "financial_details": "நிதி விவரங்கள் (₹)",
+    "business_info": "வணிகத் தகவல்",
+
+    "profile_section_personal": "1. தனிப்பட்ட விவரங்கள்",
+    "profile_section_financial": "2. நிதி விவரங்கள்",
+    "profile_section_business": "3. வணிக விவரங்கள்",
+    "lbl_age": "வயது (ஆண்டுகள்)",
+    "lbl_state": "மாநிலம்",
+    "lbl_district": "மாவட்டம்",
+    "lbl_category": "சமூகப் பிரிவு",
+    "lbl_disability": "மாற்றுத்திறன் நிலை",
+    "select_disability": "மாற்றுத்திறன் நிலையைத் தேர்ந்தெடுக்கவும்",
+    "disability_none": "மாற்றுத்திறன் இல்லை",
+    "disability_yes": "மாற்றுத்திறனாளர்",
+    "disability_prefer_not": "தெரிவிக்க விருப்பமில்லை",
+    "lbl_income": "ஆண்டு குடும்ப வருமானம்",
+    "lbl_capital": "சொந்த முதலீடு",
+    "lbl_project_cost": "மதிப்பிடப்பட்ட திட்டச் செலவு",
+    "lbl_target_sector": "இலக்குத் துறை",
+    "lbl_business_stage": "தொழில் நிலை",
+    "lbl_selected_goal": "தேர்ந்தெடுத்த இலக்கு",
+    "lbl_education": "கல்வித் தகுதி",
+    "lbl_education_field": "படிப்பு / தொழிற்துறை",
+    "lbl_education_course": "பட்டம் / படிப்பு",
+    "ph_education_course": "எ.கா. B.Tech, B.E., டிப்ளோமா",
+    "ph_education_field": "எ.கா. கம்ப்யூட்டர் சயின்ஸ், மெக்கானிக்கல்",
+    "ph_income": "ஆண்டு வருமானத்தை உள்ளிடவும்",
+    "ph_capital": "கிடைக்கும் முதலீட்டை உள்ளிடவும்",
+    "ph_project_cost": "மதிப்பிடப்பட்ட திட்டச் செலவை உள்ளிடவும்",
+    "select_qualification": "கல்வித் தகுதியைத் தேர்ந்தெடுக்கவும்",
+    "select_gender": "பாலினத்தைத் தேர்ந்தெடுக்கவும்",
+    "select_category": "பிரிவைத் தேர்ந்தெடுக்கவும்",
+    "select_sector": "துறையைத் தேர்ந்தெடுக்கவும்",
+    "select_stage": "நிலையைத் தேர்ந்தெடுக்கவும்",
+    "qualification_degree": "பட்டம் (Graduate)",
+    "qualification_postgraduate": "முதுகலை (Masters)",
+    "qualification_diploma": "டிப்ளோமா / பாலிடெக்னிக்",
+    "qualification_12th": "12ஆம் வகுப்பு தேர்ச்சி",
+    "qualification_10th": "10ஆம் வகுப்பு தேர்ச்சி",
+    "qualification_8th": "8ஆம் வகுப்பு தேர்ச்சி",
+
+    "goal_general_readiness": "பொது வணிகத் தயார்நிலை",
+    "goal_start_business": "புதிய வணிகத்தைத் தொடங்குதல்",
+    "goal_establish_enterprise": "புதிய சிறு நிறுவனத்தை அமைத்தல்",
+    "goal_expand_business": "தற்போதைய வணிகத்தை விரிவுபடுத்துதல்",
+    "goal_working_capital": "பணிச்சுழற்சி மூலதன உதவி",
+    "goal_upgrade_unit": "சிறு நிறுவனத்தை மேம்படுத்துதல்",
+    "goal_tech_innovation": "தொழில்நுட்ப புதுமை மற்றும் வணிகமயமாக்கல்",
+    "goal_export_development": "ஏற்றுமதி மற்றும் சந்தை விரிவாக்கம்",
+    "goal_modernization": "நிறுவன நவீனமயமாக்கல்",
+    "goal_default_note": "இயல்புநிலை: பொது வணிகத் தயார்நிலை. இதை எப்போது வேண்டுமானாலும் மாற்றலாம்.",
+
+    "profile_confirm_qualification": "உங்கள் கல்வித் தகுதியை உறுதிப்படுத்தவும் (எ.கா. பட்டம், டிப்ளோமா, 12ஆம் வகுப்பு).",
+    "profile_extract_error": "சுயவிவரப் புலங்களைப் பிரித்தெடுக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
+    "profile_update_error": "சுயவிவரப் புலங்கள் பெறப்பட்டன; ஆனால் படிவத்தை முழுமையாகப் புதுப்பிக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
+    "age_invalid": "1 முதல் 120 வரை செல்லுபடியாகும் வயதை உள்ளிடவும்.",
+    "under18_title": "18 வயதுக்கு உட்பட்ட சுயவிவரத்திற்கான தனிப்பயனாக்கப்பட்ட திட்டப் பொருத்தம்",
+    "under18_msg": "இப்பட்டியலில் உள்ள பெரும்பான்மையான தொழில்முனைவோர் வாய்ப்புகள் பெரியவர்களுக்கானவை. நீங்கள் இன்னும் திட்டங்களை ஆராயலாம், ஆனால் தனிப்பயனாக்கப்பட்ட பொருத்தங்கள் ஒவ்வொரு திட்டத்தின் வயதுத் தேவைகளைப் பொறுத்தது.",
+    "lbl_preferred_support": "விருப்பமான ஆதரவு வகை",
+    "btn_save_confirm_profile": "சேமித்து உறுதிப்படுத்து",
+    "profile_readiness_title": "சுயவிவரத் தயார்நிலை",
+    "profile_readiness_100": "✓ சுயவிவரத் தயார்நிலை: 100%",
+    "profile_core_required_note": "கட்டாயப் புலங்கள்: வயது, மாநிலம், வணிகத் துறை மற்றும் வணிக நிலை.",
+    "profile_notice_complete": "✓ உங்கள் முதன்மை சுயவிவரம் தயாராக உள்ளது! தனிப்பயனாக்கப்பட்ட திட்டப் பொருத்தங்களைப் பெற மேலே கிளிக் செய்யவும்.",
+    "profile_notice_incomplete": "⚠️ தனிப்பயனாக்கப்பட்ட வாய்ப்புகளைப் பார்க்க மேலே உள்ள கட்டாயப் புலங்களை (வயது, மாநிலம், வணிகத் துறை, வணிக நிலை) நிரப்பவும்.",
+    "profile_core_progress": "முதன்மை கட்டாயப் புலங்கள்: {completed} / {total} ({percentage}%)",
+
+    "no_profile_title": "உங்கள் தனிப்பயனாக்கப்பட்ட வாய்ப்புகள்",
+    "no_profile_msg": "உங்கள் இலக்குகள், இருப்பிடம் மற்றும் தகுதிக்கு ஏற்ப அரசுத் திட்டங்களைக் கண்டறிய உங்கள் சுயவிவரத்தைப் பூர்த்தி செய்யுங்கள்.",
+    "no_profile_sub": "உங்கள் இலக்குகள், இருப்பிடம் மற்றும் தகுதிக்கு ஏற்ப அரசுத் திட்டங்களைக் கண்டறிய உங்கள் சுயவிவரத்தைப் பூர்த்தி செய்யுங்கள்.",
+    "no_profile_why_title": "சுயவிவரத்தை ஏன் உருவாக்க வேண்டும்?",
+    "no_profile_check1": "பொருத்தமான திட்டங்களைக் கண்டறியவும்",
+    "no_profile_check2": "உங்கள் சாத்தியமான தகுதியைப் புரிந்து கொள்ளவும்",
+    "no_profile_check3": "தேவையான ஆவணங்கள்/தேவைகளைக் காணவும்",
+    "no_profile_check4": "தனிப்பயனாக்கப்பட்ட தயாரிப்பு வரைபடத்தைப் பெறவும்",
+    "incomplete_profile_title": "உங்கள் சுயவிவரம் முழுமையடையவில்லை",
+    "incomplete_profile_sub": "தனிப்பயனாக்கப்பட்ட வாய்ப்புகளைக் காண தேவையான கட்டாய புலங்களை நிரப்பவும்.",
+    "btn_complete_profile": "சுயவிவரத்தைப் பூர்த்தி செய்ய",
+    "btn_find_my_opportunities": "எனக்கான வாய்ப்புகளைக் கண்டறி",
+    "core_gate_warning": "தனிப்பயனாக்கப்பட்ட வாய்ப்புகளைப் பார்க்க மேலே உள்ள கட்டாய புலங்களை நிரப்பவும்.",
+    "analyzing_title": "உங்கள் சுயவிவரத்திற்கான வாய்ப்புகள் பகுப்பாய்வு செய்யப்படுகின்றன...",
+    "analyzing_sub": "உங்கள் சுயவிவரத்திற்கான திட்டங்கள் மதிப்பீடு செய்யப்படுகின்றன...",
+    "profile_summary_title": "உறுதிப்படுத்தப்பட்ட சுயவிவரம்",
+    "why_match_title": "நீங்கள் பொருந்துவதற்கான காரணங்கள்:",
+    "action_gaps_title": "தேவையான நடவடிக்கை இடைவெளிகள்:",
+    "action_gaps_sub": "தேவையான முன்நிபந்தனைகளைப் பூர்த்தி செய்யவும் (எ.கா. உத்யாம் பதிவு, DPR).",
+    "needs_verification_notice": "சரிபார்ப்பு அறிவிப்பு: இத்திட்டங்கள் வரலாற்று ரீதியானவை அல்லது சரிபார்ப்பு தேவைப்படும் நிலையில் உள்ளன.",
+
+    "dash_title": "எனக்கான வாய்ப்புகள்",
+    "dash_sub": "தனிப்பயனாக்கப்பட்ட திட்டங்கள், தகுதி முன்னேற்றம் மற்றும் வழிகாட்டி வரைபடம்",
+    "dash_tab_recommended": "பரிந்துரைக்கப்பட்டவை",
+    "dash_tab_potentially": "கூடுதல் தகவல் தேவைப்படுபவை",
+    "dash_tab_goal_path": "வாய்ப்புப் பாதை",
+    "dash_tab_graph": "வாய்ப்பு வரைபடம்",
+    "dash_tab_verification": "சரிபார்ப்பு தேவை",
+    "dash_tab_guide": "விண்ணப்ப வழிகாட்டி",
+    "dash_action_needed_title": "தேவையான நடவடிக்கை இடைவெளிகள்:",
+    "dash_action_gaps_sub": "தேவையான முன்நிபந்தனைகளைப் பூர்த்தி செய்யவும் (எ.கா. உத்யாம் பதிவு, DPR).",
+    "dash_prerequisites_title": "நிறைவு செய்யப்பட்ட முன்நிபந்தனைகள்",
+    "dash_no_matches_found": "உங்கள் சுயவிவரத்திற்கு ஏற்ற வாய்ப்புகள் எதுவும் கண்டறியப்படவில்லை.",
+    "dash_btn_roadmap_steps": "வழிகாட்டி படிகளைப் பார்க்க",
+    "dash_btn_apply_now": "விண்ணப்பிக்கவும்",
+    "dash_btn_check_eligibility": "இத்திட்டத்திற்கான எனது தகுதியைச் சரிபார்க்கவும்",
+    "dash_btn_back_to_my_opps": "← எனக்கான வாய்ப்புகளுக்குத் திரும்பவும்",
+    "dash_selected_roadmap": "தேர்ந்தெடுக்கப்பட்ட திட்ட வழிகாட்டி வரைபடம்",
+    "dash_manage_docs": "தயாரிக்கப்பட்ட வணிக ஆவணங்களை நிர்வகிக்கவும்",
+
+    "dash_goal_pathway_title": "வாய்ப்புப் பாதை",
+    "dash_selected_goal": "தேர்ந்தெடுக்கப்பட்ட இலக்கு",
+    "dash_your_goal": "உங்கள் இலக்கு",
+    "dash_where_you_are_now": "நீங்கள் தற்போது இருக்கும் நிலை",
+    "dash_what_needs_attention": "கவனம் செலுத்த வேண்டியவை",
+    "dash_next_actions": "அடுத்த நடவடிக்கைகள்",
+    "dash_next_actions_to_review": "மதிப்பாய்வு செய்ய வேண்டிய அடுத்த நடவடிக்கைகள்",
+    "dash_opportunities_pathway_connects": "இந்த பாதை இணைக்கும் வாய்ப்புகள்",
+    "dash_verified_support_available": "கிடைக்கும் சரிபார்க்கப்பட்ட ஆதரவு",
+    "dash_your_requirement_progress": "உங்கள் தேவை முன்னேற்றம்",
+    "dash_your_goal_destination": "உங்கள் இலக்கு இடம்",
+    "dash_completed_actions": "நிறைவு செய்யப்பட்ட நடவடிக்கைகள்",
+    "dash_mark_completed": "நிறைவடைந்தது எனக் குறிக்கவும்",
+    "dash_reopen": "மீண்டும் திறக்கவும்",
+    "dash_action_needed": "நடவடிக்கை தேவை",
+    "dash_need_to_confirm": "உறுதிப்படுத்த வேண்டும்",
+    "dash_completed": "நிறைவடைந்தது",
+    "dash_official_scheme_source": "அதிகாரப்பூர்வ திட்ட மூலம்",
+    "dash_exact_docs_confirm": "துல்லியமான ஆவணங்கள் உறுதிப்படுத்தப்பட வேண்டும்",
+    "dash_what_you_already_have": "உங்களிடம் ஏற்கனவே உள்ளவை",
+    "dash_please_confirm": "தயவுசெய்து உறுதிப்படுத்தவும்",
+    "dash_my_next_steps": "எனது அடுத்த கட்டங்கள்",
+    "dash_ready_to_apply": "விண்ணப்பிக்க தயார்",
+    "dash_almost_ready": "கிட்டத்தட்ட தயார்",
+    "dash_more_info_needed_status": "கூடுதல் தகவல் தேவை",
+    "dash_open_app_guide": "விண்ணப்ப வழிகாட்டியைத் திறக்கவும்",
+    "dash_continue_official_govt_site": "அதிகாரப்பூர்வ அரசு இணையதளத்திற்குச் செல்லவும் ↗",
+    "dash_pathway_history": "பாதை வரலாறு",
+    "dash_completed_actions_sub": "நீங்கள் நிறைவுசெய்ததாகக் குறித்த நடவடிக்கைகள். இவை பயனரால் உறுதிப்படுத்தப்பட்ட முன்னேற்றப் பதிவுகள், அதிகாரப்பூர்வ அரசுச் சரிபார்ப்பு அல்ல.",
+
+    "graph_title": "வாய்ப்பு வரைபடம் (Opportunity Graph)",
+    "graph_sub": "சரிபார்க்கப்பட்ட முன்நிபந்தனை தொடர்புகளைக் காட்டும் வரைபடம்.",
+    "graph_note": "சரிபார்க்கப்பட்ட இணைப்புகள் மட்டுமே காட்டப்படுகின்றன.",
+    "graph_node_user_profile": "உங்கள் சுயவிவரம்",
+    "graph_node_opportunity": "இலக்குத் திட்டம்",
+    "graph_node_requirement": "தேவை முனை",
+    "graph_node_support": "ஆதரவு வகை",
+    "graph_status_eligible": "முழுத் தகுதி உள்ளது",
+    "graph_status_potential": "சாத்தியமான பொருத்தம்",
+    "graph_status_action_needed": "நடவடிக்கை தேவை",
+    "graph_status_needs_verification": "சரிபார்ப்பு தேவை",
+    "graph_btn_zoom_in": "🔍 +",
+    "graph_btn_zoom_out": "🔍 -",
+    "graph_btn_reset_zoom": "மீட்டமை",
+    "graph_legend_title": "வரைபட விளக்கம்",
+    "graph_filter_all_types": "அனைத்து முனை வகைகளும்",
+    "graph_search_placeholder": "வரைபட முனைகளைத் தேடவும்...",
+    "graph_title_label": "வாய்ப்பு வரைபடம் (Opportunity Graph)",
+    "graph_subtitle_label": "சரிபார்க்கப்பட்ட முன்நிபந்தனை தொடர்புகளைக் காட்டும் வரைபடம்.",
+    "graph_note_label": "சரிபார்க்கப்பட்ட இணைப்புகள் மட்டுமே காட்டப்படுகின்றன.",
+    "tab_roadmap": "உங்கள் வாய்ப்பு வரைபடம் (Opportunity Graph)",
+    "roadmap_title": "உங்கள் வாய்ப்பு வரைபடம் (Opportunity Graph)",
+    "roadmap_sub": "உங்கள் சுயவிவரம், பொருந்திய வாய்ப்புகள், சரிபார்க்கப்பட்ட தேவைகள் மற்றும் நன்மைகளை காட்சிப்படுத்துகிறது",
+    "node_target_opp": "இலக்குத் திட்டம்",
+    "node_req": "தேவை முனை",
+    "node_support": "ஆதரவு",
+    "btn_zoom_in": "🔍 +",
+    "btn_zoom_out": "🔍 -",
+    "btn_reset_zoom": "மீட்டமை",
+    "btn_view_pathway_graph": "பாதை & வரைபடத்தைப் பார்க்க",
+    "btn_view_pathway_gaps": "பாதை & இடைவெளிகளைப் பார்க்க",
+
+    "guide_title": "விண்ணப்ப வழிகாட்டி",
+    "guide_sub": "படிப்படியான ஆவணச் சமர்ப்பிப்பு & இணையதள வழிகாட்டி",
+    "guide_docs": "தேவையான ஆவணங்கள்",
+    "guide_channel": "விண்ணப்ப வழிமுறை",
+    "guide_verification": "சரிபார்ப்பு & கண்காணிப்பு",
+    "check_eligibility_cta": "இத்திட்டத்திற்கான எனது தகுதியைச் சரிபார்க்கவும்",
+    "close": "மூடு",
+    "official_portal_notice": "SchemeMitra தகுதி மதிப்பீடு மற்றும் வழிகாட்டலை மட்டுமே வழங்குகிறது. அதிகாரப்பூர்வ விண்ணப்பங்கள் மற்றும் ஒப்புதல்கள் அரசுத் தளங்களில் மட்டுமே நடைபெறும்.",
+    "btn_continue_official_portal": "அதிகாரப்பூர்வ அரசுத் தளத்திற்குச் செல்லவும் ↗",
+    "platform_positioning_disclaimer": "குறிப்பு: SchemeMitra என்பது திட்டக் கண்டுபிடிப்பு மற்றும் வழிகாட்டுதல் தளமாகும். அதிகாரப்பூர்வ விண்ணப்பங்கள் மற்றும் ஒப்புதல்கள் அரசுத் தளங்களில் மட்டுமே நடைபெறும்.",
+    "btn_apply": "விண்ணப்பிக்கவும்",
+    "btn_official_source": "அதிகாரப்பூர்வ தளம் ↗",
+    "apply_modal_title": "இத்திட்டத்திற்கு விண்ணப்பிக்கவும்",
+    "apply_modal_desc": "இத்திட்டத்திற்கான விண்ணப்பங்கள் அதிகாரப்பூர்வ அரசு இணையதளம் மூலம் சமர்ப்பிக்கப்படுகின்றன. SchemeMitra வழிகாட்டுதலை மட்டுமே வழங்குகிறது.",
+    "apply_modal_desc_fallback": "இத்திட்டத்திற்கான விண்ணப்பங்கள் அதிகாரப்பூர்வ அரசு இணையதளம் மூலம் சமர்ப்பிக்கப்படுகின்றன. சமீபத்திய விண்ணப்ப வழிகாட்டல்களைப் பார்க்க கீழே உள்ள அதிகாரப்பூர்வ இணையதளத்தைப் பயன்படுத்தவும்.",
+    "btn_visit_official_apply": "விண்ணப்பிக்க அதிகாரப்பூர்வ தளத்திற்குச் செல்லவும் ↗",
+    "btn_visit_official_scheme": "அதிகாரப்பூர்வ திட்ட இணையதளத்தைப் பார்க்கவும் ↗",
+    "apply_modal_no_url": "SchemeMitra இல் சரிபார்க்கப்பட்ட அதிகாரப்பூர்வ விண்ணப்ப இணைப்பு தற்போது கிடைக்கவில்லை.",
+
+    "sector_agri": "வேளாண்மை & சார்ந்த துறைகள்",
+    "sector_food": "உணவு பதப்படுத்துதல் & வேளாண் மதிப்பு கூட்டல்",
+    "sector_msme": "குறு, சிறு & நடுத்தர தொழில் (MSME) மற்றும் உற்பத்தி",
+    "sector_finance": "நிதி & கடன் உதவி",
+    "sector_startup": "ஸ்டார்ட்அப் & நத்தாக்கம்",
+    "sector_skills": "திறன் மேம்பாடு & வேலைவாய்ப்பு",
+    "sector_women": "மகளிர் & சுயஉதவிக் குழு தொழில்முனைவு",
+    "sector_social": "சமூக அதிகாரம் & உள்ளடக்கிய தொழில்முனைவு",
+    "sector_handicrafts": "கைவினைப்பொருட்கள், கைத்தறி & கைவினைஞர் பொருளாதாரம்",
+    "sector_export": "ஏற்றுமதி, சந்தை அணுகல் & வணிக வளர்ச்சி",
+
+    "sup_credit": "கடன் / நிதி",
+    "sup_subsidy": "மூலதன மானியம்",
+    "sup_grant": "மானியம் / விதை நிதி",
+    "sup_training": "பயிற்சி & திறன் ஆதரவு",
+    "sup_infrastructure": "உள்கட்டமைப்பு & உபகரணங்கள்",
+    "sup_certification": "சான்றிதழ்",
+    "sup_credit_guarantee": "கடன் உத்தரவாதம்",
+    "sup_equipment_support": "உபகரணங்கள் உதவி",
+    "sup_export_support": "ஏற்றுமதி உதவி",
+    "sup_fellowship": "ஆராய்ச்சி நிதி / பெல்லோஷிப்",
+    "sup_incubation": "இன்குபேஷன் உதவி",
+    "sup_market_access": "சந்தை அணுகல்",
+    "sup_mentorship": "வழிகாட்டுதல்",
+    "sup_other_support": "இதர உதவிகள்",
+    "sup_skill_development": "திறன் மேம்பாடு",
+
+    "scope_central": "மத்திய அரசு",
+    "scope_state": "மாநில அரசு",
+
+    "gender_male": "ஆண்",
+    "gender_female": "பெண்",
+    "gender_trans": "திருநங்கை / திருநம்பி",
+    "cat_general": "பொது",
+    "cat_obc": "பிற்படுத்தப்பட்டோர் (OBC)",
+    "cat_sc": "ஆதிதிராவிடர் (SC)",
+    "cat_st": "பழங்குடியினர் (ST)",
+    "cat_minority": "பான்மையினர்",
+    "stage_idea": "யோசனை நிலை",
+    "stage_startup": "தொடக்க நிலை (ஸ்டார்ட்அப்)",
+    "stage_existing": "செயலில் உள்ள வணிகம்",
+    "status_detected": "✓ கண்டறியப்பட்டது",
+    "status_confirmed": "✓ உறுதி செய்யப்பட்டது",
+    "status_required": "கட்டாயம்",
+    "status_optional": "விருப்பத்தேர்வு / பொருத்தத்தை மேம்படுத்தலாம்",
+    "status_needed_some": "சில திட்டங்களுக்கு தேவைப்படலாம்",
+    "status_please_confirm": "தயவுசெய்து உறுதிப்படுத்தவும்",
+
+    "req_prep_docs": "தேவையான ஆவணங்களைத் தயாரித்தல்",
+    "req_prep_kyc": "அடையாள சான்று / KYC தயாரித்தல்",
+    "req_prep_dpr": "விரிவான திட்ட அறிக்கை (DPR) தயாரித்தல்",
+    "req_complete_training": "தேவையான பயிற்சியை முடித்தல்",
+    "req_approach_lender": "தகுதியான வங்கிய அணுகுதல் / கடன் மதிப்பீடு பெறுதல்",
+    "req_register_entity": "நிறுவனத்தைப் பதிவு செய்தல்",
+    "req_obtain_cert": "தேவையான சான்றிதழைப் பெறுதல்",
+    "req_confirm_eligibility": "தகுதியை உறுதிப்படுத்துதல்",
+    "req_submit_app": "விண்ணப்பத்தைச் சமர்ப்பித்தல்",
+    "req_udyam": "உத்யாம் பதிவு",
+    "req_gst": "ஜிஎஸ்டி பதிவு",
+    "req_pan": "பான் கார்டு",
+    "req_aadhaar": "ஆதார் கார்டு",
+    "req_bank_proof": "வங்கி கணக்கு சான்று",
+    "req_land_lease": "நிலம் / குத்தகை ஆவணம்",
+
+    "ben_financial_assist": "நிதி உதவி",
+    "ben_tech_support": "தொழில்நுட்ப ஆதரவு",
+    "ben_entrepreneurship_support": "தொழில்முனைவு ஆதரவு",
+    "ben_interest_subsidy": "வட்டி மானியம்",
+    "ben_margin_subsidy": "மார்ஜின் பணம் மானியம்",
+
+    "lbl_yrs": "வயது",
+    "lbl_annual_income": "ஆண்டு வருமானம்",
+    "lbl_available_capital": "கிடைக்கும் முதலீடு",
+    "lbl_goal": "இலக்கு",
+    "lbl_disability": "மாற்றுத்திறன்",
+    "lbl_entrepreneur": "தொழில்முனைவோர்",
+    "badge_best_match_1": "#1 சிறந்த பொருத்தம்",
+    "badge_best_match": "சிறந்த பொருத்தம்",
+    "lbl_your_next_actions": "உங்கள் அடுத்த நடவடிக்கைகள்:",
+    "btn_view_scheme_details": "திட்ட விவரங்களைப் பார்க்க",
+    "btn_view_roadmap_steps": "வழிகாட்டி படிகளைப் பார்க்க",
+    "btn_hide_roadmap_steps": "வழிகாட்டி படிகளை மறைக்க",
+    "roadmap_your_roadmap": "உங்களது வழிகாட்டி",
+    "roadmap_what_you_have": "உங்களிடம் ஏற்கனவே இருப்பவை",
+    "roadmap_please_confirm": "உறுதிப்படுத்தவும்",
+    "roadmap_my_next_steps": "எனது அடுத்த நடவடிக்கைகள்",
+    "roadmap_age_available": "வயது தகவல் உள்ளது",
+    "roadmap_state_confirmed": "மாநில இருப்பிடம் உறுதி செய்யப்பட்டது",
+    "roadmap_sector_available": "வணிகத் துறை உள்ளது",
+    "roadmap_stage_confirmed": "வணிக நிலை உறுதி செய்யப்பட்டது",
+    "roadmap_gender_specified": "பாலினம் குறிப்பிடப்பட்டுள்ளது",
+    "roadmap_qualification_specified": "கல்வித் தகுதி குறிப்பிடப்பட்டுள்ளது",
+    "roadmap_confirm_missing": "மேலே விடுபட்ட தகவலை உறுதிப்படுத்தவும்",
+    "roadmap_review_guide": "சரிபார்க்கப்பட்ட SchemeMitra விண்ணப்ப வழிகாட்டியை மதிப்பாய்வு செய்யவும்",
+    "roadmap_proceed_portal": "நேரடி விண்ணப்பச் சமர்ப்பிப்பிற்கு அதிகாரப்பூர்வ அரசு தளத்திற்குச் செல்லவும்",
+    "more_info_title": "கூடுதல் தகவல் தேவை",
+    "more_info_sub": "இந்த வாய்ப்பை மதிப்பீடு செய்ய எங்களுக்கு இன்னும் சில தகவல்கள் தேவை:",
+    "q_is_new_unit": "இந்தத் திட்டம் புதிய நிறுவனத்திற்கானதா?",
+    "q_prior_subsidy": "இந்த நிறுவனத்திற்கு நீங்கள் ஏற்கனவே அரசு மானியம் பெற்றுள்ளீர்களா?",
+    "q_family_pmegp": "நீங்களோ அல்லது உங்கள் துணைவரோ ஏற்கனவே PMEGP பயனைப் பெற்றுள்ளீர்களா?",
+    "btn_yes": "ஆம்",
+    "btn_no": "இல்லை",
+    "graph_your_profile": "உங்கள் சுயவிவரம்",
+    "graph_opportunity": "வாய்ப்பு",
+    "graph_outstanding_reqs": "நிலுவையில் உள்ள தேவைகள்",
+    "graph_verified_benefits": "சரிபார்க்கப்பட்ட சலுகைகள் / ஆதரவு",
+    "graph_mode_top3": "சிறந்த 3 பொருத்தங்கள்",
+    "graph_mode_top5": "சிறந்த 5",
+    "graph_mode_top_3": "சிறந்த 3 பொருத்தங்கள்",
+    "graph_mode_top_5": "சிறந்த 5",
+    "graph_mode_all": "அனைத்து பொருத்தமானவை",
+    "graph_tab_reqs": "தேவைகள்",
+    "graph_tab_bens": "நன்மைகள்",
+    "graph_fit_view": "திரைக்கு ஏற்ப அமைக்க",
+    "graph_reset": "மீட்டமைக்க",
+    "btn_fit_view": "காட்சியைப் பொருத்து",
+    "btn_reset": "காட்சியை மீட்டமை",
+    "graph_node_types_lbl": "நோட் வகைகள்:",
+    "graph_status_lbl": "நிலை:",
+    "graph_req_state_lbl": "தேவை நிலை:",
+    "legend_node_types": "முனை வகைகள்:",
+    "legend_your_profile": "உங்களின் சுயவிவரம்",
+    "legend_opportunity": "திட்டம்",
+    "legend_requirements": "தேவைகள்",
+    "legend_benefits": "நன்மைகள் / ஆதரவு",
+    "legend_status": "நிலை:",
+    "legend_eligible": "தகுதியுடையது",
+    "legend_potential_match": "சாத்தியமான பொருத்தம்",
+    "legend_needs_verification": "சரிபார்ப்பு தேவை",
+    "legend_req_state": "தேவை நிலை:",
+    "legend_action_needed": "நடவடிக்கை தேவை",
+    "legend_need_confirm": "உறுதிப்படுத்த வேண்டும்",
+    "graph_footnote": "அதிகாரப்பூர்வ திட்டத் தேவைகளின் சரிபார்க்கப்பட்ட தொடர்புகள் மட்டுமே காட்டப்படுகின்றன. திட்ட விவரங்களுக்கு எந்தவொரு வாய்ப்பு கார்டையும் கிளிக் செய்யவும்.",
+    "yrs_unit": "வயது",
+    "stage_lbl": "நிலை",
+    "profile_annual_income": "ஆண்டு குடும்ப வருமானம்",
+    "profile_available_capital": "கிடைக்கும் சொந்த மூலதனம்",
+    "profile_disability_lbl": "மாற்றுத்திறன்",
+    "next_actions_title": "உங்களின் அடுத்த கட்ட நடவடிக்கைகள்:",
+    "inline_roadmap_title": "உங்களின் வழிகாட்டி வரைபடம்",
+    "inline_roadmap_already_have": "உங்களிடம் ஏற்கனவே உள்ளவை",
+    "inline_roadmap_please_confirm": "தயவுசெய்து உறுதிப்படுத்தவும்",
+    "inline_roadmap_next_steps": "எனது அடுத்த கட்ட நடவடிக்கைகள்",
+    "badge_more_info_needed": "மேலும் தகவல் தேவை",
+    "status_ready_to_apply": "விண்ணப்பிக்க தயார்",
+    "status_almost_ready": "கிட்டத்தட்ட தயார்",
+    "sub_ready_to_apply": "சரிபார்க்கப்பட்ட அரசு போர்ட்டலில் அதிகாரப்பூர்வ விண்ணப்ப செயல்முறை திறக்கப்பட்டுள்ளது.",
+    "sub_almost_ready": "அதிகாரப்பூர்வ போர்ட்டலில் சமர்ப்பிப்பதற்கு முன் தேவைகள் மற்றும் வழிகாட்டலை மதிப்பாய்வு செய்யவும்.",
+    "btn_open_app_guide": "விண்ணப்ப வழிகாட்டியைத் திறக்கவும்",
+    "btn_continue_official_govt": "அதிகாரப்பூர்வ அரசு வலைத்தளத்திற்குத் தொடரவும்",
+    "more_reqs_unit": "கூடுதல் தேவைகள்",
+    "err_core_required": "தயவுசெய்து தேவையான முக்கிய புலங்களை பூர்த்தி செய்யவும்.",
+    "err_valid_age": "தயவுசெய்து செல்லுபடியாகும் வயதை உள்ளிடவும்.",
+    "state_tn": "தமிழ்நாடு",
+    "state_kl": "கேரளா",
+    "state_ka": "கர்நாடகா",
+    "state_ap": "ஆந்திரப் பிரதேசம்",
+    "state_ts": "தெலுங்கானா",
+    "state_mh": "மகாராஷ்டிரா",
+    "state_dl": "டெல்லி",
+    "state_up": "உத்தரப் பிரதேசம்",
+    "state_wb": "மேற்கு வங்கம்",
+    "state_rj": "ராஜஸ்தான்",
+    "state_gj": "குஜராத்",
+    "state_mp": "மத்திய பிரதேசம்",
+    "req_proposal": "நிகழ்ச்சி திட்டம் (Event Proposal)",
+    "req_incubator_linkage": "தகுதியுள்ள இன்க்யூபேட்டருடன் விண்ணப்பித்தல் / இணைப்பு பெறுதல்",
+    "req_incubator_centre": "இன்க்யூபேட்டர் / அங்கீகரிக்கப்பட்ட மையம் இணைப்பு",
+    "req_general_proposal": "திட்டம் / முன்மொழிவு (Proposal)",
+    "fact_shg": "சுயஉதவிக் குழு (SHG) உறுப்பினர் நிலை",
+    "fact_entity": "அமைப்பு வகை (FPO / SHG / கூட்டுறவு)",
+    "fact_dpiit": "DPIIT ஸ்டார்ட்அப் அங்கீகாரம்",
+    "fact_subsidy": "முந்தைய அரசு மானிய வரலாறு",
+    "fact_pmegp": "குடும்ப PMEGP பயனாளிகள் நிலை",
+    "fact_new_unit": "புதிய சிறு நிறுவன நிலை",
+    "fact_udyam_status": "உத்யம் பதிவு நிலை",
+    "fact_udyam_cat": "உத்யம் நிறுவனப் பிரிவு (சிறு / குறு)",
+    "fact_project_cost": "மதிப்பிடப்பட்ட திட்டச் செலவு",
+    "fact_education": "கல்வித் தகுதி",
+    "fact_social_cat": "சமூகப் பிரிவு",
+    "fact_stage_req": "வணிக நிலைத் தேவை",
+    "desc_ic_scheme": "சர்வதேச கண்காட்சிகள், மாநாடுகள், சந்தை வெளிப்பாடு மற்றும் கூட்டுறவு நடவடிக்கைகளுக்கான ஆதரவு",
+    "desc_pmegp": "உற்பத்தி மற்றும் சேவைத் துறைகளில் புதிய குறு நிறுவனங்களை அமைப்பதற்கான கடன் இணைக்கப்பட்ட மானியத் திட்டம்.",
+}
+
+hi_keys = {
+    "brand_name": "SchemeMitra",
+    "tagline": "उद्यमियों के लिए AI-संचालित योजना मिलान",
+    "header_top_bar": "स्वतंत्र योजना खोज एवं मार्गदर्शन प्लेटफॉर्म • आवेदन आधिकारिक सरकारी पोर्टल पर जमा किए जाते हैं",
+
+    "nav_home": "होम",
+    "nav_explore": "योजनाएं खोजें",
+    "nav_how_it_works": "यह कैसे काम करता है",
+    "nav_set_profile": "अपनी प्रोफाइल सेट करें",
+    "nav_my_opportunities": "मेरे अवसर",
+    "nav_reset_profile": "प्रोफाइल रीसेट करें",
+    "nav_menu_title": "नेविगेशन मेनू",
+
+    "confirm_reset_title": "अपनी प्रोफाइल रीसेट करें?",
+    "confirm_reset_msg": "यह आपकी प्रोफाइल और सहेजी गई प्रगति को स्थायी रूप से हटा देगा:\n• प्रोफाइल\n• पूर्ण की गई कार्रवाइयां\n• लक्ष्य मार्ग प्रगति\n\nआधिकारिक योजना डेटा प्रभावित नहीं होगा।",
+    "btn_reset_confirm": "सब कुछ रीसेट करें",
+    "btn_cancel": "रद्द करें",
+
+    "hero_title": "पारदर्शी अवसर बुद्धिमत्ता के साथ भारतीय उद्यमियों का सशक्तिकरण",
+    "hero_subtitle": "102 आधिकारिक केंद्रीय और राज्य योजनाओं की खोज करें, सत्यापित आवश्यकताओं को जानें और अपना चरणबद्ध मार्ग बनाएं।",
+    "search_placeholder": "योजना का नाम, क्षेत्र, लाभ या आईडी से खोजें...",
+    "btn_search": "खोजें",
+    "btn_set_profile": "अपनी प्रोफाइल सेट करें",
+    "btn_speak_profile": "बोलकर प्रोफाइल बनाएं",
+    "btn_show_my_schemes": "मेरी योजनाएं दिखाएं",
+    "btn_view_scheme_details": "योजना के विवरण देखें",
+    "btn_view_roadmap_steps": "रोडमैप के चरण देखें",
+
+    "stat_schemes": "आधिकारिक योजनाएं",
+    "stat_requirements": "सत्यापित आवश्यकताएं",
+    "stat_relationships": "संबंध कड़ियां",
+    "stat_sectors": "प्रमुख क्षेत्र",
+
+    "sec_sectors_title": "क्षेत्र के अनुसार अवसर खोजें",
+    "sec_sectors_sub": "सरकारी सहायता कार्यक्रमों को देखने के लिए एक क्षेत्र चुनें",
+    "sec_how_title": "SchemeMitra आपकी कैसे मदद करता है",
+    "sec_how_sub": "अपने व्यावसायिक लक्ष्य के अनुरूप सरकारी योजनाओं की खोज करें, मूल्यांकन करें और सही मार्गदर्शन पाएं",
+    "how_card1_title": "1. अपने बारे में बताएं",
+    "how_card1_desc": "अपना स्थान, पृष्ठभूमि, व्यवसाय का चरण, रुचियां और लक्ष्य साझा करें ताकि SchemeMitra समझ सके कि कौन से अवसर आपके लिए प्रासंगिक हैं।",
+    "how_card2_title": "2. अपने अनुकूल अवसर खोजें",
+    "how_card2_desc": "अपनी प्रोफाइल के अनुसार रैंक किए गए अवसर देखें, समझें कि वे आपके लिए क्यों उपयुक्त हो सकते हैं, और आवश्यक जानकारी या आवश्यकताओं की पहचान करें।",
+    "how_card3_title": "3. अपनी अवसर यात्रा देखें",
+    "how_card3_desc": "देखें कि आपकी प्रोफाइल, आवश्यकताएं, उपयुक्त अवसर और उपलब्ध सहायता एक व्यक्तिगत विजुअल ग्राफ के माध्यम से आपके व्यावसायिक लक्ष्य से कैसे जुड़ते हैं।",
+
+    "filters_title": "अवसरों को फ़िल्टर करें",
+    "filter_sector": "प्राथमिक क्षेत्र",
+    "filter_support": "सहायता का प्रकार",
+    "filter_stage": "व्यवसाय चरण",
+    "filter_scope": "सरकारी दायरा",
+    "filter_all_sector": "सभी क्षेत्र",
+    "filter_all_support": "सभी सहायता प्रकार",
+    "filter_all_scope": "सभी दायरे",
+    "results_found": "अवसर मिले",
+    "lbl_schemes_available": "योजनाएं उपलब्ध हैं",
+    "lbl_scope": "दायरा",
+    "lbl_support": "सहायता",
+    "lbl_gender": "लिंग",
+    "lbl_social_category": "सामाजिक श्रेणी",
+    "lbl_disability_eligibility": "दिव्यांगता पात्रता",
+    "lbl_all_genders": "सभी लिंग",
+    "lbl_all_social_categories": "सभी सामाजिक श्रेणियां",
+    "lbl_any_disability_status": "किसी भी दिव्यांगता स्थिति",
+    "lbl_persons_with_disabilities": "दिव्यांग व्यक्ति",
+    "detail_profile_specific_benefit": "आपकी प्रोफाइल के लिए विशेष लाभ",
+    "detail_verified_source": "सत्यापित आधिकारिक स्रोत",
+    "btn_view_details": "विवरण देखें →",
+    "btn_apply_filters_close": "फ़िल्टर लागू करें और बंद करें",
+    "btn_filter_mobile": "⚙️ फ़िल्टर करें",
+    "quick_filter_placeholder": "त्वरित फ़िल्टर...",
+    "btn_clear_filters": "फ़िल्टर हटाएं",
+    "lbl_search": "खोज",
+
+    "support_family_loan_credit": "ऋण / क्रेडिट",
+    "support_family_subsidy_grant": "सब्सिडी / अनुदान",
+    "support_family_training": "प्रशिक्षण और कौशल सहायता",
+    "support_family_infrastructure": "अवसंरचना और उपकरण",
+    "support_family_market": "बाज़ार और निर्यात सहायता",
+    "support_family_incubation": "इनक्यूबेशन और मार्गदर्शन",
+    "support_family_certification": "प्रमाणन सहायता",
+    "support_family_fellowship": "फेलोशिप",
+    "support_family_other": "अन्य सहायता",
+    "support_overlap_note": "एक योजना एक से अधिक प्रकार की सहायता दे सकती है, इसलिए वह कई सहायता श्रेणियों में दिखाई दे सकती है।",
+
+    "match_scheme_name": "योजना नाम से मेल",
+    "match_sector": "क्षेत्र से मेल",
+    "match_id": "अवसर आईडी से मेल",
+    "related_match": "संबंधित परिणाम",
+
+    "sort_by": "क्रमानुसार",
+    "sort_name": "योजना का नाम",
+    "sort_sector": "क्षेत्र",
+    "badge_active": "सक्रिय",
+    "badge_needs_verification": "सत्यापन आवश्यक",
+    "badge_eligible": "पूर्ण पात्र",
+    "badge_potentially": "संभावित पात्र / कमियां",
+    "badge_not_eligible": "पात्र नहीं",
+
+    "tab_recommended": "सर्वश्रेष्ठ मैच",
+    "tab_potentially": "अधिक जानकारी की आवश्यकता",
+    "tab_pathway": "अवसर मार्ग",
+    "tab_graph": "अवसर ग्राफ",
+    "tab_verification": "सत्यापन आवश्यक",
+    "tab_application_guide": "आवेदन गाइड",
+
+    "detail_overview": "अवलोकन",
+    "detail_benefits": "लाभ एवं सहायता",
+    "detail_eligibility": "पात्रता का सारांश",
+    "detail_documents": "आवश्यक दस्तावेज",
+    "detail_application": "आवेदन का तरीका",
+    "detail_official_url": "आधिकारिक स्रोत लिंक",
+    "detail_official_website": "आधिकारिक वेबसाइट",
+    "detail_lifecycle": "जीवन चक्र स्थिति",
+
+    "voice_unsupported": "ब्राउज़र भाषण पहचान इस वातावरण में उपलब्ध नहीं है। कृपया नीचे विवरण टाइप करें।",
+    "offline_title": "सर्वर अनुपलब्ध",
+    "offline_msg": "SchemeMitra सर्वर से कनेक्ट करने में असमर्थ। कृपया कनेक्शन जांचें और पुनः प्रयास करें।",
+    "btn_retry": "पुन: प्रयास करें",
+    "alert_reset_error": "SchemeMitra डेटा रीसेट नहीं किया जा सका। कृपया पुनः प्रयास करें।",
+    "alert_reset_success": "SchemeMitra रीसेट कर दिया गया है। आप एक नई प्रोफाइल के साथ शुरू कर सकते हैं।",
+    "alert_progress_save_error": "आपकी प्रगति सहेजी नहीं जा सकी। कृपया पुनः प्रयास करें।",
+    "alert_mark_completed_confirm": "क्या इस आवश्यकता को पूर्ण के रूप में चिह्नित करें?\n\nयह आपकी अपनी प्रगति दर्ज करता है, आधिकारिक सरकारी सत्यापन नहीं।",
+    "alert_core_fields_required": "आगे बढ़ने से पहले कृपया आवश्यक मुख्य फ़ील्ड (आयु, राज्य, व्यावसायिक क्षेत्र, व्यावसायिक चरण) को पूरा करें।",
+    "footer_app_notice": "आवेदन सीधे आधिकारिक सरकारी पोर्टलों पर जमा किए जाते हैं।",
+    "error_title": "आवेदन सूचना",
+    "error_msg": "एक अप्रत्याशित समस्या आई। कृपया रिफ्रेश करें या पुनः प्रयास करें।",
+
+    "profile_builder_sub": "अपनी प्रोफाइल निकालने के लिए अपनी आवाज का उपयोग करें या सामान्य भाषा में उत्तर दें",
+    "profile_talk_title": "🤖 SchemeMitra से बात करें",
+    "profile_talk_desc": "सरल प्राकृतिक भाषा या आवाज़ में अपने और अपने विचार के बारे में बताएं।",
+    "voice_error_prefix": "भाषण पहचान त्रुटि:",
+    "tab_conversational": "संवादात्मक / वॉयस असिस्टेंट",
+    "tab_structured_form": "संरचित फॉर्म इनपुट",
+    "voice_status_default": "बोलना शुरू करने के लिए माइक बटन दबाएं, या नीचे टाइप करें।",
+    "voice_status_listening": "सुन रहा है... अब बोलें।",
+    "voice_status_done": "रिकॉर्डिंग पूर्ण। आगे बढ़ने के लिए 'प्रोफाइल फ़ील्ड निकालें' पर क्लिक करें।",
+    "voice_status_silence": "3 सेकंड तक आवाज़ न मिलने पर रिकॉर्डिंग रोक दी गई। टेक्स्ट जाँचें, फिर प्रोफ़ाइल निकालें।",
+    "tell_us_label": "या यहाँ स्वाभाविक रूप से टाइप करें...",
+    "txt_message_placeholder": "उदाहरण: मैं तमिलनाडु की 24 वर्षीय महिला हूं, स्नातक हूं और खाद्य प्रसंस्करण व्यवसाय शुरू करना चाहती हूं...",
+    "btn_extract_fields": "प्रोफाइल फ़ील्ड निकालें",
+    "review_title": "अपनी निकाली गई प्रोफाइल की समीक्षा और पुष्टि करें",
+    "review_sub": "सहेजने से पहले आप किसी भी क्षेत्र को संपादित कर सकते हैं।",
+    "btn_start_over": "पुन: प्रारंभ करें",
+    "btn_edit_profile": "प्रोफाइल संपादित करें",
+    "basic_details": "मूल विवरण",
+    "financial_details": "वित्तीय विवरण (₹)",
+    "business_info": "व्यवसाय जानकारी",
+
+    "profile_section_personal": "1. व्यक्तिगत विवरण",
+    "profile_section_financial": "2. वित्तीय जानकारी",
+    "profile_section_business": "3. व्यावसायिक विवरण",
+    "lbl_age": "आयु (वर्ष)",
+    "lbl_state": "राज्य",
+    "lbl_district": "जिला",
+    "lbl_category": "सामाजिक श्रेणी",
+    "lbl_disability": "दिव्यांगता स्थिति",
+    "select_disability": "दिव्यांगता स्थिति चुनें",
+    "disability_none": "दिव्यांगता नहीं",
+    "disability_yes": "दिव्यांग व्यक्ति",
+    "disability_prefer_not": "बताना नहीं चाहते",
+    "lbl_income": "वार्षिक पारिवारिक आय",
+    "lbl_capital": "उपलब्ध स्वयं की पूंजी",
+    "lbl_project_cost": "अनुमानित परियोजना लागत",
+    "lbl_target_sector": "लक्षित क्षेत्र",
+    "lbl_business_stage": "व्यवसाय चरण",
+    "lbl_selected_goal": "चयनित लक्ष्य",
+    "lbl_education": "शैक्षणिक योग्यता",
+    "lbl_education_field": "अध्ययन / ट्रेड का क्षेत्र",
+    "lbl_education_course": "डिग्री / कोर्स",
+    "ph_education_course": "जैसे B.Tech, B.E., डिप्लोमा",
+    "ph_education_field": "जैसे कंप्यूटर साइंस, मैकेनिकल",
+    "ph_income": "वार्षिक आय दर्ज करें",
+    "ph_capital": "उपलब्ध पूंजी दर्ज करें",
+    "ph_project_cost": "अनुमानित परियोजना लागत दर्ज करें",
+    "select_qualification": "शैक्षणिक योग्यता चुनें",
+    "select_gender": "लिंग चुनें",
+    "select_category": "वर्ग चुनें",
+    "select_sector": "क्षेत्र चुनें",
+    "select_stage": "चरण चुनें",
+    "qualification_degree": "डिग्री (स्नातक)",
+    "qualification_postgraduate": "स्नातकोत्तर (मास्टर्स)",
+    "qualification_diploma": "डिप्लोमा / पॉलिटेक्निक",
+    "qualification_12th": "12वीं उत्तीर्ण",
+    "qualification_10th": "10वीं उत्तीर्ण",
+    "qualification_8th": "8वीं उत्तीर्ण",
+
+    "goal_general_readiness": "सामान्य व्यवसाय तैयारी",
+    "goal_start_business": "नया व्यवसाय शुरू करना",
+    "goal_establish_enterprise": "नया सूक्ष्म उद्यम स्थापित करना",
+    "goal_expand_business": "मौजूदा व्यवसाय का विस्तार",
+    "goal_working_capital": "कार्यशील पूंजी सहायता",
+    "goal_upgrade_unit": "सूक्ष्म उद्यम इकाई उन्नयन",
+    "goal_tech_innovation": "प्रौद्योगिकी नवाचार और व्यावसायीकरण",
+    "goal_export_development": "निर्यात विकास और बाजार विस्तार",
+    "goal_modernization": "इकाई आधुनिकीकरण",
+    "goal_default_note": "डिफ़ॉल्ट: सामान्य व्यवसाय तैयारी। इसे कभी भी बदला जा सकता है।",
+
+    "profile_confirm_qualification": "कृपया अपनी शैक्षणिक योग्यता की पुष्टि करें (जैसे डिग्री, डिप्लोमा, 12वीं).",
+    "profile_extract_error": "प्रोफ़ाइल फ़ील्ड निकाल नहीं सके। कृपया फिर प्रयास करें।",
+    "profile_update_error": "प्रोफ़ाइल फ़ील्ड निकाले गए, लेकिन फ़ॉर्म पूरी तरह अपडेट नहीं हो सका। कृपया फिर प्रयास करें।",
+    "age_invalid": "कृपया 1 से 120 के बीच सही आयु दर्ज करें।",
+    "under18_title": "18 वर्ष से कम आयु प्रोफ़ाइल के लिए व्यक्तिगत योजना मिलान",
+    "under18_msg": "इस कैटलॉग में अधिकांश उद्यमी योजनाएं वयस्कों के लिए हैं। आप अभी भी योजनाओं को देख सकते हैं, लेकिन व्यक्तिगत मिलान प्रत्येक योजना की आयु आवश्यकताओं पर निर्भर करेगा।",
+    "lbl_preferred_support": "पसंदीदा सहायता प्रकार",
+    "btn_save_confirm_profile": "सहेजें और पुष्टि करें",
+    "profile_readiness_title": "प्रोफ़ाइल तत्परता",
+    "profile_readiness_100": "✓ प्रोफ़ाइल तत्परता: 100%",
+    "profile_core_required_note": "मुख्य आवश्यक फ़ील्ड: आयु, राज्य, व्यावसायिक क्षेत्र और व्यावसायिक चरण।",
+    "profile_notice_complete": "✓ आपकी मुख्य प्रोफ़ाइल तैयार है! व्यक्तिगत योजना मैच उत्पन्न करने के लिए ऊपर क्लिक करें।",
+    "profile_notice_incomplete": "⚠️ व्यक्तिगत अवसरों को देखने के लिए ऊपर दिए गए आवश्यक मुख्य फ़ील्ड (आयु, राज्य, व्यावसायिक क्षेत्र, व्यावसायिक चरण) को पूरा करें।",
+    "profile_core_progress": "मुख्य आवश्यक फ़ील्ड: {completed} / {total} ({percentage}%)",
+
+    "no_profile_title": "आपके व्यक्तिगत अवसर",
+    "no_profile_msg": "अपने लक्ष्यों, स्थान और पात्रता से मेल खाने वाली योजनाओं की खोज के लिए अपनी प्रोफ़ाइल पूरी करें।",
+    "no_profile_sub": "अपने लक्ष्यों, स्थान और पात्रता से मेल खाने वाली योजनाओं की खोज के लिए अपनी प्रोफ़ाइल पूरी करें।",
+    "no_profile_why_title": "प्रोफ़ाइल क्यों बनाएं?",
+    "no_profile_check1": "प्रासंगिक योजनाएं खोजें",
+    "no_profile_check2": "अपनी संभावित पात्रता समझें",
+    "no_profile_check3": "अधूरी आवश्यकताएं देखें",
+    "no_profile_check4": "व्यक्तिगत तैयारी रोडमैप प्राप्त करें",
+    "incomplete_profile_title": "आपकी प्रोफ़ाइल अधूरी है",
+    "incomplete_profile_sub": "अपने व्यक्तिगत अवसर देखने के लिए आवश्यक फ़ील्ड भरें।",
+    "btn_complete_profile": "प्रोफ़ाइल पूरी करें",
+    "btn_find_my_opportunities": "मेरे अवसर खोजें",
+    "core_gate_warning": "व्यक्तिगत अवसर देखने के लिए ऊपर दिए गए आवश्यक फ़ील्ड भरें।",
+    "analyzing_title": "आपकी प्रोफाइल के लिए अवसरों का विश्लेषण किया जा रहा है...",
+    "analyzing_sub": "आपकी प्रोफाइल के अनुसार योजनाओं का मूल्यांकन किया जा रहा है...",
+    "profile_summary_title": "पुष्टित प्रोफाइल",
+    "why_match_title": "आपके मेल खाने के कारण:",
+    "action_gaps_title": "आवश्यक कार्रवाई अंतर:",
+    "action_gaps_sub": "आवश्यक पूर्वापेक्षाएँ पूरी करें (जैसे उद्यम पंजीकरण, डीपीआर)।",
+    "needs_verification_notice": "सत्यापन सूचना: ये योजनाएं ऐतिहासिक या सत्यापन आवश्यक श्रेणी में हैं।",
+
+    "dash_title": "मेरे अवसर",
+    "dash_sub": "व्यक्तिगत योजनाएं, पात्रता प्रगति, रोडमैप चरण और विजुअल ग्राफ",
+    "dash_tab_recommended": "सर्वश्रेष्ठ मैच",
+    "dash_tab_potentially": "अधिक जानकारी की आवश्यकता",
+    "dash_tab_goal_path": "अवसर मार्ग",
+    "dash_tab_graph": "अवसर ग्राफ",
+    "dash_tab_verification": "सत्यापन आवश्यक",
+    "dash_tab_guide": "आवेदन गाइड",
+    "dash_action_needed_title": "आवश्यक कार्रवाई अंतर:",
+    "dash_action_gaps_sub": "आवश्यक पूर्वापेक्षाएं पूरी करें (जैसे उद्यम पंजीकरण, डीपीआर)।",
+    "dash_prerequisites_title": "पूरी की गई पूर्वापेक्षाएं",
+    "dash_no_matches_found": "आपकी प्रोफ़ाइल के लिए कोई मेल खाते अवसर नहीं मिले।",
+    "dash_btn_roadmap_steps": "रोडमैप चरण देखें",
+    "dash_btn_apply_now": "आवेदन करें",
+    "dash_btn_check_eligibility": "इस योजना के लिए मेरी पात्रता जांचें",
+    "dash_btn_back_to_my_opps": "← मेरे अवसरों पर वापस जाएं",
+    "dash_selected_roadmap": "चयनित योजना रोडमैप",
+    "dash_manage_docs": "तैयार व्यावसायिक दस्तावेजों का प्रबंधन करें",
+
+    "dash_goal_pathway_title": "अवसर मार्ग",
+    "dash_selected_goal": "चयनित लक्ष्य",
+    "dash_your_goal": "आपका लक्ष्य",
+    "dash_where_you_are_now": "आप अभी कहाँ हैं",
+    "dash_what_needs_attention": "किन बातों पर ध्यान देने की आवश्यकता है",
+    "dash_next_actions": "अगली कार्रवाइयां",
+    "dash_next_actions_to_review": "समीक्षा के लिए अगली कार्रवाइयां",
+    "dash_opportunities_pathway_connects": "योजनाएं जिनसे यह मार्ग जोड़ता है",
+    "dash_verified_support_available": "उपलब्ध सत्यापित सहायता",
+    "dash_your_requirement_progress": "आपकी आवश्यकता प्रगति",
+    "dash_your_goal_destination": "आपका लक्ष्य गंतव्य",
+    "dash_completed_actions": "पूर्ण की गई कार्रवाइयां",
+    "dash_mark_completed": "पूर्ण चिह्नित करें",
+    "dash_reopen": "पुन: खोलें",
+    "dash_action_needed": "कार्रवाई आवश्यक",
+    "dash_need_to_confirm": "पुष्टि आवश्यक",
+    "dash_completed": "पूर्ण हुआ",
+    "dash_official_scheme_source": "आधिकारिक योजना स्रोत",
+    "dash_exact_docs_confirm": "सटीक दस्तावेजों की पुष्टि आवश्यक",
+    "dash_what_you_already_have": "जो आपके पास पहले से है",
+    "dash_please_confirm": "कृपया पुष्टि करें",
+    "dash_my_next_steps": "मेरे अगले कदम",
+    "dash_ready_to_apply": "आवेदन के लिए तैयार",
+    "dash_almost_ready": "लगभग तैयार",
+    "dash_more_info_needed_status": "अधिक जानकारी आवश्यक",
+    "dash_open_app_guide": "आवेदन गाइड खोलें",
+    "dash_continue_official_govt_site": "आधिकारिक सरकारी वेबसाइट पर आगे बढ़ें ↗",
+    "dash_pathway_history": "मार्ग इतिहास",
+    "dash_completed_actions_sub": "आपके द्वारा पूर्ण चिह्नित की गई कार्रवाइयां। ये उपयोगकर्ता-पुष्ट प्रगतियों के रिकॉर्ड हैं, आधिकारिक सरकारी सत्यापन नहीं।",
+
+    "graph_title": "अवसर ग्राफ विज़ुअलाइज़ेशन",
+    "graph_sub": "सत्यापित संबंधों को दर्शाने वाला नेटवर्क ग्राफ।",
+    "graph_note": "केवल सत्यापित संबंध ही दिखाए गए हैं।",
+    "graph_node_user_profile": "आपकी प्रोफ़ाइल",
+    "graph_node_opportunity": "लक्ष्य अवसर",
+    "graph_node_requirement": "आवश्यकता नोड",
+    "graph_node_support": "सहायता प्रकार",
+    "graph_status_eligible": "योग्य",
+    "graph_status_potential": "संभावित मैच",
+    "graph_status_action_needed": "कार्रवाई आवश्यक",
+    "graph_status_needs_verification": "सत्यापन आवश्यक",
+    "graph_btn_zoom_in": "🔍 +",
+    "graph_btn_zoom_out": "🔍 -",
+    "graph_btn_reset_zoom": "ज़ूम रीसेट करें",
+    "graph_legend_title": "ग्राफ लीजेंड",
+    "graph_filter_all_types": "सभी नोड प्रकार",
+    "graph_search_placeholder": "ग्राफ नोड्स खोजें...",
+    "graph_title_label": "अवसर ग्राफ",
+    "graph_subtitle_label": "सत्यापित पूर्वापेक्षा संबंधों को जोड़ने वाला नेटवर्क ग्राफ।",
+    "graph_note_label": "केवल सत्यापित पूर्वापेक्षा कड़ियां दिखाई गई हैं।",
+    "tab_roadmap": "आपका अवसर ग्राफ",
+    "roadmap_title": "आपका अवसर ग्राफ",
+    "roadmap_sub": "आपकी प्रोफ़ाइल, मिलान किए गए अवसरों, सत्यापित आवश्यकताओं और लाभों का चित्रण",
+    "node_target_opp": "लक्ष्य अवसर",
+    "node_req": "आवश्यकता नोड",
+    "node_support": "सहायता",
+    "btn_zoom_in": "🔍 +",
+    "btn_zoom_out": "🔍 -",
+    "btn_reset_zoom": "ज़ूम रीसेट करें",
+    "btn_view_pathway_graph": "मार्ग और ग्राफ देखें",
+    "btn_view_pathway_gaps": "मार्ग और अंतर देखें",
+
+    "guide_title": "आवेदन गाइड",
+    "guide_sub": "चरण-दर-चरण दस्तावेज जमा करने और पोर्टल गाइड",
+    "guide_docs": "आवश्यक दस्तावेज",
+    "guide_channel": "आवेदन चैनल",
+    "guide_verification": "सत्यापन और ट्रैकिंग",
+    "check_eligibility_cta": "इस योजना के लिए मेरी पात्रता जांचें",
+    "close": "बंद करें",
+    "official_portal_notice": "SchemeMitra पात्रता मूल्यांकन और मार्गदर्शन प्रदान करता है। आधिकारिक आवेदन और स्वीकृतियां केवल सरकारी पोर्टल पर होती हैं।",
+    "btn_continue_official_portal": "आधिकारिक सरकारी पोर्टल पर आगे बढ़ें ↗",
+    "platform_positioning_disclaimer": "नोट: SchemeMitra एक योजना खोज और मार्गदर्शन प्लेटफॉर्म है। आधिकारिक आवेदन और स्वीकृतियां केवल सरकारी पोर्टल पर होती हैं।",
+    "btn_apply": "आवेदन करें",
+    "btn_official_source": "आधिकारिक स्रोत ↗",
+    "apply_modal_title": "इस योजना के लिए आवेदन करें",
+    "apply_modal_desc": "इस योजना के लिए आवेदन आधिकारिक सरकारी वेबसाइट के माध्यम से जमा किए जाते हैं। SchemeMitra केवल मार्गदर्शन प्रदान करता है।",
+    "apply_modal_desc_fallback": "इस योजना के लिए आवेदन आधिकारिक सरकारी वेबसाइट के माध्यम से जमा किए जाते हैं। नवीनतम आवेदन निर्देशों को देखने के लिए नीचे दी गई आधिकारिक वेबसाइट का उपयोग करें।",
+    "btn_visit_official_apply": "आवेदन करने के लिए आधिकारिक वेबसाइट पर जाएं ↗",
+    "btn_visit_official_scheme": "आधिकारिक योजना वेबसाइट पर जाएं ↗",
+    "apply_modal_no_url": "SchemeMitra में एक सत्यापित आधिकारिक आवेदन लिंक वर्तमान में उपलब्ध नहीं है।",
+
+    "sector_agri": "कृषि एवं संबद्ध क्षेत्र",
+    "sector_food": "खाद्य प्रसंस्करण एवं कृषि मूल्य संवर्धन",
+    "sector_msme": "एमएसएमई (MSME) एवं विनिर्माण",
+    "sector_finance": "वित्त एवं ऋण सहायता",
+    "sector_startup": "स्टार्टअप एवं नवाचार",
+    "sector_skills": "कौशल एवं रोजगार",
+    "sector_women": "महिला एवं स्वयं सहायता समूह उद्यमिता",
+    "sector_social": "सामाजिक सशक्तिकरण एवं समावेशी उद्यमिता",
+    "sector_handicrafts": "हस्तशिल्प, हथकरघा एवं कारीगर अर्थव्यवस्था",
+    "sector_export": "निर्यात, बाजार पहुंच एवं व्यापार वृद्धि",
+
+    "sup_credit": "ऋण / क्रेडिट",
+    "sup_subsidy": "कैपिटल सब्सिडी",
+    "sup_grant": "अनुदान / बीज पूंजी",
+    "sup_training": "प्रशिक्षण एवं कौशल सहायता",
+    "sup_infrastructure": "बुनियादी ढांचा एवं उपकरण",
+    "sup_certification": "प्रमाणन",
+    "sup_credit_guarantee": "ऋण गारंटी",
+    "sup_equipment_support": "उपकरण सहायता",
+    "sup_export_support": "निर्यात सहायता",
+    "sup_fellowship": "फेलोशिप / शोधवृत्ति",
+    "sup_incubation": "इन्क्यूबेशन सहायता",
+    "sup_market_access": "बाजार पहुंच",
+    "sup_mentorship": "मार्गदर्शन / मेंटरशिप",
+    "sup_other_support": "अन्य सहायता",
+    "sup_skill_development": "कौशल विकास",
+
+    "scope_central": "केंद्रीय सरकार",
+    "scope_state": "राज्य सरकार",
+
+    "gender_male": "पुरुष",
+    "gender_female": "महिला",
+    "gender_trans": "ट्रांसजेंडर",
+    "cat_general": "सामान्य",
+    "cat_obc": "ओबीसी (OBC)",
+    "cat_sc": "अनुसूचित जाति (SC)",
+    "cat_st": "अनुसूचित जनजाति (ST)",
+    "cat_minority": "अल्पसंख्यक",
+    "stage_idea": "विचार चरण",
+    "stage_startup": "स्टार्टअप चरण",
+    "stage_existing": "मौजूदा व्यवसाय",
+    "status_detected": "✓ पहचाना गया",
+    "status_confirmed": "✓ पुष्टीकृत",
+    "status_required": "आवश्यक",
+    "status_optional": "वैकल्पिक / मिलान सुधार सकता है",
+    "status_needed_some": "कुछ योजनाओं के लिए आवश्यक",
+    "status_please_confirm": "कृपया पुष्टि करें",
+
+    "req_prep_docs": "आवश्यक दस्तावेज तैयार करें",
+    "req_prep_kyc": "पहचान / केवाईसी प्रमाण तैयार करें",
+    "req_prep_dpr": "विस्तृत परियोजना रिपोर्ट (DPR) तैयार करें",
+    "req_complete_training": "आवश्यक प्रशिक्षण पूरा करें",
+    "req_approach_lender": "पात्र ऋणदाता से संपर्क करें / क्रेडिट मूल्यांकन प्राप्त करें",
+    "req_register_entity": "इकाई/संगठन का पंजीकरण करें",
+    "req_obtain_cert": "आवश्यक प्रमाणन प्राप्त करें",
+    "req_confirm_eligibility": "पात्रता की पुष्टि करें",
+    "req_submit_app": "आवेदन जमा करें",
+    "req_udyam": "उद्यम पंजीकरण",
+    "req_gst": "जीएसटी पंजीकरण",
+    "req_pan": "पैन कार्ड",
+    "req_aadhaar": "आधार कार्ड",
+    "req_bank_proof": "बैंक खाता प्रमाण",
+    "req_land_lease": "भूमि / स्वामित्व पट्टा दस्तावेज",
+
+    "ben_financial_assist": "वित्तीय सहायता",
+    "ben_tech_support": "प्रौद्योगिकी सहायता",
+    "ben_entrepreneurship_support": "उद्यमिता सहायता",
+    "ben_interest_subsidy": "ब्याज सब्सिडी",
+    "ben_margin_subsidy": "मार्जिन मनी सब्सिडी",
+
+    "lbl_yrs": "वर्ष",
+    "lbl_annual_income": "वार्षिक आय",
+    "lbl_available_capital": "उपलब्ध पूंजी",
+    "lbl_goal": "लक्ष्य",
+    "lbl_disability": "विकलांगता",
+    "lbl_entrepreneur": "उद्यमी",
+    "badge_best_match_1": "#1 सर्वश्रेष्ठ मैच",
+    "badge_best_match": "सर्वश्रेष्ठ मैच",
+    "lbl_your_next_actions": "आपके अगले कदम:",
+    "btn_view_scheme_details": "योजना विवरण देखें",
+    "btn_view_roadmap_steps": "रोडमैप चरण देखें",
+    "btn_hide_roadmap_steps": "रोडमैप चरण छिपाएं",
+    "roadmap_your_roadmap": "आपकी रोडमैप",
+    "roadmap_what_you_have": "जो आपके पास पहले से है",
+    "roadmap_please_confirm": "कृपया पुष्टि करें",
+    "roadmap_my_next_steps": "मेरे अगले कदम",
+    "roadmap_age_available": "आयु विवरण उपलब्ध है",
+    "roadmap_state_confirmed": "राज्य का स्थान पुष्ट हुआ",
+    "roadmap_sector_available": "व्यवसाय क्षेत्र उपलब्ध है",
+    "roadmap_stage_confirmed": "व्यवसाय चरण की पुष्टि हुई",
+    "roadmap_gender_specified": "लिंग निर्दिष्ट है",
+    "roadmap_qualification_specified": "योग्यता स्तर निर्दिष्ट है",
+    "roadmap_confirm_missing": "ऊपर दी गई लापता जानकारी की पुष्टि करें",
+    "roadmap_review_guide": "सत्यापित स्कीममित्र आवेदन गाइड की समीक्षा करें",
+    "roadmap_proceed_portal": "प्रत्यक्ष आवेदन जमा करने के लिए आधिकारिक सरकारी पोर्टल पर आगे बढ़ें",
+    "more_info_title": "अधिक जानकारी आवश्यक है",
+    "more_info_sub": "इस अवसर का आकलन करने के लिए हमें थोड़ी और जानकारी की आवश्यकता है:",
+    "q_is_new_unit": "क्या यह परियोजना नई इकाई के लिए है?",
+    "q_prior_subsidy": "क्या आपने इस इकाई के लिए पहले से ही सरकारी सब्सिडी प्राप्त की है?",
+    "q_family_pmegp": "क्या आपने या आपके जीवनसाथी ने पहले ही PMEGP का लाभ उठाया है?",
+    "btn_yes": "हाँ",
+    "btn_no": "नहीं",
+    "graph_your_profile": "आपकी प्रोफाइल",
+    "graph_opportunity": "अवसर",
+    "graph_outstanding_reqs": "बकाया आवश्यकताएं",
+    "graph_verified_benefits": "सत्यापित लाभ / सहायता",
+    "graph_mode_top3": "शीर्ष 3 सर्वश्रेष्ठ मैच",
+    "graph_mode_top5": "शीर्ष 5",
+    "graph_mode_all": "सभी प्रासंगिक",
+    "graph_fit_view": "फिट व्यू",
+    "graph_reset": "रीसेट View",
+    "graph_node_types_lbl": "नोड प्रकार:",
+    "graph_status_lbl": "स्थिति:",
+    "graph_req_state_lbl": "आवश्यकता की स्थिति:",
+    "graph_footnote": "केवल आधिकारिक योजना आवश्यकताओं से सत्यापित कनेक्शन ही प्रदर्शित किए जाते हैं। योजना विवरण के लिए किसी भी अवसर कार्ड पर क्लिक करें।",
+    "state_tn": "तमिलनाडु",
+    "state_kl": "केरल",
+    "state_ka": "कर्नाटक",
+    "state_ap": "आंध्र प्रदेश",
+    "state_ts": "तेलंगाना",
+    "state_mh": "महाराष्ट्र",
+    "state_dl": "दिल्ली",
+    "state_up": "उत्तर प्रदेश",
+    "state_wb": "पश्चिम बंगाल",
+    "state_rj": "राजस्थान",
+    "state_gj": "गुजरात",
+    "state_mp": "मध्य प्रदेश",
+    "req_proposal": "इवेंट प्रस्ताव (Event Proposal)",
+    "req_incubator_linkage": "पात्र इनक्यूबेटर के माध्यम से आवेदन करें / जुड़ाव प्राप्त करें",
+    "req_incubator_centre": "इनक्यूबेटर / अनुमोदित केंद्र जुड़ाव",
+    "req_general_proposal": "प्रस्ताव (Proposal)",
+    "fact_shg": "एसएचजी (SHG) सदस्यता",
+    "fact_entity": "इकाई प्रकार (FPO / SHG / सहकारी)",
+    "fact_dpiit": "DPIIT स्टार्टअप मान्यता",
+    "fact_subsidy": "पूर्व सरकारी सब्सिडी इतिहास",
+    "fact_pmegp": "परिवार PMEGP लाभार्थी स्थिति",
+    "fact_new_unit": "नई सूक्ष्म उद्यम स्थिति",
+    "fact_udyam_status": "उद्यम पंजीकरण स्थिति",
+    "fact_udyam_cat": "उद्यम श्रेणी (सूक्ष्म / लघु)",
+    "fact_project_cost": "अनुमानित परियोजना लागत",
+    "fact_education": "शैक्षणिक योग्यता",
+    "fact_social_cat": "सामाजिक श्रेणी",
+    "fact_stage_req": "व्यवसाय चरण की आवश्यकता",
+    "desc_ic_scheme": "अंतर्राष्ट्रीय प्रदर्शनियों, सम्मेलनों, बाजार जोखिम और सहयोग गतिविधियों के लिए सहायता",
+    "desc_pmegp": "विनिर्माण और सेवा क्षेत्रों में नए सूक्ष्म उद्यम स्थापित करने के लिए क्रेडिट से जुड़ी सब्सिडी योजना।",
+}
+
+def format_dict_js(d):
+    lines = []
+    for k, v in d.items():
+        v_str = json.dumps(v, ensure_ascii=False)
+        lines.append(f"    {k}: {v_str},")
+    return "{\n" + "\n".join(lines) + "\n  }"
+
+js_code = f"""/**
+ * SchemeMitra — Comprehensive Trilingual UI Localization (English, Tamil, Hindi)
+ * Prototype Identity & Educational Disclaimer Included
+ * 
+ * NOTE: Official M1 scheme names, department names, URLs, and canonical enum codes remain unchanged internally.
+ * Display labels are localized for all SchemeMitra taxonomy sectors, support types, scopes, and UI elements.
+ */
+
+const translations = {{
+  en: {format_dict_js(en_keys)},
+  ta: {format_dict_js(ta_keys)},
+  hi: {format_dict_js(hi_keys)}
+}};
+
+class I18nManager {{
+  constructor() {{
+    this.currentLang = localStorage.getItem("oppo_lang") || "en";
+  }}
+
+  setLanguage(lang) {{
+    if (translations[lang]) {{
+      this.currentLang = lang;
+      localStorage.setItem("oppo_lang", lang);
+      this.applyTranslations();
+      window.dispatchEvent(new CustomEvent("languageChanged", {{ detail: {{ lang }} }}));
+    }}
+  }}
+
+  get(key) {{
+    return (translations[this.currentLang] && translations[this.currentLang][key]) || translations.en[key] || key;
+  }}
+
+  getSectorLabel(canonicalSector) {{
+    if (!canonicalSector) return "";
+    const map = {{
+      "Agriculture & Allied": "sector_agri",
+      "Food Processing & Agri Value Addition": "sector_food",
+      "MSME & Manufacturing": "sector_msme",
+      "Finance & Credit": "sector_finance",
+      "Startup & Innovation": "sector_startup",
+      "Skills & Employment": "sector_skills",
+      "Women & SHG Entrepreneurship": "sector_women",
+      "Social Empowerment & Inclusive Entrepreneurship": "sector_social",
+      "Handicrafts, Handloom & Artisan Economy": "sector_handicrafts",
+      "Export, Market Access & Business Growth": "sector_export"
+    }};
+
+    const key = map[canonicalSector];
+    return key ? this.get(key) : canonicalSector;
+  }}
+
+  getSupportTypeLabel(canonicalType) {{
+    if (!canonicalType) return "";
+    const raw = String(canonicalType).toUpperCase();
+
+    if (raw.includes("CREDIT_GUARANTEE")) return this.get("sup_credit_guarantee");
+    if (raw.includes("CREDIT") || raw.includes("LOAN")) return this.get("sup_credit");
+    if (raw.includes("SUBSIDY")) return this.get("sup_subsidy");
+    if (raw.includes("GRANT")) return this.get("sup_grant");
+    if (raw.includes("TRAINING") || raw.includes("SKILL")) return this.get("sup_training");
+    if (raw.includes("INFRASTRUCTURE") || raw.includes("EQUIPMENT")) return this.get("sup_infrastructure");
+    if (raw.includes("CERTIFICATION")) return this.get("sup_certification");
+    if (raw.includes("EXPORT")) return this.get("sup_export_support");
+    if (raw.includes("FELLOWSHIP")) return this.get("sup_fellowship");
+    if (raw.includes("INCUBATION")) return this.get("sup_incubation");
+    if (raw.includes("MARKET")) return this.get("sup_market_access");
+    if (raw.includes("MENTORSHIP")) return this.get("sup_mentorship");
+
+    return canonicalType;
+  }}
+
+  getScopeLabel(canonicalScope) {{
+    if (!canonicalScope) return "";
+    const s = String(canonicalScope).toLowerCase();
+    if (s.includes("central")) return this.get("scope_central");
+    if (s.includes("state")) return this.get("scope_state");
+    return canonicalScope;
+  }}
+
+  getGoalLabel(goalCodeOrText) {{
+    if (!goalCodeOrText) return this.get("goal_general_readiness");
+    const g = String(goalCodeOrText).trim().toUpperCase();
+    const map = {{
+      "GENERAL_READINESS": "goal_general_readiness",
+      "GENERAL BUSINESS READINESS": "goal_general_readiness",
+      "START_BUSINESS": "goal_start_business",
+      "START A NEW BUSINESS": "goal_start_business",
+      "ESTABLISH_ENTERPRISE": "goal_establish_enterprise",
+      "ESTABLISH A NEW MICRO-ENTERPRISE": "goal_establish_enterprise",
+      "EXPAND_BUSINESS": "goal_expand_business",
+      "GROW_BUSINESS": "goal_expand_business",
+      "EXPAND EXISTING BUSINESS UNIT": "goal_expand_business",
+      "EXPAND EXISTING BUSINESS": "goal_expand_business",
+      "WORKING_CAPITAL": "goal_working_capital",
+      "WORKING CAPITAL ASSISTANCE": "goal_working_capital",
+      "UPGRADE_UNIT": "goal_upgrade_unit",
+      "UPGRADE MICRO ENTERPRISE UNIT": "goal_upgrade_unit",
+      "TECH_INNOVATION": "goal_tech_innovation",
+      "TECHNOLOGY INNOVATION & COMMERCIALIZATION": "goal_tech_innovation",
+      "EXPORT_DEVELOPMENT": "goal_export_development",
+      "EXPORT DEVELOPMENT & MARKET EXPANSION": "goal_export_development",
+      "MODERNIZATION": "goal_modernization",
+      "UNIT MODERNIZATION": "goal_modernization"
+    }};
+    const key = map[g];
+    return key ? this.get(key) : goalCodeOrText;
+  }}
+
+  getGenderLabel(gender) {{
+    if (!gender) return this.get("lbl_all_genders");
+    const g = String(gender).trim();
+    if (g === "Male") return this.get("gender_male");
+    if (g === "Female") return this.get("gender_female");
+    if (g === "Transgender") return this.get("gender_trans");
+    return g;
+  }}
+
+  getCategoryLabel(cat) {{
+    if (!cat) return this.get("lbl_all_social_categories");
+    const c = String(cat).trim();
+    if (c === "General" || c === "GEN") return this.get("cat_general");
+    if (c === "OBC") return this.get("cat_obc");
+    if (c === "SC") return this.get("cat_sc");
+    if (c === "ST") return this.get("cat_st");
+    if (c === "Minority") return this.get("cat_minority");
+    return c;
+  }}
+
+  getDisabilityLabel(disability) {{
+    if (!disability) return this.get("lbl_any_disability_status");
+    const d = String(disability).trim().toUpperCase();
+    if (d === "PERSON_WITH_DISABILITY" || d === "YES" || d === "TRUE") return this.get("disability_yes");
+    if (d === "NONE" || d === "NO_DISABILITY" || d === "NO" || d === "FALSE") return this.get("disability_none");
+    if (d === "PREFER_NOT_TO_SAY") return this.get("disability_prefer_not");
+    return disability;
+  }}
+
+  getStageLabel(stage) {{
+    if (!stage) return "";
+    const s = String(stage).trim();
+    if (s === "Idea") return this.get("stage_idea");
+    if (s === "Startup") return this.get("stage_startup");
+    if (s === "Existing" || s.includes("Existing")) return this.get("stage_existing");
+    return stage;
+  }}
+
+  getStatusLabel(status) {{
+    if (!status) return "";
+    const st = String(status).trim().toUpperCase();
+    if (st === "ACTION_NEEDED" || st === "FAILED") return this.get("dash_action_needed");
+    if (st === "NEEDS_CONFIRMATION" || st === "NEED_TO_CONFIRM" || st === "VERIFY" || st === "UNTESTED") return this.get("dash_need_to_confirm");
+    if (st === "COMPLETED" || st === "PASSED") return this.get("dash_completed");
+    if (st === "ELIGIBLE") return this.get("badge_eligible");
+    if (st === "POTENTIALLY_ELIGIBLE" || st === "POTENTIAL") return this.get("badge_potentially");
+    if (st === "NEEDS_VERIFICATION") return this.get("badge_needs_verification");
+    if (st === "NOT_ELIGIBLE") return this.get("badge_not_eligible");
+    return status;
+  }}
+
+  getStateLabel(state) {{
+    if (!state) return "";
+    const s = String(state).trim();
+    const map = {{
+      "Tamil Nadu": "state_tn",
+      "Kerala": "state_kl",
+      "Karnataka": "state_ka",
+      "Andhra Pradesh": "state_ap",
+      "Telangana": "state_ts",
+      "Maharashtra": "state_mh",
+      "Delhi": "state_dl",
+      "Uttar Pradesh": "state_up",
+      "West Bengal": "state_wb",
+      "Rajasthan": "state_rj",
+      "Gujarat": "state_gj",
+      "Madhya Pradesh": "state_mp"
+    }};
+    const key = map[s];
+    return key ? this.get(key) : s;
+  }}
+
+  localizeProfileValue(field, value) {{
+    if (value === null || value === undefined || value === "") return "";
+    const str = String(value).trim();
+    if (field === "gender") return this.getGenderLabel(str);
+    if (field === "category" || field === "social_category") return this.getCategoryLabel(str);
+    if (field === "disability" || field === "disability_status") return this.getDisabilityLabel(str);
+    if (field === "stage" || field === "business_stage" || field === "business_type") return this.getStageLabel(str);
+    if (field === "sector" || field === "primary_sector" || field === "target_sector") return this.getSectorLabel(str);
+    if (field === "goal" || field === "selected_goal" || field === "business_goal") return this.getGoalLabel(str);
+    if (field === "state") return this.getStateLabel(str);
+    return str;
+  }}
+
+  localizeRequirementAction(reqText) {{
+    if (!reqText) return "";
+    const text = String(reqText).trim();
+    const label = this.getRequirementLabel(text);
+    if (label && label !== text) return label;
+    const map = {{
+      "Register the entity/organisation": "req_register_entity",
+      "Prepare required documents": "req_prep_docs",
+      "Event Proposal": "req_proposal",
+      "Prepare identity/KYC proof": "req_prep_kyc",
+      "Prepare a Detailed Project Report": "req_prep_dpr",
+      "Prepare a Detailed Project Report (DPR)": "req_prep_dpr",
+      "Complete required training": "req_complete_training",
+      "Approach eligible lender / obtain credit appraisal": "req_approach_lender",
+      "Apply through/secure linkage with an eligible incubator": "req_incubator_linkage",
+      "Incubator / approved centre linkage": "req_incubator_centre",
+      "Proposal": "req_general_proposal",
+      "SHG membership": "fact_shg",
+      "Entity type (FPO / SHG / Cooperative)": "fact_entity",
+      "DPIIT startup recognition": "fact_dpiit",
+      "Prior government subsidy history": "fact_subsidy",
+      "Family PMEGP beneficiary status": "fact_pmegp",
+      "New micro-enterprise status": "fact_new_unit",
+      "Udyam Registration status": "fact_udyam_status",
+      "Udyam Enterprise Category (Micro / Small)": "fact_udyam_cat",
+      "Estimated project cost": "fact_project_cost",
+      "Educational qualification": "fact_education",
+      "Social category": "fact_social_cat",
+      "Business stage requirement": "fact_stage_req"
+    }};
+    const key = map[text];
+    return key ? this.get(key) : text;
+  }}
+
+  localizeBenefit(benText) {{
+    if (!benText) return "";
+    const text = String(benText).trim();
+    const label = this.getBenefitLabel(text);
+    if (label && label !== text) return label;
+    if (text === "Support for international exhibitions, conferences, market exposure and cooperation activities") {{
+      return this.get("desc_ic_scheme");
+    }}
+    if (text === "Credit linked subsidy scheme for setting up new micro-enterprises in manufacturing and service sectors.") {{
+      return this.get("desc_pmegp");
+    }}
+    return text;
+  }}
+
+  localizeRoadmapText(sentence) {{
+    if (!sentence) return "";
+    const s = String(sentence).trim();
+    if (s.startsWith("Age information available")) {{
+      const match = s.match(/\\((\\d+)\\s*yrs\\)/);
+      const ageStr = match ? match[1] : "";
+      return this.get("roadmap_age_available") + (ageStr ? (" (" + ageStr + " " + this.get("lbl_yrs") + ")") : "");
+    }}
+    if (s.startsWith("State location confirmed")) {{
+      const match = s.match(/\\((.*?)\\)/);
+      const st = match ? match[1] : "";
+      return this.get("roadmap_state_confirmed") + (st ? (" (" + this.getStateLabel(st) + ")") : "");
+    }}
+    if (s.startsWith("Business sector available")) {{
+      const match = s.match(/\\((.*?)\\)/);
+      const sec = match ? match[1] : "";
+      return this.get("roadmap_sector_available") + (sec ? (" (" + this.getSectorLabel(sec) + ")") : "");
+    }}
+    if (s.startsWith("Business stage confirmed")) {{
+      const match = s.match(/\\((.*?)\\)/);
+      const stg = match ? match[1] : "";
+      return this.get("roadmap_stage_confirmed") + (stg ? (" (" + this.getStageLabel(stg) + ")") : "");
+    }}
+    if (s.startsWith("Gender specified")) {{
+      const match = s.match(/\\((.*?)\\)/);
+      const g = match ? match[1] : "";
+      return this.get("roadmap_gender_specified") + (g ? (" (" + this.getGenderLabel(g) + ")") : "");
+    }}
+    if (s.startsWith("Qualification level specified")) {{
+      const match = s.match(/\\((.*?)\\)/);
+      const q = match ? match[1] : "";
+      return this.get("roadmap_qualification_specified") + (q ? (" (" + q + ")") : "");
+    }}
+    if (s === "Confirm the missing information above") return this.get("roadmap_confirm_missing");
+    if (s === "Review the verified SchemeMitra Application Guide") return this.get("roadmap_review_guide");
+    if (s === "Proceed to the official government portal for direct application submission") return this.get("roadmap_proceed_portal");
+    return this.localizeRequirementAction(s);
+  }}
+
+  getRequirementLabel(reqText) {{
+    if (!reqText) return "";
+    const text = String(reqText).trim();
+    const map = {{
+      "Prepare required documents": "req_prep_docs",
+      "Prepare identity/KYC proof": "req_prep_kyc",
+      "Prepare a Detailed Project Report": "req_prep_dpr",
+      "Prepare a Detailed Project Report (DPR)": "req_prep_dpr",
+      "Complete required training": "req_complete_training",
+      "Approach eligible lender / obtain credit appraisal": "req_approach_lender",
+      "Register the entity/organisation": "req_register_entity",
+      "Obtain required certification": "req_obtain_cert",
+      "Confirm eligibility": "req_confirm_eligibility",
+      "Submit application": "req_submit_app",
+      "Udyam Registration": "req_udyam",
+      "GST Registration": "req_gst",
+      "PAN Card": "req_pan",
+      "Aadhaar Card": "req_aadhaar",
+      "Bank Account Proof": "req_bank_proof",
+      "Land / Ownership Lease Document": "req_land_lease"
+    }};
+    const key = map[text];
+    return key ? this.get(key) : text;
+  }}
+
+  getBenefitLabel(benText) {{
+    if (!benText) return "";
+    const text = String(benText).trim();
+    const map = {{
+      "Credit": "sup_credit",
+      "Loan": "sup_credit",
+      "Subsidy": "sup_subsidy",
+      "Grant": "sup_grant",
+      "Training": "sup_training",
+      "Credit Guarantee": "sup_credit_guarantee",
+      "Financial Assistance": "ben_financial_assist",
+      "Market Support": "sup_market_access",
+      "Technology Support": "ben_tech_support",
+      "Skill Development": "sup_skill_development",
+      "Entrepreneurship Support": "ben_entrepreneurship_support",
+      "Interest Subsidy": "ben_interest_subsidy",
+      "Capital Subsidy": "sup_subsidy",
+      "Margin Money Subsidy": "ben_margin_subsidy"
+    }};
+    const key = map[text];
+    return key ? this.get(key) : text;
+  }}
+
+  /**
+   * Official scheme name MUST strictly remain in English across all languages.
+   * Never translate scheme names.
+   */
+  getLocalizedSchemeName(schemeOrName) {{
+    const rawName = typeof schemeOrName === 'string'
+      ? schemeOrName
+      : (schemeOrName ? (schemeOrName.opportunity_name || schemeOrName.official_name || schemeOrName.name || schemeOrName.title || schemeOrName.opportunity_id || '') : '');
+
+    return {{
+      localized: null,
+      official: rawName
+    }};
+  }}
+
+  renderSchemeName(name) {{
+    return String(name || "");
+  }}
+
+  applyTranslations() {{
+    document.querySelectorAll("[data-i18n]").forEach(el => {{
+      const key = el.getAttribute("data-i18n");
+      const text = this.get(key);
+      if (el.tagName === "INPUT" && (el.type === "text" || el.type === "search")) {{
+        el.placeholder = text;
+      }} else if (el.tagName === "TEXTAREA") {{
+        el.placeholder = text;
+      }} else {{
+        el.textContent = text;
+      }}
+    }});
+
+    if (window.app && window.app.reRenderCurrentPage) {{
+      window.app.reRenderCurrentPage();
+    }}
+  }}
+}}
+
+window.i18n = new I18nManager();
+"""
+
+with open("frontend/i18n.js", "w", encoding="utf-8") as f:
+    f.write(js_code)
+
+print(f"Build completed: EN={len(en_keys)}, TA={len(ta_keys)}, HI={len(hi_keys)}")

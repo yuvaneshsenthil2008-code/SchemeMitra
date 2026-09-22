@@ -323,5 +323,32 @@
     "source_url": "https://msmeonline.tn.gov.in/kkt/kkt_desc.php",
     "verified_on": "2026-09-12",
     "completeness": "STRUCTURED_CORE"
+  },
+  {
+    "Opportunity_ID": "OPP101",
+    "Opportunity_Name": "NMDFC Term Loan Scheme",
+    "allowed_categories": [
+      "Minority"
+    ],
+    "max_annual_family_income": 800000,
+    "conditions": [
+      "Applicant must belong to a notified national minority community.",
+      "Credit Line-2 family-income ceiling is ₹8 lakh."
+    ],
+    "source_url": "https://nmdfc.org/credit-2",
+    "verified_on": "2026-09-15",
+    "completeness": "STRUCTURED_CORE"
+  },
+  {
+    "Opportunity_ID": "OPP102",
+    "Opportunity_Name": "NDFDC Divyangjan Swavalamban Yojana",
+    "min_age": 19,
+    "requires_disability_status": "PERSON_WITH_DISABILITY",
+    "conditions": [
+      "Official scheme requires 40% or more disability and UDID number for the verified self-employment pathway."
+    ],
+    "source_url": "https://www.ndfdc.nic.in/schemes/DIVYANGJAN%20SWAVALAMBAN%20YOJANA.pdf",
+    "verified_on": "2026-09-15",
+    "completeness": "STRUCTURED_CORE"
   }
 ]
